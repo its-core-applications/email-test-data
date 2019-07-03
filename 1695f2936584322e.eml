@@ -1,0 +1,89 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp9178616lto;
+        Fri, 8 Mar 2019 13:15:30 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwPSX2ljWTcxWuXhyzJhokH9vlUi/55XXrz2PvcN4fWV65i7ttYjImXnCtjtS6iQ5G0NzIH
+X-Received: by 2002:a0d:ea86:: with SMTP id t128mr5237521ywe.432.1552079730361;
+        Fri, 08 Mar 2019 13:15:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552079730; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QivW6TY8/BkYz7WtI/eK741Edq0QqYDm4p6QvuhrYAQAnhc2TykYZRx0su9ZCIH4ap
+         mFSIm38mqtc3kEEWJd5kL8izLZhTVxBQLXEDzKaIsVWrJ9EJ1QlYJ/BAC8QE/9CAkE2p
+         weboEpOx9S/ICxVMarSa2o+mdnz5fvJ1TexCGJN26gmy229AZpXKno8mm8w99uSgwrRf
+         cV9GGgyxGZ9rGGomIGBjsh5eTyg6L1QqLFuBqv5bsllKHnUhpke73IM6YLaCeVSnc8S3
+         /tysO1jOhoxCmzxSBjWSU5I9dEDKoi1HBf6nkjKr7tuDCR7eFe5NBETXBpi6phftnlRf
+         nYaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=ViIMeqGcgGurCv2RcVfa8YUG09OY/1WMqVU9FoZeSK0=;
+        b=NLyPFROqe15s7BgVv5eYJv7UdJ6s0tacu+1GXqgvoUyT0EZOyNpKs1gAKPetXnhXO/
+         4M1qHItQrKUKSSyNYh5BcPqk97jQs5dkI/uCp65ji7M9rg52bHtaFRDaQfXQw7fUca8d
+         ZEFwAmS8XSWlA/yw+3XHf6n/yk+/+53CIP9TSgSMnsG0wah5zgBRMcSNo7F5XaY2y7SE
+         /oTXvHlY2d0axcyGABL0XY7MRlt2OapaJle2TTU+yK0KOvSOVbqVcK6FOadaofgTj7P5
+         ArdDKpFcYTEvq3LfY6dNWrJxFzWQhVn3vUE9szka50sdtJjLxxqDLvR400pFphWZ8/fz
+         PH1Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=eVK6AcPi;
+       spf=pass (google.com: best guess record for domain of hermane@uselab.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=hermane@uselab.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <hermane@uselab.collab.its.umich.edu>
+Received: from maleficent.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.125.12])
+        by mx.google.com with ESMTPS id t8si5692267yba.36.2019.03.08.13.15.30
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 13:15:30 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of hermane@uselab.collab.its.umich.edu designates 141.211.125.12 as permitted sender) client-ip=141.211.125.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=eVK6AcPi;
+       spf=pass (google.com: best guess record for domain of hermane@uselab.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=hermane@uselab.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552079729;
+	bh=ViIMeqGcgGurCv2RcVfa8YUG09OY/1WMqVU9FoZeSK0=;
+	h=Date:From:To:Subject;
+	b=eVK6AcPiYb0K3M6J+dd8oJ0BPxvg4eS41yIL/FTVL10Oz8DBLikH/OF4pi6gdSDXS
+	 TqyZsiK6J7l+sdqRt9lc6c/Tob2P8Op35b9V34sxbyedCB2ohu4CLxexeq5nFpkoEG
+	 2ZCEc9XUxXvAi4skDzBBpd4iLXh2nHiVoEnj+6qd+FSmw/kCtepNIFrU0Hsu5seFFS
+	 cySmDOWwtOcGeal2BQ0UTDXnsMgaGNCDAhiTy4BK3pKc0/jdQaWHeG8kqVN/hoe+RR
+	 Xa0AU5wmnMQ9+OOWEP+07ZnQIoGvHubAzZLGaNXHqWC0sVQO0AZTrSwLmA5arHnHHV
+	 w8cUHNKpK1eTw==
+Authentication-Results: maleficent.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By maleficent.mr.itd.umich.edu ID 5C82DB71.8FB2E.573;
+	Authuser hermane;
+	Fri, 08 Mar 2019 16:15:29 -0500
+Date: Fri, 8 Mar 2019 21:15:23 +0000
+From: Herman Elpdesk <hermane@uselab.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: blah blah blah blarrrg
+Message-ID: <20190308211523.cxsgdiru6373hasx@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+Bacon ipsum dolor amet pancetta pork chop pastrami meatloaf prosciutto
+bresaola strip steak sausage beef ribs sirloin. Hamburger andouille
+leberkas, tail ham hock doner corned beef meatloaf spare ribs pastrami
+meatball pork loin. Hamburger ham hock cow capicola meatball landjaeger.
+Chicken tail alcatra brisket, tri-tip sausage ham hock meatloaf pork
+chop doner beef pastrami spare ribs cow. Bacon flank doner turducken.
+
+T-bone kielbasa short loin, brisket drumstick hamburger jerky. Kevin ham
+buffalo brisket. Ham ribeye bacon, pastrami shank doner beef burgdoggen
+t-bone leberkas buffalo salami chicken. Turducken ham hock hamburger,
+sausage landjaeger corned beef rump t-bone prosciutto. Doner chicken
+sirloin short ribs, leberkas buffalo tenderloin strip steak flank
+hamburger pork belly rump.
+
+Strip steak rump frankfurter chuck, landjaeger ribeye leberkas pork
+ground round. Ham hock buffalo meatball, beef ribs sirloin biltong
+sausage pancetta picanha corned beef. Burgdoggen t-bone tenderloin,
+filet mignon corned beef meatloaf chicken bacon rump biltong pork
+hamburger sirloin ham hock. Prosciutto shankle flank pork kevin ground
+round. Leberkas meatloaf shankle t-bone beef ribs pork chop, fatback
+short ribs.
+
+

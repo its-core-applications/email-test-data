@@ -1,0 +1,157 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:1313:0:0:0:0 with SMTP id s19csp4900972lto;
+        Tue, 9 Apr 2019 06:02:23 -0700 (PDT)
+X-Received: by 2002:a67:ec03:: with SMTP id d3mr21051688vso.165.1554814943592;
+        Tue, 09 Apr 2019 06:02:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554814943; cv=none;
+        d=google.com; s=arc-20160816;
+        b=TcNphP9FPWKkXCcSBnIgsuRZE8sDYMVccd2tAlx1w6ECYzQbp8cofhw6vm/sQUhe4J
+         HwmiZi3P/cIlcWa2Lvf7C/uzwF4/IM4Itb27IgAN4uPPKHUZOyKK+WZsn5YvaM41HAed
+         cTUYVX4udJyhBCB5OjKV/BYW71r+X44BleS58FqRAtYQlUjTs6XlKZIfcEQ0eLk6OVHr
+         CRJsJTx+2mOJsuWI+lx9OsR06jIiSoknK6VnJTs3PzjzInDxuEpM1nlca6fhemCQzaIB
+         LnjFvcnJLpHCXu/i7JQcJpyUcOZmlEhfKB3b7/g4bfCy/r612hqCKWByd6yddOFmeftf
+         +uWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:date:mime-version
+         :dkim-signature;
+        bh=GkKOJsHj8yMKrgho2MQC/vsMYJ1COmb8r/PQm4sTy0g=;
+        b=fyuJmw8OfDUIDfvGUarqVMYeiaMC+85o7hQXbSYRX3vT+72kpStpYQ9ZFJnE2woXLM
+         bFtlrzZaKF5C1hWVvo6BobjXO/zUVTJL0/T0l2He2NYiJb07NOpt03ebMzCk/6i2Fgls
+         M/AiAM4XHg/iIPWcni0JRtLebjmmAmZDTFPySTd/mJf15i9M3+BZGD6Xo1t+TrT5H8kr
+         +VdDJju2auzdBBiIxzZYLEQh1dKtzndQuGRVqdwjGURvvNdy74+HBpYGzMPAHcSnw6yp
+         wRlQa6W3aoBVQZkWSnxCT6TWCczUlE4tZJLPCMkKgAcY4u3it991boZDzn+G5R535fMe
+         YlLQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20161025 header.b=KyDC6DP4;
+       spf=pass (google.com: domain of 335esxagtakwza-dqbxkmooagzfe.saasxq.oay@gaia.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=335esXAgTAKwZa-dQbXkMOOagZfe.SaaSXQ.OaY@gaia.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com
+Return-Path: <335esXAgTAKwZa-dQbXkMOOagZfe.SaaSXQ.OaY@gaia.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id p74sor13683242vkf.25.2019.04.09.06.02.23
+        for <hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Tue, 09 Apr 2019 06:02:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 335esxagtakwza-dqbxkmooagzfe.saasxq.oay@gaia.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20161025 header.b=KyDC6DP4;
+       spf=pass (google.com: domain of 335esxagtakwza-dqbxkmooagzfe.saasxq.oay@gaia.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=335esXAgTAKwZa-dQbXkMOOagZfe.SaaSXQ.OaY@gaia.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=accounts.google.com; s=20161025;
+        h=mime-version:date:feedback-id:message-id:subject:from:to;
+        bh=GkKOJsHj8yMKrgho2MQC/vsMYJ1COmb8r/PQm4sTy0g=;
+        b=KyDC6DP4/cpnuWd276us12K7fSvSJTCi85BDy2H5SE/nm0qGOQx4evu5+2ioh2IA1x
+         z+OmRswgHJGUy/dZFdfZSRGCrLHQYsfZNM42jGglNeESFI55nSuSgQOWRjeFuABcXug5
+         Aqo7CyYIPPv/3++Oqdl1Z6WYIt1Vv/Vb9HxBD9hkTPEKeb0bprRG46e5BQnSAceJiwCE
+         /6+yZVdAr4IqwjC/eM8YbEOQO9qWCfo0d8u164+cWkb4l+COK2GWxHlnnDviGRUEix/m
+         F3lSau/2PlY9hnFgLtANuDrpbPcC/9FH5GKHd0qMJBC6wBJkctoRiBWgQi0IQhRxbUG5
+         CczA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:feedback-id:message-id:subject
+         :from:to;
+        bh=GkKOJsHj8yMKrgho2MQC/vsMYJ1COmb8r/PQm4sTy0g=;
+        b=EeSWv5hMzpBGW7t2pP6vs0K3tF8Haz4oh/oyxAy3qkmXb/OtEd+wtTFmdEwpKqcfcs
+         Etzy19zREhnlO/1R4Mi8RgLUmsgmjl1L4IzkbzltD+xmeFahAv382SF5pjpF18qd9VDU
+         YLi2UvvePLnPZ8eWQKTduJp8qzFgn9fJEKG6HhJGz/HhtrKnffIddjDA67kggt6EWiX7
+         K8IEn3vAOqm7uvpOnhNtNRaZUXWxv8z1KYTUeQUTfyEr2CLcAnNwthLbav6UkBiTUT6O
+         xN6ZGhXY2QnQRhxIB5uRhBrscpQF9TmIedpG17TP3cN7wXPkoHlRKvj/t3x725KweduJ
+         NvZw==
+X-Gm-Message-State: APjAAAX8zZtFeZ9f1g9WbiV6rTfr3K+shzi5DcqRqsfuEyJq17KgMzrR
+	r7huZvuJrgo2zWKFO9uc2g+tfv/mmMNU
+X-Google-Smtp-Source: APXvYqy5WMfTbjpupQrgecEMIn1/dAnXHidccPJRtPY4UkipfVF6TDoyK2osxSYW1IuWtWxYbHHyPCh3qGb4bUmdwfSeag==
+MIME-Version: 1.0
+X-Received: by 2002:a1f:746:: with SMTP id 67mr4027351vkh.24.1554814943075;
+ Tue, 09 Apr 2019 06:02:23 -0700 (PDT)
+Date: Tue, 9 Apr 2019 13:02:22 +0000 (UTC)
+X-Account-Notification-Type: 31-anexp#givab-fa--mdv2-fa--hsc-control_b--ivab-fa
+Feedback-ID: 31-anexp#givab-fa--mdv2-fa--hsc-control_b--ivab-fa:account-notifier
+X-Notifications: 2eaabeb693000000
+Message-ID: <XqVWAYaQST677tl1httw8A.0@notifications.google.com>
+Subject: Security alert
+From: Google <no-reply@accounts.google.com>
+To: hermane@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary="0000000000005f9d0005861890b0"
+
+--0000000000005f9d0005861890b0
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+TmV3IGRldmljZSBzaWduZWQgaW4gdG8NCg0KDQpjYXJsZXNraUBjb2xsYWIuaXRzLnVtaWNoLmVk
+dQ0KWW91ciBHb29nbGUgQWNjb3VudCB3YXMganVzdCBzaWduZWQgaW4gdG8gZnJvbSBhIG5ldyBD
+aHJvbWUgT1MgZGV2aWNlLg0KWW91J3JlIGdldHRpbmcgdGhpcyBlbWFpbCB0byBtYWtlIHN1cmUg
+aXQgd2FzIHlvdS4NCkNoZWNrIGFjdGl2aXR5DQo8aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29t
+L0FjY291bnRDaG9vc2VyP0VtYWlsPWNhcmxlc2tpQGNvbGxhYi5pdHMudW1pY2guZWR1JmNvbnRp
+bnVlPWh0dHBzOi8vbXlhY2NvdW50Lmdvb2dsZS5jb20vYWxlcnQvbnQvMTU1NDgxNDk0MjAwMD9y
+Zm4lM0QzMSUyNnJmbmMlM0QxJTI2ZWlkJTNELTU0ODc2MTU4ODYxNjM4NDc1MTglMjZldCUzRDAl
+MjZhbmV4cCUzRGdpdmFiLWZhLS1tZHYyLWZhLS1oc2MtY29udHJvbF9iLS1pdmFiLWZhPg0KWW91
+IHJlY2VpdmVkIHRoaXMgZW1haWwgdG8gbGV0IHlvdSBrbm93IGFib3V0IGltcG9ydGFudCBjaGFu
+Z2VzIHRvIHlvdXINCkdvb2dsZSBBY2NvdW50IGFuZCBzZXJ2aWNlcy4NCsKpIDIwMTkgR29vZ2xl
+IExMQywgMTYwMCBBbXBoaXRoZWF0cmUgUGFya3dheSwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDMs
+IFVTQQ0K
+--0000000000005f9d0005861890b0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3Den><head><meta content=3D"email=3Dno" name=3D"f=
+ormat-detection"><meta content=3D"date=3Dno" name=3D"format-detection"><sty=
+le>.awl a {color: #FFFFFF; text-decoration: none;} .abml a {color: #000000;=
+ font-family: Hermanoto-Medium,Helvetica,Arial,sans-serif; font-weight: bold; =
+text-decoration: none;} .adgl a {color: rgba(0, 0, 0, 0.87); text-decoratio=
+n: none;} .afal a {color: #b0b0b0; text-decoration: none;} @media screen an=
+d (min-width: 600px) {.v2sp {padding: 6px 30px 0px;} .v2rsp {padding: 0px 1=
+0px;}} @media screen and (min-width: 600px) {.mdv2rw {padding: 40px 40px;}}=
+ </style><link href=3D"//fonts.googleapis.com/css?family=3DGoogle+Sans" rel=
+=3Dstylesheet type=3D"text/css"></head><body bgcolor=3D"#FFFFFF" style=3D"m=
+argin: 0; padding: 0;"><table border=3D0 cellpadding=3D0 cellspacing=3D0 he=
+ight=3D"100%" lang=3Den style=3D"min-width: 348px;" width=3D"100%"><Tbody><=
+tr height=3D32 style=3D"height: 32px;"><td></td></tr><tr align=3Dcenter><td=
+><div itemscope itemtype=3D"//schema.org/EmailMessage"><div itemprop=3Dacti=
+on itemscope itemtype=3D"//schema.org/ViewAction"><link href=3D"https://acc=
+ounts.google.com/AccountChooser?Email=3Dhermane@collab.its.umich.edu&amp;c=
+ontinue=3Dhttps://myaccount.google.com/alert/nt/1554814942000?rfn%3D31%26rf=
+nc%3D1%26eid%3D-5487615886163847518%26et%3D0%26anexp%3Dgivab-fa--mdv2-fa--h=
+sc-control_b--ivab-fa" itemprop=3Durl><meta content=3D"Review Activity" ite=
+mprop=3Dname></div></div><table border=3D0 cellpadding=3D0 cellspacing=3D0 =
+style=3D"padding-bottom: 20px;max-width: 516px;min-width: 220px;"><Tbody><t=
+r><td style=3D"width: 8px;" width=3D8></td><td><div align=3Dcenter class=3D=
+mdv2rw style=3D"border-style: solid; border-width: thin; border-color:#dadc=
+e0; border-radius: 8px; padding: 40px 20px;"><img height=3D24 src=3D"https:=
+//www.gstatic.com/accountalerts/email/googlelogo_color_188x64dp.png" style=
+=3D"width: 75px; height: 24px; margin-bottom: 16px;" width=3D75><div style=
+=3D"font-family: &#39;Google Sans&#39;,Hermanoto,HermanotoDraft,Helvetica,Arial,s=
+ans-serif;border-bottom: thin solid #dadce0; color: rgba(0,0,0,0.87); line-=
+height: 32px; padding-bottom: 24px;text-align: center; word-break: break-wo=
+rd;"><div style=3D"font-size: 24px;">New device signed in&nbsp;to</div><tab=
+le align=3Dcenter style=3D"margin-top:8px;"><Tbody><tr style=3D"line-height=
+: normal;"><td align=3Dright style=3D"padding-right:8px;"><img height=3D20 =
+src=3D"https://www.gstatic.com/accountalerts/email/anonymous_profile_photo.=
+png" style=3D"width: 20px; height: 20px; vertical-align: sub; border-radius=
+: 50%;;" width=3D20></td><td><a style=3D"font-family: &#39;Google Sans&#39;=
+,Hermanoto,HermanotoDraft,Helvetica,Arial,sans-serif;color: rgba(0,0,0,0.87); fon=
+t-size: 14px; line-height: 20px;">hermane@collab.its.umich.edu</a></td></t=
+r></Tbody></table></div><div style=3D"font-family: Hermanoto-Regular,Helvetica=
+,Arial,sans-serif; font-size: 14px; color: rgba(0,0,0,0.87); line-height: 2=
+0px;padding-top: 20px; text-align: center;">Your Google Account was just si=
+gned in to from a new Chrome OS device. You're getting this email to make s=
+ure it was you.<div style=3D"padding-top: 32px;text-align: center;"><a href=
+=3D"https://accounts.google.com/AccountChooser?Email=3Dhermane@collab.its.=
+umich.edu&amp;continue=3Dhttps://myaccount.google.com/alert/nt/155481494200=
+0?rfn%3D31%26rfnc%3D1%26eid%3D-5487615886163847518%26et%3D0%26anexp%3Dgivab=
+-fa--mdv2-fa--hsc-control_b--ivab-fa" style=3D"font-family: &#39;Google San=
+s&#39;,Hermanoto,HermanotoDraft,Helvetica,Arial,sans-serif; line-height: 16px; co=
+lor: #ffffff; font-weight: 400; text-decoration: none;font-size: 14px;displ=
+ay:inline-block;padding: 10px 24px;background-color: #4184F3; border-radius=
+: 5px; min-width: 90px;" target=3D"_blank">Check activity</a></div></div></=
+div><div style=3D"text-align: left;"><div style=3D"font-family: Hermanoto-Regu=
+lar,Helvetica,Arial,sans-serif;color: rgba(0,0,0,0.54);font-size: 11px; lin=
+e-height: 18px; padding-top: 12px; text-align: center;"><div>You received t=
+his email to let you know about important changes to your Google Account an=
+d services.</div><div style=3D"direction: ltr;">&copy; 2019 Google LLC, <a =
+class=3Dafal style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,sans-seri=
+f;color: rgba(0,0,0,0.54);font-size: 11px; line-height: 18px; padding-top: =
+12px; text-align: center;">1600 Amphitheatre Parkway, Mountain View, CA 940=
+43, USA</a></div></div></div></td><td style=3D"width: 8px;" width=3D8></td>=
+</tr></Tbody></table></td></tr><tr height=3D32 style=3D"height: 32px;"><td>=
+</td></tr></Tbody></table></body></html>
+--0000000000005f9d0005861890b0--

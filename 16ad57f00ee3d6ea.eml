@@ -1,0 +1,79 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:58f:0:0:0:0 with SMTP id i15csp240235lto;
+        Mon, 20 May 2019 06:47:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxsBVWK6/7jvxAAQ1QVAIhvBafbWFHpOZyQ/SzNGPElEPnJnWCUkN4ZD3Krv3TNkk/2hTxv
+X-Received: by 2002:a24:3dc1:: with SMTP id n184mr3899706itn.130.1558360031469;
+        Mon, 20 May 2019 06:47:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558360031; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QGvbZf1nWlHogqR/e0SSTBwKxVX8yzpz8ImWzCFuWh6RZSkqckju9d2BztAeRxNP6C
+         0Bx8DuGhQ0S8LR2NqwOGLiEDiy3ayxhCHIs1k4dWD1RtLL74XWpk/59Oq6RJ5zm0GEfJ
+         avsKOw2Vlu9PMFXZ262MMTU9g4sU/Y/IWqk5+n6Pgsxe3g/lRTLvsDDg+D83499viCW6
+         Nh5QQdSmkranOfSNJJJE6t43Ox6dUY3scs7+Vg1IypxQHSl+pdldOKJOSB7QqfIT+72b
+         q48AdOzKq/jb6yaQIf3hxdHIST773ExsNRnn2by1RQWPgPT8649rsJc/ISEzIB/OWtMB
+         FHyg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=OkwtZBQQvdAOOVlBpVD8Eeal+x7me1EM7FBGicbrCRo=;
+        b=eddLlg+vIGOCPZZe+1EYGnDt1QvtQ2OoY2c/YUnq9q4EgAfhw2g9AyIvuAW480Yrl1
+         Pe1niy85JdLAF1ejl0VxIhSkxauc/2910yCATKn68xHPTkKfNJX+PbgYq9qy1zIEXNh+
+         vuqpTMseng5IMaspp9RVCdBeT04O3UAXKqxybHeZpygth0R8bmbTm9ZTnOGM6lC3Imc4
+         j/XCQ7ZmlQOwWG1HEl0aTR2yQXruJu/jpumbwxclLvJ5vY4+CdFXrrPCu49SJzN+FzNl
+         s3Fjybgmv0hE7HYGKDJ/BcBe8eMHIB/hv3AlUx/APFgLBe7fAGKCKFLOyt0k2lEvrgjj
+         CPeg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b="E/eUbsPl";
+       spf=pass (google.com: best guess record for domain of bcors@go.itd.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=bcors@go.itd.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <bcors@go.itd.collab.its.umich.edu>
+Received: from tombraider.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.12.86])
+        by mx.google.com with ESMTPS id c63si10852425itd.123.2019.05.20.06.47.11
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 20 May 2019 06:47:11 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of bcors@go.itd.collab.its.umich.edu designates 141.211.12.86 as permitted sender) client-ip=141.211.12.86;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b="E/eUbsPl";
+       spf=pass (google.com: best guess record for domain of bcors@go.itd.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=bcors@go.itd.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1558360030;
+	bh=OkwtZBQQvdAOOVlBpVD8Eeal+x7me1EM7FBGicbrCRo=;
+	h=Date:From:To:Subject;
+	b=E/eUbsPlZkmFwgrdGW6TfLJmY3XN0PdQtd4daV7h3ZsY/zFoHvK7FsKd6A/dQ7I2+
+	 vjmJQ6RzU0NDvTkeXxPSqz68FwIO5UFQuNNG9QntLphRWR7bN2p9aieKu7Oy/5mfLY
+	 LYnOcW8KjDlQa3Pq+2AIfc8yDUnCojVkYUgRuZu0VGohOj/12LoXh+uP1EdxDnt9HK
+	 D4qu3iec0c6Fx0lFAr7O7Q/YwhkSGRfkgie5qzM023Rluf7fdJmVzuI82SJEq+2K0f
+	 3zEIt7aeXcYF5X2QDZW5wBKzabCb6h5M3PRxyNsgDHgqMumCX8F/lm3rVXKK9Fa5lF
+	 2pMGkSj5hpJnQ==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.194.47 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.194.47])
+	By tombraider.mr.itd.umich.edu ID 5CE2AFDE.B1A6F.20844;
+	Authuser hermane;
+	Mon, 20 May 2019 09:47:10 -0400
+Date: Mon, 20 May 2019 09:47:05 -0400
+From: Brian Cors <bcors@go.itd.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Test Message
+Message-ID: <20190520134705.botqr5d7ybsglbap@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+Bacon ipsum dolor amet kevin short ribs cupim alcatra, shoulder
+andouille kielbasa beef ribs jerky pig filet mignon buffalo corned beef.
+Cupim ribeye pig, tongue shank sausage fatback filet mignon brisket.
+Beef tenderloin prosciutto, picanha capicola chuck pork chop venison
+filet mignon tongue tri-tip fatback. Kevin pork loin shankle tenderloin
+short ribs meatloaf chuck. Strip steak ham pig bresaola.
+
+Shankle pork loin spare ribs pastrami. Pig tri-tip t-bone hamburger,
+sausage burgdoggen capicola drumstick ribeye. Short loin beef ribs tail,
+ribeye burgdoggen biltong short ribs meatloaf brisket. Chuck porchetta
+alcatra bresaola capicola pork belly. Bresaola beef ribs flank, tail
+hamburger kielbasa short ribs biltong salami spare ribs ham hock
+tenderloin pig.

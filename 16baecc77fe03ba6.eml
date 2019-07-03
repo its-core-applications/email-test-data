@@ -1,0 +1,1258 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:6455:0:0:0:0:0 with SMTP id n21csp3071582ltf;
+        Mon, 1 Jul 2019 11:29:24 -0700 (PDT)
+X-Received: by 2002:a02:9567:: with SMTP id y94mr31693581jah.28.1562005763824;
+        Mon, 01 Jul 2019 11:29:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562005763; cv=none;
+        d=google.com; s=arc-20160816;
+        b=hTD8jE49Yz/R7S7dvpIj1W/RawGIkh8tzUG8feOHyA2aFtuIwGq59VCHmIt4hJrbK0
+         gJDN5ZH0BJO0gYK+g0Qh9vwoU8k3igQXp2vOO62V5s5Y1fHCVWwfR8IaXSysXPlU9WO9
+         nwnA+W++mJsgw9vcgd7m99EIsxFiQ/cMANutjzvteUWDpzOdVBtjnxZS0SN1QeCMIEuC
+         jsCYAc0oVN8ocg46QcPkqU+8eNL8R3Z0dnrO05mc8HTDy89eCzKn0cDKul2L33IWRI+U
+         L/U1Be+12nJDgobT8gRlHqB2NOpXL/+ayUXmqytVUrjPzT1BBJdDU2Bu1vtZs/IG8qIa
+         6bKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=FBrfqFNv2ppUPgQquQ5c2luYLNSLBPJlCMDJQ1Ddj+w=;
+        b=yOOBJurmFlwTE8TjlqZXMVdsX+BxUVY7B9m2GvcrzWMViUq0X2nACBwBdkVUTkJYs9
+         dnCMAykqEvrTVkgvOVSTg+aVd9N1yrzq1av9Sow8GDVApIt4voDAgXjZ+Q/cn7Mcrev+
+         ix4d3hJoIblOaUUkxFyw+Ar/Yp87/nW07EFgoYpKlFLv3DuOOxf1qUoO+6UmZ3VHZA4e
+         LJWlBWS1ZoQcc4FB4b9Zy9iSGWKqbRNLC69MzLXe50LmxDZIgSE6upspylvYeLBDoyj6
+         LMpSrufdORwv1BLJtgNluRxPHKBaZCtBGFVr8PYi9bo9NzFYhPQKVy6Q2CrvhlwnoaQm
+         39GQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=Qc7Ut9yo;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <hermane@umich.edu>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q5sor8084071ioq.99.2019.07.01.11.29.23
+        for <hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Mon, 01 Jul 2019 11:29:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=Qc7Ut9yo;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=umich.edu; s=google-2016-06-03;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=FBrfqFNv2ppUPgQquQ5c2luYLNSLBPJlCMDJQ1Ddj+w=;
+        b=Qc7Ut9yoIUYde3hBoI3iurSUmW+/9qewMUxjhvkIyam2jYnDQqUY5o0th8n9GgrJPV
+         /BQ/qYHUCeP1N4n2+Ai02nTLub2dSgi1SMxuQZSZ3DLsfs8uxx/zNO4AG8Z92ff0WLE2
+         mc9Kikc7FqlZtBFPP4uLj0LDGnJJW21oQrNtqMYMOBVsDDAEe7x3cyKXfDizLthxnARu
+         99mIrDTufxWN0WAKacgp5BLJhBIT/ZAnf0oDya9KxvJWB6hBHpDYtSNjsAWIuKcrFDS9
+         VgDGphZwZ0IrHtLZoBYgejJJAZFzv8SJMq3t057cy1esiIMBaMPatF6cs+KTU7iKTtgL
+         lAAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=FBrfqFNv2ppUPgQquQ5c2luYLNSLBPJlCMDJQ1Ddj+w=;
+        b=ofkVB3BvUgVxrGPcz1qvxQXh+W3XqyLBlAvjU6Bo4nI8Nfxe9p9SABoHi/L75HeLAe
+         MB9kFO+wVg1RIYldewOBrOc2FXrX+H2ej5fpVybeMUVUZHSxTHR8QD+8//22MZyA2yTy
+         9f8BAaFtEhhwVyRfCkPP49dHY1yxpymWmqAZU78dAu+/2UxdqOhJKDe9bR9SWgH6Z2pE
+         Svl5mDwTWnRHMLt+zY0H47SDnCbDCyy0F7KoKi8x2lBqiH7rI58PZBvxNoltZzXN48he
+         J2zpZc+mGrfuIAwo/XVfHSR9g5hLGdOVtWLvyvmSPIz61mUIG6Oo26Sp/vSH7s2CSOzX
+         3uvg==
+X-Gm-Message-State: APjAAAVug3vCyD9Ppdv80XoTcPzjtd7Q915JVS/dsnuCaihvU33TYzv9
+	RjTEhwHj/KY/0JY0BuEx3jX36MXCoR0OWJZkegKRL2SHbVE=
+X-Google-Smtp-Source: APXvYqy089qAtcccfoBwl0VTuvfCqNyePJ1MvUcqsJQHyadJ/EtkAXFnpq+FOEOY7KTNchhW1ug9fEvoNZoOVJntpxs=
+X-Received: by 2002:a05:6638:38a:: with SMTP id y10mr31766468jap.104.1562005762856;
+ Mon, 01 Jul 2019 11:29:22 -0700 (PDT)
+MIME-Version: 1.0
+References: <mailman.2143.1554817671.44169.splunk-higher-ed@lists.osu.edu> <e59874dcb5074d92b9eb9e8071df47cf@arlut.utexas.edu>
+In-Reply-To: <e59874dcb5074d92b9eb9e8071df47cf@arlut.utexas.edu>
+From: Herman Elpdesk <hermane@umich.edu>
+Date: Mon, 1 Jul 2019 14:28:45 -0400
+Message-ID: <CAKvLTfY-WgW1XpqtRAw0oUQpJE3zzpHLQuEVoH-XOXf8rrB-Zw@mail.gmail.com>
+Subject: Fwd: [Splunk-Higher-Ed] splunk-higher-ed Digest, Vol 45, Issue 2
+To: hermane@collab.its.umich.edu
+Content-Type: multipart/mixed; boundary="000000000000a23808058ca2ceee"
+
+--000000000000a23808058ca2ceee
+Content-Type: multipart/alternative; boundary="000000000000a23806058ca2ceec"
+
+--000000000000a23806058ca2ceec
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: Michael Fischer via splunk-higher-ed <splunk-higher-ed@lists.osu.edu>
+Date: Tue, Apr 9, 2019 at 2:39 PM
+Subject: Re: [Splunk-Higher-Ed] splunk-higher-ed Digest, Vol 45, Issue 2
+To: splunk-higher-ed@lists.osu.edu <splunk-higher-ed@lists.osu.edu>
+
+
+I recommend avoiding syslog as much as possible. If you don't have all the
+exact same o/s or type of data going in that -- you'll
+hate field creating and data extraction later.
+
+Use the UFs as much as possible, with a deployment server that allows for
+adding/removing add-ons as wanted -- and properly sources
+the data types.
+
+We have a handful of admins here that insist on sending syslog only from
+dissimilar systems and it's a nightmare. For example
+sourcetype=3Dsyslog may have a field extracted for a source_IP address from
+your firewall, but it's a completely different data that's
+throwing into source_IP that's pulled from the same regex from, say, a VPN
+device...
+
+
+
+-----Original Message-----
+From: splunk-higher-ed <splunk-higher-ed-bounces+michael.fischer=3D
+arlut.utexas.edu@lists.osu.edu> On Behalf Of
+splunk-higher-ed-request@lists.osu.edu
+Sent: Tuesday, April 09, 2019 8:48 AM
+To: splunk-higher-ed@lists.osu.edu
+Subject: splunk-higher-ed Digest, Vol 45, Issue 2
+
+Send splunk-higher-ed mailing list submissions to
+        splunk-higher-ed@lists.osu.edu
+
+To subscribe or unsubscribe via the World Wide Web, visit
+        https://lists.osu.edu/mailman/listinfo/splunk-higher-ed
+or, via email, send a message with subject or body 'help' to
+        splunk-higher-ed-request@lists.osu.edu
+
+You can reach the person managing the list at
+        splunk-higher-ed-owner@lists.osu.edu
+
+When replying, please edit your Subject line so it is more specific than
+"Re: Contents of splunk-higher-ed digest..."
+
+
+Today's Topics:
+
+   1. Re: Splunk Advice (Bob Harold)
+   2. Re: Splunk Advice (Tod Detre)
+   3. Re: Splunk Advice (Flaherty, Josh)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Tue, 9 Apr 2019 09:22:27 -0400
+From: Bob Harold <rharolde@umich.edu>
+To: Scott Hermanards <jsrobard@uncg.edu>
+Cc: "splunk-higher-ed@lists.osu.edu" <splunk-higher-ed@lists.osu.edu>
+Subject: Re: [Splunk-Higher-Ed] Splunk Advice
+Message-ID:
+        <CA+nkc8DDAzisWxBkfe4d6KncsyHqqTS6FWEgSzz1NFfkVKE8Og@mail.gmail.com=
+>
+Content-Type: text/plain; charset=3D"utf-8"
+
+I don't Speak for our Splunk team, but for the couple dozen hosts that I am
+responsible for, we were sending Syslog over UDP to a
+Splunk forwarder, but as we added traffic we began losing data, eventually
+realizing that 80-90% of the syslog traffic was not
+reaching Splunk.  We switched to Syslog over TCP and could immediately see
+the traffic backlog.  We build a new forwarder in a VM
+just for my servers and now I am getting all my data into Splunk.
+
+If you use Syslog, please use TCP.  Do not use UDP, it will silently lose
+data.
+
+--
+Bob Harold
+
+
+
+On Tue, Apr 9, 2019 at 8:52 AM Scott Hermanards via splunk-higher-ed <
+splunk-higher-ed@lists.osu.edu> wrote:
+
+> This is just philosophical--we don't currently centrally log our
+> workstations
+> outside of our Citrix-hosted virtual desktops.
+>
+> Your environment might differ from ours, but while going with UFs is
+> technically feasible I would use native log aggregation methods
+> (Windows Event Collector and syslog+tls) for workstations.
+>
+> The UF has a lot of strengths including baked in encryption, load
+> balancing, and event queuing. In an ideal situation it provides a lot of
+> resiliency.
+>
+> But it comes at the expense of some steep implementation challenges. In
+> our
+> network the server infrastructure is pretty predictable--there is
+> consistent OS
+> visioning, patching, network connectivity, software loads, etc. These are
+> all
+> unknowns for the client endpoints. Also, Splunk can manage the UF
+> configuration but not installation or patching of the UF agent. Software
+> management has been an ongoing challenge for us to solve for the
+> workstation.
+> Macs in particular have been almost impervious to centralized management.
+>
+> With the native options you simplify things significantly, albeit at the
+> cost of some resiliency.
+>
+> On Mon, Apr 08, 2019 at 07:44:39PM +0000, Jason Penley via
+> splunk-higher-ed wrote:
+> >Good afternoon-
+> >
+> >We are looking to use Splunk to capture and analyze Windows and OSX logs
+> from client workstations.
+> >
+> >We have questions concerning best approach to capturing logs
+> efficiently.  We have both Splunk Enterprise (on-premises) and Splunk
+> Cloud.  Our Splunk enterprise admin prefers a single universal forwarder
+> talking to on-premises rather than 1,000's of clients.  Accordingly, been
+> looking at configuring some type of log aggregator that will then serve a=
+s
+> single forwarder to on-premises instance.  Does anyone have experience
+with
+> this?  In particular, we are debating native Windows and OSX tools vs.
+> installing universal forwarders on every client.  Thoughts in this regard=
+?
+> >
+> >Jason Penley, Manager
+> >Workstation Management & Support
+> >Information Technology Services
+> >Tallahassee, FL 32303
+> >850.645.4689 o
+> >850.559.5629 m
+> >jpenley@fsu.edu
+> >
+>
+> >_______________________________________________
+> >splunk-higher-ed mailing list
+> >splunk-higher-ed@lists.osu.edu
+> >https://lists.osu.edu/mailman/listinfo/splunk-higher-ed
+>
+>
+> --
+> Scott Hermanards
+> Information Security Specialist
+> CISSP, Splunk Certified Architect
+> Information Security Office, ITS
+> UNC Greensboro
+> _______________________________________________
+> splunk-higher-ed mailing list
+> splunk-higher-ed@lists.osu.edu
+> https://lists.osu.edu/mailman/listinfo/splunk-higher-ed
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <
+https://lists.osu.edu/mailman/private/splunk-higher-ed/attachments/20190409=
+/3d49129e/attachment-0001.html
+>
+
+------------------------------
+
+Message: 2
+Date: Tue, 9 Apr 2019 09:34:52 -0400
+From: Tod Detre <tod.detre@maine.edu>
+To: Bob Harold <rharolde@umich.edu>
+Cc: "splunk-higher-ed@lists.osu.edu" <splunk-higher-ed@lists.osu.edu>
+Subject: Re: [Splunk-Higher-Ed] Splunk Advice
+Message-ID:
+        <CAGc_vWhF6BjRPfdtLn2kJ70tpX_KuvU1098gTnRGbqnDcjB2gQ@mail.gmail.com=
+>
+Content-Type: text/plain; charset=3D"UTF-8"
+
+>From what I've read, with syslog, it's always best to use an
+intermediate rsyslog or syslog-ng server to gather the syslog data.
+Then us a uf on that host to send the data to splunk.
+
+On Tue, Apr 9, 2019 at 9:22 AM Bob Harold via splunk-higher-ed
+<splunk-higher-ed@lists.osu.edu> wrote:
+>
+> I don't Speak for our Splunk team, but for the couple dozen hosts that I
+am responsible for, we were sending Syslog over UDP to a
+Splunk forwarder, but as we added traffic we began losing data, eventually
+realizing that 80-90% of the syslog traffic was not
+reaching Splunk.  We switched to Syslog over TCP and could immediately see
+the traffic backlog.  We build a new forwarder in a VM
+just for my servers and now I am getting all my data into Splunk.
+>
+> If you use Syslog, please use TCP.  Do not use UDP, it will silently lose
+data.
+>
+> --
+> Bob Harold
+>
+>
+>
+> On Tue, Apr 9, 2019 at 8:52 AM Scott Hermanards via splunk-higher-ed <
+splunk-higher-ed@lists.osu.edu> wrote:
+>>
+>> This is just philosophical--we don't currently centrally log our
+workstations
+>> outside of our Citrix-hosted virtual desktops.
+>>
+>> Your environment might differ from ours, but while going with UFs is
+>> technically feasible I would use native log aggregation methods
+>> (Windows Event Collector and syslog+tls) for workstations.
+>>
+>> The UF has a lot of strengths including baked in encryption, load
+>> balancing, and event queuing. In an ideal situation it provides a lot of
+>> resiliency.
+>>
+>> But it comes at the expense of some steep implementation challenges. In
+our
+>> network the server infrastructure is pretty predictable--there is
+consistent OS
+>> visioning, patching, network connectivity, software loads, etc. These
+are all
+>> unknowns for the client endpoints. Also, Splunk can manage the UF
+>> configuration but not installation or patching of the UF agent. Software
+>> management has been an ongoing challenge for us to solve for the
+workstation.
+>> Macs in particular have been almost impervious to centralized management=
+.
+>>
+>> With the native options you simplify things significantly, albeit at the
+>> cost of some resiliency.
+>>
+>> On Mon, Apr 08, 2019 at 07:44:39PM +0000, Jason Penley via
+splunk-higher-ed wrote:
+>> >Good afternoon-
+>> >
+>> >We are looking to use Splunk to capture and analyze Windows and OSX
+logs from client workstations.
+>> >
+>> >We have questions concerning best approach to capturing logs
+efficiently.  We have both Splunk Enterprise (on-premises) and
+Splunk Cloud.  Our Splunk enterprise admin prefers a single universal
+forwarder talking to on-premises rather than 1,000's of
+clients.  Accordingly, been looking at configuring some type of log
+aggregator that will then serve as single forwarder to
+on-premises instance.  Does anyone have experience with this?  In
+particular, we are debating native Windows and OSX tools vs.
+installing universal forwarders on every client.  Thoughts in this regard?
+>> >
+>> >Jason Penley, Manager
+>> >Workstation Management & Support
+>> >Information Technology Services
+>> >Tallahassee, FL 32303
+>> >850.645.4689 o
+>> >850.559.5629 m
+>> >jpenley@fsu.edu
+>> >
+>>
+>> >_______________________________________________
+>> >splunk-higher-ed mailing list
+>> >splunk-higher-ed@lists.osu.edu
+>> >https://lists.osu.edu/mailman/listinfo/splunk-higher-ed
+>>
+>>
+>> --
+>> Scott Hermanards
+>> Information Security Specialist
+>> CISSP, Splunk Certified Architect
+>> Information Security Office, ITS
+>> UNC Greensboro
+>> _______________________________________________
+>> splunk-higher-ed mailing list
+>> splunk-higher-ed@lists.osu.edu
+>> https://lists.osu.edu/mailman/listinfo/splunk-higher-ed
+>
+> _______________________________________________
+> splunk-higher-ed mailing list
+> splunk-higher-ed@lists.osu.edu
+> https://lists.osu.edu/mailman/listinfo/splunk-higher-ed
+
+
+
+--=20
+Tod
+
+
+------------------------------
+
+Message: 3
+Date: Tue, 9 Apr 2019 13:47:45 +0000
+From: "Flaherty, Josh" <jflaherty@bsu.edu>
+To: "splunk-higher-ed@lists.osu.edu" <splunk-higher-ed@lists.osu.edu>
+Subject: Re: [Splunk-Higher-Ed] Splunk Advice
+Message-ID:
+        <
+MN2PR05MB6399D113850317765D9B2076B72D0@MN2PR05MB6399.namprd05.prod.outlook.=
+com
+>
+
+Content-Type: text/plain; charset=3D"us-ascii"
+
+We use Logstash as an intermediate/aggregator for the syslog then the UF to
+send the data on to Splunk.  We do a lot of filtering,
+sorting, and some enrichment with Logstash and then the UF acts as a buffer
+if Splunk is not available.
+
+Josh Flaherty
+
+-----Original Message-----
+From: splunk-higher-ed <splunk-higher-ed-bounces@lists.osu.edu> On Behalf
+Of Tod Detre via splunk-higher-ed
+Sent: Tuesday, April 9, 2019 9:35 AM
+To: Bob Harold <rharolde@umich.edu>
+Cc: splunk-higher-ed@lists.osu.edu
+Subject: Re: [Splunk-Higher-Ed] Splunk Advice
+
+>From what I've read, with syslog, it's always best to use an intermediate
+rsyslog or syslog-ng server to gather the syslog data.
+Then us a uf on that host to send the data to splunk.
+
+On Tue, Apr 9, 2019 at 9:22 AM Bob Harold via splunk-higher-ed <
+splunk-higher-ed@lists.osu.edu> wrote:
+>
+> I don't Speak for our Splunk team, but for the couple dozen hosts that I
+am responsible for, we were sending Syslog over UDP to a
+Splunk forwarder, but as we added traffic we began losing data, eventually
+realizing that 80-90% of the syslog traffic was not
+reaching Splunk.  We switched to Syslog over TCP and could immediately see
+the traffic backlog.  We build a new forwarder in a VM
+just for my servers and now I am getting all my data into Splunk.
+>
+> If you use Syslog, please use TCP.  Do not use UDP, it will silently lose
+data.
+>
+> --
+> Bob Harold
+>
+>
+>
+> On Tue, Apr 9, 2019 at 8:52 AM Scott Hermanards via splunk-higher-ed <
+splunk-higher-ed@lists.osu.edu> wrote:
+>>
+>> This is just philosophical--we don't currently centrally log our
+>> workstations outside of our Citrix-hosted virtual desktops.
+>>
+>> Your environment might differ from ours, but while going with UFs is
+>> technically feasible I would use native log aggregation methods
+>> (Windows Event Collector and syslog+tls) for workstations.
+>>
+>> The UF has a lot of strengths including baked in encryption, load
+>> balancing, and event queuing. In an ideal situation it provides a lot
+>> of resiliency.
+>>
+>> But it comes at the expense of some steep implementation challenges.
+>> In our network the server infrastructure is pretty predictable--there
+>> is consistent OS visioning, patching, network connectivity, software
+>> loads, etc. These are all unknowns for the client endpoints. Also,
+>> Splunk can manage the UF configuration but not installation or
+>> patching of the UF agent. Software management has been an ongoing
+challenge for us to solve for the workstation.
+>> Macs in particular have been almost impervious to centralized management=
+.
+>>
+>> With the native options you simplify things significantly, albeit at
+>> the cost of some resiliency.
+>>
+>> On Mon, Apr 08, 2019 at 07:44:39PM +0000, Jason Penley via
+splunk-higher-ed wrote:
+>> >Good afternoon-
+>> >
+>> >We are looking to use Splunk to capture and analyze Windows and OSX
+logs from client workstations.
+>> >
+>> >We have questions concerning best approach to capturing logs
+efficiently.  We have both Splunk Enterprise (on-premises) and
+Splunk Cloud.  Our Splunk enterprise admin prefers a single universal
+forwarder talking to on-premises rather than 1,000's of
+clients.  Accordingly, been looking at configuring some type of log
+aggregator that will then serve as single forwarder to
+on-premises instance.  Does anyone have experience with this?  In
+particular, we are debating native Windows and OSX tools vs.
+installing universal forwarders on every client.  Thoughts in this regard?
+>> >
+>> >Jason Penley, Manager
+>> >Workstation Management & Support
+>> >Information Technology Services
+>> >Tallahassee, FL 32303
+>> >850.645.4689 o
+>> >850.559.5629 m
+>> >jpenley@fsu.edu
+>> >
+>>
+>> >_______________________________________________
+>> >splunk-higher-ed mailing list
+>> >splunk-higher-ed@lists.osu.edu
+>> >https://nam05.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fli
+>> >sts.osu.edu%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;data=3D02%7C01
+>> >%7Cjflaherty%40bsu.edu%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f
+>> >07dc40da9e30fd7549c0f494%7C0%7C0%7C636904137130778165&amp;sdata=3D6rEp
+>> >AHLk7wTNmNMTaorIz7WZeRqraE9h0CpKwZRxEmc%3D&amp;reserved=3D0
+>>
+>>
+>> --
+>> Scott Hermanards
+>> Information Security Specialist
+>> CISSP, Splunk Certified Architect
+>> Information Security Office, ITS
+>> UNC Greensboro
+>> _______________________________________________
+>> splunk-higher-ed mailing list
+>> splunk-higher-ed@lists.osu.edu
+>> https://nam05.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flis
+>> ts.osu.edu%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;data=3D02%7C01%7
+>> Cjflaherty%40bsu.edu%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f07d
+>> c40da9e30fd7549c0f494%7C0%7C0%7C636904137130778165&amp;sdata=3D6rEpAHLk
+>> 7wTNmNMTaorIz7WZeRqraE9h0CpKwZRxEmc%3D&amp;reserved=3D0
+>
+> _______________________________________________
+> splunk-higher-ed mailing list
+> splunk-higher-ed@lists.osu.edu
+> https://nam05.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flist
+> s.osu.edu%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;data=3D02%7C01%7Cj
+> flaherty%40bsu.edu%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f07dc40
+> da9e30fd7549c0f494%7C0%7C0%7C636904137130788170&amp;sdata=3DW5wp3l8gfl5m
+> VhufVt8xkmrbusVgzLBv7MIrHJus05E%3D&amp;reserved=3D0
+
+
+
+--
+Tod
+_______________________________________________
+splunk-higher-ed mailing list
+splunk-higher-ed@lists.osu.edu
+https://nam05.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flists.o=
+su.edu%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;data=3D02%
+7C01%7Cjflaherty%40bsu.edu%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f07d=
+c40da9e30fd7549c0f494%7C0%7C0%7C636904137130788170&amp;sd
+ata=3DW5wp3l8gfl5mVhufVt8xkmrbusVgzLBv7MIrHJus05E%3D&amp;reserved=3D0
+<https://nam05.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flists.=
+osu.edu%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;data=3D02%7C01%7Cjflahe=
+rty%40bsu.edu%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f07dc40da9e30fd75=
+49c0f494%7C0%7C0%7C636904137130788170&amp;sdata=3DW5wp3l8gfl5mVhufVt8xkmrbu=
+sVgzLBv7MIrHJus05E%3D&amp;reserved=3D0>
+
+
+------------------------------
+
+Subject: Digest Footer
+
+_______________________________________________
+splunk-higher-ed mailing list
+splunk-higher-ed@lists.osu.edu
+https://lists.osu.edu/mailman/listinfo/splunk-higher-ed
+
+
+------------------------------
+
+End of splunk-higher-ed Digest, Vol 45, Issue 2
+***********************************************
+_______________________________________________
+splunk-higher-ed mailing list
+splunk-higher-ed@lists.osu.edu
+https://lists.osu.edu/mailman/listinfo/splunk-higher-ed
+
+
+--=20
+*Herman Elpdesk*
+ITS Collaboration Services
+University of Michigan
+734.764.2777
+
+--000000000000a23806058ca2ceec
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif;font-size:small;color:#444444"><br></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded messa=
+ge ---------<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Micha=
+el Fischer via splunk-higher-ed</strong> <span dir=3D"auto">&lt;<a href=3D"=
+mailto:splunk-higher-ed@lists.osu.edu">splunk-higher-ed@lists.osu.edu</a>&g=
+t;</span><br>Date: Tue, Apr 9, 2019 at 2:39 PM<br>Subject: Re: [Splunk-High=
+er-Ed] splunk-higher-ed Digest, Vol 45, Issue 2<br>To: <a href=3D"mailto:sp=
+lunk-higher-ed@lists.osu.edu">splunk-higher-ed@lists.osu.edu</a> &lt;<a hre=
+f=3D"mailto:splunk-higher-ed@lists.osu.edu">splunk-higher-ed@lists.osu.edu<=
+/a>&gt;<br></div><br><br>I recommend avoiding syslog as much as possible. I=
+f you don&#39;t have all the exact same o/s or type of data going in that -=
+- you&#39;ll<br>
+hate field creating and data extraction later.<br>
+<br>
+Use the UFs as much as possible, with a deployment server that allows for a=
+dding/removing add-ons as wanted -- and properly sources<br>
+the data types.<br>
+<br>
+We have a handful of admins here that insist on sending syslog only from di=
+ssimilar systems and it&#39;s a nightmare. For example<br>
+sourcetype=3Dsyslog may have a field extracted for a source_IP address from=
+ your firewall, but it&#39;s a completely different data that&#39;s<br>
+throwing into source_IP that&#39;s pulled from the same regex from, say, a =
+VPN device...<br>
+<br>
+<br>
+<br>
+-----Original Message-----<br>
+From: splunk-higher-ed &lt;splunk-higher-ed-bounces+michael.fischer=3D<a hr=
+ef=3D"mailto:arlut.utexas.edu@lists.osu.edu" target=3D"_blank">arlut.utexas=
+.edu@lists.osu.edu</a>&gt; On Behalf Of<br>
+<a href=3D"mailto:splunk-higher-ed-request@lists.osu.edu" target=3D"_blank"=
+>splunk-higher-ed-request@lists.osu.edu</a><br>
+Sent: Tuesday, April 09, 2019 8:48 AM<br>
+To: <a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">spl=
+unk-higher-ed@lists.osu.edu</a><br>
+Subject: splunk-higher-ed Digest, Vol 45, Issue 2<br>
+<br>
+Send splunk-higher-ed mailing list submissions to<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"mailto:splunk-higher-ed@lists.osu.ed=
+u" target=3D"_blank">splunk-higher-ed@lists.osu.edu</a><br>
+<br>
+To subscribe or unsubscribe via the World Wide Web, visit<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://lists.osu.edu/mailman/listin=
+fo/splunk-higher-ed" rel=3D"noreferrer" target=3D"_blank">https://lists.osu=
+.edu/mailman/listinfo/splunk-higher-ed</a><br>
+or, via email, send a message with subject or body &#39;help&#39; to<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"mailto:splunk-higher-ed-request@list=
+s.osu.edu" target=3D"_blank">splunk-higher-ed-request@lists.osu.edu</a><br>
+<br>
+You can reach the person managing the list at<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"mailto:splunk-higher-ed-owner@lists.=
+osu.edu" target=3D"_blank">splunk-higher-ed-owner@lists.osu.edu</a><br>
+<br>
+When replying, please edit your Subject line so it is more specific than &q=
+uot;Re: Contents of splunk-higher-ed digest...&quot;<br>
+<br>
+<br>
+Today&#39;s Topics:<br>
+<br>
+=C2=A0 =C2=A01. Re: Splunk Advice (Bob Harold)<br>
+=C2=A0 =C2=A02. Re: Splunk Advice (Tod Detre)<br>
+=C2=A0 =C2=A03. Re: Splunk Advice (Flaherty, Josh)<br>
+<br>
+<br>
+----------------------------------------------------------------------<br>
+<br>
+Message: 1<br>
+Date: Tue, 9 Apr 2019 09:22:27 -0400<br>
+From: Bob Harold &lt;<a href=3D"mailto:rharolde@umich.edu" target=3D"_blank=
+">rharolde@umich.edu</a>&gt;<br>
+To: Scott Hermanards &lt;<a href=3D"mailto:jsrobard@uncg.edu" target=3D"_blank=
+">jsrobard@uncg.edu</a>&gt;<br>
+Cc: &quot;<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blan=
+k">splunk-higher-ed@lists.osu.edu</a>&quot; &lt;<a href=3D"mailto:splunk-hi=
+gher-ed@lists.osu.edu" target=3D"_blank">splunk-higher-ed@lists.osu.edu</a>=
+&gt;<br>
+Subject: Re: [Splunk-Higher-Ed] Splunk Advice<br>
+Message-ID:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;<a href=3D"mailto:CA%2Bnkc8DDAzisWxBkfe4d6K=
+ncsyHqqTS6FWEgSzz1NFfkVKE8Og@mail.gmail.com" target=3D"_blank">CA+nkc8DDAzi=
+sWxBkfe4d6KncsyHqqTS6FWEgSzz1NFfkVKE8Og@mail.gmail.com</a>&gt;<br>
+Content-Type: text/plain; charset=3D&quot;utf-8&quot;<br>
+<br>
+I don&#39;t Speak for our Splunk team, but for the couple dozen hosts that =
+I am responsible for, we were sending Syslog over UDP to a<br>
+Splunk forwarder, but as we added traffic we began losing data, eventually =
+realizing that 80-90% of the syslog traffic was not<br>
+reaching Splunk.=C2=A0 We switched to Syslog over TCP and could immediately=
+ see the traffic backlog.=C2=A0 We build a new forwarder in a VM<br>
+just for my servers and now I am getting all my data into Splunk.<br>
+<br>
+If you use Syslog, please use TCP.=C2=A0 Do not use UDP, it will silently l=
+ose data.<br>
+<br>
+--<br>
+Bob Harold<br>
+<br>
+<br>
+<br>
+On Tue, Apr 9, 2019 at 8:52 AM Scott Hermanards via splunk-higher-ed &lt;<br>
+<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">splunk-=
+higher-ed@lists.osu.edu</a>&gt; wrote:<br>
+<br>
+&gt; This is just philosophical--we don&#39;t currently centrally log our<b=
+r>
+&gt; workstations<br>
+&gt; outside of our Citrix-hosted virtual desktops.<br>
+&gt;<br>
+&gt; Your environment might differ from ours, but while going with UFs is<b=
+r>
+&gt; technically feasible I would use native log aggregation methods<br>
+&gt; (Windows Event Collector and syslog+tls) for workstations.<br>
+&gt;<br>
+&gt; The UF has a lot of strengths including baked in encryption, load<br>
+&gt; balancing, and event queuing. In an ideal situation it provides a lot =
+of<br>
+&gt; resiliency.<br>
+&gt;<br>
+&gt; But it comes at the expense of some steep implementation challenges. I=
+n<br>
+&gt; our<br>
+&gt; network the server infrastructure is pretty predictable--there is<br>
+&gt; consistent OS<br>
+&gt; visioning, patching, network connectivity, software loads, etc. These =
+are<br>
+&gt; all<br>
+&gt; unknowns for the client endpoints. Also, Splunk can manage the UF<br>
+&gt; configuration but not installation or patching of the UF agent. Softwa=
+re<br>
+&gt; management has been an ongoing challenge for us to solve for the<br>
+&gt; workstation.<br>
+&gt; Macs in particular have been almost impervious to centralized manageme=
+nt.<br>
+&gt;<br>
+&gt; With the native options you simplify things significantly, albeit at t=
+he<br>
+&gt; cost of some resiliency.<br>
+&gt;<br>
+&gt; On Mon, Apr 08, 2019 at 07:44:39PM +0000, Jason Penley via<br>
+&gt; splunk-higher-ed wrote:<br>
+&gt; &gt;Good afternoon-<br>
+&gt; &gt;<br>
+&gt; &gt;We are looking to use Splunk to capture and analyze Windows and OS=
+X logs<br>
+&gt; from client workstations.<br>
+&gt; &gt;<br>
+&gt; &gt;We have questions concerning best approach to capturing logs<br>
+&gt; efficiently.=C2=A0 We have both Splunk Enterprise (on-premises) and Sp=
+lunk<br>
+&gt; Cloud.=C2=A0 Our Splunk enterprise admin prefers a single universal fo=
+rwarder<br>
+&gt; talking to on-premises rather than 1,000&#39;s of clients.=C2=A0 Accor=
+dingly, been<br>
+&gt; looking at configuring some type of log aggregator that will then serv=
+e as<br>
+&gt; single forwarder to on-premises instance.=C2=A0 Does anyone have exper=
+ience with<br>
+&gt; this?=C2=A0 In particular, we are debating native Windows and OSX tool=
+s vs.<br>
+&gt; installing universal forwarders on every client.=C2=A0 Thoughts in thi=
+s regard?<br>
+&gt; &gt;<br>
+&gt; &gt;Jason Penley, Manager<br>
+&gt; &gt;Workstation Management &amp; Support<br>
+&gt; &gt;Information Technology Services<br>
+&gt; &gt;Tallahassee, FL 32303<br>
+&gt; &gt;850.645.4689 o<br>
+&gt; &gt;850.559.5629 m<br>
+&gt; &gt;<a href=3D"mailto:jpenley@fsu.edu" target=3D"_blank">jpenley@fsu.e=
+du</a><br>
+&gt; &gt;<br>
+&gt;<br>
+&gt; &gt;_______________________________________________<br>
+&gt; &gt;splunk-higher-ed mailing list<br>
+&gt; &gt;<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank=
+">splunk-higher-ed@lists.osu.edu</a><br>
+&gt; &gt;<a href=3D"https://lists.osu.edu/mailman/listinfo/splunk-higher-ed=
+" rel=3D"noreferrer" target=3D"_blank">https://lists.osu.edu/mailman/listin=
+fo/splunk-higher-ed</a><br>
+&gt;<br>
+&gt;<br>
+&gt; --<br>
+&gt; Scott Hermanards<br>
+&gt; Information Security Specialist<br>
+&gt; CISSP, Splunk Certified Architect<br>
+&gt; Information Security Office, ITS<br>
+&gt; UNC Greensboro<br>
+&gt; _______________________________________________<br>
+&gt; splunk-higher-ed mailing list<br>
+&gt; <a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">sp=
+lunk-higher-ed@lists.osu.edu</a><br>
+&gt; <a href=3D"https://lists.osu.edu/mailman/listinfo/splunk-higher-ed" re=
+l=3D"noreferrer" target=3D"_blank">https://lists.osu.edu/mailman/listinfo/s=
+plunk-higher-ed</a><br>
+&gt;<br>
+-------------- next part --------------<br>
+An HTML attachment was scrubbed...<br>
+URL: &lt;<a href=3D"https://lists.osu.edu/mailman/private/splunk-higher-ed/=
+attachments/20190409/3d49129e/attachment-0001.html" rel=3D"noreferrer" targ=
+et=3D"_blank">https://lists.osu.edu/mailman/private/splunk-higher-ed/attach=
+ments/20190409/3d49129e/attachment-0001.html</a>&gt;<br>
+<br>
+------------------------------<br>
+<br>
+Message: 2<br>
+Date: Tue, 9 Apr 2019 09:34:52 -0400<br>
+From: Tod Detre &lt;<a href=3D"mailto:tod.detre@maine.edu" target=3D"_blank=
+">tod.detre@maine.edu</a>&gt;<br>
+To: Bob Harold &lt;<a href=3D"mailto:rharolde@umich.edu" target=3D"_blank">=
+rharolde@umich.edu</a>&gt;<br>
+Cc: &quot;<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blan=
+k">splunk-higher-ed@lists.osu.edu</a>&quot; &lt;<a href=3D"mailto:splunk-hi=
+gher-ed@lists.osu.edu" target=3D"_blank">splunk-higher-ed@lists.osu.edu</a>=
+&gt;<br>
+Subject: Re: [Splunk-Higher-Ed] Splunk Advice<br>
+Message-ID:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;<a href=3D"mailto:CAGc_vWhF6BjRPfdtLn2kJ70t=
+pX_KuvU1098gTnRGbqnDcjB2gQ@mail.gmail.com" target=3D"_blank">CAGc_vWhF6BjRP=
+fdtLn2kJ70tpX_KuvU1098gTnRGbqnDcjB2gQ@mail.gmail.com</a>&gt;<br>
+Content-Type: text/plain; charset=3D&quot;UTF-8&quot;<br>
+<br>
+&gt;From what I&#39;ve read, with syslog, it&#39;s always best to use an<br=
+>
+intermediate rsyslog or syslog-ng server to gather the syslog data.<br>
+Then us a uf on that host to send the data to splunk.<br>
+<br>
+On Tue, Apr 9, 2019 at 9:22 AM Bob Harold via splunk-higher-ed<br>
+&lt;<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">spl=
+unk-higher-ed@lists.osu.edu</a>&gt; wrote:<br>
+&gt;<br>
+&gt; I don&#39;t Speak for our Splunk team, but for the couple dozen hosts =
+that I am responsible for, we were sending Syslog over UDP to a<br>
+Splunk forwarder, but as we added traffic we began losing data, eventually =
+realizing that 80-90% of the syslog traffic was not<br>
+reaching Splunk.=C2=A0 We switched to Syslog over TCP and could immediately=
+ see the traffic backlog.=C2=A0 We build a new forwarder in a VM<br>
+just for my servers and now I am getting all my data into Splunk.<br>
+&gt;<br>
+&gt; If you use Syslog, please use TCP.=C2=A0 Do not use UDP, it will silen=
+tly lose data.<br>
+&gt;<br>
+&gt; --<br>
+&gt; Bob Harold<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; On Tue, Apr 9, 2019 at 8:52 AM Scott Hermanards via splunk-higher-ed &lt;=
+<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">splunk-=
+higher-ed@lists.osu.edu</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; This is just philosophical--we don&#39;t currently centrally log o=
+ur workstations<br>
+&gt;&gt; outside of our Citrix-hosted virtual desktops.<br>
+&gt;&gt;<br>
+&gt;&gt; Your environment might differ from ours, but while going with UFs =
+is<br>
+&gt;&gt; technically feasible I would use native log aggregation methods<br=
+>
+&gt;&gt; (Windows Event Collector and syslog+tls) for workstations.<br>
+&gt;&gt;<br>
+&gt;&gt; The UF has a lot of strengths including baked in encryption, load<=
+br>
+&gt;&gt; balancing, and event queuing. In an ideal situation it provides a =
+lot of<br>
+&gt;&gt; resiliency.<br>
+&gt;&gt;<br>
+&gt;&gt; But it comes at the expense of some steep implementation challenge=
+s. In our<br>
+&gt;&gt; network the server infrastructure is pretty predictable--there is =
+consistent OS<br>
+&gt;&gt; visioning, patching, network connectivity, software loads, etc. Th=
+ese are all<br>
+&gt;&gt; unknowns for the client endpoints. Also, Splunk can manage the UF<=
+br>
+&gt;&gt; configuration but not installation or patching of the UF agent. So=
+ftware<br>
+&gt;&gt; management has been an ongoing challenge for us to solve for the w=
+orkstation.<br>
+&gt;&gt; Macs in particular have been almost impervious to centralized mana=
+gement.<br>
+&gt;&gt;<br>
+&gt;&gt; With the native options you simplify things significantly, albeit =
+at the<br>
+&gt;&gt; cost of some resiliency.<br>
+&gt;&gt;<br>
+&gt;&gt; On Mon, Apr 08, 2019 at 07:44:39PM +0000, Jason Penley via splunk-=
+higher-ed wrote:<br>
+&gt;&gt; &gt;Good afternoon-<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt;We are looking to use Splunk to capture and analyze Windows an=
+d OSX logs from client workstations.<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt;We have questions concerning best approach to capturing logs e=
+fficiently.=C2=A0 We have both Splunk Enterprise (on-premises) and<br>
+Splunk Cloud.=C2=A0 Our Splunk enterprise admin prefers a single universal =
+forwarder talking to on-premises rather than 1,000&#39;s of<br>
+clients.=C2=A0 Accordingly, been looking at configuring some type of log ag=
+gregator that will then serve as single forwarder to<br>
+on-premises instance.=C2=A0 Does anyone have experience with this?=C2=A0 In=
+ particular, we are debating native Windows and OSX tools vs.<br>
+installing universal forwarders on every client.=C2=A0 Thoughts in this reg=
+ard?<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt;Jason Penley, Manager<br>
+&gt;&gt; &gt;Workstation Management &amp; Support<br>
+&gt;&gt; &gt;Information Technology Services<br>
+&gt;&gt; &gt;Tallahassee, FL 32303<br>
+&gt;&gt; &gt;850.645.4689 o<br>
+&gt;&gt; &gt;850.559.5629 m<br>
+&gt;&gt; &gt;<a href=3D"mailto:jpenley@fsu.edu" target=3D"_blank">jpenley@f=
+su.edu</a><br>
+&gt;&gt; &gt;<br>
+&gt;&gt;<br>
+&gt;&gt; &gt;_______________________________________________<br>
+&gt;&gt; &gt;splunk-higher-ed mailing list<br>
+&gt;&gt; &gt;<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_b=
+lank">splunk-higher-ed@lists.osu.edu</a><br>
+&gt;&gt; &gt;<a href=3D"https://lists.osu.edu/mailman/listinfo/splunk-highe=
+r-ed" rel=3D"noreferrer" target=3D"_blank">https://lists.osu.edu/mailman/li=
+stinfo/splunk-higher-ed</a><br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; --<br>
+&gt;&gt; Scott Hermanards<br>
+&gt;&gt; Information Security Specialist<br>
+&gt;&gt; CISSP, Splunk Certified Architect<br>
+&gt;&gt; Information Security Office, ITS<br>
+&gt;&gt; UNC Greensboro<br>
+&gt;&gt; _______________________________________________<br>
+&gt;&gt; splunk-higher-ed mailing list<br>
+&gt;&gt; <a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank=
+">splunk-higher-ed@lists.osu.edu</a><br>
+&gt;&gt; <a href=3D"https://lists.osu.edu/mailman/listinfo/splunk-higher-ed=
+" rel=3D"noreferrer" target=3D"_blank">https://lists.osu.edu/mailman/listin=
+fo/splunk-higher-ed</a><br>
+&gt;<br>
+&gt; _______________________________________________<br>
+&gt; splunk-higher-ed mailing list<br>
+&gt; <a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">sp=
+lunk-higher-ed@lists.osu.edu</a><br>
+&gt; <a href=3D"https://lists.osu.edu/mailman/listinfo/splunk-higher-ed" re=
+l=3D"noreferrer" target=3D"_blank">https://lists.osu.edu/mailman/listinfo/s=
+plunk-higher-ed</a><br>
+<br>
+<br>
+<br>
+-- <br>
+Tod<br>
+<br>
+<br>
+------------------------------<br>
+<br>
+Message: 3<br>
+Date: Tue, 9 Apr 2019 13:47:45 +0000<br>
+From: &quot;Flaherty, Josh&quot; &lt;<a href=3D"mailto:jflaherty@bsu.edu" t=
+arget=3D"_blank">jflaherty@bsu.edu</a>&gt;<br>
+To: &quot;<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blan=
+k">splunk-higher-ed@lists.osu.edu</a>&quot; &lt;<a href=3D"mailto:splunk-hi=
+gher-ed@lists.osu.edu" target=3D"_blank">splunk-higher-ed@lists.osu.edu</a>=
+&gt;<br>
+Subject: Re: [Splunk-Higher-Ed] Splunk Advice<br>
+Message-ID:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;<a href=3D"mailto:MN2PR05MB6399D11385031776=
+5D9B2076B72D0@MN2PR05MB6399.namprd05.prod.outlook.com" target=3D"_blank">MN=
+2PR05MB6399D113850317765D9B2076B72D0@MN2PR05MB6399.namprd05.prod.outlook.co=
+m</a>&gt;<br>
+<br>
+Content-Type: text/plain; charset=3D&quot;us-ascii&quot;<br>
+<br>
+We use Logstash as an intermediate/aggregator for the syslog then the UF to=
+ send the data on to Splunk.=C2=A0 We do a lot of filtering,<br>
+sorting, and some enrichment with Logstash and then the UF acts as a buffer=
+ if Splunk is not available.=C2=A0 <br>
+<br>
+Josh Flaherty<br>
+<br>
+-----Original Message-----<br>
+From: splunk-higher-ed &lt;<a href=3D"mailto:splunk-higher-ed-bounces@lists=
+.osu.edu" target=3D"_blank">splunk-higher-ed-bounces@lists.osu.edu</a>&gt; =
+On Behalf Of Tod Detre via splunk-higher-ed<br>
+Sent: Tuesday, April 9, 2019 9:35 AM<br>
+To: Bob Harold &lt;<a href=3D"mailto:rharolde@umich.edu" target=3D"_blank">=
+rharolde@umich.edu</a>&gt;<br>
+Cc: <a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">spl=
+unk-higher-ed@lists.osu.edu</a><br>
+Subject: Re: [Splunk-Higher-Ed] Splunk Advice<br>
+<br>
+&gt;From what I&#39;ve read, with syslog, it&#39;s always best to use an in=
+termediate rsyslog or syslog-ng server to gather the syslog data.<br>
+Then us a uf on that host to send the data to splunk.<br>
+<br>
+On Tue, Apr 9, 2019 at 9:22 AM Bob Harold via splunk-higher-ed &lt;<a href=
+=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">splunk-higher-=
+ed@lists.osu.edu</a>&gt; wrote:<br>
+&gt;<br>
+&gt; I don&#39;t Speak for our Splunk team, but for the couple dozen hosts =
+that I am responsible for, we were sending Syslog over UDP to a<br>
+Splunk forwarder, but as we added traffic we began losing data, eventually =
+realizing that 80-90% of the syslog traffic was not<br>
+reaching Splunk.=C2=A0 We switched to Syslog over TCP and could immediately=
+ see the traffic backlog.=C2=A0 We build a new forwarder in a VM<br>
+just for my servers and now I am getting all my data into Splunk.<br>
+&gt;<br>
+&gt; If you use Syslog, please use TCP.=C2=A0 Do not use UDP, it will silen=
+tly lose data.<br>
+&gt;<br>
+&gt; --<br>
+&gt; Bob Harold<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; On Tue, Apr 9, 2019 at 8:52 AM Scott Hermanards via splunk-higher-ed &lt;=
+<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">splunk-=
+higher-ed@lists.osu.edu</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; This is just philosophical--we don&#39;t currently centrally log o=
+ur <br>
+&gt;&gt; workstations outside of our Citrix-hosted virtual desktops.<br>
+&gt;&gt;<br>
+&gt;&gt; Your environment might differ from ours, but while going with UFs =
+is <br>
+&gt;&gt; technically feasible I would use native log aggregation methods <b=
+r>
+&gt;&gt; (Windows Event Collector and syslog+tls) for workstations.<br>
+&gt;&gt;<br>
+&gt;&gt; The UF has a lot of strengths including baked in encryption, load =
+<br>
+&gt;&gt; balancing, and event queuing. In an ideal situation it provides a =
+lot <br>
+&gt;&gt; of resiliency.<br>
+&gt;&gt;<br>
+&gt;&gt; But it comes at the expense of some steep implementation challenge=
+s. <br>
+&gt;&gt; In our network the server infrastructure is pretty predictable--th=
+ere <br>
+&gt;&gt; is consistent OS visioning, patching, network connectivity, softwa=
+re <br>
+&gt;&gt; loads, etc. These are all unknowns for the client endpoints. Also,=
+ <br>
+&gt;&gt; Splunk can manage the UF configuration but not installation or <br=
+>
+&gt;&gt; patching of the UF agent. Software management has been an ongoing =
+challenge for us to solve for the workstation.<br>
+&gt;&gt; Macs in particular have been almost impervious to centralized mana=
+gement.<br>
+&gt;&gt;<br>
+&gt;&gt; With the native options you simplify things significantly, albeit =
+at <br>
+&gt;&gt; the cost of some resiliency.<br>
+&gt;&gt;<br>
+&gt;&gt; On Mon, Apr 08, 2019 at 07:44:39PM +0000, Jason Penley via splunk-=
+higher-ed wrote:<br>
+&gt;&gt; &gt;Good afternoon-<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt;We are looking to use Splunk to capture and analyze Windows an=
+d OSX logs from client workstations.<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt;We have questions concerning best approach to capturing logs e=
+fficiently.=C2=A0 We have both Splunk Enterprise (on-premises) and<br>
+Splunk Cloud.=C2=A0 Our Splunk enterprise admin prefers a single universal =
+forwarder talking to on-premises rather than 1,000&#39;s of<br>
+clients.=C2=A0 Accordingly, been looking at configuring some type of log ag=
+gregator that will then serve as single forwarder to<br>
+on-premises instance.=C2=A0 Does anyone have experience with this?=C2=A0 In=
+ particular, we are debating native Windows and OSX tools vs.<br>
+installing universal forwarders on every client.=C2=A0 Thoughts in this reg=
+ard?<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt;Jason Penley, Manager<br>
+&gt;&gt; &gt;Workstation Management &amp; Support<br>
+&gt;&gt; &gt;Information Technology Services<br>
+&gt;&gt; &gt;Tallahassee, FL 32303<br>
+&gt;&gt; &gt;850.645.4689 o<br>
+&gt;&gt; &gt;850.559.5629 m<br>
+&gt;&gt; &gt;<a href=3D"mailto:jpenley@fsu.edu" target=3D"_blank">jpenley@f=
+su.edu</a><br>
+&gt;&gt; &gt;<br>
+&gt;&gt;<br>
+&gt;&gt; &gt;_______________________________________________<br>
+&gt;&gt; &gt;splunk-higher-ed mailing list<br>
+&gt;&gt; &gt;<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_b=
+lank">splunk-higher-ed@lists.osu.edu</a><br>
+&gt;&gt; &gt;<a href=3D"https://nam05.safelinks.protection.outlook.com/?url=
+=3Dhttps%3A%2F%2Fli" rel=3D"noreferrer" target=3D"_blank">https://nam05.saf=
+elinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fli</a><br>
+&gt;&gt; &gt;<a href=3D"http://sts.osu.edu" rel=3D"noreferrer" target=3D"_b=
+lank">sts.osu.edu</a>%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;amp;data=
+=3D02%7C01<br>
+&gt;&gt; &gt;%7Cjflaherty%<a href=3D"http://40bsu.edu" rel=3D"noreferrer" t=
+arget=3D"_blank">40bsu.edu</a>%7C81d916af76d34be642e708d6bcf030aa%7C6fff909=
+f<br>
+&gt;&gt; &gt;07dc40da9e30fd7549c0f494%7C0%7C0%7C636904137130778165&amp;amp;=
+sdata=3D6rEp<br>
+&gt;&gt; &gt;AHLk7wTNmNMTaorIz7WZeRqraE9h0CpKwZRxEmc%3D&amp;amp;reserved=3D=
+0<br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; --<br>
+&gt;&gt; Scott Hermanards<br>
+&gt;&gt; Information Security Specialist<br>
+&gt;&gt; CISSP, Splunk Certified Architect<br>
+&gt;&gt; Information Security Office, ITS<br>
+&gt;&gt; UNC Greensboro<br>
+&gt;&gt; _______________________________________________<br>
+&gt;&gt; splunk-higher-ed mailing list<br>
+&gt;&gt; <a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank=
+">splunk-higher-ed@lists.osu.edu</a><br>
+&gt;&gt; <a href=3D"https://nam05.safelinks.protection.outlook.com/?url=3Dh=
+ttps%3A%2F%2Flis" rel=3D"noreferrer" target=3D"_blank">https://nam05.safeli=
+nks.protection.outlook.com/?url=3Dhttps%3A%2F%2Flis</a><br>
+&gt;&gt; <a href=3D"http://ts.osu.edu" rel=3D"noreferrer" target=3D"_blank"=
+>ts.osu.edu</a>%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;amp;data=3D02%7=
+C01%7<br>
+&gt;&gt; Cjflaherty%<a href=3D"http://40bsu.edu" rel=3D"noreferrer" target=
+=3D"_blank">40bsu.edu</a>%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f07d<=
+br>
+&gt;&gt; c40da9e30fd7549c0f494%7C0%7C0%7C636904137130778165&amp;amp;sdata=
+=3D6rEpAHLk<br>
+&gt;&gt; 7wTNmNMTaorIz7WZeRqraE9h0CpKwZRxEmc%3D&amp;amp;reserved=3D0<br>
+&gt;<br>
+&gt; _______________________________________________<br>
+&gt; splunk-higher-ed mailing list<br>
+&gt; <a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">sp=
+lunk-higher-ed@lists.osu.edu</a><br>
+&gt; <a href=3D"https://nam05.safelinks.protection.outlook.com/?url=3Dhttps=
+%3A%2F%2Flist" rel=3D"noreferrer" target=3D"_blank">https://nam05.safelinks=
+.protection.outlook.com/?url=3Dhttps%3A%2F%2Flist</a><br>
+&gt; <a href=3D"http://s.osu.edu" rel=3D"noreferrer" target=3D"_blank">s.os=
+u.edu</a>%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;amp;data=3D02%7C01%7C=
+j<br>
+&gt; flaherty%<a href=3D"http://40bsu.edu" rel=3D"noreferrer" target=3D"_bl=
+ank">40bsu.edu</a>%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f07dc40<br>
+&gt; da9e30fd7549c0f494%7C0%7C0%7C636904137130788170&amp;amp;sdata=3DW5wp3l=
+8gfl5m<br>
+&gt; VhufVt8xkmrbusVgzLBv7MIrHJus05E%3D&amp;amp;reserved=3D0<br>
+<br>
+<br>
+<br>
+--<br>
+Tod<br>
+_______________________________________________<br>
+splunk-higher-ed mailing list<br>
+<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">splunk-=
+higher-ed@lists.osu.edu</a><br>
+<a href=3D"https://nam05.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Flists.osu.edu%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;amp;data=3D02=
+%7C01%7Cjflaherty%40bsu.edu%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f07=
+dc40da9e30fd7549c0f494%7C0%7C0%7C636904137130788170&amp;amp;sdata=3DW5wp3l8=
+gfl5mVhufVt8xkmrbusVgzLBv7MIrHJus05E%3D&amp;amp;reserved=3D0" rel=3D"norefe=
+rrer" target=3D"_blank">https://nam05.safelinks.protection.outlook.com/?url=
+=3Dhttps%3A%2F%2Flists.osu.edu%2Fmailman%2Flistinfo%2Fsplunk-higher-ed&amp;=
+amp;data=3D02%<br>
+7C01%7Cjflaherty%40bsu.edu%7C81d916af76d34be642e708d6bcf030aa%7C6fff909f07d=
+c40da9e30fd7549c0f494%7C0%7C0%7C636904137130788170&amp;amp;sd<br>
+ata=3DW5wp3l8gfl5mVhufVt8xkmrbusVgzLBv7MIrHJus05E%3D&amp;amp;reserved=3D0</=
+a><br>
+<br>
+<br>
+------------------------------<br>
+<br>
+Subject: Digest Footer<br>
+<br>
+_______________________________________________<br>
+splunk-higher-ed mailing list<br>
+<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">splunk-=
+higher-ed@lists.osu.edu</a><br>
+<a href=3D"https://lists.osu.edu/mailman/listinfo/splunk-higher-ed" rel=3D"=
+noreferrer" target=3D"_blank">https://lists.osu.edu/mailman/listinfo/splunk=
+-higher-ed</a><br>
+<br>
+<br>
+------------------------------<br>
+<br>
+End of splunk-higher-ed Digest, Vol 45, Issue 2<br>
+***********************************************<br>
+_______________________________________________<br>
+splunk-higher-ed mailing list<br>
+<a href=3D"mailto:splunk-higher-ed@lists.osu.edu" target=3D"_blank">splunk-=
+higher-ed@lists.osu.edu</a><br>
+<a href=3D"https://lists.osu.edu/mailman/listinfo/splunk-higher-ed" rel=3D"=
+noreferrer" target=3D"_blank">https://lists.osu.edu/mailman/listinfo/splunk=
+-higher-ed</a><br>
+</div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr" class=3D"gma=
+il_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><div=
+ dir=3D"ltr"><div><font color=3D"#444444" face=3D"times new roman, serif"><=
+b>Herman Elpdesk</b><br>ITS Collaboration Services<br>University of Michigan<=
+br>734.764.2777</font></div></div></div></div></div></div>
+
+--000000000000a23806058ca2ceec--
+--000000000000a23808058ca2ceee
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-ID: <16baecbd37c47b25c451>
+X-Attachment-Id: 16baecbd37c47b25c451
+
+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
+A1UEERMFNzg3MTMxIjAgBgNVBAsTGUFQSSAtIFMvTUlNRSBQcm92aXNpb25pbmcxKjAoBgNVBAoT
+IVRoZSBVbml2ZXJzaXR5IG9mIFRleGFzIGF0IEF1c3RpbjENMAsGA1UECRMETm9uZTELMAkGA1UE
+CBMCVFgxDzANBgNVBAcTBkF1c3RpbjELMAkGA1UEBhMCVVMxGDAWBgNVBAMTD01pY2hhZWwgRmlz
+Y2hlcjEvMC0GCSqGSIb3DQEJARYgbWljaGFlbC5maXNjaGVyQGFybHV0LnV0ZXhhcy5lZHUwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC8CPpb7Xcypk1f93UZX5gaB5kT+EY0zvc6fF1n
+V6s20SpyDT717YMBPmm2KHawRFfIt/t37vD0E1W5SQl409d5HekFqAU49x9NMIoeMaAL3M4954WD
+gVEuvMmx3gkS1Adno9u1yxBpa/AdBaFJNWj1AMkxpaNOXfS/fvAxj5OTNQYBQwYquBMKj1apTn0p
+A0W3XDqmeoBBb69JcptDcNdu7+v/Hi7VJV1dKCX3p6GtWJmTDDNT7owJTBusQjcMJJiiqeKEIHHN
+QUYJoO9UU9Kr04Jma3NcVStrbti4gKW5qFn5PHar4Eb4iSPFcTBlRQT7zkEbCaDV5aGZ7IBtq0Jl
+AgMBAAGjggHHMIIBwzAfBgNVHSMEGDAWgBQqq14umcirdcC8uayIWXlkMCh1hzAdBgNVHQ4EFgQU
+vt/nfMOVtCW8COIX19d8s7Q1tpUwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0l
+BBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMCMEIGA1UdIAQ7MDkwNwYMKwYBBAGyMQECAiQCMCcwJQYI
+KwYBBQUHAgEWGWh0dHBzOi8vY3BzLnVzZXJ0cnVzdC5jb20wTwYDVR0fBEgwRjBEoEKgQIY+aHR0
+cDovL2NybC51c2VydHJ1c3QuY29tL1RoZVVuaXZlcnNpdHlvZlRleGFzYXRBdXN0aW5SU0FDQS5j
+cmwwgYEGCCsGAQUFBwEBBHUwczBKBggrBgEFBQcwAoY+aHR0cDovL2NydC51c2VydHJ1c3QuY29t
+L1RoZVVuaXZlcnNpdHlvZlRleGFzYXRBdXN0aW5SU0FDQS5jcnQwJQYIKwYBBQUHMAGGGWh0dHA6
+Ly9vY3NwLnVzZXJ0cnVzdC5jb20wKwYDVR0RBCQwIoEgbWljaGFlbC5maXNjaGVyQGFybHV0LnV0
+ZXhhcy5lZHUwDQYJKoZIhvcNAQELBQADggEBAGqjWJGHo3g+oRG65DW9GhAP2Fqy00k9pklnz6Wy
+qEm2UGAWzOI09OrO1H1XYgqj36xAvcLZDEgn09E7i5YfKG4RBa2heiQw/u+kGiD5nevazlOcn5pH
+Yipca7ysyjwwa3LV+gu/kJTrgrLblg6pNiS4yYAFJ2XXObz+CFduCLiaabOM0YywFz9L1h+IV7AR
+lTl07ixKo43hbUDJjJc5ZchcgFVUrdzcdh7h75ewqVvoPE8eZD3WFUulU1Xm3qMrAkzFtMGTUUX7
+2UO89W0spVsSfuBL7p9KFcDyaaCx/RGabCNOMoydYDw6K5HIw811kjBFb8u254NA2AebtW1Z54cw
+ggYyMIIEGqADAgECAhBzZHotj0biQbfb6Ecqqz5PMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xNTAyMjcwMDAwMDBaFw0yNTAyMjYyMzU5NTlaMIGwMQswCQYDVQQG
+EwJVUzELMAkGA1UECBMCVFgxDzANBgNVBAcTBkF1c3RpbjEqMCgGA1UEChMhVGhlIFVuaXZlcnNp
+dHkgb2YgVGV4YXMgYXQgQXVzdGluMSQwIgYDVQQLExtJbmZvcm1hdGlvbiBTZWN1cml0eSBPZmZp
+Y2UxMTAvBgNVBAMTKFRoZSBVbml2ZXJzaXR5IG9mIFRleGFzIGF0IEF1c3RpbiBSU0EgQ0EwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCWZhYpkAz7tSIrPJUuwsL/E/DijRXy3vOA1y0a
+PPdsfPihLOP83DLfrCcLmsyg8cChR0XqIeFzCSLIUlIeUt/ceD2uJtyyO/R33S9eUo7VeOcuQlv7
+Kut2fvNlpj+vth9v96x4fqxoFJFMx+hX3eqSnFtA+BR9ltn3A9jSz3Bwl88QlQ9z6rYoLsdTWHod
+N0jb5j7wnC0Ujo1jamh7vweYZPQZW9tHc4+igQ/mEbPUVExZXtBvEI8jxvn+dE1bNapnO9pZjrgK
+1GqdG2LBYavUdmlTi6Ft+26UC9I4GumvQaq9VjLJlBz+/iqLJPtRiTB2AMGAK9jAJS6BD3vn5Rg/
+AgMBAAGjggFsMIIBaDAfBgNVHSMEGDAWgBRTeb9aqitKz1SA4dibwJ3ysgNmyzAdBgNVHQ4EFgQU
+KqteLpnIq3XAvLmsiFl5ZDAodYcwDgYDVR0PAQH/BAQDAgGGMBIGA1UdEwEB/wQIMAYBAf8CAQAw
+HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMEMBkGA1UdIAQSMBAwDgYMKwYBBAGyMQECAiQC
+MFAGA1UdHwRJMEcwRaBDoEGGP2h0dHA6Ly9jcmwudXNlcnRydXN0LmNvbS9VU0VSVHJ1c3RSU0FD
+ZXJ0aWZpY2F0aW9uQXV0aG9yaXR5LmNybDB2BggrBgEFBQcBAQRqMGgwPwYIKwYBBQUHMAKGM2h0
+dHA6Ly9jcnQudXNlcnRydXN0LmNvbS9VU0VSVHJ1c3RSU0FBZGRUcnVzdENBLmNydDAlBggrBgEF
+BQcwAYYZaHR0cDovL29jc3AudXNlcnRydXN0LmNvbTANBgkqhkiG9w0BAQwFAAOCAgEAMpNoN+kN
+osyjltiOWSeEzifGzEjW6VMSLWhBStGGvVeW1obi9rn0Ts5jPzObF5ybl/8Uhh5VpSQzWtCzIsGt
+cljJhMu2sGVHpgyO756vf/0vKAOTJ0UVfzXTcMcaXWzeDo9aQUUBfDkySQ8G2qeQ3ZZd3j2ZU830
+cRemxrZGFtziaNCOjxA5jkLD0LngFs7J7IMbkoBteDkt3MH5Wg61U7XtJ+MIcyUcmK4uAvpE+SgQ
+DOhJSsMvb3VCUHz6x2SWP9eT460ofWVGoQXDg63hv5juO2gkwfI4myBX1cObgyHma72a/EaQF52O
+ucdafprSdy84q8Zcd+MeEYjcTDddqM8U2+VAmQojgeXieQc0nCF7naAO40/OnPIjmZU76+NgyZO3
+VNCiXrq7Y0Qa9yGFK9YZDHLbr8LOGakRhr2hS6PonDIlUVxleumxLmJHiu21kGQj0y8TT/O96Dro
+GhfoBY0WZNSx1dbEzkRrk3xohw6HlUUwtC3GChpApCR7Q3/mPj34hjTkfYgPY2uLKvRjoD//FZvm
+xR2xKFn2LbgSziadGhl+MaEsjR+lqHcSfEsJeCJl5WtiF8OjIoTp0kFyLhiA2KKsS0GId+HPclL9
+4uqln35aIwT87ISY7D6J4BBLmwoWz463YjcHLlJOJEFa0tebRwWyC4GrZEIVGBIzRtAxggSbMIIE
+lwIBATCBxjCBsDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlRYMQ8wDQYDVQQHEwZBdXN0aW4xKjAo
+BgNVBAoTIVRoZSBVbml2ZXJzaXR5IG9mIFRleGFzIGF0IEF1c3RpbjEkMCIGA1UECxMbSW5mb3Jt
+YXRpb24gU2VjdXJpdHkgT2ZmaWNlMTEwLwYDVQQDEyhUaGUgVW5pdmVyc2l0eSBvZiBUZXhhcyBh
+dCBBdXN0aW4gUlNBIENBAhEAy1iMG1HKoJngUMB5Zak9gDAJBgUrDgMCGgUAoIICqTAYBgkqhkiG
+9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0xOTA0MDkxODM4NDlaMCMGCSqGSIb3
+DQEJBDEWBBT8GlWkeADWsX6Ai5CSi5xK5UeNPTCBkwYJKoZIhvcNAQkPMYGFMIGCMAsGCWCGSAFl
+AwQBKjALBglghkgBZQMEARYwCgYIKoZIhvcNAwcwCwYJYIZIAWUDBAECMA4GCCqGSIb3DQMCAgIA
+gDANBggqhkiG9w0DAgIBQDAHBgUrDgMCGjALBglghkgBZQMEAgMwCwYJYIZIAWUDBAICMAsGCWCG
+SAFlAwQCATCB1wYJKwYBBAGCNxAEMYHJMIHGMIGwMQswCQYDVQQGEwJVUzELMAkGA1UECBMCVFgx
+DzANBgNVBAcTBkF1c3RpbjEqMCgGA1UEChMhVGhlIFVuaXZlcnNpdHkgb2YgVGV4YXMgYXQgQXVz
+dGluMSQwIgYDVQQLExtJbmZvcm1hdGlvbiBTZWN1cml0eSBPZmZpY2UxMTAvBgNVBAMTKFRoZSBV
+bml2ZXJzaXR5IG9mIFRleGFzIGF0IEF1c3RpbiBSU0EgQ0ECEQDLWIwbUcqgmeBQwHllqT2AMIHZ
+BgsqhkiG9w0BCRACCzGByaCBxjCBsDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlRYMQ8wDQYDVQQH
+EwZBdXN0aW4xKjAoBgNVBAoTIVRoZSBVbml2ZXJzaXR5IG9mIFRleGFzIGF0IEF1c3RpbjEkMCIG
+A1UECxMbSW5mb3JtYXRpb24gU2VjdXJpdHkgT2ZmaWNlMTEwLwYDVQQDEyhUaGUgVW5pdmVyc2l0
+eSBvZiBUZXhhcyBhdCBBdXN0aW4gUlNBIENBAhEAy1iMG1HKoJngUMB5Zak9gDANBgkqhkiG9w0B
+AQEFAASCAQAOwi1te6uZ34eT4E7Fh13cENLLRhtImYkh3EEV5+M8IqXDFGFKb4JACrDmAPHXj3u9
+ZBfkMZYDzWbK7KXVWd04aV1xUPceG7sCUndvqi7lIFLq6PhnSnG+7DttYyffgmRr0CrK4vL+7Rsw
+9yYTJU0Wm3WPJ5rPQ68DgCIyCYJ1vXqeJfR5Ix+bdLWvMY41f6iyNd+P/f9mjJecy776wrEJmfg7
+45TYXmaXyDk6M2U8nS4FY293aZir7yVE+8p/A/q4FowqhPghlCOuUPSm0SS/qd2UOpX04pfxH9o+
+8U8Ny8z1o1Otwux9uMIu4o/QLbPH0LIbDv+DtgoTqBnYgamPAAAAAAAA
+--000000000000a23808058ca2ceee--

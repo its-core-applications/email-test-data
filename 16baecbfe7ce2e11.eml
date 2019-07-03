@@ -1,0 +1,526 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:6455:0:0:0:0:0 with SMTP id n21csp3071146ltf;
+        Mon, 1 Jul 2019 11:28:53 -0700 (PDT)
+X-Received: by 2002:a6b:9257:: with SMTP id u84mr27194718iod.278.1562005732974;
+        Mon, 01 Jul 2019 11:28:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562005732; cv=none;
+        d=google.com; s=arc-20160816;
+        b=heajWVL4aB18h2Cqbgqb3rgItILQP6C045jSFw0uw0ZBWBM1vm6rDHQPumIONghkpU
+         PU9+stzM46ql00X3tAyk9RJMsvx+Xmp1I3TWD/U3QH+M51BCh7e7nDjIluYQc+9chbAB
+         jUiDs7RQgwi06bWNFVXdxpuLydUZFvWihbJXvhfGjNivhL/4dvIaG6PFGsq5p0JP1O58
+         7eS9TwbNV1aTQy8oUB5rYxhyrGVMEcSr6OfNTkFAAOufSU3NuJLbtjyRWcSVLA5FFVmQ
+         G0Gyztr9I8k7IVVSzjwy5ula6U+mtolCZLxVP/WVuvL7do5JMum8r/Bc3Ow/yM0/Xy95
+         HIfg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=w73bvEwrMOIuQbQdI3uHI5NG3j1sKNzZC1+3oRdnfZk=;
+        b=XC9oFUNPkpIJ4UUu0Rm5RYcQ9AYL9SDrnouOaEr86L20TTfLtg4cfMTel1WP3k5lQ/
+         Q2E9C9YSHrXlDSFnqSvv4yyYMNhJEvYSXnBQOYG70BqkW4V/3gDaPtlxJQcNmjJikZxM
+         CP39dPLPoo66Yk02KEog+Y+BtmOjzEl8Kxbv0UAnpjHm8n8mQzrUEn+N1qyvPnzv69QQ
+         n6MnRI9knZqBEeaIZW9MZkck8lAafpGLBH7gW0/PExT2So6bWG16nHUd4SQ+OnpcdVci
+         kI540uYiFl/bY7rk7ZTtOReyxHe+yME0kR/n/eKd5dBRozGIGuyxjZz9kvfNRkDsyonj
+         Qm1Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=X6tEk7h8;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <hermane@umich.edu>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l9sor7856049iom.67.2019.07.01.11.28.52
+        for <hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Mon, 01 Jul 2019 11:28:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=X6tEk7h8;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=umich.edu; s=google-2016-06-03;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=w73bvEwrMOIuQbQdI3uHI5NG3j1sKNzZC1+3oRdnfZk=;
+        b=X6tEk7h8mE9/Bu6km3E6VYQ1Xe1jWoXJwuxnv4FlLBngH8n4C8Ef3GC2epCJFV+8ZD
+         YL9ZQRi6tZ+andsFA1Z1yrzU3troYV44BKPvHZZ5kZlleWKh5bpuk9WWHyGMcAuUqela
+         t6bC1x/58Qti7IkyoQAHT6A/xzcvQnGLtLBp9tT/QUE1oMYj7fKs/1gZvIoIcKW2byvv
+         7QQOPFwBVjQbPD6RP4/fvcRbXyBc7C6guiQuskFqn85VTgpluLLFmPVdXIfyi0motQpn
+         UzxBt+Ui9xJQ+SS1E+YEkP00JW4AnXa1aIf3/JPJ+khBAg9qjs6DuvPi2rk4OBTuuZqi
+         O3FQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=w73bvEwrMOIuQbQdI3uHI5NG3j1sKNzZC1+3oRdnfZk=;
+        b=R+J25eDV4+ZYjbrqNmTQ2PCUo4jm/53f8vThftrsM4p5tOi5DMX7AnUoR5/99pI4ZH
+         IlHElzZNmCbNrosBuP/JAb3yy2UVaJuhEhT8EpFbj8KgMFbUf0piUK3M3dxK+CqEWvHZ
+         zZrq382aH59ovkhdbj8G1J8sgkw6SwXwvo2QYsiOT1V+Fa4fWK4GJ0fF6R/mgUDvfU+N
+         1NRnlzGF0WqhJbs/91EXIthd+89ZMwF9vmq8PC0CtpPtM4PQc0I2tYr68yycO0XuqKG5
+         Srxd6PSCJ8JoaKSpOjdl8rvVwCwvACjL3ms3czko2AcB0bh0l5xR9HCfJOG/mbCS5tuS
+         oiYA==
+X-Gm-Message-State: APjAAAWPVAYzwfAe5RdsDdjVnhCJdYWHUt0J5S/d+UWgzr96HuBAw+oy
+	6Sh3S2NQvCvkR+YiMXtaGgiwyTLkzRmWbtFcaXZ7vYxWoks=
+X-Google-Smtp-Source: APXvYqylUyeuyEKQEtUtRnviDjHRcfeWtcY/Gy/eIKxxTzICuJRI6ke3W6fQwwiBiZTtQ8vAbKo/fz/kiwAlaj3Prug=
+X-Received: by 2002:a5d:96cc:: with SMTP id r12mr25256476iol.99.1562005731662;
+ Mon, 01 Jul 2019 11:28:51 -0700 (PDT)
+MIME-Version: 1.0
+References: <CACut63R2GrRWkGzwU6LwVnogmfFDeDM-T_T_-X59E4zznMTC+A@mail.gmail.com>
+In-Reply-To: <CACut63R2GrRWkGzwU6LwVnogmfFDeDM-T_T_-X59E4zznMTC+A@mail.gmail.com>
+From: Herman Elpdesk <hermane@umich.edu>
+Date: Mon, 1 Jul 2019 14:28:14 -0400
+Message-ID: <CAKvLTfasq_tuR+9KYrpSLAOrH1+TCw_5URrRu1ws-OpSjjfBoA@mail.gmail.com>
+Subject: Fwd: Email Headers for Emails Marked as Spam
+To: hermane@collab.its.umich.edu
+Content-Type: multipart/mixed; boundary="000000000000c720d2058ca2cc3a"
+
+--000000000000c720d2058ca2cc3a
+Content-Type: multipart/alternative; boundary="000000000000c720cf058ca2cc38"
+
+--000000000000c720cf058ca2cc38
+Content-Type: text/plain; charset="UTF-8"
+
+---------- Forwarded message ---------
+From: Katelynn Slater <kaslater@umich.edu>
+Date: Thu, Apr 25, 2019 at 9:24 AM
+Subject: Email Headers for Emails Marked as Spam
+To: Herman Elpdesk <hermane@umich.edu>
+
+
+Hi there Herman,
+
+I really appreciate you looking into this. The user's uniqname is jbohland
+(Joseph Bohland) and he is an undergraduate admissions officer. In addition
+to the attached EML file with the email headers for one of messages, I've
+also gathered the following from some of the emails that he has reported
+were not received:
+
+*Headers for this message are pasted below:*
+Time Sent: Monday April 22nd at 12:18 PM
+Recipient: shelbyrweigandt@gmail.com
+Has attachments (Y/N): No
+
+*Email headers for this message are attached:*
+Time Sent: Friday at 3:41 PM
+Recipient: alyssavida12@gmail.com
+Has attachments (Y/N): No
+
+Time Sent: Monday April 22nd at 11:18 AM
+Recipient: msfuqua17@gmail.com
+Has attachments:
+
+Time Sent: Monday April 22nd at 1:31 PM
+Recipient: gardner76@yahoo.com
+
+Time Sent: Monday April 22nd at 5:29 PM
+Recipient: warmstutztaylor@gmail.com
+
+He also took the time to copy the email headers from the first message
+above to Shelby:
+
+-------------------------------------------------------------------------------------------------------------------------
+
+MIME-Version: 1.0
+Date: Mon, 22 Apr 2019 12:18:55 -0400
+Message-ID: <CAM6tenx=6B-6HDtG4mqi=
+VrGF6++PsvdmBYWYH5kYpj63rH3hw@mail.gmail.com>
+Subject:
+From: Joe Bohland <jbohland@umich.edu>
+To: shelbyrweigandt@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000361a37058720d3de"
+
+--000000000000361a37058720d3de
+Content-Type: text/plain; charset="UTF-8"
+
+Here is the link to re-apply for admission:
+https://www.umflint.edu/admissions
+
+The phone number for financial aid is: (810) 762-3444
+
+-- 
+Joe Bohland
+Admissions Officer
+University of Michigan-Flint
+303 East Kearsley Street, Suite 245 Pavilion
+Flint, MI 48502
+(810) 762-3300jbohland@umich.edu
+
+--000000000000361a37058720d3de
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Here is the link to re-apply for adm=
+ission: </div><div><br></div><div><a href=3D"https://www.umflint.edu/admiss=
+ions">https://www.umflint.edu/admissions</a></div><div><br></div><div>The p=
+hone number for financial aid is: (810) 762-3444<br clear=3D"all"><br>-- <b=
+r></div><div class=3D"gmail_signature" dir=3D"ltr"><div dir=3D"ltr"><div>Jo=
+e Bohland</div><div>Admissions Officer</div><div>University of Michigan-Fli=
+nt</div><div>303 East Kearsley Street, Suite 245 Pavilion </div><div>Flint,=
+MI 48502</div><div>(810) 762-3300</div><div><a
+href=3D"mailto:jbohland@umi=ch.edu"
+target=3D"_blank">jbohland@umich.edu</a></div></div></div></div></d=
+iv>
+
+--000000000000361a37058720d3de--
+
+-------------------------------------------------------------------------------------------------------------------
+
+Thanks again for taking a look but please let me know if I can get you any
+other information or if I can be of any assistance.
+
+Have a great Thursday and a wonderful weekend!
+
+-- 
+
+Katelynn Slater
+
+ITS Helpdesk Technician |  http://www.umflint.edu/Helpdesk  |
+http://blogs.umflint.edu/its
+Phone:  (810) 762-3123   |   Email:  its-helpdesk@umflint.edu
+Follow us on Twitter @UMFlint_ITS  |   Become a fan on Facebook
+<http://www.facebook.com/UMFlint.ITSHelpdesk>
+
+
+-- 
+*Herman Elpdesk*
+ITS Collaboration Services
+University of Michigan
+734.764.2777
+
+--000000000000c720cf058ca2cc38
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif;font-size:small;color:#444444"><br></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded messa=
+ge ---------<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Katel=
+ynn Slater</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:kaslater@umich=
+.edu">kaslater@umich.edu</a>&gt;</span><br>Date: Thu, Apr 25, 2019 at 9:24 =
+AM<br>Subject: Email Headers for Emails Marked as Spam<br>To: Herman Elpdesk =
+&lt;<a href=3D"mailto:hermane@umich.edu">hermane@umich.edu</a>&gt;<br></d=
+iv><br><br><div dir=3D"ltr">Hi there Herman,<div><br></div><div>I really appre=
+ciate you looking into this. The user&#39;s uniqname is jbohland (Joseph Bo=
+hland) and he is an undergraduate admissions officer. In addition to the at=
+tached EML file with the email headers for one of messages, I&#39;ve also g=
+athered the following from some of the emails that he has reported were not=
+ received:=C2=A0</div><div><br></div><div><u>Headers for this message are p=
+asted below:</u></div><div><span style=3D"background-color:rgb(255,255,255)=
+"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&qu=
+ot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Time Sent: Mon=
+day April 22nd at 12:18 PM</span><br style=3D"font-family:&quot;Helvetica N=
+eue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;f=
+ont-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvet=
+ica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">R=
+ecipient:=C2=A0</span><a href=3D"mailto:shelbyrweigandt@gmail.com" style=3D=
+"border:0px;margin:0px;padding:0px;font-size:13px;text-decoration-line:none=
+;color:rgb(96,139,210);font-family:&quot;Helvetica Neue&quot;,Helvetica,Ari=
+al,&quot;Liberation Sans&quot;,FreeSans,sans-serif" target=3D"_blank">shelb=
+yrweigandt@gmail.com</a><span style=3D"font-family:&quot;Helvetica Neue&quo=
+t;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-siz=
+e:13px">=C2=A0</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,He=
+lvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13p=
+x"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&q=
+uot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Has attachmen=
+ts (Y/N): No=C2=A0</span><br style=3D"font-family:&quot;Helvetica Neue&quot=
+;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size=
+:13px"><br><u>Email headers for this message are attached:</u><br style=3D"=
+font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation San=
+s&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-family:&quo=
+t;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans=
+,sans-serif;font-size:13px">Time Sent: Friday at 3:41 PM</span><br style=3D=
+"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sa=
+ns&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-family:&qu=
+ot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSan=
+s,sans-serif;font-size:13px">Recipient:=C2=A0</span><a href=3D"mailto:alyss=
+avida12@gmail.com" style=3D"border:0px;margin:0px;padding:0px;font-size:13p=
+x;text-decoration-line:none;color:rgb(96,139,210);font-family:&quot;Helveti=
+ca Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-ser=
+if" target=3D"_blank">alyssavida12@gmail.com</a><br style=3D"font-family:&q=
+uot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSa=
+ns,sans-serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Ne=
+ue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;fo=
+nt-size:13px">Has attachments (Y/N): No</span><br style=3D"font-family:&quo=
+t;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans=
+,sans-serif;font-size:13px"><br style=3D"font-family:&quot;Helvetica Neue&q=
+uot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-s=
+ize:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,A=
+rial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Time S=
+ent: Monday April 22nd at 11:18 AM</span><br style=3D"font-family:&quot;Hel=
+vetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans=
+-serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot=
+;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size=
+:13px">Recipient:=C2=A0</span><a href=3D"mailto:msfuqua17@gmail.com" style=
+=3D"border:0px;margin:0px;padding:0px;font-size:13px;text-decoration-line:n=
+one;color:rgb(96,139,210);font-family:&quot;Helvetica Neue&quot;,Helvetica,=
+Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif" target=3D"_blank">ms=
+fuqua17@gmail.com</a><br style=3D"font-family:&quot;Helvetica Neue&quot;,He=
+lvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13p=
+x"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&q=
+uot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Has attachmen=
+ts:=C2=A0</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helveti=
+ca,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><b=
+r style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Lib=
+eration Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-=
+family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quo=
+t;,FreeSans,sans-serif;font-size:13px">Time Sent: Monday April 22nd at 1:31=
+ PM=C2=A0</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helveti=
+ca,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><s=
+pan style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;L=
+iberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Recipient:=C2=A0</=
+span><a href=3D"mailto:gardner76@yahoo.com" style=3D"border:0px;margin:0px;=
+padding:0px;font-size:13px;text-decoration-line:none;color:rgb(96,139,210);=
+font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation San=
+s&quot;,FreeSans,sans-serif" target=3D"_blank">gardner76@yahoo.com</a><br s=
+tyle=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Libera=
+tion Sans&quot;,FreeSans,sans-serif;font-size:13px"><br style=3D"font-famil=
+y:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,Fr=
+eeSans,sans-serif;font-size:13px"><span style=3D"font-family:&quot;Helvetic=
+a Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-seri=
+f;font-size:13px">Time Sent: Monday April 22nd at 5:29 PM</span><br style=
+=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation=
+ Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-family:=
+&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,Free=
+Sans,sans-serif;font-size:13px">Recipient:=C2=A0</span><a href=3D"mailto:wa=
+rmstutztaylor@gmail.com" style=3D"border:0px;margin:0px;padding:0px;font-si=
+ze:13px;text-decoration-line:none;color:rgb(96,139,210);font-family:&quot;H=
+elvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sa=
+ns-serif" target=3D"_blank">warmstutztaylor@gmail.com</a>=C2=A0=C2=A0</span=
+><br></div><div><span style=3D"background-color:rgb(255,255,255)"><br></spa=
+n></div><div><span style=3D"background-color:rgb(255,255,255)">He also took=
+ the time to copy the email headers from the first message above to Shelby:=
+=C2=A0</span></div><div><span style=3D"background-color:rgb(255,255,255)"><=
+br></span></div><div><span style=3D"background-color:rgb(255,255,255)">----=
+---------------------------------------------------------------------------=
+------------------------------------------</span></div><div><span style=3D"=
+background-color:rgb(255,255,255)"><br></span></div><div><span style=3D"fon=
+t-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&q=
+uot;,FreeSans,sans-serif;font-size:13px">MIME-Version: 1.0</span><br style=
+=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation=
+ Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-family:=
+&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,Free=
+Sans,sans-serif;font-size:13px">Date: Mon, 22 Apr 2019 12:18:55 -0400</span=
+><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;=
+Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"fo=
+nt-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&=
+quot;,FreeSans,sans-serif;font-size:13px">Message-ID: &lt;CAM6tenx=3D6B-6HD=
+tG4mqi=3D</span><a href=3D"mailto:VrGF6++PsvdmBYWYH5kYpj63rH3hw@mail.gmail.=
+com" style=3D"border:0px;margin:0px;padding:0px;font-size:13px;text-decorat=
+ion-line:none;color:rgb(96,139,210);font-family:&quot;Helvetica Neue&quot;,=
+Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif" target=3D"=
+_blank">VrGF6++PsvdmBYWYH5kYpj63rH3hw@mail.gmail.com</a><span style=3D"font=
+-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&qu=
+ot;,FreeSans,sans-serif;font-size:13px">&gt;</span><br style=3D"font-family=
+:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,Fre=
+eSans,sans-serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica=
+ Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif=
+;font-size:13px">Subject:</span><br style=3D"font-family:&quot;Helvetica Ne=
+ue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;fo=
+nt-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helveti=
+ca,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Fr=
+om: Joe Bohland &lt;</span><a href=3D"mailto:jbohland@umich.edu" style=3D"b=
+order:0px;margin:0px;padding:0px;font-size:13px;text-decoration-line:none;c=
+olor:rgb(96,139,210);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial=
+,&quot;Liberation Sans&quot;,FreeSans,sans-serif" target=3D"_blank">jbohlan=
+d@umich.edu</a><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvet=
+ica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">&=
+gt;</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Ari=
+al,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span st=
+yle=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberat=
+ion Sans&quot;,FreeSans,sans-serif;font-size:13px">To:=C2=A0</span><a href=
+=3D"mailto:shelbyrweigandt@gmail.com" style=3D"border:0px;margin:0px;paddin=
+g:0px;font-size:13px;text-decoration-line:none;color:rgb(96,139,210);font-f=
+amily:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot=
+;,FreeSans,sans-serif" target=3D"_blank">shelbyrweigandt@gmail.com</a><br s=
+tyle=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Libera=
+tion Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-fam=
+ily:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,=
+FreeSans,sans-serif;font-size:13px">Content-Type: multipart/alternative; bo=
+undary=3D&quot;000000000000361a37058720d3de&quot;</span><br style=3D"font-f=
+amily:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot=
+;,FreeSans,sans-serif;font-size:13px"><br style=3D"font-family:&quot;Helvet=
+ica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-se=
+rif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;,H=
+elvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13=
+px">--000000000000361a37058720d3de</span><br style=3D"font-family:&quot;Hel=
+vetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans=
+-serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot=
+;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size=
+:13px">Content-Type: text/plain; charset=3D&quot;UTF-8&quot;</span><br styl=
+e=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberatio=
+n Sans&quot;,FreeSans,sans-serif;font-size:13px"><br style=3D"font-family:&=
+quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeS=
+ans,sans-serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica N=
+eue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;f=
+ont-size:13px">Here is the link to re-apply for admission:</span><br style=
+=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation=
+ Sans&quot;,FreeSans,sans-serif;font-size:13px"><a href=3D"https://www.umfl=
+int.edu/admissions" style=3D"border:0px;margin:0px;padding:0px;font-size:13=
+px;text-decoration-line:none;color:rgb(96,139,210);font-family:&quot;Helvet=
+ica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-se=
+rif" target=3D"_blank">https://www.umflint.edu/admissions</a><br style=3D"f=
+ont-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans=
+&quot;,FreeSans,sans-serif;font-size:13px"><br style=3D"font-family:&quot;H=
+elvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sa=
+ns-serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&qu=
+ot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-si=
+ze:13px">The phone number for financial aid is: (810) 762-3444</span><br st=
+yle=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberat=
+ion Sans&quot;,FreeSans,sans-serif;font-size:13px"><br style=3D"font-family=
+:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,Fre=
+eSans,sans-serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica=
+ Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif=
+;font-size:13px">--=C2=A0</span><br style=3D"font-family:&quot;Helvetica Ne=
+ue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;fo=
+nt-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helveti=
+ca,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Jo=
+e Bohland</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helveti=
+ca,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><s=
+pan style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;L=
+iberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Admissions Officer=
+</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,=
+&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=
+=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation=
+ Sans&quot;,FreeSans,sans-serif;font-size:13px">University of Michigan-Flin=
+t</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial=
+,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span styl=
+e=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberatio=
+n Sans&quot;,FreeSans,sans-serif;font-size:13px">303 East Kearsley Street, =
+Suite 245 Pavilion</span><br style=3D"font-family:&quot;Helvetica Neue&quot=
+;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size=
+:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Aria=
+l,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">Flint, MI=
+ 48502</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,=
+Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span=
+ style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Libe=
+ration Sans&quot;,FreeSans,sans-serif;font-size:13px">(810)=C2=A0</span><a =
+href=3D"mailto:762-3300jbohland@umich.edu" style=3D"border:0px;margin:0px;p=
+adding:0px;font-size:13px;text-decoration-line:none;color:rgb(96,139,210);f=
+ont-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans=
+&quot;,FreeSans,sans-serif" target=3D"_blank">762-3300jbohland@umich.edu</a=
+><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;=
+Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><br style=3D"font=
+-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&qu=
+ot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-family:&quot;He=
+lvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,san=
+s-serif;font-size:13px">--000000000000361a37058720d3de</span><br style=3D"f=
+ont-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans=
+&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-family:&quot=
+;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,=
+sans-serif;font-size:13px">Content-Type: text/html; charset=3D&quot;UTF-8&q=
+uot;</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Ar=
+ial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span s=
+tyle=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Libera=
+tion Sans&quot;,FreeSans,sans-serif;font-size:13px">Content-Transfer-Encodi=
+ng: quoted-printable</span><br style=3D"font-family:&quot;Helvetica Neue&qu=
+ot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-si=
+ze:13px"><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Aria=
+l,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span sty=
+le=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberati=
+on Sans&quot;,FreeSans,sans-serif;font-size:13px">&lt;div dir=3D3D&quot;ltr=
+&quot;&gt;&lt;div dir=3D3D&quot;ltr&quot;&gt;&lt;div&gt;Here is the link to=
+ re-apply for adm=3D</span><br style=3D"font-family:&quot;Helvetica Neue&qu=
+ot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-si=
+ze:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Ar=
+ial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">ission:=
+ &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;a href=3D3D&qu=
+ot;</span><a href=3D"https://www.umflint.edu/admiss=3D" style=3D"border:0px=
+;margin:0px;padding:0px;font-size:13px;text-decoration-line:none;color:rgb(=
+96,139,210);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Li=
+beration Sans&quot;,FreeSans,sans-serif" target=3D"_blank">https://www.umfl=
+int.edu/admiss=3D</a><br style=3D"font-family:&quot;Helvetica Neue&quot;,He=
+lvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13p=
+x"><span style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&q=
+uot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">ions&quot;&gt=
+;</span><a href=3D"https://www.umflint.edu/admissions%3C/a%3E%3C/div%3E%3Cd=
+iv%3E%3Cbr%3E%3C/div%3E%3Cdiv%3EThe" style=3D"border:0px;margin:0px;padding=
+:0px;font-size:13px;text-decoration-line:none;color:rgb(96,139,210);font-fa=
+mily:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;=
+,FreeSans,sans-serif" target=3D"_blank">https://www.umflint.edu/admissions&=
+lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;The</a><sp=
+an style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Li=
+beration Sans&quot;,FreeSans,sans-serif;font-size:13px">=C2=A0p=3D</span><b=
+r style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Lib=
+eration Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-=
+family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quo=
+t;,FreeSans,sans-serif;font-size:13px">hone number for financial aid is: (8=
+10) 762-3444&lt;br clear=3D3D&quot;all&quot;&gt;&lt;br&gt;-- &lt;b=3D</span=
+><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;=
+Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"fo=
+nt-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&=
+quot;,FreeSans,sans-serif;font-size:13px">r&gt;&lt;/div&gt;&lt;div class=3D=
+3D&quot;gmail_signature&quot; dir=3D3D&quot;ltr&quot;&gt;&lt;div dir=3D3D&q=
+uot;ltr&quot;&gt;&lt;div&gt;Jo=3D</span><br style=3D"font-family:&quot;Helv=
+etica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-=
+serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;=
+,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:=
+13px">e Bohland&lt;/div&gt;&lt;div&gt;Admissions Officer&lt;/div&gt;&lt;div=
+&gt;University of Michigan-Fli=3D</span><br style=3D"font-family:&quot;Helv=
+etica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-=
+serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;=
+,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:=
+13px">nt&lt;/div&gt;&lt;div&gt;303 East Kearsley Street, Suite 245 Pavilion=
+ &lt;/div&gt;&lt;div&gt;Flint,=3D</span><br style=3D"font-family:&quot;Helv=
+etica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-=
+serif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;=
+,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:=
+13px">MI 48502&lt;/div&gt;&lt;div&gt;(810) 762-3300&lt;/div&gt;&lt;div&gt;&=
+lt;a</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Ar=
+ial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span s=
+tyle=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Libera=
+tion Sans&quot;,FreeSans,sans-serif;font-size:13px">href=3D3D&quot;mailto:<=
+a href=3D"mailto:jbohland@umi" target=3D"_blank">jbohland@umi</a>=3D<a href=
+=3D"http://ch.edu" target=3D"_blank">ch.edu</a>&quot;</span><br style=3D"fo=
+nt-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&=
+quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"font-family:&quot;=
+Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,s=
+ans-serif;font-size:13px">target=3D3D&quot;_blank&quot;&gt;</span><a href=
+=3D"mailto:jbohland@umich.edu" style=3D"border:0px;margin:0px;padding:0px;f=
+ont-size:13px;text-decoration-line:none;color:rgb(96,139,210);font-family:&=
+quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeS=
+ans,sans-serif" target=3D"_blank">jbohland@umich.edu</a><span style=3D"font=
+-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&qu=
+ot;,FreeSans,sans-serif;font-size:13px">&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&=
+lt;/div&gt;&lt;/div&gt;&lt;/d=3D</span><br style=3D"font-family:&quot;Helve=
+tica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-s=
+erif;font-size:13px"><span style=3D"font-family:&quot;Helvetica Neue&quot;,=
+Helvetica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:1=
+3px">iv&gt;</span><br style=3D"font-family:&quot;Helvetica Neue&quot;,Helve=
+tica,Arial,&quot;Liberation Sans&quot;,FreeSans,sans-serif;font-size:13px">=
+<br style=3D"font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;L=
+iberation Sans&quot;,FreeSans,sans-serif;font-size:13px"><span style=3D"fon=
+t-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Liberation Sans&q=
+uot;,FreeSans,sans-serif;font-size:13px">--000000000000361a37058720d3de--</=
+span>=C2=A0</div><div><br></div><div>--------------------------------------=
+---------------------------------------------------------------------------=
+--</div><div><br></div><div>Thanks again for taking a look but please let m=
+e know if I can get you any other information or if I can be of any assista=
+nce.=C2=A0</div><div><br></div><div>Have a great Thursday and a wonderful w=
+eekend!=C2=A0</div><div><div><br></div>--=C2=A0<div dir=3D"ltr" class=3D"m_=
+1391179277422907980gmail_signature" data-smartmail=3D"gmail_signature"><div=
+ dir=3D"ltr"><div dir=3D"ltr"><div><br></div><div>Katelynn Slater</div><div=
+><br></div><div>ITS Helpdesk Technician |=C2=A0 <a href=3D"http://www.umfli=
+nt.edu/Helpdesk" target=3D"_blank">http://www.umflint.edu/Helpdesk</a>=C2=
+=A0 |=C2=A0 <a href=3D"http://blogs.umflint.edu/its" target=3D"_blank">http=
+://blogs.umflint.edu/its</a></div><div>Phone:=C2=A0 (810) 762-3123=C2=A0 =
+=C2=A0|=C2=A0 =C2=A0Email:=C2=A0 <a href=3D"mailto:its-helpdesk@umflint.edu=
+" target=3D"_blank">its-helpdesk@umflint.edu</a></div><div>Follow us on Twi=
+tter @UMFlint_ITS=C2=A0 |=C2=A0 =C2=A0Become a fan on <a href=3D"http://www=
+.facebook.com/UMFlint.ITSHelpdesk" target=3D"_blank">Facebook</a></div></di=
+v></div></div></div></div>
+</div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr" class=3D"gma=
+il_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><div=
+ dir=3D"ltr"><div><font color=3D"#444444" face=3D"times new roman, serif"><=
+b>Herman Elpdesk</b><br>ITS Collaboration Services<br>University of Michigan<=
+br>734.764.2777</font></div></div></div></div></div></div>
+
+--000000000000c720cf058ca2cc38--
+--000000000000c720d2058ca2cc3a
+Content-Type: message/rfc822; 
+	name="Alyssa Vida admitted UM-Flint, fall semester, pre-med.eml"
+Content-Disposition: attachment; 
+	filename="Alyssa Vida admitted UM-Flint, fall semester, pre-med.eml"
+Content-Transfer-Encoding: base64
+Content-ID: <f_juwo1fj10>
+X-Attachment-Id: f_juwo1fj10
+
+MIMEVersion10ContentTypetext/pla
+--000000000000c720d2058ca2cc3a--

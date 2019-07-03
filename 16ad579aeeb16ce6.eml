@@ -1,0 +1,79 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:58f:0:0:0:0 with SMTP id i15csp235235lto;
+        Mon, 20 May 2019 06:41:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy4gz2BjHhMHbPPHK3gkX6+MUL0VBacIwq7MpMwunwYP+AglOquNQ1BPQ9g2RB8D3w6YBc4
+X-Received: by 2002:a02:a818:: with SMTP id f24mr4910636jaj.60.1558359683009;
+        Mon, 20 May 2019 06:41:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558359683; cv=none;
+        d=google.com; s=arc-20160816;
+        b=O6ALQqrB4A7AhSrtEwWvhRkZ/Le2tgssF3ZgGx0OTGmi/+dvZ64s7ezSBBvkMgVQdA
+         aGE4xZ5ZuGpg9cOEG9eFIgmX/fpGt/YhfuiiA/L6Dn/z/4bZpeLzixcHAkqzY5GKrTrw
+         XykzKKnawan5w5GRumQQq2wzRPq6xtfT+gpDJN36NgC4ufpdCTAnV7FM8Wq3S36KdAUR
+         UkZvqDAXA6mt4Uhr7+HrFkVesseuTlBy2xSoGKnolgOw9gwN6CLcPwbK9fLC2xhnxboe
+         lnhJ4ZxWVNpWM57GwWaX/FoJPEDtSNmLoqEpwE3+XFBWyDERe8Vq9khsoVZn0jBAGAeo
+         F8WA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=ukZXeqP8rVcMso3FqrKeZvOYIEKQzN8v04KFMfYwKQk=;
+        b=drHUiszhwjEgUTKb2pKSQjSF3n7O/iuvXfdPC8JuDrx7ANUxuUcsUPnulBxLoX12c/
+         NrLaKe8Ji3mS0kQh6tK/On3mRQ6uwc5X+0eG9/TNVQs1j1lpjr5G0fax2BvdTB5aBU9h
+         T5cfnb4U+7JD6vmPgkIJSOcdRB3uqfLU6M0VQ2qeppweFdJ+2NZ3xH7w+MZOsNbeHMQV
+         kxiSORgJUBg3ggNB0WTAah/hbqU26velSemcDHA0la/GjrPGYKXeqSJ55rO8lMPHxvbE
+         dA4dQ/p+fEhECrt2eIrJbD7b/BjfAsiX4IQFOI1WawQQAZVy1MKO+Segv2SRKqna3Xd7
+         2s5w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=Pa3AXYwB;
+       spf=pass (google.com: best guess record for domain of crm@go.itd.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=crm@go.itd.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <crm@go.itd.collab.its.umich.edu>
+Received: from tombraider.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.12.86])
+        by mx.google.com with ESMTPS id n5si9724859ion.38.2019.05.20.06.41.22
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 20 May 2019 06:41:22 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of crm@go.itd.collab.its.umich.edu designates 141.211.12.86 as permitted sender) client-ip=141.211.12.86;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=Pa3AXYwB;
+       spf=pass (google.com: best guess record for domain of crm@go.itd.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=crm@go.itd.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1558359681;
+	bh=ukZXeqP8rVcMso3FqrKeZvOYIEKQzN8v04KFMfYwKQk=;
+	h=Date:From:To:Subject;
+	b=Pa3AXYwBEdAk3tmBYmsjEo7Ga2nmwYzCyZMPcu1Gu9mVLIw8StrhNtL0LF6hpKbsU
+	 m9nJRcUaBfcW5rff/NCz2lodBq1iMFmE4GftMewn/4qa2kcrAZqqruILipIdGswQtk
+	 ABl40M9MvRrtCNtsBsz4SRUsdWf84YAxL9G5jbmC0JVy+a9jW5+V9n9ku+aDne/c0q
+	 vsLB4vCsdJQQuMvN2VToYuktSD5jZ8VPt96S/MBzTLnGWW9e1wwbnKAeQvRsaQjMjl
+	 L7oQ6WjcMCQpo6mbdpUwG3cyLIoWKoJAD3LhFQh1cQP1Rr3dURAlTTIAX0wgi2Et5h
+	 7F8JXNGRK1B2Q==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.194.47 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.194.47])
+	By tombraider.mr.itd.umich.edu ID 5CE2AE81.A1634.19377;
+	Authuser hermane;
+	Mon, 20 May 2019 09:41:21 -0400
+Date: Mon, 20 May 2019 09:41:15 -0400
+From: Chris Mueller <crm@go.itd.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Test Message
+Message-ID: <20190520134115.zuccs347v574ef7l@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+Bacon ipsum dolor amet kevin short ribs cupim alcatra, shoulder andouille
+kielbasa beef ribs jerky pig filet mignon buffalo corned beef. Cupim
+ribeye pig, tongue shank sausage fatback filet mignon brisket. Beef
+tenderloin prosciutto, picanha capicola chuck pork chop venison filet
+mignon tongue tri-tip fatback. Kevin pork loin shankle tenderloin short
+ribs meatloaf chuck. Strip steak ham pig bresaola.
+
+Shankle pork loin spare ribs pastrami. Pig tri-tip t-bone hamburger,
+sausage burgdoggen capicola drumstick ribeye. Short loin beef ribs tail,
+ribeye burgdoggen biltong short ribs meatloaf brisket. Chuck porchetta
+alcatra bresaola capicola pork belly. Bresaola beef ribs flank, tail
+hamburger kielbasa short ribs biltong salami spare ribs ham hock
+tenderloin pig.

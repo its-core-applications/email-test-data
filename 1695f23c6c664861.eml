@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp9172959lto;
+        Fri, 8 Mar 2019 13:09:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzet2Gt0I97j+T++lufbXM7hFSAtV75fq1U+9ivzyQ9IXaEQGMTBXwB/2dAFihyPCG2b3Hh
+X-Received: by 2002:a0d:d682:: with SMTP id y124mr16604651ywd.143.1552079374035;
+        Fri, 08 Mar 2019 13:09:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552079374; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HEBNYptxhaXQc8eWldvqT8+LDVEOnn0YxCyh9gwGIMRzakRWSfJ5exdxM8RdD+bhca
+         dpePdid2lTjhDjSCv2eL70pAYu6UTJqeRnbIn36xrdE4bbItPRQAD9C/R5kJli15M7Vh
+         sWLK3g2whfYhKU0xO0Q4Bjo3UvfpxLBr96ClI+2spim10FOfnZwtSHfBsNNNh7bNaQ4V
+         x4oIcF4TWtde6pmHWs4asLYYvkk2ck9IwUQ+DqCSwmSnNCXTtbmycboGS7A3cDer4WBO
+         KduXQ1If0ybP2VhN7OBBm1kh6A/DXltj7wSO636kitFTEN8BctnapA9Kyh47ePnCJxoY
+         WS8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=jc5vwR38UBfvhZDRj3vlTS+zDsdnWBIPuQ/WFItP55s=;
+        b=srsEgmTFxhDYIrnfdmkOcWIrxwBJYeoTB7ndElcehv5vMwgH5CqQDouyU6ywh+X7T2
+         AEThzzZojo7Gp97TBwA8KfWFXj+OSnyBrswvHsi7eBJNd0jIV4htNd4Uczhu3ujpkVWV
+         nAOjqXxVWPmdFYMbtG7LLiSx7FToJT8qnTjkBrhbhFR6XxQo2W8kW9UnLXf5hjjFL22c
+         bznwffcLAy+sBlt6oPi66ipo5L8jpuWsN4Lh/XFkOgJTW/87gVaDVHgjRslUiFijqgRF
+         OqcdItWF3SLfZaPJF8FqJc0AwpZWIGa1AWSGtXLsFTV3MBhEr6viCiI8SMNZumPm0xYo
+         IXAw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=JqmHMvL3;
+       spf=pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=ezekielh@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <ezekielh@iia.collab.its.umich.edu>
+Received: from tombraider.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.12.86])
+        by mx.google.com with ESMTPS id u79si5349900ywu.389.2019.03.08.13.09.33
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 13:09:33 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.12.86 as permitted sender) client-ip=141.211.12.86;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=JqmHMvL3;
+       spf=pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=ezekielh@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552079373;
+	bh=jc5vwR38UBfvhZDRj3vlTS+zDsdnWBIPuQ/WFItP55s=;
+	h=Date:From:To:Subject;
+	b=JqmHMvL3FJyAX/1eiZo9JRfNUbMc21fD5PI1GoC+33K8y9luWCas/vlIdsdCMEyWf
+	 MbxOkXaWIkByWg/+4ozHVCA6uRwo/CgVuiD61r2QvXdE6I+S3tIZQmcFozT9lmm1Gy
+	 seYadrI0tf7byr6AT7fKc3yaPYz8Nb9piAEui6DrRIFAPVOWObkE2MVOsiSu1RwMNQ
+	 Dq8u9mhwkdHD7DstbcQAjqL06U4NG4888rKaLAAPbhbvs27ihhr55WlWtjRx+OBvme
+	 1vFoywWxYoD9EaOxRlOF0IiCyiu1S26tQBgaccxdzy+A/c3lSrZBqlVCZ8uBxhwoMe
+	 FbYHLwhDkukkw==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By tombraider.mr.itd.umich.edu ID 5C82DA0D.12FC5.25182;
+	Authuser hermane;
+	Fri, 08 Mar 2019 16:09:33 -0500
+Date: Fri, 8 Mar 2019 21:09:27 +0000
+From: Zeke Hendrickson <ezekielh@iia.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Still Zeke
+Message-ID: <20190308210927.tzjsjp54yk5zr2oh@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+Zeke zeke zeke zeke

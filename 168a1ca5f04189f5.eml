@@ -1,0 +1,221 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:4c67:0:0:0:0:0 with SMTP id r36csp1372479ltg;
+        Tue, 23 Apr 2019 06:15:06 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=lQvKFqa5
+X-Received: by 2002:a2e:8156:: with SMTP id t22mr13277598ljg.77.1556025306280;
+        Tue, 23 Apr 2019 06:15:06 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Tue, 23 Apr 2019 06:15:06 -0700
+Delivered-To: admin-mgoogle@collab.its.umich.edu
+Received: by 2002:a17:90a:1903:0:0:0:0 with SMTP id 3-v6csp6469766pjg;
+        Wed, 30 Jan 2019 18:43:42 -0800 (PST)
+X-Received: by 2002:a24:13c2:: with SMTP id 185mr12225574itz.104.1548902622089;
+        Wed, 30 Jan 2019 18:43:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548902622; cv=none;
+        d=google.com; s=arc-20160816;
+        b=k3iwMpedO1wixy7wO5KtRUndaXpxpFWedGf4eiOS9ViBYLnAUhD1S26iffMU1B8RH8
+         ezCaMgXzIu3IxA6w4bVGePntaJTcTPiue/0IJQY6YSsaxZY1tFCEtvUOnJVi+gzYA7rO
+         eFA2fvnoaQU+bc0q/YMZW/EAqliaqb98ZmSoEVtMxqz0ND9Q+maDNoWwNCOpF+fWxZlH
+         1DU1lGKzCqSiElmceCkSQaXKKbuP68F/IcYeiX47SqYs9INep+MeKQDooPQ3mM7Hk/DF
+         dy88KzmbMLsJSYn/QRbffvEm2daK6ltuDywbOWeK46vwkYJAIQx1lI2ClNXfLFMdUWkJ
+         Ds4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=HRfcVUNeZ4/14qRpj2A6YKpc/4axHftUxUSqgHAsfco=;
+        b=EThj6JGaPJGE+Nu5A2O7irr/RcX7QuNZNLo9H3pFObs7WnHBBeJDK5sqr20DYG1ssj
+         srOfzuYwFCvrgnoHiFZDv5DJROAy5iciBbnnIDfP93KQtzZsUCx23Xifxr+igQ3UKNHd
+         s0pCvOrUSWwZo1FBnTyEGdsyPt/D0DLlHPTwyh6iPaauCegTX7HUu2wv+vg4xmLldzwY
+         mgyQeGmQ0PS9qq52v8lHQTeUj1YaE0rsTvwA/S9i2t++kHEre+lSah9GFNRTdKAqG5yi
+         P/+Fy7I90szIUlAqzTSt1JaLuYH2VnSizgi5Rtd8QbogJ5XMElrxngEUsa7V4ZFrpcM/
+         US8g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=lQvKFqa5;
+       spf=pass (google.com: domain of 33wbsxbgkanacaa270z0h07ab0de-9ad0b7k2aa270.ya8@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=33WBSXBgKANAcAA270Z0H07AB0DE-9AD0B7K2AA270.yA8@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <33WBSXBgKANAcAA270Z0H07AB0DE-9AD0B7K2AA270.yA8@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id l188sor7201102itb.33.2019.01.30.18.43.41
+        for <admin-mgoogle@collab.its.umich.edu>
+        (Google Transport Security);
+        Wed, 30 Jan 2019 18:43:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of 33wbsxbgkanacaa270z0h07ab0de-9ad0b7k2aa270.ya8@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=lQvKFqa5;
+       spf=pass (google.com: domain of 33wbsxbgkanacaa270z0h07ab0de-9ad0b7k2aa270.ya8@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=33WBSXBgKANAcAA270Z0H07AB0DE-9AD0B7K2AA270.yA8@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:reply-to:feedback-id:message-id:subject:from:to;
+        bh=HRfcVUNeZ4/14qRpj2A6YKpc/4axHftUxUSqgHAsfco=;
+        b=lQvKFqa53Zk6+AeVQyLFifiCvYpcUv4bBKTr1LTcXcdeX5A2i0U8CKJfGlMvXx/Qfj
+         dRTuikcJe2FgqI0siMbqicpYyr1Dnj2G6Za5rBEYX6rhwcli2Wu9jpJS7+gw72BHhojt
+         d9JhUyDMhKo+MrkyyNLqEv/pFWSvOdFe0f6g4AG8bijVs8EHwnJSTEbOkOU7xFC3sqoG
+         zCF2UV5P64WZGoIW6jFqMFaKpZdFsD+/jbIDyVO+Pko28Bg8zrt1/uqxSIjVtxQdOnTW
+         z5tdAhDaPg9h0v31Gg+GEA26ajU/cMXKgQW+aA4AgPKHghMCHas5g49O2Jsn8/vYN9JD
+         3ztw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:feedback-id
+         :message-id:subject:from:to;
+        bh=HRfcVUNeZ4/14qRpj2A6YKpc/4axHftUxUSqgHAsfco=;
+        b=Dn8QSN5gQ1XCw7huChiY2liUGfcAJII3bwLYkE3gu/sJw/zJ9ku2hirJHh1EId0w23
+         9CI/r8VLUKYVnC/YcBUekH/VOymqNl3j52Ciksas7Kv5ELsdJgzDbiY8G7ZT2RiT2tE7
+         poZwXfE9oah4Pt9TeWOPko+wOMVhU6S1e/wISe/zL3Z1+Z19fAkoEiUkEPnk5uQt33uf
+         2J11+frtnu7aIAX4xbee1W36zDQEIsaT4zfa0MwhPYBx3GMh7k+5qjXj663cwZxLWrKG
+         YHZklEL9hz1RjO1pev5KPefhHC6BVBT46RopzBP7ovfvLMUN+dxNs3Gn05Z5+AgIbH07
+         zZaQ==
+X-Gm-Message-State: AHQUAubYfn2654utoycGSubq6NwvO4KknVzmRdWq0NWU/JQWDd6cn2Yu
+	VByBjOSiokiojwE=
+X-Google-Smtp-Source: AHgI3IZNQxXK0lf93HUDy3ULSxCh+vgjRGTYWxkOo6dgJQPnKUILh3zb1rPGeA5vfLKE6P02kUoYWE4=
+MIME-Version: 1.0
+X-Received: by 2002:a24:7d55:: with SMTP id b82mr8883151itc.0.1548902621567;
+ Wed, 30 Jan 2019 18:43:41 -0800 (PST)
+Date: Wed, 30 Jan 2019 18:43:41 -0800
+Reply-To: Google Developers <GoogleDevelopers-noreply@google.com>
+X-Google-Id: 244026
+Feedback-ID: Len-US:P-11:C20082170:gamma
+X-Notifications: GAMMA:<558d14e215a41cf7c17fe9f0e5660ae78cba2a47-20082170-110484663@google.com>
+Message-ID: <558d14e215a41cf7c17fe9f0e5660ae78cba2a47-20082170-110484663@google.com>
+Subject: [Correction] Google+ APIs being shutdown on March 7, 2019
+From: Google Developers <GoogleDevelopers-noreply@google.com>
+To: admin-mgoogle@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary="0000000000008cdf600580b7fe37"
+
+--0000000000008cdf600580b7fe37
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlIGxvZ28NCg0KUGxlYXNlIHVwZGF0ZSB5b3VyIHByb2plY3RzIHNvIHRoZXkgbm8gbG9u
+Z2VyIHVzZSBHb29nbGUrIEFQSXMgYnkgTWFyY2ggNywgIA0KMjAxOS4NCg0KRGVhciBEZXZlbG9w
+ZXIsDQoNCkVhcmxpZXIgdGhpcyB3ZWVrIHdlIHNlbnQgeW91IGFuIGVtYWlsIHJlbGF0ZWQgdG8g
+eW91ciBwcm9qZWN0cyB0aGF0IHdpbGwgIA0KYmUgaW1wYWN0ZWQgYnkgdGhlIEdvb2dsZSsgQVBJ
+IHNodXRkb3duLCB3aGljaCBhbHNvIGFmZmVjdHMgcmVxdWVzdHMgZm9yICANCkdvb2dsZSsgT0F1
+dGggc2NvcGVzLg0KDQpUaGUgZW1haWwgbGlzdGVkIHRoYXQgb25lIG9yIG1vcmUgb2YgeW91ciBw
+cm9qZWN0cyBhcmUgcmVxdWVzdGluZyB0aGUgIA0K4oCccGx1cy5tZeKAnSBzY29wZSwgYW5kIHdv
+dWxkIHRodXMgYmUgYWZmZWN0ZWQuIFdlIHdvdWxkIGxpa2UgdG8gY2xhcmlmeSB0aGF0ICANCm9u
+bHkgcHJvamVjdHMgZGlyZWN0bHkgcmVxdWVzdGluZyB0aGUg4oCccGx1cy5tZeKAnSBzY29wZSBh
+cmUgYWZmZWN0ZWQuIFRoaXMgIA0Kc2NvcGUgbWF5IGhhdmUgYmVlbiBsaXN0ZWQgaW4gc29tZSBl
+bWFpbHMsIGV2ZW4gaWYgbm90IGRpcmVjdGx5IHJlcXVlc3RlZCAgDQpieSB5b3VyIHByb2plY3Qu
+IFdlIGFwb2xvZ2l6ZSBmb3IgYW55IGNvbmZ1c2lvbiBjYXVzZWQuDQoNCklmIHlvdSBhcmUgZGly
+ZWN0bHkgcmVxdWVzdGluZyB0aGUg4oCccGx1cy5tZeKAnSBzY29wZSwgYW55IG90aGVyIEdvb2ds
+ZSsgT0F1dGggIA0Kc2NvcGVzLCBvciBtYWtpbmcgYW55IEdvb2dsZSsgQVBJIGNhbGxzLCBwbGVh
+c2UgZW5zdXJlIHRoYXQgeW91IHJlbW92ZSAgDQp0aGVzZSByZXF1ZXN0cyBmcm9tIHlvdXIgcHJv
+amVjdCBiZWZvcmUgTWFyY2ggNywgMjAxOS4NCg0KVG8gc2VlIGlmIHlvdXIgcHJvamVjdCBpcyBk
+aXJlY3RseSByZXF1ZXN0aW5nIHRoZSDigJxwbHVzLm1l4oCdIG9yIGFueSBvdGhlciAgDQpHb29n
+bGUrIE9BdXRoIHNjb3BlczoNCg0KDQpJZiB5b3VyIHByb2plY3QgaXMgd3JpdHRlbiBpbiBHb29n
+bGUgQXBwcyBTY3JpcHQsIHlvdSBjYW4gdmlldyB3aGljaCBzY29wZXMgIA0KeW91ciBwcm9qZWN0
+IGlzIHJlcXVlc3RpbmcgYnkgcmV2aWV3aW5nIHlvdXIgcHJvamVjdCBwcm9wZXJ0aWVzIGluIEFw
+cCAgDQpTY3JpcHQgRWRpdG9yLg0KSWYgeW91ciBwcm9qZWN0IGlzIG5vdCB3cml0dGVuIGluIEdv
+b2dsZSBBcHBzIFNjcmlwdCwgcGxlYXNlIGNoZWNrIHlvdXIgIA0KY29kZSBmb3IgcmVmZXJlbmNl
+cyB0byDigJxwbHVzLm1l4oCdIGluIE9BdXRoIHNjb3BlIHJlcXVlc3RzLiBXZSByZWNvbW1lbmQg
+dGhhdCAgDQp5b3UgcmV2aWV3IHByb2plY3RzIHVzaW5nIGFueSAzcmQtcGFydHkgbGlicmFyaWVz
+IHRoYXQgc3VwcG9ydCBzaWduLWluIG9yICANCnNvY2lhbCBmdW5jdGlvbmFsaXR5LCBhcyB0aGVz
+ZSBtYXkgYWxzbyBiZSBhZmZlY3RlZCBieSB0aGUgc2h1dGRvd24uDQoNClRoYW5rcyBmb3IgYmVp
+bmcgYSB2YWx1ZWQgR29vZ2xlKyBEZXZlbG9wZXIuDQoNClNpbmNlcmVseSwNClRoZSBHb29nbGUr
+IEFQSSB0ZWFtDQoNCg0KV2FzIHRoaXMgaW5mb3JtYXRpb24gaGVscGZ1bD8NCllFUyBOTw0KDQoN
+CsKpIDIwMTkgR29vZ2xlIExMQyAxNjAwIEFtcGhpdGhlYXRyZSBQYXJrd2F5LCBNb3VudGFpbiBW
+aWV3LCBDQSA5NDA0Mw0KDQpZb3UgaGF2ZSByZWNlaXZlZCB0aGlzIG1hbmRhdG9yeSBzZXJ2aWNl
+IGFubm91bmNlbWVudCB0byB1cGRhdGUgeW91IGFib3V0ICANCmltcG9ydGFudCBjaGFuZ2VzIHRv
+IEdvb2dsZSBzZXJ2aWNlcyB5b3UgdXNlLg0KDQo=
+--0000000000008cdf600580b7fe37
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!-- This contains CSS info, starts the body, and inserts the Google logo h=
+eader -->
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> </span>
+<div style=3D"padding-top: 22px; padding-bottom: 8px; border-bottom-style: =
+solid; border-bottom-color: #dcdcdc; border-bottom-width: 1px" width=3D"100=
+%"><span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; =
+color: #000000;"><img alt=3D"Google logo" border=3D"0" src=3D"http://servic=
+es.google.com/fh/files/emails/logo_lockup_google_developers_horizontal_colo=
+r.png" style=3D"display: block;" title=3D"Google" width=3D"360"> </span></d=
+iv>
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> <!-- This is the beginning of the subject --> </span>
+<!-- Include the Pre-header snippet, copy HTML from TEMPLATE SNIPPET ID 916=
+0213 and add the pre-header text-->
+<div style=3D"height:0px; font-size:0px; max-height:0px; min-height: 0px; l=
+ine-height:0px; width: 100%; color: #fff; display:none;">Please update your=
+ projects so they no longer use Google+ APIs by March 7, 2019.</div>
+<!-- Please INSERT the relevant Customer Comm BODY snippet -->
+<p>Dear Developer,</p>
+
+<p>Earlier this week we sent you an email related to your projects that wil=
+l be impacted by the <a href=3D"http://www.google.com/appserve/mkt/p/AHANi0=
+Y0Fmqy6D1fVvRxQaWrpY0rTV2jkHWT59aRTsCjwOvUwGyasiACZ1BNIv66mc_nB3e4ZSvozwcHK=
+VGyquKxApcZalPSl3u0ZZP3bVsz" target=3D"_blank">Google+ API shutdown</a>, wh=
+ich also affects requests for Google+ OAuth scopes.</p>
+
+<p>The email listed that one or more of your projects are requesting the <a=
+ rel=3D"nofollow" style=3D"text-decoration:none; color:#000000">=E2=80=9Cpl=
+us.me=E2=80=9D</a> scope, and would thus be affected. We would like to clar=
+ify that only <strong>projects <em>directly</em> requesting the <a rel=3D"n=
+ofollow" style=3D"text-decoration:none; color:#000000">=E2=80=9Cplus.me=E2=
+=80=9D</a> scope are affected</strong>. This scope may have been listed in =
+some emails, even if not directly requested by your project. We apologize f=
+or any confusion caused.</p>
+
+<p>If you are directly requesting the <a rel=3D"nofollow" style=3D"text-dec=
+oration:none; color:#000000">=E2=80=9Cplus.me=E2=80=9D</a> scope, any other=
+ Google+ OAuth scopes, or making any Google+ API calls, please ensure that =
+you remove these requests from your project <strong>before March 7, 2019</s=
+trong>.</p>
+
+<p>To see if your project is directly requesting the <a rel=3D"nofollow" st=
+yle=3D"text-decoration:none; color:#000000">=E2=80=9Cplus.me=E2=80=9D</a> o=
+r any other Google+ OAuth scopes:</p>
+
+<ul>
+  <li>If your project is written in Google Apps Script, you can <a href=3D"=
+https://www.google.com/appserve/mkt/p/AHANi0Y7xatzEwqD-L5RrXXjNtCDY2qwxVXsc=
+TlJcBdqDYbpYaXGNXQZHju9ExmjIuCBnM0mrm2BHyLZYhC8mEZH9MWOpyYMV88ozx0JNUAfP6N3=
+BKPKazNSxcdsYQM" target=3D"_blank">view which scopes</a> your project is re=
+questing by reviewing your project properties in App Script Editor.</li>
+  <li>If your project is not written in Google Apps Script, please check yo=
+ur code for references to <a rel=3D"nofollow" style=3D"text-decoration:none=
+; color:#000000">=E2=80=9Cplus.me=E2=80=9D</a> in OAuth scope requests. We =
+recommend that you review projects using any 3rd-party libraries that suppo=
+rt sign-in or social functionality, as these may also be affected by the sh=
+utdown.</li>
+</ul>
+
+<p>Thanks for being a valued Google+ Developer.</p>
+
+<p>Sincerely,<br>
+  The Google+ API team</p>
+
+<!-- Include the Customer feedback form snippet, copy HTML from TEMPLATE SN=
+IPPET ID 7501725 and add relevant links -->
+<div style=3D"color: #666666; padding-top: 8px; border-top-style: solid; bo=
+rder-top-color: #dcdcdc; border-top-width: 1px">
+  <p>Was this information helpful?</p>
+  <a href=3D"https://www.google.com/appserve/mkt/p/AHANi0ZB2x8giPhY4xl4IE5E=
+vihGUKXQpWXohVydKxVi5ixwrnHrRbGNHaNIOwuvocW2RbP4QhnMu9mIvZgvc9vcXinFB6uIOSF=
+d3lE0qVwz2A1-63elcvbV9xlKBPitCZdNeX4--Ueyd_z8X1pgPuCdNMlJ8Bff8uR3ZUj3hJnvLD=
+VCEgw8ijJK-H6lu2R6" target=3D"_blank">YES</a> =C2=A0 <a href=3D"https://www=
+.google.com/appserve/mkt/p/AHANi0a8LI1Uz3A1Ac8jfV-b2fV7HpJv7D5G2SMcAhjRR2lv=
+N1oCyqvpvL6OvyMF_qGnstkNzcqZLb7XEGk9OMpHDm3XjdqvxbNYvJOB0vlCjHzWv4R2juXNYLZ=
+0v-R8p19eCrO1MDgRcumksy5prTG8v5q7n08TqRmV4HcClrQ8Q1EeQDOrGCfq7BVuqHM" targe=
+t=3D"_blank">NO</a><br>
+  =C2=A0</div>
+
+
+<!-- Finally, include the standard footer. This also ends the body -->
+<div style=3D"font-size: 10px; color: #666666; padding-top: 8px; border-top=
+-style: solid; border-top-color: #dcdcdc; border-top-width: 1px">
+  <p>=C2=A9 2019 Google LLC 1600 Amphitheatre Parkway, Mountain View, CA 94=
+043</p>
+
+  <p>You have received this mandatory service announcement to update you ab=
+out important changes to Google services you use.</p>
+</div>
+<img height=3D"1" width=3D"3" src=3D"https://www.google.com/appserve/mkt/im=
+g/AHANi0Y9QjnNbPlDgvyjWRggh1vzx7oaSDzXo45kjlPNggQ8.gif">
+--0000000000008cdf600580b7fe37--

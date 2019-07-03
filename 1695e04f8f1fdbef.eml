@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp8850538lto;
+        Fri, 8 Mar 2019 07:56:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzIy7OcrdjLYy6QGleE+2++ETsijuEPUmjhAkS2ibKwUoid2t5NN9J1ciolJVXggMEEQP2/
+X-Received: by 2002:a81:a047:: with SMTP id x68mr14937312ywg.349.1552060577953;
+        Fri, 08 Mar 2019 07:56:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552060577; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lfoGbtvI6Yqy55fzuNTwnLVe/dmtl+/hpF2dzsLL+1QeVM32psU+CihSAOGQenhWhj
+         CGYKbEjltmvtM4ptqDAAFRVhw/9p/9ZDNA+HkSKALFlObOwqUKs4VQEqPhOYdeHwjyHl
+         MhoTjt1clAsda3Kqx0IaTRWvMecPT+bbyT2efvWt8AkKvDAysIv+uzE/MhbdJyU37DXN
+         W9LmqyBm9MPnhI+/j3ZpqOYHXVkL0nDrmZCdl+oWORVRPGMH0p8k8f0eY+WqKVS/JFkn
+         +hKt++8hIxuAJe2R9ja3XeOnEgn9j16H5qUdr5jRWOsVcZPUr40wnzXJmvc88GySKKB/
+         o9Uw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=ehl+7jFa5c/+b9dM5k+Z38NMWDTS/k1K797FSMF4i7Q=;
+        b=oJebCnOyCI/cTvVne2q9hhke+o7353RsqMRTdJy1zQ/kxUV/GUvNjVakdzRQecc8mU
+         9TtJerZ5EbaatR8EUtc8IM9RKOlCYBZDJ3jD0ahwe4+U5Ur5MxAQs6AKh9nwt9cJ3hvs
+         HiEECsBjzO/TzIfy9GvNiLkYMvSr8yLfeqbrCnHOiluORbrHNd3bnaO7f7A4p60WTc2H
+         VUxYr8ZHAInfUxwS72Dd0C5bkdCw2jApwjEdHr/Ztv9GIDKIaZHk5c5Jiv3Ok4i88vyd
+         AXnT8nadjDJtFMiqxKTkKM3KR2Dao/xr/k7VpxdggGwRD7E+Q4V0qpIRw4/PqfWQ4P+h
+         xFbQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=XMLSiFlx;
+       spf=pass (google.com: best guess record for domain of jimcald@go.itd.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=jimcald@go.itd.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <jimcald@go.itd.collab.its.umich.edu>
+Received: from maleficent.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.125.12])
+        by mx.google.com with ESMTPS id 127si1003420ybo.297.2019.03.08.07.56.17
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 07:56:17 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of jimcald@go.itd.collab.its.umich.edu designates 141.211.125.12 as permitted sender) client-ip=141.211.125.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=XMLSiFlx;
+       spf=pass (google.com: best guess record for domain of jimcald@go.itd.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=jimcald@go.itd.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552060577;
+	bh=ehl+7jFa5c/+b9dM5k+Z38NMWDTS/k1K797FSMF4i7Q=;
+	h=Date:From:To:Subject;
+	b=XMLSiFlxLIJe5QxgmsBFoWrnwwBchdWDXcXCvIvLQVq+MazMY5TnshGzh1OrQkKix
+	 TKqy86rAg1/b0Mpn0n6Ql6Hw3/Kkv6sVK94gWgAtIgHkxoVW1lJm/rGLa+Zlwkia6Z
+	 HHq8hT6WBEHA+DGWhnlCAWtWhVBG4mTEAXJxqaCi7R3uhlWoHy6S9q3T2bFSy8rZ+t
+	 MU86csTBGTlJvSiND4n14bVgMGI+k/HxDcVSLxWDzajW9BDaBZnfN3deRrmBB6n7M/
+	 nF7abIJEI9sRlfHJoUcN6oTrLY3ZGxWfoINBOyuRb6/0+Pmkb7vZy+Un0E4xtb2qs2
+	 9e2NKgk3Kk4Ag==
+Authentication-Results: maleficent.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By maleficent.mr.itd.umich.edu ID 5C8290A1.1DC36.31087;
+	Authuser hermane;
+	Fri, 08 Mar 2019 10:56:17 -0500
+Date: Fri, 8 Mar 2019 15:56:11 +0000
+From: Jim Caldwell <jimcald@go.itd.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: I'm going to get jailed for doing this. 
+Message-ID: <20190308155611.3sujtlwid6jciigs@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+I mean, SMTP jail, not jail jail.

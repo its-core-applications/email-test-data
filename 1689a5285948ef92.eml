@@ -1,0 +1,267 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:4c67:0:0:0:0:0 with SMTP id r36csp1372481ltg;
+        Tue, 23 Apr 2019 06:15:06 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Gylgve7f
+X-Received: by 2002:ac2:4246:: with SMTP id m6mr13857832lfl.131.1556025306293;
+        Tue, 23 Apr 2019 06:15:06 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Tue, 23 Apr 2019 06:15:06 -0700
+Delivered-To: admin-mgoogle@collab.its.umich.edu
+Received: by 2002:a17:90a:1903:0:0:0:0 with SMTP id 3-v6csp4723032pjg;
+        Tue, 29 Jan 2019 07:55:27 -0800 (PST)
+X-Received: by 2002:a24:6f42:: with SMTP id x63mr11391865itb.152.1548777327135;
+        Tue, 29 Jan 2019 07:55:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548777327; cv=none;
+        d=google.com; s=arc-20160816;
+        b=nqvFad5s1puuar1mvq7EiqcdzSs3IiUu2Ilz2q1DHcc42n7Fah8f8o2uilsFU5v97j
+         z01dKTVkh+M85ajdQZp4FV9hFo34Ir0/PgDFdjK7xgLxPrvaVLBP7Xapw8Zf5sENV6/t
+         57mFJn5GSQvV9TFIy4TBL75yOrBcfix0Jo2l1SiKbJ9mFG1A6rwV6QV9dX2Dv/spV+FC
+         3JNiKeirPHaFQlGWa5Ww/GhxZcP1ofCqn8+r7GlHLRY1/rxutVBcMOmxhLf0/BZOy0SK
+         PFxdrT2OuC+BfM57qZjl+Rlb2BWC7KsYUfdbgzzCNuGpbmqUBdWZ7hiO/hzZ9zHViKvN
+         hGZA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=3BpemLsnSgTLXAvIJSL92Wbk7an/ZcYRtiO5brUzs18=;
+        b=GtV+SE6rRk1kzqI5sbtoOIHYjvANMHMAg4rz38kfKNufZovuCkVChRHB+KEM0QwoT6
+         9vuBvWlZUo2/Ep+kkz7rNESDEb7jDaUhw/+WixOj6kOC1wCbBTB19xztftTQ2qqItrmC
+         ueATGoJkP+Om9u1ic2saOS0+0birtQoQQWEJ+f+oWDi8oZA5diEhzUp+MYmDtrFJP/Yy
+         3e9ioDZ7GQhwj8YslYDJBE5tzTsqELwSzoIRM4ArQQZflm/kaJ7oYb1OOXY4vd0pnEVQ
+         8ukTwpLNHisNFPYjP6H+PZHCAYnVjnyhbr3wjdw5DJxcal9mJYTL+pDJDkkYK3Z3E8eU
+         ET0Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Gylgve7f;
+       spf=pass (google.com: domain of 3bndqxbgkaicrzzrwpop6pwz0p23-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3bndQXBgKAIcRzzrwpOp6pwz0p23-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3bndQXBgKAIcRzzrwpOp6pwz0p23-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id j187sor5045728itb.29.2019.01.29.07.55.26
+        for <admin-mgoogle@collab.its.umich.edu>
+        (Google Transport Security);
+        Tue, 29 Jan 2019 07:55:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3bndqxbgkaicrzzrwpop6pwz0p23-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Gylgve7f;
+       spf=pass (google.com: domain of 3bndqxbgkaicrzzrwpop6pwz0p23-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3bndQXBgKAIcRzzrwpOp6pwz0p23-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:reply-to:feedback-id:message-id:subject:from:to;
+        bh=3BpemLsnSgTLXAvIJSL92Wbk7an/ZcYRtiO5brUzs18=;
+        b=Gylgve7fiJCiLIEs3GKfiROKv+3ybWBsCW+7E8wW+qlNTKhqKIGFiOUNzfZftv8nke
+         Eiw2RyT7xTIAlsytVbMl+Ql7JGQUCIg9pufdCBvQZ4YvfpsnAUlp4hze1p1muxh0XoQI
+         1CCAM4lK5vfdDnbUbSMApRSKJSe/rJXzTTZrRIXXykkLHoP9QDmFo6zJTxh+FNjQFhIW
+         ppm8q4VZtBNRHIYKcyScJT8ceuZvW/ArAVCQ3nznJX4Jr89d1fUsc2VT6gqgbWeDXnNW
+         y498yHbELU3vM8kfGOU+D07eBqoZrQsJc9Jy5/DK1HWIwrZVKwuS/4IbO0Z0+iCCJNkF
+         R+Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:feedback-id
+         :message-id:subject:from:to;
+        bh=3BpemLsnSgTLXAvIJSL92Wbk7an/ZcYRtiO5brUzs18=;
+        b=PRtwYtwZYcNLAt40bavUHd+3CNAOhcMxWPOdAcvMwfvT2vAcPuApOk/eYs9CS3eMZ8
+         8xgZ5LAjKEdRWikjcrZmCMtMmburGzkdQ2ZhrknoWjPeVHy3JiGtfiYY4WNndhvOechX
+         j2yvjKSS222UWPVZOE2tIBCwhRCrzy/KAS20MCiBCa0eaJ4SOGEYn5JgXWSM4S00UqLC
+         HXRt+uwov1tjV5zCF3BzZF5yw1Z0Bo8IBoskSWIY/5Okz83yiNpCFodVvxPDp1jtjEI8
+         lNAvR/f3791WyxHCI/VmEtuRZEByOtJMzcc04e4c0tYdHBwr6KUZVQ7I4Ws9yLlH9jTQ
+         cHRQ==
+X-Gm-Message-State: AHQUAuYq5vpi7NRpsLycUPybQlvDd961lxqS3lh6xjcVX80nLUg++oVN
+	ThZx/mA9uggv5PQ=
+X-Google-Smtp-Source: AHgI3IZ6BArljNbukduN1gHvvdl8qy57Rse0YaBWGiUz7os2woVVlZ48Ks1zGKbxXWKkNEOHX2x9XZA=
+MIME-Version: 1.0
+X-Received: by 2002:a24:4ac3:: with SMTP id k186mr3231715itb.37.1548777326074;
+ Tue, 29 Jan 2019 07:55:26 -0800 (PST)
+Date: Tue, 29 Jan 2019 07:55:26 -0800
+Reply-To: Google Developers <GoogleDevelopers-noreply@google.com>
+X-Google-Id: 244026
+Feedback-ID: Len-US:P-11:C20080066:gamma
+X-Notifications: GAMMA:<4a45c90c93c00107b32ee06e6987d7856365c850-20080066-110464547@google.com>
+Message-ID: <4a45c90c93c00107b32ee06e6987d7856365c850-20080066-110464547@google.com>
+Subject:  [Action Required] Google+ APIs and OAuth requests are being shutdown
+ on March 7, 2019
+From: Google Developers <GoogleDevelopers-noreply@google.com>
+To: admin-mgoogle@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary="0000000000005b5ed605809ad2c2"
+
+--0000000000005b5ed605809ad2c2
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlIGxvZ28NCg0KUGxlYXNlIHVwZGF0ZSB5b3VyIHByb2plY3RzIHNvIHRoZXkgbm8gbG9u
+Z2VyIHVzZSBHb29nbGUrIEFQSXMgYnkgTWFyY2ggNywgIA0KMjAxOS4NCg0KSGVsbG8gR29vZ2xl
+KyBEZXZlbG9wZXIsDQoNClRoZSBlbWFpbCBiZWxvdyBjb250YWlucyB5b3VyIG1vc3QgcmVjZW50
+IHVzYWdlIG9mIEdvb2dsZSsgQVBJcy4gTm90ZTogSXQgIA0KaW5jbHVkZXMgR29vZ2xlKyBPQXV0
+aCBzY29wZSByZXF1ZXN0cywgd2hpY2ggYXJlIGFsc28gYWZmZWN0ZWQgYnkgdGhlICANCkdvb2ds
+ZSsgc2h1dGRvd24uIEEgcHJpb3IgZW1haWwgc2VudCB0byBhY3RpdmUgQVBJIGNhbGxlcnMgZGlk
+IG5vdCBpbmNsdWRlICANCmluZm9ybWF0aW9uIGFib3V0IE9BdXRoIHJlcXVlc3RzLiBPbmUgZmlu
+YWwgcmVtaW5kZXIgZW1haWwgd2lsbCBiZSBzZW50IGluICANCkZlYnJ1YXJ5IHRvIHVzZXJzIHdo
+byBzdGlsbCBoYXZlIGFjdGl2ZSBBUEkgb3IgT0F1dGggcmVxdWVzdCBhY3Rpdml0eS4NCg0KV2hh
+dCBkbyBJIG5lZWQgdG8ga25vdz8NCg0KT24gTWFyY2ggNywgMjAxOSwgYWxsIEdvb2dsZSsgQVBJ
+cyBhbmQgR29vZ2xlKyBTaWduLWluIHdpbGwgYmUgc2h1dCBkb3duICANCmNvbXBsZXRlbHkuIFRo
+aXMgd2lsbCBiZSBhIHByb2dyZXNzaXZlIHNodXRkb3duLCB3aXRoIEFQSSBjYWxscyBzdGFydGlu
+ZyB0byAgDQppbnRlcm1pdHRlbnRseSBmYWlsIGFzIGVhcmx5IGFzIEphbnVhcnkgMjgsIDIwMTks
+IGFuZCBPQXV0aCByZXF1ZXN0cyBmb3IgIA0KR29vZ2xlKyBzY29wZXMgc3RhcnRpbmcgdG8gaW50
+ZXJtaXR0ZW50bHkgZmFpbCBhcyBlYXJseSBhcyBGZWJydWFyeSAxNSwgIA0KMjAxOS4NCg0KV2hh
+dCBkbyBJIG5lZWQgdG8gZG8/DQoNClBsZWFzZSB1cGRhdGUgeW91ciBwcm9qZWN0cyBsaXN0ZWQg
+YmVsb3cgYnkgTWFyY2ggNywgMjAxOSBhbmQgZW5zdXJlIHRoZXkgIA0KYXJlIG5vIGxvbmdlciB1
+c2luZyBHb29nbGUrIEFQSXMsIG9yIHJlcXVlc3RpbmcgR29vZ2xlKyBPQXV0aCBzY29wZXMuIFRo
+ZSAgDQpkYXRhIGJlbG93IHNob3dzIHdoaWNoIEdvb2dsZSsgQVBJIG1ldGhvZHMgeW91ciBwcm9q
+ZWN0cyBoYXZlIHJlY2VudGx5ICANCmNhbGxlZCwgYXMgd2VsbCBhcyBHb29nbGUrIE9BdXRoIHNj
+b3BlcyBpdCBoYXMgcmVxdWVzdGVkLg0KDQpOb3RlOiBJZiB5b3Ugc2VlIGNhbGxzIHRvIHBlb3Bs
+ZS5nZXQgLCB0aGVzZSBjYW4gYmUgdGhlIHJlc3VsdCBvZiB1c2luZyB0aGUgIA0KR29vZ2xlKyBT
+aWduLUluIGZlYXR1cmUgaW4geW91ciBhcHBsaWNhdGlvbiwgd2hpY2ggaXMgbm93IGZ1bGx5IGRl
+cHJlY2F0ZWQgIA0KYW5kIGlzIGJlaW5nIHNodXQgZG93bi4gRGV2ZWxvcGVycyBzaG91bGQgbWln
+cmF0ZSBmcm9tIHRoZSBHb29nbGUrIFNpZ24tSW4gIA0KZmVhdHVyZSB0byB0aGUgbW9yZSBjb21w
+cmVoZW5zaXZlIEdvb2dsZSBTaWduLWluIGF1dGhlbnRpY2F0aW9uIHN5c3RlbS4NCg0KDQpQcm9q
+ZWN0IEdvb2dsZSsgQVBJIE5hbWUgVmVyc2lvbiBNZXHerman2Qgb3IgT0F1dGggU2NvcGUNCg0KR0FN
+IE5vbnByb2QgKGdhbS1ub25wcm9kKSBPQXV0aCBOL0EgcGx1cy5tZQ0KDQoNCkFueXRoaW5nIGVs
+c2UgdG8ga25vdz8NCg0KR29vZ2xlKyBpbnRlZ3JhdGlvbnMgZm9yIHdlYiBvciBtb2JpbGUgYXBw
+cyBhcmUgYWxzbyBiZWluZyBzaHV0IGRvd24uICANClBsZWFzZSBzZWUgdGhpcyBhZGRpdGlvbmFs
+IG5vdGljZS4NCg0KVGhhbmtzIGZvciBiZWluZyBhIHZhbHVlZCBHb29nbGUrIERldmVsb3Blci4N
+Cg0KU2luY2VyZWx5LA0KDQpUaGUgR29vZ2xlKyBBUEkgdGVhbQ0KDQoNCldhcyB0aGlzIGluZm9y
+bWF0aW9uIGhlbHBmdWw/DQpZRVMgTk8NCg0KDQrCqSAyMDE5IEdvb2dsZSBMTEMgMTYwMCBBbXBo
+aXRoZWF0cmUgUGFya3dheSwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDMNCg0KWW91IGhhdmUgcmVj
+ZWl2ZWQgdGhpcyBtYW5kYXRvcnkgc2VydmljZSBhbm5vdW5jZW1lbnQgdG8gdXBkYXRlIHlvdSBh
+Ym91dCAgDQppbXBvcnRhbnQgY2hhbmdlcyB0byBHb29nbGUgc2VydmljZXMgeW91IHVzZS4NCg0K
+--0000000000005b5ed605809ad2c2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!-- This contains CSS info, starts the body, and inserts the Google logo h=
+eader -->
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> </span>
+<div style=3D"padding-top: 22px; padding-bottom: 8px; border-bottom-style: =
+solid; border-bottom-color: #dcdcdc; border-bottom-width: 1px" width=3D"100=
+%"><span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; =
+color: #000000;"><img alt=3D"Google logo" border=3D"0" src=3D"http://servic=
+es.google.com/fh/files/emails/logo_lockup_google_developers_horizontal_colo=
+r.png" style=3D"display: block;" title=3D"Google" width=3D"360"> </span></d=
+iv>
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> <!-- This is the beginning of the subject --> </span>
+<!-- Include the Pre-header snippet, copy HTML from TEMPLATE SNIPPET ID 916=
+0213 and add the pre-header text-->
+<div style=3D"height:0px; font-size:0px; max-height:0px; min-height: 0px; l=
+ine-height:0px; width: 100%; color: #fff; display:none;">Please update your=
+ projects so they no longer use Google+ APIs by March 7, 2019.</div>
+<!-- Please INSERT the relevant Customer Comm BODY snippet -->
+<p>Hello Google+ Developer,</p>
+
+<p>The email below contains your most recent usage of Google+ APIs.<strong>=
+ Note: It includes Google+ OAuth scope requests, which are also affected by=
+ the Google+ shutdown</strong>. A prior email sent to active API callers di=
+d not include information about OAuth requests. One final reminder email wi=
+ll be sent in February to users who still have active API or OAuth request =
+activity.</p>
+
+<h3>What do I need to know?</h3>
+
+<p>On March 7, 2019, all Google+ APIs and Google+ Sign-in will be shut down=
+ completely. This will be a progressive shutdown, with API calls starting t=
+o intermittently fail as early as January 28, 2019, and OAuth requests for =
+Google+ scopes starting to intermittently fail as early as February 15, 201=
+9.</p>
+
+<h3>What do I need to do?</h3>
+
+<p>Please update your projects listed below by March 7, 2019 and ensure the=
+y are no longer using Google+ APIs, or requesting Google+ OAuth scopes. The=
+ data below shows which Google+ API methods your projects have recently cal=
+led, as well as Google+ OAuth scopes it has requested.</p>
+
+<p><strong>Note:</strong> If you see calls to <code>people.get</code>, thes=
+e can be the result of using the <a href=3D"https://www.google.com/appserve=
+/mkt/p/AHANi0aFN-WcY4TvCO5e1mdYl7h0EmzgRtCWyL_XpNITGZy2RGtKM-B_DSw6EIxfgXZI=
+TqXCJxsP4DGNRhD8IhlXbT9ZyGVlSDwc3s_2H2c" target=3D"_blank">Google+ Sign-In =
+feature</a> in your application, which is now fully deprecated and is being=
+ shut down. Developers should migrate from the Google+ Sign-In feature to t=
+he more comprehensive <a href=3D"https://www.google.com/appserve/mkt/p/AHAN=
+i0aVz8vH7zyMqIdH1rWKkNZolZ5wJLBAhofI6FZZsf0hveDt1PZ1dPE-fvMdRkqfkOtNW5Fu9O6=
+zsAy6pVe9JWnFTdYvfmsc_Q" target=3D"_blank">Google Sign-in</a> authenticatio=
+n system.</p>
+
+
+<table align=3D"center" cellpadding=3D"5" width=3D"85%">
+  <tbody>
+    <tr style=3D"border-color: #2979ff; background-color: #2979ff; color: #=
+ffffff; text-align: center;">
+      <td style=3D"border-collapse: collapse; border: solid #e0e0e0 1px; te=
+xt-align: center; font-family:Hermanoto, arial; font-size:14px;"><strong>Proje=
+ct</strong></td>
+      <td style=3D"border-collapse: collapse; border: solid #e0e0e0 1px; te=
+xt-align: center; font-family:Hermanoto, arial; font-size:14px;"><strong>Googl=
+e+ API Name</strong></td>
+      <td style=3D"border-collapse: collapse; border: solid #e0e0e0 1px; te=
+xt-align: center; font-family:Hermanoto, arial; font-size:14px;"><strong>Versi=
+on</strong></td>
+      <td style=3D"border-collapse: collapse; border: solid #e0e0e0 1px; te=
+xt-align: center; font-family:Hermanoto, arial; font-size:14px;"><strong>Metho=
+d or OAuth Scope</strong></td>
+    </tr>
+        <tr style=3D"text-align: left;">
+      <td style=3D"border: solid #e0e0e0 1px; text-align: center; font-fami=
+ly:Hermanoto, arial; font-size:14px;"><a href=3D"https://www.google.com/appser=
+ve/mkt/p/AHANi0Zwf89CpywFjTUrJdJ7YLI1Q9siNA18PYIZp4v6M8qxImloXzvLQ-pzd9T4W8=
+CZbrwUxwnxpNQOauBsWTQnZ8dpDC8JxfsYmlKSXU-CaXFN81lXLi46yiU1Rw" target=3D"_bl=
+ank">GAM Nonprod (gam-nonprod)</a></td>
+      <td style=3D"border: solid #e0e0e0 1px; text-align: center; font-fami=
+ly:Hermanoto, arial; font-size:14px;">OAuth</td>
+      <td style=3D"border: solid #e0e0e0 1px; text-align: center; font-fami=
+ly:Hermanoto, arial; font-size:14px;">N/A</td>
+      <td style=3D"border: solid #e0e0e0 1px; text-align: center; font-fami=
+ly:Hermanoto, arial; font-size:14px;"><a rel=3D"nofollow" style=3D"text-decora=
+tion:none;">plus.me</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Anything else to know?</h3>
+
+<p>Google+ integrations for <a href=3D"https://www.google.com/appserve/mkt/=
+p/AHANi0a78jn9McgBSUpvwhru7jrSa8ootChiVoWBwlXBgaS3TK2k3SqibSaVRgABU_HZQTjAr=
+IanD0qnxSFsBH0suvmXWvJePg" target=3D"_blank">web</a> or <a href=3D"https://=
+www.google.com/appserve/mkt/p/AHANi0bJAR859Fyc3qBlYryoQwAhFUSmhTsHH8RM2sNRe=
+CsnherDyeBjLmXh9SVNmmgBZJv8ASXN_LTrw12qGdb4lvojiRwmjebvgLvUjav2JKOO" target=
+=3D"_blank">mobile apps</a> are also being shut down. Please see this <a hr=
+ef=3D"http://www.google.com/appserve/mkt/p/AHANi0ZVaqwTkU61VawZYDiXqnEUgG7b=
+lW36qjo1VFvvclayOx0waSeJ6rNpAmhJJn-DTP-A29nXBfm4_-gGDESpsO_z3rg6PT25jQRg4eS=
+UKfxS1ggS9Rg" target=3D"_blank">additional notice</a>.</p>
+
+<p>Thanks for being a valued Google+ Developer.</p>
+
+<p>Sincerely,</p>
+
+<p>The Google+ API team</p>
+
+<!-- Include the Customer feedback form snippet, copy HTML from TEMPLATE SN=
+IPPET ID 7501725 and add relevant links -->
+<div style=3D"color: #666666; padding-top: 8px; border-top-style: solid; bo=
+rder-top-color: #dcdcdc; border-top-width: 1px">
+  <p>Was this information helpful?</p>
+  <a href=3D"https://www.google.com/appserve/mkt/p/AHANi0YbYLZrP7V2-02lMHFY=
+VwIky9C_YA8O6oy_JE_rEnQ_2rwLoGePKiL-SVEBfWloP0cszZdPoIZQO47hUAKZsPwKxK1fcfl=
+MdHtkhZX1v4b4qkvpSCILFVb2Ir8GX3RabJMmT6GwYNn5I5sYPb3C30n5K1Ih8_J_T83ftQMC1P=
+purFLeW7Vc3MWzGWc" target=3D"_blank">YES</a> =C2=A0 <a href=3D"https://www.=
+google.com/appserve/mkt/p/AHANi0ZBxH06qOIRhX2JXee744Pw-Lc90-fJgZKQ5BCs9gP1D=
+2VWLpYJS44sTWgnhG-4zXGGAz9Fm-xlWNev-vshuOLJxpyxUznMDG9C25WqrA2aJI4wva6iH2uN=
+5kJocgd7EPP2zaMEBH_d9ZryEvphnlC9WkBZ8fO3lcr9TwDbgJGgksatsktX6HHAJQ" target=
+=3D"_blank">NO</a><br>
+  =C2=A0</div>
+
+<!-- Finally, include the standard footer. This also ends the body -->
+<div style=3D"font-size: 10px; color: #666666; padding-top: 8px; border-top=
+-style: solid; border-top-color: #dcdcdc; border-top-width: 1px">
+  <p>=C2=A9 2019 Google LLC 1600 Amphitheatre Parkway, Mountain View, CA 94=
+043</p>
+
+  <p>You have received this mandatory service announcement to update you ab=
+out important changes to Google services you use.</p>
+</div>
+<img height=3D"1" width=3D"3" src=3D"https://www.google.com/appserve/mkt/im=
+g/AHANi0ZbGw-fy9lyPPHdemvur-yvHzVebHwetZKVrnMdvkc.gif">
+--0000000000005b5ed605809ad2c2--

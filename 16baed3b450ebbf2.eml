@@ -1,0 +1,389 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:6455:0:0:0:0:0 with SMTP id n21csp3079286ltf;
+        Mon, 1 Jul 2019 11:37:18 -0700 (PDT)
+X-Received: by 2002:a6b:e309:: with SMTP id u9mr11566472ioc.262.1562006238481;
+        Mon, 01 Jul 2019 11:37:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562006238; cv=none;
+        d=google.com; s=arc-20160816;
+        b=c/AeZ7ZWOjKPDAVyWV5CbsOOJYbKYZ89qUUB0RfA2jXT0q7P5+GPcNnpm2Fcsyh/VN
+         vKy/bRRNpsXfUhHRlZPa1y5SoV7xdKHDOn0Vse6hhmVrC7/daxkgNElvWaJEYX0nSk0j
+         EXy/B637llKak0mKibza4R2+hjj2zHmBEfB0dd9XsQGMyl9sRzWV/MMxb9l/CAiTIzuk
+         rhlriZS/8uw7CCa/KVXz9A4031r7lPwYH6q3AyTxNIr1srPRguZPTtocQYhl7cWuwttC
+         hCWMRpaMe7pHD84+IDsR2xIK97DwlQszj78J3qz7EBBMmaL+hlGL3GobYdhVvpa2VEVT
+         vwhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=twaKKU9IxucesGzILVtWNr7UuBAyeESsDyt3toWrwrc=;
+        b=pAACNSzfWy9CG4CcreLVQ3/M1x0izeF+CEIij7uhwUD9NKugk87Y1LjgE2Ejfb1XIy
+         5Qkem2SUKHdVxwVvQYu9jxw+Z+p/UkSwgI02NQryX/3lmN0OKQ6xRnP8dLA4G2Pvf11w
+         ctTE7AeCBwhuQN3oaLM1AoExSuMwTQmgvpPrqDzyFdWwgfji6PEbCNI/pHOEWd/j9OU3
+         24nBgoyd/jURsNMGYkHm61C7mRUXZiYR6JqnfXb1IcNaeayPkWcUuK1XyYrqArHFf7Xr
+         SIiaz1VIfxxwNka3/k5eUNVpfEzJHZI3FhVvCWRjLixpRTCTFW1sI3h1t4rMBqdCCuMr
+         XQXA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=U8JXy0VK;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <hermane@umich.edu>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p1sor8047791ioh.89.2019.07.01.11.37.18
+        for <hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Mon, 01 Jul 2019 11:37:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=U8JXy0VK;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=umich.edu; s=google-2016-06-03;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=twaKKU9IxucesGzILVtWNr7UuBAyeESsDyt3toWrwrc=;
+        b=U8JXy0VKrhv3Z4JO9t1HIaAtL6A0gCFD7Jf3WcxOLTsI3pwwHX0UP4ZZKaPSHxtANj
+         UPsNlJV7jzCq7/vEJKT9srShIBdY9fisYN09kkmjDbIP/i4eln8mNMdX4XIJ14r6w+38
+         o+Y9B14EaytIpf9MY0USr7Vezh5Z5iWEdzuAl62xkMpNodbmhcAssRrfTE4WDgc//Tkl
+         Hu4ItgQwVaD68S7EfpLNSCm/AAzLTqV6Wo9kRAtOrogs2qIjDgexQ89LMebgVUQg0IW6
+         kt5ZI2FiGeFEKL37OFfhfe9+3vq2gCW5NDyvC6wDpEak/l76rvbxjIZbY3WdQ/bH7Z/f
+         FgwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=twaKKU9IxucesGzILVtWNr7UuBAyeESsDyt3toWrwrc=;
+        b=GJ5tjvXl6AQzfYwppH3NR2cDVRW28oGJ6IURM6nvtuu68GvxnepuhcXNaic5VXTxAH
+         rNzZKJUbxuZpgIT7wBBCxpyOU/FrMZLlA9w89/o6dH0kx6s8wNxumN3SsmNsU35LBiFa
+         WtBhIkLH8js0zuGLzTZDykbXk3tYQYOu5SSDjJpU/UBAste9cnkju/ONHhbGfoG2wGIX
+         fv6fuf1HSCHBcBZSezjUYFtKDloqxcDugw321hkMyY+QPQTXPgV6Jc8wiPsg4EFRHOw0
+         XlMl/Aw9XZ1F1do8MErLx5mzcWY11NgQaBPB6upLOSSSvB2mazgfyrSA5AgTi7rHTsZY
+         i9lQ==
+X-Gm-Message-State: APjAAAUrDSQDuwTBTuQmEhJ2eo1dUlY0fB/cUNsHNl/MYh1q57k7VoCK
+	4g6w0Gk9CdpZ2hwrPp/qgo7N+ObaTLaMVryDulG41GDu83o=
+X-Google-Smtp-Source: APXvYqwLl1bvT7QW959hwGMHutyEZ4zwRcZ+NO0z5DxDCwlUy6PZyjpEXVZCIcCZ9wjyzz8fD76Nh/lnetDOzHFfMG0=
+X-Received: by 2002:a05:6602:2256:: with SMTP id o22mr26289632ioo.95.1562006237175;
+ Mon, 01 Jul 2019 11:37:17 -0700 (PDT)
+MIME-Version: 1.0
+References: <0000000000000359960583989751@google.com>
+In-Reply-To: <0000000000000359960583989751@google.com>
+From: Herman Elpdesk <hermane@umich.edu>
+Date: Mon, 1 Jul 2019 14:36:40 -0400
+Message-ID: <CAKvLTfZimLDc13EQadKf4FrpA6+0fwuuSUfVE7TwAO8P8kELAQ@mail.gmail.com>
+Subject: Fwd: Invitation: MEETING: Michigan / Google Touchbase @ Monthly from
+ 14:00 to 14:50 on the third Wednesday (EST) (Herman Elpdesk)
+To: hermane@collab.its.umich.edu
+Content-Type: multipart/mixed; boundary="000000000000e8c855058ca2ea1f"
+
+--000000000000e8c855058ca2ea1f
+Content-Type: multipart/alternative; boundary="000000000000e8c850058ca2ea1d"
+
+--000000000000e8c850058ca2ea1d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+---------- Forwarded message ---------
+From: brian cors <bcors@umich.edu>
+Date: Fri, Mar 8, 2019 at 12:31 PM
+Subject: Invitation: MEETING: Michigan / Google Touchbase @ Monthly from
+14:00 to 14:50 on the third Wednesday (EST) (Herman Elpdesk)
+To: Anne Goldmann <annegoldmann@google.com>, Jim Caldwell <jimcald@umich.ed=
+u>,
+Eric Fruth <efruth@umich.edu>
+Cc: <hermane@umich.edu>, Madi Atkins <madiatk@umich.edu>
+
+
+more details =C2=BB
+<https://www.google.com/calendar/event?action=3DVIEW&eid=3DdGh2aXNrdjY4ZTQ2=
+aGdiZWducTBiNmM5NDQgY2FybGVza2lAdW1pY2guZWR1&tok=3DMTUjYmNvcnNAdW1pY2guZWR1=
+NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&ctz=3DAmerica%2FNew_=
+York&hl=3Den_GB&es=3D1>
+MEETING: Michigan / Google Touchbase
+MEETING PURPOSE
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+To communicate about:
+
+- Current production issues
+- New and in-progress initiatives
+- General updates from both Google and Michigan
+*When*
+Monthly from 14:00 to 14:50 on the third Wednesday Eastern Time - New York
+
+*Joining info*
+meet.google.com/qpv-khai-ryf
+Or dial: +1 219-281-4454  PIN: 759901472#
+
+*Calendar*
+Herman Elpdesk
+
+*Who*
+=E2=80=A2
+brian cors- organiser
+=E2=80=A2
+Anne Goldmann
+=E2=80=A2
+Jim Caldwell
+=E2=80=A2
+Eric Fruth
+=E2=80=A2
+Herman Elpdesk - optional
+=E2=80=A2
+Madi Atkins - optional
+*Attachments*
+Google Rep Check-in
+<https://docs.google.com/a/umich.edu/document/d/1pYUiekPKl6vxvEMX5Wx_4Ubg0T=
+rUiQLVnHMJwoh1KPc/edit?usp=3Ddrive_web>
+Your attendance is optional.
+
+Going (hermane@umich.edu)?   All events in this series:   *Yes
+<https://www.google.com/calendar/event?action=3DRESPOND&eid=3DdGh2aXNrdjY4Z=
+TQ2aGdiZWducTBiNmM5NDQgY2FybGVza2lAdW1pY2guZWR1&rst=3D1&tok=3DMTUjYmNvcnNAd=
+W1pY2guZWR1NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&ctz=3DAme=
+rica%2FNew_York&hl=3Den_GB&es=3D1>
+- Maybe
+<https://www.google.com/calendar/event?action=3DRESPOND&eid=3DdGh2aXNrdjY4Z=
+TQ2aGdiZWducTBiNmM5NDQgY2FybGVza2lAdW1pY2guZWR1&rst=3D3&tok=3DMTUjYmNvcnNAd=
+W1pY2guZWR1NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&ctz=3DAme=
+rica%2FNew_York&hl=3Den_GB&es=3D1>
+- No
+<https://www.google.com/calendar/event?action=3DRESPOND&eid=3DdGh2aXNrdjY4Z=
+TQ2aGdiZWducTBiNmM5NDQgY2FybGVza2lAdW1pY2guZWR1&rst=3D2&tok=3DMTUjYmNvcnNAd=
+W1pY2guZWR1NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&ctz=3DAme=
+rica%2FNew_York&hl=3Den_GB&es=3D1>*
+    more options =C2=BB
+<https://www.google.com/calendar/event?action=3DVIEW&eid=3DdGh2aXNrdjY4ZTQ2=
+aGdiZWducTBiNmM5NDQgY2FybGVza2lAdW1pY2guZWR1&tok=3DMTUjYmNvcnNAdW1pY2guZWR1=
+NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&ctz=3DAmerica%2FNew_=
+York&hl=3Den_GB&es=3D1>
+
+Invitation from Google Calendar <https://www.google.com/calendar/>
+
+You are receiving this email at the account hermane@umich.edu because you
+are subscribed for invitations on calendar Herman Elpdesk.
+
+To stop receiving these emails, please log in to
+https://www.google.com/calendar/ and change your notification settings for
+this calendar.
+
+Forwarding this invitation could allow any recipient to modify your RSVP
+response. Learn More
+<https://support.google.com/calendar/answer/37135#forwarding>.
+
+
+--=20
+*Herman Elpdesk*
+ITS Collaboration Services
+University of Michigan
+734.764.2777
+
+--000000000000e8c850058ca2ea1d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif;font-size:small;color:#444444"><br></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded messa=
+ge ---------<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">brian=
+ cors</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:bcors@umich.edu">bc=
+ors@umich.edu</a>&gt;</span><br>Date: Fri, Mar 8, 2019 at 12:31 PM<br>Subje=
+ct: Invitation: MEETING: Michigan / Google Touchbase @ Monthly from 14:00 t=
+o 14:50 on the third Wednesday (EST) (Herman Elpdesk)<br>To: Anne Goldmann &l=
+t;<a href=3D"mailto:annegoldmann@google.com">annegoldmann@google.com</a>&gt=
+;, Jim Caldwell &lt;<a href=3D"mailto:jimcald@umich.edu">jimcald@umich.edu<=
+/a>&gt;, Eric Fruth &lt;<a href=3D"mailto:efruth@umich.edu">efruth@umich.ed=
+u</a>&gt;<br>Cc:  &lt;<a href=3D"mailto:hermane@umich.edu">hermane@umich.=
+edu</a>&gt;, Madi Atkins &lt;<a href=3D"mailto:madiatk@umich.edu">madiatk@u=
+mich.edu</a>&gt;<br></div><br><br><span><span style=3D"display:none"></span=
+><span><div><table cellspacing=3D"0" cellpadding=3D"8" border=3D"0" summary=
+=3D"" style=3D"width:100%;font-family:Arial,Sans-serif;border:1px Solid #cc=
+c;border-width:1px 2px 2px 1px;background-color:#fff"><tbody><tr><td><div s=
+tyle=3D"padding:2px"><span></span><div style=3D"float:right;font-weight:bol=
+d;font-size:13px"> <a href=3D"https://www.google.com/calendar/event?action=
+=3DVIEW&amp;eid=3DdGh2aXNrdjY4ZTQ2aGdiZWducTBiNmM5NDQgY2FybGVza2lAdW1pY2guZ=
+WR1&amp;tok=3DMTUjYmNvcnNAdW1pY2guZWR1NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmN=
+zE5NjkwOGU2NmFiNA&amp;ctz=3DAmerica%2FNew_York&amp;hl=3Den_GB&amp;es=3D1" s=
+tyle=3D"color:#20c;white-space:nowrap" target=3D"_blank">more details =C2=
+=BB</a><br></div><h3 style=3D"padding:0 0 6px 0;margin:0;font-family:Arial,=
+Sans-serif;font-size:16px;font-weight:bold;color:#222"><span>MEETING: Michi=
+gan / Google Touchbase</span></h3><div style=3D"padding-bottom:15px;font-fa=
+mily:Arial,Sans-serif;font-size:13px;color:#222;white-space:pre-wrap!import=
+ant;white-space:-moz-pre-wrap!important;white-space:-pre-wrap!important;whi=
+te-space:-o-pre-wrap!important;white-space:pre-wrap;word-wrap:break-word"><=
+span>MEETING PURPOSE<br>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>To=
+ communicate about:<p>- Current production issues<br>- New and in-progress =
+initiatives<br>- General updates from both Google and Michigan</p></span></=
+div><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" summary=3D"Even=
+t details"><tbody><tr><td style=3D"padding:0 1em 10px 0;font-family:Arial,S=
+ans-serif;font-size:13px;color:#888;white-space:nowrap" valign=3D"top"><div=
+><i style=3D"font-style:normal">When</i></div></td><td style=3D"padding-bot=
+tom:10px;font-family:Arial,Sans-serif;font-size:13px;color:#222" valign=3D"=
+top">Monthly from 14:00 to 14:50 on the third Wednesday <span style=3D"colo=
+r:#888">Eastern Time - New York</span></td></tr><tr><td style=3D"padding:0 =
+1em 10px 0;font-family:Arial,Sans-serif;font-size:13px;color:#888;white-spa=
+ce:nowrap" valign=3D"top"><div><i style=3D"font-style:normal">Joining info<=
+/i></div></td><td style=3D"padding-bottom:10px;font-family:Arial,Sans-serif=
+;font-size:13px;color:#222" valign=3D"top"><span><span content=3D"meet.goog=
+le.com/qpv-khai-ryf"><span><span content=3D"https://meet.google.com/qpv-kha=
+i-ryf"><span content=3D"GET"><a href=3D"https://meet.google.com/qpv-khai-ry=
+f" style=3D"color:#20c;white-space:nowrap" target=3D"_blank">meet.google.co=
+m/qpv-khai-ryf</a></span></span></span></span></span></td></tr><tr><td styl=
+e=3D"padding:0 1em 10px 0;font-family:Arial,Sans-serif;font-size:13px;color=
+:#888;white-space:nowrap"></td><td><table cellspacing=3D"0" cellpadding=3D"=
+0"><tbody><tr><td style=3D"padding-bottom:10px;font-family:Arial,Sans-serif=
+;font-size:13px;color:#222" valign=3D"top"><span style=3D"color:#888">Or di=
+al: <span>+1 219-281-4454</span><span>=C2=A0 PIN:</span><span> 759901472#</=
+span></span></td></tr></tbody></table></td></tr><tr><td style=3D"padding:0 =
+1em 10px 0;font-family:Arial,Sans-serif;font-size:13px;color:#888;white-spa=
+ce:nowrap" valign=3D"top"><div><i style=3D"font-style:normal">Calendar</i><=
+/div></td><td style=3D"padding-bottom:10px;font-family:Arial,Sans-serif;fon=
+t-size:13px;color:#222" valign=3D"top">Herman Elpdesk</td></tr><tr><td style=
+=3D"padding:0 1em 10px 0;font-family:Arial,Sans-serif;font-size:13px;color:=
+#888;white-space:nowrap" valign=3D"top"><div><i style=3D"font-style:normal"=
+>Who</i></div></td><td style=3D"padding-bottom:10px;font-family:Arial,Sans-=
+serif;font-size:13px;color:#222" valign=3D"top"><table cellspacing=3D"0" ce=
+llpadding=3D"0"><tbody><tr><td style=3D"padding-right:10px;font-family:Aria=
+l,Sans-serif;font-size:13px;color:#222"><span style=3D"font-family:Courier =
+New,monospace">=E2=80=A2</span></td><td style=3D"padding-right:10px;font-fa=
+mily:Arial,Sans-serif;font-size:13px;color:#222"><div><div style=3D"margin:=
+0 0 0.3em 0"><span><span class=3D"notranslate">brian cors</span></span><spa=
+n></span><span style=3D"font-size:11px;color:#888">- organiser</span></div>=
+</div></td></tr><tr><td style=3D"padding-right:10px;font-family:Arial,Sans-=
+serif;font-size:13px;color:#222"><span style=3D"font-family:Courier New,mon=
+ospace">=E2=80=A2</span></td><td style=3D"padding-right:10px;font-family:Ar=
+ial,Sans-serif;font-size:13px;color:#222"><div><div style=3D"margin:0 0 0.3=
+em 0"><span><span class=3D"notranslate">Anne Goldmann</span></span></div></=
+div></td></tr><tr><td style=3D"padding-right:10px;font-family:Arial,Sans-se=
+rif;font-size:13px;color:#222"><span style=3D"font-family:Courier New,monos=
+pace">=E2=80=A2</span></td><td style=3D"padding-right:10px;font-family:Aria=
+l,Sans-serif;font-size:13px;color:#222"><div><div style=3D"margin:0 0 0.3em=
+ 0"><span><span class=3D"notranslate">Jim Caldwell</span></span></div></div=
+></td></tr><tr><td style=3D"padding-right:10px;font-family:Arial,Sans-serif=
+;font-size:13px;color:#222"><span style=3D"font-family:Courier New,monospac=
+e">=E2=80=A2</span></td><td style=3D"padding-right:10px;font-family:Arial,S=
+ans-serif;font-size:13px;color:#222"><div><div style=3D"margin:0 0 0.3em 0"=
+><span><span class=3D"notranslate">Eric Fruth</span></span></div></div></td=
+></tr><tr><td style=3D"padding-right:10px;font-family:Arial,Sans-serif;font=
+-size:13px;color:#222"><span style=3D"font-family:Courier New,monospace">=
+=E2=80=A2</span></td><td style=3D"padding-right:10px;font-family:Arial,Sans=
+-serif;font-size:13px;color:#222"><div><div style=3D"margin:0 0 0.3em 0"><s=
+pan><span class=3D"notranslate">Herman Elpdesk</span></span><span style=3D"fo=
+nt-size:11px;color:#888"> - optional</span></div></div></td></tr><tr><td st=
+yle=3D"padding-right:10px;font-family:Arial,Sans-serif;font-size:13px;color=
+:#222"><span style=3D"font-family:Courier New,monospace">=E2=80=A2</span></=
+td><td style=3D"padding-right:10px;font-family:Arial,Sans-serif;font-size:1=
+3px;color:#222"><div><div style=3D"margin:0 0 0.3em 0"><span><span class=3D=
+"notranslate">Madi Atkins</span></span><span style=3D"font-size:11px;color:=
+#888"> - optional</span></div></div></td></tr></tbody></table></td></tr><tr=
+><td style=3D"padding:0 1em 10px 0;font-family:Arial,Sans-serif;font-size:1=
+3px;color:#888;white-space:nowrap" valign=3D"top"><div><i style=3D"font-sty=
+le:normal">Attachments</i></div></td><td style=3D"padding-bottom:10px;font-=
+family:Arial,Sans-serif;font-size:13px;color:#222" valign=3D"top"><table ce=
+llspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"padding-right:10p=
+x;font-family:Arial,Sans-serif;font-size:13px;color:#222"><a href=3D"https:=
+//docs.google.com/a/umich.edu/document/d/1pYUiekPKl6vxvEMX5Wx_4Ubg0TrUiQLVn=
+HMJwoh1KPc/edit?usp=3Ddrive_web" style=3D"color:#20c;white-space:nowrap" ta=
+rget=3D"_blank">Google Rep Check-in</a></td></tr></tbody></table></td></tr>=
+</tbody></table></div><div style=3D"font-family:Arial,Sans-serif;font-size:=
+13px;padding-bottom:10px">Your attendance is <span style=3D"font-weight:bol=
+d">optional</span>.</div><p style=3D"color:#222;font-size:13px;margin:0"><s=
+pan style=3D"color:#888">Going (<a href=3D"mailto:hermane@umich.edu" targe=
+t=3D"_blank">hermane@umich.edu</a>)?=C2=A0=C2=A0=C2=A0</span>All events in=
+ this series:=C2=A0=C2=A0=C2=A0<strong><span><span><a href=3D"https://www.g=
+oogle.com/calendar/event?action=3DRESPOND&amp;eid=3DdGh2aXNrdjY4ZTQ2aGdiZWd=
+ucTBiNmM5NDQgY2FybGVza2lAdW1pY2guZWR1&amp;rst=3D1&amp;tok=3DMTUjYmNvcnNAdW1=
+pY2guZWR1NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&amp;ctz=3DA=
+merica%2FNew_York&amp;hl=3Den_GB&amp;es=3D1" style=3D"color:#20c;white-spac=
+e:nowrap" target=3D"_blank">Yes</a></span></span><span style=3D"margin:0 0.=
+4em;font-weight:normal"> - </span><span><span><a href=3D"https://www.google=
+.com/calendar/event?action=3DRESPOND&amp;eid=3DdGh2aXNrdjY4ZTQ2aGdiZWducTBi=
+NmM5NDQgY2FybGVza2lAdW1pY2guZWR1&amp;rst=3D3&amp;tok=3DMTUjYmNvcnNAdW1pY2gu=
+ZWR1NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&amp;ctz=3DAmeric=
+a%2FNew_York&amp;hl=3Den_GB&amp;es=3D1" style=3D"color:#20c;white-space:now=
+rap" target=3D"_blank">Maybe</a></span></span><span style=3D"margin:0 0.4em=
+;font-weight:normal"> - </span><span><span><a href=3D"https://www.google.co=
+m/calendar/event?action=3DRESPOND&amp;eid=3DdGh2aXNrdjY4ZTQ2aGdiZWducTBiNmM=
+5NDQgY2FybGVza2lAdW1pY2guZWR1&amp;rst=3D2&amp;tok=3DMTUjYmNvcnNAdW1pY2guZWR=
+1NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&amp;ctz=3DAmerica%2=
+FNew_York&amp;hl=3Den_GB&amp;es=3D1" style=3D"color:#20c;white-space:nowrap=
+" target=3D"_blank">No</a></span></span></strong>=C2=A0=C2=A0=C2=A0=C2=A0<a=
+ href=3D"https://www.google.com/calendar/event?action=3DVIEW&amp;eid=3DdGh2=
+aXNrdjY4ZTQ2aGdiZWducTBiNmM5NDQgY2FybGVza2lAdW1pY2guZWR1&amp;tok=3DMTUjYmNv=
+cnNAdW1pY2guZWR1NWIwN2E1OTFiNGYyYjBhYTI3Y2NmZWRmMDRmNzE5NjkwOGU2NmFiNA&amp;=
+ctz=3DAmerica%2FNew_York&amp;hl=3Den_GB&amp;es=3D1" style=3D"color:#20c;whi=
+te-space:nowrap" target=3D"_blank">more options =C2=BB</a></p></td></tr><tr=
+><td style=3D"background-color:#f6f6f6;color:#888;border-top:1px Solid #ccc=
+;font-family:Arial,Sans-serif;font-size:11px"><p>Invitation from <a href=3D=
+"https://www.google.com/calendar/" target=3D"_blank">Google Calendar</a></p=
+><p>You are receiving this email at the account <a href=3D"mailto:hermane@=
+umich.edu" target=3D"_blank">hermane@umich.edu</a> because you are subscri=
+bed for invitations on calendar Herman Elpdesk.</p><p>To stop receiving these=
+ emails, please log in to <a href=3D"https://www.google.com/calendar/" targ=
+et=3D"_blank">https://www.google.com/calendar/</a> and change your notifica=
+tion settings for this calendar.</p><p>Forwarding this invitation could all=
+ow any recipient to modify your RSVP response. <a href=3D"https://support.g=
+oogle.com/calendar/answer/37135#forwarding" target=3D"_blank">Learn More</a=
+>.</p></td></tr></tbody></table></div></span></span></div><br clear=3D"all"=
+><div><br></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" data-smar=
+tmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><font=
+ color=3D"#444444" face=3D"times new roman, serif"><b>Herman Elpdesk</b><br>I=
+TS Collaboration Services<br>University of Michigan<br>734.764.2777</font><=
+/div></div></div></div></div></div>
+
+--000000000000e8c850058ca2ea1d--
+--000000000000e8c855058ca2ea1f
+Content-Type: application/ics; name="invite.ics"
+Content-Disposition: attachment; filename="invite.ics"
+Content-Transfer-Encoding: base64
+Content-ID: <16baed30444475802341>
+X-Attachment-Id: 16baed30444475802341
+
+QkVHSU46VkNBTEVOREFSDQpQUk9ESUQ6LS8vR29vZ2xlIEluYy8vR29vZ2xlIENhbGVuZGFyIDcw
+LjkwNTQvL0VODQpWRVJTSU9OOjIuMA0KQ0FMU0NBTEU6R1JFR09SSUFODQpNRVRIT0Q6UkVRVUVT
+VA0KQkVHSU46VlRJTUVaT05FDQpUWklEOkFtZXJpY2EvRGV0cm9pdA0KWC1MSUMtTE9DQVRJT046
+QW1lcmljYS9EZXRyb2l0DQpCRUdJTjpEQVlMSUdIVA0KVFpPRkZTRVRGUk9NOi0wNTAwDQpUWk9G
+RlNFVFRPOi0wNDAwDQpUWk5BTUU6RURUDQpEVFNUQVJUOjE5NzAwMzA4VDAyMDAwMA0KUlJVTEU6
+RlJFUT1ZRUFSTFk7QllNT05USD0zO0JZREFZPTJTVQ0KRU5EOkRBWUxJR0hUDQpCRUdJTjpTVEFO
+REFSRA0KVFpPRkZTRVRGUk9NOi0wNDAwDQpUWk9GRlNFVFRPOi0wNTAwDQpUWk5BTUU6RVNUDQpE
+VFNUQVJUOjE5NzAxMTAxVDAyMDAwMA0KUlJVTEU6RlJFUT1ZRUFSTFk7QllNT05USD0xMTtCWURB
+WT0xU1UNCkVORDpTVEFOREFSRA0KRU5EOlZUSU1FWk9ORQ0KQkVHSU46VkVWRU5UDQpEVFNUQVJU
+O1RaSUQ9QW1lcmljYS9EZXRyb2l0OjIwMTkwMjIwVDE0MDAwMA0KRFRFTkQ7VFpJRD1BbWVyaWNh
+L0RldHJvaXQ6MjAxOTAyMjBUMTQ1MDAwDQpSUlVMRTpGUkVRPU1PTlRITFk7QllEQVk9M1dFDQpE
+VFNUQU1QOjIwMTkwMzA4VDE3MzExNVoNCk9SR0FOSVpFUjtDTj1icmlhbiBjb3JzOm1haWx0bzpi
+Y29yc0B1bWljaC5lZHUNClVJRDp0aHZpc2t2NjhlNDZoZ2JlZ25xMGI2Yzk0NEBnb29nbGUuY29t
+DQpBVFRFTkRFRTtDVVRZUEU9SU5ESVZJRFVBTDtST0xFPU9QVC1QQVJUSUNJUEFOVDtQQVJUU1RB
+VD1ORUVEUy1BQ1RJT047UlNWUD0NCiBUUlVFO0NOPVJvYiBDYXJsZXNraTtYLU5VTS1HVUVTVFM9
+MDptYWlsdG86Y2FybGVza2lAdW1pY2guZWR1DQpBVFRFTkRFRTtDVVRZUEU9SU5ESVZJRFVBTDtS
+T0xFPVJFUS1QQVJUSUNJUEFOVDtQQVJUU1RBVD1BQ0NFUFRFRDtSU1ZQPVRSVUUNCiA7Q049YnJp
+YW4gY29ycztYLU5VTS1HVUVTVFM9MDptYWlsdG86YmNvcnNAdW1pY2guZWR1DQpBVFRFTkRFRTtD
+VVRZUEU9SU5ESVZJRFVBTDtST0xFPU9QVC1QQVJUSUNJUEFOVDtQQVJUU1RBVD1BQ0NFUFRFRDtS
+U1ZQPVRSVUUNCiA7Q049TWFkaSBBdGtpbnM7WC1OVU0tR1VFU1RTPTA6bWFpbHRvOm1hZGlhdGtA
+dW1pY2guZWR1DQpBVFRFTkRFRTtDVVRZUEU9SU5ESVZJRFVBTDtST0xFPVJFUS1QQVJUSUNJUEFO
+VDtQQVJUU1RBVD1ORUVEUy1BQ1RJT047UlNWUD0NCiBUUlVFO0NOPUFubmUgR29sZG1hbm47WC1O
+VU0tR1VFU1RTPTA6bWFpbHRvOmFubmVnb2xkbWFubkBnb29nbGUuY29tDQpBVFRFTkRFRTtDVVRZ
+UEU9SU5ESVZJRFVBTDtST0xFPVJFUS1QQVJUSUNJUEFOVDtQQVJUU1RBVD1BQ0NFUFRFRDtSU1ZQ
+PVRSVUUNCiA7Q049SmltIENhbGR3ZWxsO1gtTlVNLUdVRVNUUz0wOm1haWx0bzpqaW1jYWxkQHVt
+aWNoLmVkdQ0KQVRURU5ERUU7Q1VUWVBFPUlORElWSURVQUw7Uk9MRT1SRVEtUEFSVElDSVBBTlQ7
+UEFSVFNUQVQ9QUNDRVBURUQ7UlNWUD1UUlVFDQogO0NOPUVyaWMgRnJ1dGg7WC1OVU0tR1VFU1RT
+PTA6bWFpbHRvOmVmcnV0aEB1bWljaC5lZHUNCkNSRUFURUQ6MjAxODA4MjFUMTQzODEwWg0KREVT
+Q1JJUFRJT046TUVFVElORyBQVVJQT1NFXG49PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09XG5UbyBjDQogb21tdW5pY2F0ZSBhYm91dDpcblxuLSBDdXJyZW50IHByb2R1Y3Rp
+b24gaXNzdWVzXG4tIE5ldyBhbmQgaW4tcHJvZ3Jlc3MgaW5pDQogdGlhdGl2ZXNcbi0gR2VuZXJh
+bCB1cGRhdGVzIGZyb20gYm90aCBHb29nbGUgYW5kIE1pY2hpZ2FuXG5cbi06On46fjo6fjp+On46
+DQogfjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46fjp+On46
+fjp+On46fjp+On46On46fjo6LVxuDQogUGxlYXNlIGRvIG5vdCBlZGl0IHRoaXMgc2VjdGlvbiBv
+ZiB0aGUgZGVzY3JpcHRpb24uXG5cblRoaXMgZXZlbnQgaGFzIGEgdmlkDQogZW8gY2FsbC5cbkpv
+aW46IGh0dHBzOi8vbWVldC5nb29nbGUuY29tL3Fwdi1raGFpLXJ5ZlxuKzEgMjE5LTI4MS00NDU0
+IFBJTjogDQogNzU5OTAxNDcyI1xuXG5WaWV3IHlvdXIgZXZlbnQgYXQgaHR0cHM6Ly93d3cuZ29v
+Z2xlLmNvbS9jYWxlbmRhci9ldmVudD9hY3RpDQogb249VklFVyZlaWQ9ZEdoMmFYTnJkalk0WlRR
+MmFHZGlaV2R1Y1RCaU5tTTVORFFnWTJGeWJHVnphMmxBZFcxcFkyZ3VaV1IxJnRvDQogaz1NVFVq
+WW1OdmNuTkFkVzFwWTJndVpXUjFOV0l3TjJFMU9URmlOR1l5WWpCaFlUSTNZMk5tWldSbU1EUm1O
+ekU1Tmprd09HVTJODQogbUZpTkEmY3R6PUFtZXJpY2ElMkZOZXdfWW9yayZobD1lbl9HQiZlcz0x
+LlxuLTo6fjp+Ojp+On46fjp+On46fjp+On46fjp+On46DQogfjp+On46fjp+On46fjp+On46fjp+
+On46fjp+On46fjp+On46fjp+On46fjp+On46fjo6fjp+OjotDQpMQVNULU1PRElGSUVEOjIwMTkw
+MzA4VDE3MzExM1oNCkxPQ0FUSU9OOg0KU0VRVUVOQ0U6MQ0KU1RBVFVTOkNPTkZJUk1FRA0KU1VN
+TUFSWTpNRUVUSU5HOiBNaWNoaWdhbiAvIEdvb2dsZSBUb3VjaGJhc2UNClRSQU5TUDpPUEFRVUUN
+CkFUVEFDSDtGSUxFTkFNRT1Hb29nbGUgUmVwIENoZWNrLWluO0ZNVFRZUEU9YXBwbGljYXRpb24v
+dm5kLmdvb2dsZS1hcHBzLmRvYw0KIHVtZW50Omh0dHBzOi8vZG9jcy5nb29nbGUuY29tL2EvdW1p
+Y2guZWR1L2RvY3VtZW50L2QvMXBZVWlla1BLbDZ2eHZFTVg1V3hfNA0KIFViZzBUclVpUUxWbkhN
+SndvaDFLUGMvZWRpdD91c3A9ZHJpdmVfd2ViDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=
+--000000000000e8c855058ca2ea1f--

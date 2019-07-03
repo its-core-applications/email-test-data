@@ -1,0 +1,139 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:6455:0:0:0:0:0 with SMTP id n21csp3090201ltf;
+        Mon, 1 Jul 2019 11:49:27 -0700 (PDT)
+X-Received: by 2002:a6b:cf17:: with SMTP id o23mr29430540ioa.176.1562006966924;
+        Mon, 01 Jul 2019 11:49:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562006966; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zlpxIXgfzllkqtSbYz5shnE3T0HQYPv2CxDvU+XpzLIw5khAKHeJyUpZEJ6G5wjHzu
+         O+EC8xxfaYwMJe+T8Grh7e9WgJ8ZqyD6IMghqSHoBZQk6DjJJlHhBwT4K+pombkdFQWG
+         Ysfze3mL+GqjkjnYY+31Pz06TvPqhzSfCuHxAjuGZSaDyDUDCdW0VnaZwkJ12nVaOKlU
+         9hL5r8yReNQuDHiIOipky+ONmGxq1jIcrNx8aqbgQp9UMAbHXKqK8DeCmdLxWMW1j0xA
+         Gipk1roymFj17DPrnG4+zYE9XDlbB+ogzazT6iNfMrE/5c/g9gP90GvarJEYAsyAnvUr
+         ajOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=K1Qub77ykIF1bgqNNOOf+C0oVvITX729UTIn0JD6CFE=;
+        b=Mre3a4ubQiTOcYkWxZ3ipxWb9ejtM6VSJk598kkS+blRakaPtWM3569e3vF6MT3a+u
+         sUnrjU2QQZvCo5u6cWHXBdN2ITX5Q5ip5Kl/7K+76aLR31MkGmwj2KZLXLngA8uwYLw0
+         eEfUHUhlaxt7O/hX74xRLIf3RvAuveuCjeG2+tms6HOtiLN6a1fY+EPFn8j/G9k9pnKL
+         8w4HKSYa+2daz+1bj1tNak2TUk9H5tWRaRf7DUyPO6QOZFMLuPbMObPjRkQZjwVQarX2
+         xdWejkZL5P+Iz8hiVSjMxluIFQvKL22e+bbQQWpjXy+myex7nMMzuhAyIMuobgk8D6PS
+         QaSQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=o5U6AbtI;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <hermane@umich.edu>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id h145sor8181275iof.56.2019.07.01.11.49.26
+        for <hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Mon, 01 Jul 2019 11:49:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=o5U6AbtI;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=umich.edu; s=google-2016-06-03;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=K1Qub77ykIF1bgqNNOOf+C0oVvITX729UTIn0JD6CFE=;
+        b=o5U6AbtIfjN/P7zW0uhqLx3hHYD/xRDryHgf+M/RuK1iS2/652lDEAeyMSNlzutySD
+         V/DlSXBWtGXNUEUOgJ3+tmIxBgpMe9I74/amu1kaRXpiBeb6UEPGyLe00b4JwBYhS0E9
+         /SSdrbivpeobE80RSPUUAgevKqpo71SGFMag551lrxn0vwLTJK0n/9PEBP1Y3XB41dhr
+         PMheoQiHRmU0jWUnGcLDJv012RqxGP/7xpTBnhEglhzL72x9gNZUycVUUWhCdmU2H5Na
+         roKXJ5KIowgusGv3U2zf6PG1IxtKiNDjg6RVOh3y0nhxzIwdElK99ZAc4HNAMFS2bGCl
+         4jyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=K1Qub77ykIF1bgqNNOOf+C0oVvITX729UTIn0JD6CFE=;
+        b=qzZtXL30Qoh4k0+WlJbYQWrjzqhHqhjHcqmRCn8ruhP1WS2AmRK4mSZfNz64vamhwg
+         QlRcRGNGaPBSW/lzyNg5mBeCRiLxwVu01adJ++kHn+Yt3o7zMmvSLXoLVbziE66SDj6C
+         r/L8ccp5nPeJ9ZqqT6FdmU9vBnNKHGNSs+VPdltM6L11GSMQwB91laSUMzF/OBcj9VAj
+         N9Z++Hbl33rQN0g5Z0G7YdmBJuJQpoqeOB8ulPbAM7jVLMrAkRmiZksz5+rY4vJ3D6EB
+         1LmwNAMU1WMDnwhGpI06kmEFzBMLb7lRy2UxhlcvMeSlz+fB93TZZAfy8QaA98kfnvoV
+         vX4A==
+X-Gm-Message-State: APjAAAVI9aUTHy6rEVpgex4QxB21cKy1/rz8Fi7QruAK1SlVjiISRSb1
+	HnxeX3LMaH3ag0IsVGNV7llWsOdTxgtSInrNmU0tB1t/gz8=
+X-Google-Smtp-Source: APXvYqz3dfv29Bp+WVzDkWZ9uSWy0ofsk7rfBpnkTCS4i4E0piLvRLxrHSwxiO5Gg4KcJ8oip1pGvE1Q5G/yVLpAlIw=
+X-Received: by 2002:a6b:b804:: with SMTP id i4mr27009419iof.119.1562006966064;
+ Mon, 01 Jul 2019 11:49:26 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAKvLTfbiGyPzBfBimznxBKpXRRYLPprOVWgY6a71gH-Q67fByw@mail.gmail.com>
+In-Reply-To: <CAKvLTfbiGyPzBfBimznxBKpXRRYLPprOVWgY6a71gH-Q67fByw@mail.gmail.com>
+From: Herman Elpdesk <hermane@umich.edu>
+Date: Mon, 1 Jul 2019 14:48:49 -0400
+Message-ID: <CAKvLTfa0mhiAedkeZyLEqxhwD22a01bU=1v0_iCgFqAoF-X41g@mail.gmail.com>
+Subject: Fwd: GitLab Stuff
+To: hermane@collab.its.umich.edu
+Content-Type: multipart/mixed; boundary="0000000000005986b3058ca316ee"
+
+--0000000000005986b3058ca316ee
+Content-Type: multipart/alternative; boundary="0000000000005986b0058ca316ec"
+
+--0000000000005986b0058ca316ec
+Content-Type: text/plain; charset="UTF-8"
+
+---------- Forwarded message ---------
+From: Herman Elpdesk <hermane@umich.edu>
+Date: Wed, Sep 5, 2018 at 2:27 PM
+Subject: GitLab Stuff
+To: Irwin Estes <estesi@umich.edu>
+
+
+boop
+
+-- 
+*Herman Elpdesk*
+ITS Application Delivery Support
+University of Michigan
+734.764.2777
+
+
+-- 
+*Herman Elpdesk*
+ITS Collaboration Services
+University of Michigan
+734.764.2777
+
+--0000000000005986b0058ca316ec
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif;font-size:small;color:#444444"><br></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">---------- Forwarded messa=
+ge ---------<br>From: <strong class=3D"gmail_sendername" dir=3D"auto">Herman C=
+arleski</strong> <span dir=3D"auto">&lt;<a href=3D"mailto:hermane@umich.ed=
+u">hermane@umich.edu</a>&gt;</span><br>Date: Wed, Sep 5, 2018 at 2:27 PM<b=
+r>Subject: GitLab Stuff<br>To: Irwin Estes &lt;<a href=3D"mailto:estesi@umi=
+ch.edu">estesi@umich.edu</a>&gt;<br></div><br><br><div dir=3D"ltr"><div sty=
+le=3D"font-family:times new roman,serif;font-size:small;color:#444444">boop=
+</div><div><br></div>-- <br><div dir=3D"ltr" class=3D"m_6298172698333380309=
+gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><=
+font color=3D"#444444" face=3D"times new roman, serif"><b>Herman Elpdesk</b><=
+br>ITS Application Delivery Support<br>University of Michigan<br>734.764.27=
+77</font></div></div></div></div>
+</div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr" class=3D"gma=
+il_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><div=
+ dir=3D"ltr"><div><font color=3D"#444444" face=3D"times new roman, serif"><=
+b>Herman Elpdesk</b><br>ITS Collaboration Services<br>University of Michigan<=
+br>734.764.2777</font></div></div></div></div></div></div>
+
+--0000000000005986b0058ca316ec--
+--0000000000005986b3058ca316ee
+Content-Type: application/zip; name="gitlab.zip"
+Content-Disposition: attachment; filename="gitlab.zip"
+Content-Transfer-Encoding: base64
+Content-ID: <f_jlph5pm40>
+X-Attachment-Id: f_jlph5pm40
+
+UEsDBAoAAAAAAEuDJU0AAAAAAAAAAAAAAAAMABwAZ2l0bGFiZmlsZXMvVVQJAAOuA5Bb0R6QW3V4
+CwABBOgDAAAE6QMAAFBLAQIeAwoAAAAAAEuDJU0AAAAAAAAAAAAAAAAMABgAAAAAAAAAEAD9QQAA
+AABnaXRsYWJmaWxlcy9VVAUAA64DkFt1eAsAAQToAwAABOkDAABQSwUGAAAAAAEAAQBSAAAARgAA
+AAAA
+--0000000000005986b3058ca316ee--

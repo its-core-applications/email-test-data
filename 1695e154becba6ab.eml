@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp8872952lto;
+        Fri, 8 Mar 2019 08:14:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzG8rOai3xQEqCAvCMs14FhKY+MrgX+TVQAr9ZGVcZucU/CECbLWWscUVwEUJmP3JCKspg3
+X-Received: by 2002:a0d:d705:: with SMTP id z5mr15331318ywd.400.1552061647850;
+        Fri, 08 Mar 2019 08:14:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552061647; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tOc3axBBYtaHJcuCAttgczWmHHGUtwnT7Nassaf+kVDk8uTC/+EsEuztZ9dKw+NUpY
+         1iRutSelfu/qMB9J7A/ZDZu4T1f3oKywPKTqMqouVdn7RlN67V/H0Oo5QBk1s7pXuXaK
+         dm6/Ur3Ht1/xaVdDwkSu+eVyrJ39pbvg+qTDEwACWQZ/KPkuCQgDIDJkDkn27zqJAyL2
+         /erltMiKZL3lnNVnBLfoyd5S/jm7Mx9LT8rNlhTne9VnE7zyZDI7onnbS+WSUym9o20v
+         Er/dltAgUmMiOiGNv7HacwTKoU2lT99zqux+jHNMA9cIqixHJse0+SkYn73GhkUiCsn0
+         TcGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=XPrvbuqorthHxU29Zcr2w6IMpjP7kFpFf4nZm2j3PVo=;
+        b=bTYkjxf8jme2eXmOXz8xURxVRXc2Of6LGO+ePHtSnyBW0iQOb+cJt+KpL1w8/1SZhP
+         1QXOqj6vcBtL6SohEcD4XgkRBGYw+dKBvMnCNzXgbKoe1yIED7RQIwZtcNJSTqtLJlDu
+         v/wkxJHk8280HavCuDzO4Evym/um2+uJwbOLpJudgEsoXi94Yqv4kBm06HxzE87McWwK
+         z3yM62JjPclOkkPgovJOk7vZu6UAYZ7fJV67qND7CLmkqHlJuf7QAcPngO6p2/lkxbJs
+         K3fnYE99FWTSyJ0DHW38W9GuifEdNfx2jo5vGR2ggbzWieI4QsdyTJUXqR70AQ/h8wiG
+         rsag==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=VaX62RZj;
+       spf=pass (google.com: best guess record for domain of jimcald@uselab.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=jimcald@uselab.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <jimcald@uselab.collab.its.umich.edu>
+Received: from tombraider.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.12.86])
+        by mx.google.com with ESMTPS id c10si4977069ybk.146.2019.03.08.08.14.07
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 08:14:07 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of jimcald@uselab.collab.its.umich.edu designates 141.211.12.86 as permitted sender) client-ip=141.211.12.86;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=VaX62RZj;
+       spf=pass (google.com: best guess record for domain of jimcald@uselab.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=jimcald@uselab.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552061647;
+	bh=XPrvbuqorthHxU29Zcr2w6IMpjP7kFpFf4nZm2j3PVo=;
+	h=Date:From:To:Subject;
+	b=VaX62RZj6DqAI6FihfvBrFHhZDYrEAKzmczO3MFZy+Bcoa1USU4DeKIjUxoskp7Cl
+	 Ny68QCjH2UN9zFgcO6iXmJz9EcSUf0kBrlItKGnRIveTikxLSQdizdrX3XwBViADI+
+	 peG4WZvsuhvFdroJDjwKn8kGARclCcN17hxX6rmokwQlJFSI4Z9dXxNTaODmvFlp6g
+	 Tz2l97LHCDNpKl1r7nNC54i01pxSx9XW0hBBeNqx95a7TViC6UAsVayjUOwMG3c4YT
+	 2qYqGpRpiq8cvWN63sFntnhHqmjHCMbbA2fKYvwwY165aTk4ioBe8babKMF5zgmtMP
+	 J/Fd/9NaTE6zA==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By tombraider.mr.itd.umich.edu ID 5C8294CE.AC433.3940;
+	Authuser hermane;
+	Fri, 08 Mar 2019 11:14:06 -0500
+Date: Fri, 8 Mar 2019 16:14:01 +0000
+From: Jim Caldwell <jimcald@uselab.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Test Message 2 from uselab.:wq
+Message-ID: <20190308161401.66agedco3ruvviqk@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+har har, I put wq in the subject line. -_-

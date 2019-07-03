@@ -1,0 +1,180 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:4c67:0:0:0:0:0 with SMTP id r36csp1372632ltg;
+        Tue, 23 Apr 2019 06:15:14 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b="XGS/Wl8I"
+X-Google-Smtp-Source: APXvYqwZXX1DVskKjk/7A/6VCGrUAhZWkLvfYFUwUOkYubsYPElETiNqaLhtXs9M/vnjIb1C8Bi07WzM17IHjq6OZQ==
+X-Received: by 2002:a2e:390c:: with SMTP id g12mr14717631lja.174.1556025314745;
+        Tue, 23 Apr 2019 06:15:14 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Tue, 23 Apr 2019 06:15:14 -0700
+Delivered-To: admin-mgoogle@collab.its.umich.edu
+Received: by 10.176.2.14 with SMTP id 14csp1073051uas;
+        Tue, 18 Apr 2017 06:54:38 -0700 (PDT)
+X-Received: by 10.31.70.134 with SMTP id t128mr11066034vka.175.1492523678394;
+        Tue, 18 Apr 2017 06:54:38 -0700 (PDT)
+Return-Path: <3nRr2WAwKAHgWllo-jknalhuckkcha.Yki@unified-notifications.bounces.google.com>
+Received: from mail-ua0-x247.google.com (mail-ua0-x247.google.com. [2607:f8b0:400c:c08::247])
+        by mx.google.com with ESMTPS id x22si7264312uag.163.2017.04.18.06.54.37
+        for <admin-mgoogle@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 18 Apr 2017 06:54:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3nrr2wawkahgwllo-jknalhuckkcha.yki@unified-notifications.bounces.google.com designates 2607:f8b0:400c:c08::247 as permitted sender) client-ip=2607:f8b0:400c:c08::247;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com;
+       spf=pass (google.com: domain of 3nrr2wawkahgwllo-jknalhuckkcha.yki@unified-notifications.bounces.google.com designates 2607:f8b0:400c:c08::247 as permitted sender) smtp.mailfrom=3nRr2WAwKAHgWllo-jknalhuckkcha.Yki@unified-notifications.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: by mail-ua0-x247.google.com with SMTP id a1so39150221uaf.22
+        for <admin-mgoogle@collab.its.umich.edu>; Tue, 18 Apr 2017 06:54:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:message-id:subject:from:to;
+        bh=9h94nrI2+T5tXZpfzH69Vfkg0rH5jqOV8WahYKGXDAM=;
+        b=XGS/Wl8Iw3w2URTVZCM9IKciaBldm0GaFeitymr615SslKyfy77XXgduV9AF2Jli85
+         BOvoxPlgu1lsOizdXrxeC2ZaInP3VrbOnYyTnMzAAcmsxreKhn8uMTyMCGfZQvgjfScG
+         tE9vf+xDdqR6217gkMuG3PfsB1KCRpPkMC8aoPx/0zkOAFdkCOazyF//c8H2judZbLNL
+         UlJXW1bQmMTXfFxD4I7kEBvPC+ICfxVjRmQIx+V15xN5+mCGII665Z5dZ8zVEOW4ik0s
+         1Pkt9qsrSNrnnVF0i6gRXVNvegR+KsdBSdfeC5rLSu/RKhLxqOr1kENRCf5a6obRU/g4
+         2GAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:message-id:subject:from:to;
+        bh=9h94nrI2+T5tXZpfzH69Vfkg0rH5jqOV8WahYKGXDAM=;
+        b=Oqbb4B26DyQslKuAkcxe0j/XNBB4LJr78Q6H4GQPAAcz9+2rkx+X5FE1kI94qO5/Bo
+         hmY+yK4UQ0BAGPo2YL531oDuUdse6+g8vVwTzuR1SlL9W5arPrUQPylGmH7frx/UyDK4
+         K3b+Copn0LVjTDfuGilD4b2Mr1RjuHicMTYv6C0l0Wqow95q1t5dXK7lnjVali07/Fn1
+         HkCGkLmygQopu2HvK/k90Sd2PcUkfWnV3zSQ5jqygzJidV0wQLcO1z2zxx65XDIYR3W+
+         0wCDPLfCH1BKcXwAxTCcV3MwDbpVfDzfCQd5czxeZqmD6XX7Lb0vKwhRfmJO1v44MWst
+         At7A==
+X-Gm-Message-State: AN3rC/7724jEAr0Ckg+eHxSQ9RDEwoTyG4zvivGKtKRm+6jU1n8VnKQe
+	WywRadzV1G66zDB+ax+iZiqvfGoIbRM=
+MIME-Version: 1.0
+X-Received: by 10.176.4.108 with SMTP id 99mr9254588uav.28.1492523677680; Tue,
+ 18 Apr 2017 06:54:37 -0700 (PDT)
+Date: Tue, 18 Apr 2017 06:54:37 -0700 (PDT)
+X-Notifications: XEAAAAOmw2GGZRO106RjRasFi5RY
+Message-ID: <RQhugVhfj8NUcu0WlETv7w@notifications.google.com>
+Subject: Google Cloud Organization is now available for your domain
+From: Google Apps <apps-noreply@google.com>
+To: admin-mgoogle@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary=001a114ab0a2a08ae1054d713fae
+
+--001a114ab0a2a08ae1054d713fae
+Content-Type: text/plain; charset=UTF-8; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlDQoNCg0KDQoNCg0KV2UgYXJlIGhhcHB5IHRvIGFubm91bmNlIHRoYXQgdGhlIENsb3Vk
+IE9yZ2FuaXphdGlvbiBpcyBub3cgYXZhaWxhYmxlIGZvciAgDQp5b3VyIGRvbWFpbiENCg0KVGhl
+IENsb3VkIE9yZ2FuaXphdGlvbiBhbGxvd3MgR29vZ2xlIENsb3VkIFBsYXRmb3JtIGFkbWlucyB0
+byBjZW50cmFsbHkgIA0KbWFuYWdlIGFsbCB0aGUgQ2xvdWQgUGxhdGZvcm0gcmVzb3VyY2VzIGFz
+c29jaWF0ZWQgd2l0aCB0aGVpciBkb21haW4sIGFwcGx5ICANCklBTSBwb2xpY2llcywgY29uc29s
+aWRhdGUgQmlsbGluZywgYW5kIG11Y2ggbW9yZS4NCg0KWW91IGNhbiBsZWFybiBtb3JlIGFib3V0
+IHRoZSBDbG91ZCBPcmdhbml6YXRpb24gaGVyZSBhbmQgeW91IGNhbiBzdGFydCAgDQp1c2luZyB0
+aGUgQ2xvdWQgT3JnYW5pemF0aW9uIG5vdyBieSBmb2xsb3dpbmcgdGhlIHN0ZXBzIGRlc2NyaWJl
+ZCBpbiBvdXIgIA0KUXVpY2tzdGFydC4NCg0KVGhhbmtzLA0KVGhlIEdvb2dsZSBDbG91ZCBQbGF0
+Zm9ybSBUZWFtDQoNCg0KDQoNCg0KDQpZb3UgaGF2ZSByZWNlaXZlZCB0aGlzIG1hbmRhdG9yeSBl
+bWFpbCBzZXJ2aWNlIGFubm91bmNlbWVudCB0byB1cGRhdGUgeW91ICANCmFib3V0IGltcG9ydGFu
+dCBjaGFuZ2VzIHRvIEdvb2dsZSBDbG91ZCBQbGF0Zm9ybSBvciB5b3VyIGFjY291bnQuDQoNCsKp
+IDIwMTYgR29vZ2xlIEluYy4gMTYwMCBBbXBoaXRoZWF0cmUgUGFya3dheSwgTW91bnRhaW4gVmll
+dywgQ0EgOTQwNDMNCg0KDQoNCg==
+--001a114ab0a2a08ae1054d713fae
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgco=
+lor=3D"#f5f5f5" style=3D"font-family:Arial, Helvetica, sans-serif; font-wei=
+ght:normal; font-size:14px; line-height:19px; color:#444444; border-collaps=
+e:collapse; border: 1px solid #dddddd;">
+  <tr>
+    <td width=3D"4%"></td>
+    <td width=3D"92%">
+      <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" style=3D"font-family:Arial, Helvetica, sans-serif; font-weight:normal; fo=
+nt-size:14px; line-height:19px; color:#444444; border-collapse:collapse;">
+        <tr>
+          <td width=3D"100%" height=3D"30"></td>
+        </tr>
+       <tr>
+          <td width=3D"100%" height=3D"40">
+          <img src=3D"https://www.google.com/support/enterprise/static/imag=
+es/sn_h80.png" height=3D"40" alt=3D"Google" border=3D"0" style=3D"display:b=
+lock;" />=20
+          </td>
+        </tr>
+        <tr>
+          <td width=3D"100%" height=3D"20"></td>
+        </tr>
+      </table>
+    </td>
+    <td width=3D"4%"></td>
+  </tr>
+</table>
+
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgco=
+lor=3D"#ffffff" style=3D"font-family:Arial, Helvetica, sans-serif; font-wei=
+ght:normal; font-size:14px; line-height:19px; color:#444444; border-collaps=
+e:collapse; border-left: 1px solid #dddddd; border-right: 1px solid #dddddd=
+;">
+  <tr>
+    <td width=3D"4%"></td>
+    <td width=3D"92%">
+      <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" style=3D"font-family:Arial, Helvetica, sans-serif; font-weight:normal; fo=
+nt-size:18px; line-height:24px; color:#444444; border-collapse:collapse;">
+        <tr>
+          <td width=3D"100%" height=3D"30"></td>
+        </tr>
+        <tr>
+          <td width=3D"100%" valign=3D"top">
+            <p>We are happy to announce that the <a href=3D"https://cloud.g=
+oogle.com/resource-manager/" target=3D"_blank">Cloud Organization</a> is no=
+w available for your domain!</p>
+            <p>The Cloud Organization allows Google Cloud Platform admins t=
+o centrally manage all the Cloud Platform resources associated with their d=
+omain, apply IAM policies, consolidate Billing, and much more.</p>
+            <p>You can learn more about the Cloud Organization <a href=3D"h=
+ttps://cloud.google.com/resource-manager/" target=3D"_blank">here</a> and y=
+ou can start using the Cloud Organization now by following the steps descri=
+bed in our <a href=3D"https://cloud.google.com/resource-manager/docs/quicks=
+tart" target=3D"_blank">Quickstart</a>.</p>
+            <p>Thanks,<br/>The Google Cloud Platform Team</p>
+          </td>
+        </tr>
+        <tr>
+          <td width=3D"100%" height=3D"20"></td>
+        </tr>
+      </table>
+    <td width=3D"4%"></td>
+  </tr>
+</table>
+
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgco=
+lor=3D"#ffffff" style=3D"font-family:Arial, Helvetica, sans-serif; font-wei=
+ght:normal; font-size:14px; line-height:19px; color:#444444; border-collaps=
+e:collapse; border-top: 1px solid #dddddd;">
+  <tr>
+    <td height=3D"20" colspan=3D"3"></td>
+  </tr>
+  <tr>
+    <td width=3D"4%"></td>
+    <td width=3D"92%" style=3D"text-align:left; color:#666666 !important; f=
+ont-size:11px; line-height:14px;">
+      You have received this mandatory email service announcement to update=
+ you about important changes to Google Cloud Platform or your account.
+      <br/><br/>
+      &copy; 2016 Google Inc. 1600 Amphitheatre Parkway, Mountain View, CA =
+94043
+    </td>
+    <td width=3D"4%"></td>
+  </tr>
+  <tr>
+    <td height=3D"20" colspan=3D"3"></td>
+  </tr>
+</table>
+
+
+
+--001a114ab0a2a08ae1054d713fae--

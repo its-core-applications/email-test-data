@@ -1,0 +1,97 @@
+Delivered-To: hermane@test-apps2.collab.its.umich.edu
+Received: by 2002:a05:6504:58f:0:0:0:0 with SMTP id i15csp693434lto;
+        Thu, 16 May 2019 07:48:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzkAiB3IQUv0vlZJd/tgMobpdFchARaMELpmb/a1V3gAzIFtWBFapwEBCO0S9QmaLmcsZTf
+X-Received: by 2002:a05:660c:1282:: with SMTP id s2mr13108145ita.47.1558018093670;
+        Thu, 16 May 2019 07:48:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558018093; cv=none;
+        d=google.com; s=arc-20160816;
+        b=L6rAMMmVq4pTwL63Kjg0p+YBg/EEqzccXXxSGSetIGhlqRFml1xQb/edwo0F5KDbxd
+         vE9xPwZmAJo7scWWTEgUOPPnF27MHAWoJhenRPuCpyQn07d4YI/gYtHjUPItDhGwyX8z
+         P5d4L2o2nR2pbpZDcJHfB8SPsYpU5sx4I37cO6amejnGD4EaxcpOepBsnLjIXu83YA7s
+         zWsWrp4DSRxU6ev9owtkTm/y9JSWt0+Ydc/4BWXHch6Cr9r1dy4/2Gq9uUbVzlYNSSVb
+         scWymumsKAkhUhehqvzOODq85RCRtLHHJzbMHYCSCGlLemvOUTv6OcUlI4OlJ+KedCky
+         P8Yw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=subject:message-id:date:to:from:dkim-signature;
+        bh=Z1l4r+g00SEAkBXxQ0KXR2en/4r/pFo9pddgUedt8NQ=;
+        b=x47PnHNfkTBs+jKKzGnE1ReozPxg1a3ScV8+NZ7kbEjmB54+n4npiekxL51A8MG255
+         7mmxi/IWM5OpvtPpNFMeYHsmfiEIzhE2qH06f+ZTJlMRM6vHm7eKQD/WQPHEHpWVZBfE
+         1BVbqBcqQZ3M63h6lHh4X5admKMfCJmSiQMqahyx03fN+2yYaz57fPcVWSrp2ahEQhYG
+         nXc9voJlKKk98+0KyOLZgv+c1xfCUUj5zfoWKSUtZihrqOgtlrFzNWnQIN3sQiQDgwrw
+         VHOyYFS9Fxp9bXqSi1Hz74cvEFZx+Bt1b5EiL0q4LMLHaGl4r277Bb47VIh9OnDWzQeV
+         j2UQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=GexS1Wcb;
+       spf=pass (google.com: best guess record for domain of postmaster@28dayslater.mr.itd.umich.edu designates 141.211.125.104 as permitted sender) smtp.helo=28dayslater.mr.itd.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <>
+Received: from 28dayslater.mr.itd.umich.edu (28dayslater.mr.itd.umich.edu. [141.211.125.104])
+        by mx.google.com with ESMTPS id a131si2391258itc.55.2019.05.16.07.48.12
+        for <hermane@test-apps2.collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 16 May 2019 07:48:13 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of postmaster@28dayslater.mr.itd.umich.edu designates 141.211.125.104 as permitted sender) client-ip=141.211.125.104;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=GexS1Wcb;
+       spf=pass (google.com: best guess record for domain of postmaster@28dayslater.mr.itd.umich.edu designates 141.211.125.104 as permitted sender) smtp.helo=28dayslater.mr.itd.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1558018092;
+	bh=Z1l4r+g00SEAkBXxQ0KXR2en/4r/pFo9pddgUedt8NQ=;
+	h=From:To:Date:Subject;
+	b=GexS1WcbcAVCBE+qMXsFEHT8dpGHW/hh++dkKP4EYDMqXm6arQjw7e3HqCqrw0Xki
+	 /TdV3TkD/GL0trVztiFI3l7f6uqYzWmT2QM1SXDfIp5XD16wC6uvDfwrpJ5KlFsPeL
+	 VdL/PoywLBPyT5dRteCdMeJ1U0AgE4Lkez29+VSyQKJSXZi3igE1+hxS67gIi89y2C
+	 cd/x6ioQGLqWnXV+fECqG0znNfYYPP0RtLiaKvqp/noZ2uevm2gBuOEbs1wMlC9rV6
+	 Xirw8n731sUSVPoGslB84UQAYmIIb2nxdY+fAzUi4BfCHRABo8WhH3CeWMNEp/kZKb
+	 WRAa3YoAwpeeA==
+From: <mailer-daemon@28dayslater.mr.itd.umich.edu>
+To: <hermane@test-apps2.collab.its.umich.edu>
+Date: Thu, 16 May 2019 10:48:12 -0400
+Message-ID: <5CDD782C.9D7E4.24122@28dayslater.mr.itd.umich.edu>
+Subject: undeliverable mail
+
+Message delivery failed for one or more recipients, check specific errors below
+
+This message is old and undeliverable.
+
+An error occurred during delivery to host mail.umich.edu.
+
+address hermane@mail.umich.edu
+
+
+Bounced message:
+
+Received: FROM tombraider.mr.itd.umich.edu (smtp.mail.umich.edu [141.211.12.86])
+	By 28dayslater.mr.itd.umich.edu ID 5CD97291.A53E4.19383;
+	Mon, 13 May 2019 09:35:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1557754492;
+	bh=cxkw/dMACaZUpNFsheR7kvZjdrVTnEnOgBtQ2VcLKYw=;
+	h=Date:From:To:Subject;
+	b=XkLLfr4KUqPGDx4/0/Uq9KtKDoqq7nWl+P9yrrX0TCOA+dAbM2Dzczv8kC5XpX7Zq
+	 yUqdIoJEf5hQbEiQpOdKHF4yR9WsladLD1kef3j1XMDq+4UFrGdqshj22Ka9kVrnCK
+	 Ry+S+bwTvB2//i0oDc1jkTdx9KLcKyWcuVEtt2hp5NUaFKDD+tjTeM/9rpBPgRatQI
+	 sttxc0NfBpOOBb04Zi3q1LIe3d9wyRlcECd1jsxyZiAtNXOFdyGu4OoehAav98N9V4
+	 UYrvAu+/iyn9qJkgv9dVXlD+hW+Gw/fuGZVT+3Kml1zzngdlD3FVrFGI0fbpVYXiI3
+	 2x093lNMHzkoQ==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.159.108 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.159.108])
+	By tombraider.mr.itd.umich.edu ID 5CD9727C.38D45.6262;
+	Authuser hermane;
+	Mon, 13 May 2019 09:34:52 -0400
+Date: Mon, 13 May 2019 09:34:44 -0400
+From: Herman Elpdesk <hermane@test-apps2.collab.its.umich.edu>
+To: hermane@mail.umich.edu
+Subject: blah
+Message-ID: <20190513133444.v7spyp4fyw66khs2@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+bleh bleh bleh
+

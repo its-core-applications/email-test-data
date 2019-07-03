@@ -1,0 +1,89 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp9174497lto;
+        Fri, 8 Mar 2019 13:11:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzVcBsH95ksvkrc9opUR6UDLtsPoJvNWhDmxWe9rcdQibcBAxPU0FhildR+NaYVlGcmxjSl
+X-Received: by 2002:a0d:e105:: with SMTP id k5mr15972254ywe.196.1552079467753;
+        Fri, 08 Mar 2019 13:11:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552079467; cv=none;
+        d=google.com; s=arc-20160816;
+        b=i9QwQJewxb9AV5tdk5AAw3vJiiXt0lE8s8xECg5ZgCVq3C3S3rWbLGL98F8hbz2XID
+         3kaBqWD0EdkkjZWfkuuQO7GowmNxA6MQ/7Lg2wisEiXDP0ThRurp9Pt1Q4QSM1PDpmVe
+         YbmlDZKtWCfgKmGIfHTxrwgzxM/GCsnCpREnuohe3OeDDCCBsvXWxOiGsYr0CBn45Gl8
+         uxnkLVqPFv9BaXbzwn3Xkjeoo4wAB7j83EpoH89AQwMkkGX1mVDgDwJ03Iv5KVxm3iIt
+         Qd+5wUT5BKflVbWgfpU4BpMEjre4yDOfqtloAEZVPcDP67VJ98p6KXqbujcW7yeeieti
+         dLkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=ViIMeqGcgGurCv2RcVfa8YUG09OY/1WMqVU9FoZeSK0=;
+        b=vwT3AmVWrDg3fRjU+nzfNRb665zU0pAAw3B/6s4kmjo2eiFbEAhbRb6DjwKU5z65hP
+         PFlGjudTPlXToSNHboH8QiEYQOOOqO+Cxfj4N0pIwivva9Ht0KR/2UORRbFmNFg/WshW
+         tRKDeYiO01FWNgkKnjHh52zDcVoQhE5wR9DNoi50MOECCJT+AU/0mZzpXxV6zvDqf6KO
+         P68QAtUFNAtDO0sYxmUUEbJr0n2PH8NoXo/lok9LVIwOpPZxeL6gukxsDee4mMjuaS0L
+         o64YyT+aqu/FHw6Hu/ktDyUBm1gCArwB4uFP0upJ0q18cxsF/23l4rEh389y1BX/oVBa
+         vxTQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=iJSYBgYW;
+       spf=pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=ezekielh@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <ezekielh@iia.collab.its.umich.edu>
+Received: from maleficent.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.125.12])
+        by mx.google.com with ESMTPS id b20si5259387ywa.190.2019.03.08.13.11.07
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 13:11:07 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) client-ip=141.211.125.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=iJSYBgYW;
+       spf=pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=ezekielh@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552079466;
+	bh=ViIMeqGcgGurCv2RcVfa8YUG09OY/1WMqVU9FoZeSK0=;
+	h=Date:From:To:Subject;
+	b=iJSYBgYWAvIdNhL2WW9cQOd4rF5tGlbAlEhfLtcJFCJ2S+98uRF9Kwuj4YvuGSFjo
+	 whmO3QRjX52RkZ853IDz/2GqeqzLvRsx16s5qv+UVN1DL1SzjNQwvv11BTxSRbae6B
+	 UQYrTT/hdLMcCvuwbxLwgFyxb7c2TuxW9AnfbDlmg8SW/kX4XxexHNm0Edi2SnREMg
+	 Jk5KRWpdTquaiaX7L+6aZ5YEFJe3EahBWWTUP0+def0xVlkI8fTuaA9+7OsBCPbkyq
+	 0GCsTOA2edR/Lt+/2MrWE/CGteln+YuoMoCCpFdoYLBJh2qvfnQIq287SZ+hIYPDdQ
+	 OjxoTpbALulNg==
+Authentication-Results: maleficent.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By maleficent.mr.itd.umich.edu ID 5C82DA6A.B1991.31396;
+	Authuser hermane;
+	Fri, 08 Mar 2019 16:11:06 -0500
+Date: Fri, 8 Mar 2019 21:11:03 +0000
+From: Zeke Hendrickson <ezekielh@iia.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Big Sale on Meat This Friday
+Message-ID: <20190308211103.xrnqfcka7aw4qemc@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+Bacon ipsum dolor amet pancetta pork chop pastrami meatloaf prosciutto
+bresaola strip steak sausage beef ribs sirloin. Hamburger andouille
+leberkas, tail ham hock doner corned beef meatloaf spare ribs pastrami
+meatball pork loin. Hamburger ham hock cow capicola meatball landjaeger.
+Chicken tail alcatra brisket, tri-tip sausage ham hock meatloaf pork
+chop doner beef pastrami spare ribs cow. Bacon flank doner turducken.
+
+T-bone kielbasa short loin, brisket drumstick hamburger jerky. Kevin ham
+buffalo brisket. Ham ribeye bacon, pastrami shank doner beef burgdoggen
+t-bone leberkas buffalo salami chicken. Turducken ham hock hamburger,
+sausage landjaeger corned beef rump t-bone prosciutto. Doner chicken
+sirloin short ribs, leberkas buffalo tenderloin strip steak flank
+hamburger pork belly rump.
+
+Strip steak rump frankfurter chuck, landjaeger ribeye leberkas pork
+ground round. Ham hock buffalo meatball, beef ribs sirloin biltong
+sausage pancetta picanha corned beef. Burgdoggen t-bone tenderloin,
+filet mignon corned beef meatloaf chicken bacon rump biltong pork
+hamburger sirloin ham hock. Prosciutto shankle flank pork kevin ground
+round. Leberkas meatloaf shankle t-bone beef ribs pork chop, fatback
+short ribs.
+
+

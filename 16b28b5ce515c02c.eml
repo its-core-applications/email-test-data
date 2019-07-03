@@ -1,0 +1,370 @@
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=eSKNvWXL
+X-Received: by 2002:a19:41cc:: with SMTP id o195mr2066106lfa.166.1561646167581;
+        Thu, 27 Jun 2019 07:36:07 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Thu, 27 Jun 2019 07:36:07 -0700
+Delivered-To: admin-hermane@collab.its.umich.edu
+Received: by 2002:a9d:5549:0:0:0:0:0 with SMTP id h9csp7281021oti;
+        Wed, 5 Jun 2019 10:35:32 -0700 (PDT)
+X-Received: by 2002:a02:950a:: with SMTP id y10mr28440036jah.26.1559756132639;
+        Wed, 05 Jun 2019 10:35:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559756132; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Zc1Jsttl/LCvbjce9VczauPi8EoI9g3Nf2m2bsj3SPOLyS5FyndEyincA4bl7JCwkF
+         PPWphE8eccpsJvHWrIIVqSqYkGk3L9oasLzZbzxJs4lF1/TTZ+U9/RSuPIYHGtty//Qe
+         db8VidTiKaGG+wAXqMzccVNK2WsHX40Yph6d7oRJEpEsZKNvnly1EUqIoey8f9FPXvA6
+         pSiX4l6xYCxMjr/mHFmEOaOKinYLq3I/Q5u34EYe60qtKvj7/fKlHWAFfV7JM58XtT0j
+         TF9w8E25ZAT6OY8wiSmm158cQtTY/YqQ4TMIvgBAwddUP1lKHYVc3PKhXertTtapF+qp
+         5JOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=SrVoiotr4KR7qA9DncSZf6tN4pLacsyIi8xxA1PQAPo=;
+        b=ssbPGLDARxbJAfVupn26aQUM+XjeMavjYB0i22nFOG1tDQh/gemmY7rV6AP3r+NaRD
+         r6NjhWT0udLO3KG4Z2SCxBdfylxFkrmgOCzUzAff+gWq1b3OvGY4w8SgjFOU+Preh+Zm
+         0376/iTV2OTtzc5aESIqWOWrnwvLfR5muYQzy6ZinIPEhlOq2WCeMHP74eSH84S6tnwA
+         otJY7GjWqBCPeGYlR3LZrdtyIn/hdiI8l8Hj++yE7eRmXVxZQSkWBLpU1Sr9GRt+d8GY
+         Dc+I7y2tAjISJTO8aJLQr+c5HRvgyRdkQR/5MtiOvGOlluXjtVoUTE6CE6zjr8dz8Ogr
+         mHiQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=eSKNvWXL;
+       spf=pass (google.com: domain of 3zp33xbokac0lqaxvnfnkbcxan-mne-bdyyxacpxxpun.lxv@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3ZP33XBoKAC0LQaXVNfNKbcXaN-MNe-bdYYXacPXXPUN.LXV@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3ZP33XBoKAC0LQaXVNfNKbcXaN-MNe-bdYYXacPXXPUN.LXV@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id f2sor11717898itc.15.2019.06.05.10.35.32
+        for <admin-hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Wed, 05 Jun 2019 10:35:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3zp33xbokac0lqaxvnfnkbcxan-mne-bdyyxacpxxpun.lxv@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=eSKNvWXL;
+       spf=pass (google.com: domain of 3zp33xbokac0lqaxvnfnkbcxan-mne-bdyyxacpxxpun.lxv@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3ZP33XBoKAC0LQaXVNfNKbcXaN-MNe-bdYYXacPXXPUN.LXV@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:reply-to:feedback-id:message-id:subject:from:to;
+        bh=SrVoiotr4KR7qA9DncSZf6tN4pLacsyIi8xxA1PQAPo=;
+        b=eSKNvWXLDfou3jNkkPX0xyddpDjO6UsMQqOwt34Ryq+RIdMhNSeOj4kmn/T9xTlTsC
+         4IL3hZzs/kCKSeOxUdPbl0p+1GH1nFfA0ZEKX1uR4vpbhKNooYVBJg3rs1eTJe8zIezL
+         Cwc/FmUpPBTv/QiGMX536p86gUhumZK2yN3bV295mT9FD0kYna6gBbrf0txTOmaLqvia
+         L6EBsB++rcqwwALy0+QL3slX+GyrMTA17GypEKK8xavTuEEbCsLc3Wq2/dqrNz+ilgQq
+         DZO2DxQBrWXTXZmHpk+k0eEHjJafqq8BxtAdwfihRNRmE5lSgFKQTauPx4tF4bGR2QeL
+         PSNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:feedback-id
+         :message-id:subject:from:to;
+        bh=SrVoiotr4KR7qA9DncSZf6tN4pLacsyIi8xxA1PQAPo=;
+        b=VtQFrkxifg0SEScm/nowS8PJfDvHPgaFGM8FoE1qIbDKaroLABx/AA34X3GSDdEv54
+         gsZpNmd1h0MdazbO2B3d50OBbuZT8tcFbnhZiL50OhzisMqUy1wYpvBWjk/9UHU1UU9b
+         fvhDBEunJ7InSkJ1YUZTcKwqyHARAb8Qu6b2dpZPiOVeDp2vxSggUughaMga9jkdBqwQ
+         GYme3deexXspiQIT5amMYlX/P0+0XGNHU27b9QTau3LsqIqQDl8XY+TOuByaLG0B4GMk
+         s8vRM6peWqWjdSNAP7V+dZcazd70ob5UUzx8R93mEFfaPjzhf7O/ahOWfjmOLqPyQ+nG
+         XQcw==
+X-Gm-Message-State: APjAAAVzrzbfsajI7+R4AO4n7pXoGL9wWlbwQI034ADWQJ48e+Cqqn0A
+	l0pmlK0xocRR/wI=
+X-Google-Smtp-Source: APXvYqy60l45TdlHXbojyqK+Es/9IVKPGJ/5qBeyRPXiXj1Z006/oYiC2daQKHMgVaiNoBdvAPl8vvA=
+MIME-Version: 1.0
+X-Received: by 2002:a24:2b8f:: with SMTP id h137mr9956371ita.162.1559756132075;
+ Wed, 05 Jun 2019 10:35:32 -0700 (PDT)
+Date: Wed, 05 Jun 2019 10:35:32 -0700
+Reply-To: =?UTF-8?Q?=E2=80=9CChrome_Web_Store_Developer_Support=E2=80=9D?= <chromewebstore-dev-support@google.com>
+X-Google-Id: 295255
+Feedback-ID: Len-US:P-126:C20091510:gamma
+X-Notifications: GAMMA:<1ada7f4059b6ed0efb564a1f2d20cd132d6152a1-20091510-110561538@google.com>
+Message-ID: <1ada7f4059b6ed0efb564a1f2d20cd132d6152a1-20091510-110561538@google.com>
+Subject: Announcement: New Deceptive Installation Tactics Policy effective
+ July 1, 2019
+From: =?UTF-8?Q?=E2=80=9CChrome_Web_Store_Developer_Support=E2=80=9D?= <chromewebstore-dev-support@google.com>
+To: admin-hermane@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary="000000000000304757058a9706a9"
+
+--000000000000304757058a9706a9
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+RGVhciBEZXZlbG9wZXIsDQoNCldlIHJlY2VudGx5IGFubm91bmNlZCBhIG5ldyBwb2xpY3kgb24g
+dGhlIENocm9taXVtIEJsb2cgIA0KKGh0dHBzOi8vYmxvZy5jaHJvbWl1bS5vcmcvMjAxOS8wNS90
+YWtpbmctYWN0aW9uLW9uLWRlY2VwdGl2ZS1pbnN0YWxsYXRpb24uaHRtbCkgIA0KdG8gdGFyZ2V0
+IGRlY2VwdGl2ZSBpbnN0YWxsYXRpb24gdGFjdGljcyBmb3IgZXh0ZW5zaW9ucyBvbiB0aGUgQ2hy
+b21lIFdlYiAgDQpTdG9yZS4gVXNlciB0cmFuc3BhcmVuY3kgaXMgaW1wb3J0YW50LCBhbmQgZGV2
+ZWxvcGVycyBtdXN0IGJlIGFjY291bnRhYmxlICANCmZvciBob3cgdGhleSBtYXJrZXQgdGhlaXIg
+ZXh0ZW5zaW9ucy4gVW5mb3J0dW5hdGVseSwgd2UgaGF2ZSBzZWVuIGluc3RhbmNlcyAgDQpvZiBk
+ZXZlbG9wZXJzIHVzaW5nIGFkcyBhbmQgbGFuZGluZyBwYWdlcyB0byBtaXNsZWFkIHVzZXJzIGlu
+dG8gaW5zdGFsbGluZyAgDQphbiBleHRlbnNpb24gdGhleSBtYXkgbm90IHdhbnQgb3IgbmVlZC4g
+VGhlcmVmb3JlLCB3ZSBhcmUgcHJvaGliaXRpbmcgIA0KZXh0ZW5zaW9ucyB0aGF0IGJlbmVmaXQg
+ZnJvbSBkZWNlcHRpdmUgaW5zdGFsbCB0YWN0aWNzIHdpdGggdGhlIGZvbGxvd2luZyAgDQpwb2xp
+Y3k6DQoNCkV4dGVuc2lvbnMgbXVzdCBiZSBtYXJrZXRlZCByZXNwb25zaWJseS4gRXh0ZW5zaW9u
+cyB0aGF0IHVzZSBvciBiZW5lZml0ICANCmZyb20gZGVjZXB0aXZlIGluc3RhbGxhdGlvbiB0YWN0
+aWNzIHdpbGwgYmUgcmVtb3ZlZCBmcm9tIHRoZSBDaHJvbWUgV2ViICANClN0b3JlLg0KDQpEZWNl
+cHRpdmUgaW5zdGFsbGF0aW9uIHRhY3RpY3MgaW5jbHVkZToNCg0KLSBVbmNsZWFyIG9yIGluY29u
+c3BpY3VvdXMgZGlzY2xvc3VyZXMgb24gbWFya2V0aW5nIGNvbGxhdGVyYWwgcHJlY2VkaW5nICAN
+CnRoZSBDaHJvbWUgV2ViIFN0b3JlIGl0ZW0gbGlzdGluZy4NCi0gTWlzbGVhZGluZyBpbnRlcmFj
+dGl2ZSBlbGVtZW50cyBhcyBwYXJ0IG9mIHlvdXIgZGlzdHJpYnV0aW9uIGZsb3cuIFRoaXMgIA0K
+aW5jbHVkZXMgbWlzbGVhZGluZyBjYWxsLXRvLWFjdGlvbiBidXR0b25zIG9yIGZvcm1zIHRoYXQg
+aW1wbHkgYW4gb3V0Y29tZSAgDQpvdGhlciB0aGFuIHRoZSBpbnN0YWxsYXRpb24gb2YgYW4gZXh0
+ZW5zaW9uLg0KLSBBZGp1c3RpbmcgdGhlIENocm9tZSBXZWIgU3RvcmUgaXRlbSBsaXN0aW5nIHdp
+bmRvdyB3aXRoIHRoZSBlZmZlY3Qgb2YgIA0Kd2l0aGhvbGRpbmcgb3IgaGlkaW5nIGV4dGVuc2lv
+biBtZXRhZGF0YSBmcm9tIHRoZSB1c2VyLg0KDQpZb3UgY2FuIGZpbmQgdGhlIHBvbGljeSBsYW5n
+dWFnZSBhYm92ZSBpbiBvdXIgdXBkYXRlZCBEZXZlbG9wZXIgUHJvZ3JhbSAgDQpQb2xpY3kgcGFn
+ZSAoaHR0cHM6Ly9kZXZlbG9wZXIuY2hyb21lLmNvbS93ZWJzdG9yZS9wcm9ncmFtX3BvbGljaWVz
+KS4gWW91ciAgDQpleHRlbnNpb25zIG11c3QgYmUgY29tcGxpYW50IGJ5IEp1bHkgMXN0LCAyMDE5
+LiBZb3UgY2FuIGxlYXJuIG1vcmUgYWJvdXQgIA0KdGhlc2UgY2hhbmdlcyBhbmQgaG93IHRoZXkg
+bWF5IGFwcGx5IHRvIHlvdSBpbiBvdXIgRGV2ZWxvcGVyIEZBUTogIA0KaHR0cHM6Ly9kZXZlbG9w
+ZXIuY2hyb21lLmNvbS93ZWJzdG9yZS9kZWNlcHRpdmVfaW5zdGFsbGF0aW9uX3RhY3RpY3MNCg0K
+SWYgeW91IGhhdmUgYW55IHF1ZXN0aW9ucyAob3Igd291bGQgbGlrZSB0byBwYXJ0aWNpcGF0ZSBp
+biBvZmZpY2UgaG91cnMpLCAgDQpyZXBseSB0byB0aGlzIGVtYWlsLg0KDQpUaGFuayB5b3UgZm9y
+IHlvdXIgY29vcGVyYXRpb24uDQoNCi0gVGhlIEdvb2dsZSBDaHJvbWUgV2ViIFN0b3JlIHRlYW0N
+Cg0KDQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT0NCg0KV2Ugc2VudCB0aGlzIG1hbmRhdG9yeSBzZXJ2aWNlIGFubm91
+bmNlbWVudCB0byB1cGRhdGUgeW91IGFib3V0IGltcG9ydGFudCAgDQpjaGFuZ2VzIHRvIHlvdXIg
+Q2hyb21lIFdlYiBTdG9yZSBEZXZlbG9wZXIgYWNjb3VudC4NCg0KwqkgMjAxOSBHb29nbGUgTExD
+LCAxNjAwIEFtcGhpdGhlYXRyZSBQYXJrd2F5LCBNb3VudGFpbiBWaWV3LCBDQSA5NDA0Mw0K
+--000000000000304757058a9706a9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html>
+   <head>
+      <meta name=3Dx-apple-disable-message-reformatting>
+      <meta http-equiv=3DX-UA-Compatible>
+      <meta http-equiv=3DContent-Type content=3D"text/html; charset=3DUTF-8=
+">
+      <meta name=3Dviewport content=3D"initial-scale =3D 1.0,maximum-scale =
+=3D 1.0">
+      <meta name=3DHandheldFriendly content=3Dtrue>
+      <meta name=3DMobileOptimized content=3D482>
+      <meta name=3Dviewport content=3Dtarget-densitydpi=3Ddevice-dpi>
+    =20
+      <style>table td {border-collapse: collapse;} *{-ms-text-size-adjust: =
+100%;  -moz-text-size-adjust: 100%; -o-text-size-adjust: 100%; -webkit-text=
+-size-adjust: 100%;}
+.apple_link{text-decoration: none;color: #25272B;cursor: text;pointer-event=
+s: none;font-size:14px !important;}
+.apple_link1{text-decoration: none;color: #1A73E8!important; font-size:14px=
+ !important;}
+div,p,a,li,td {-webkit-text-size-adjust: none !important;}
+.showmobile{display:none;}
+@media screen and (max-width: 320px) {
+.apple_link1{color: #1A73E8 !important;}
+}
+ @media screen and (max-width: 320px) {
+.footer{padding-left: 26px !important;padding-right: 26px !important;}
+.showmobile{display:block !important;}
+.showdesktop{display:none !important;}
+}
+     </style>
+   </head>
+<body>
+	<div class=3Dm_-3223136088298377689body style=3Dcolor:#444444;font-family:=
+&#39;Hermanoto&#39;,Arial,sans-serif;margin:0;padding:0>
+		<div style=3Dfont-size:0px;line-height:0px;color:#ffffff;display:none;mar=
+gin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:=
+0px;padding-right:0px;padding-bottom:0px;padding-left:0px>
+			=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0
+		</div>
+		<center class=3Dm_-3223136088298377689wrapper_app style=3D"width:100%;mar=
+gin:4px auto 0 auto">
+			<table border=3D0 cellpadding=3D0 cellspacing=3D0 style=3D"margin:0 auto=
+;padding:0;table-layout:fixed">
+				<tbody>
+					<tr style=3Dborder-collapse:collapse;border-spacing:0;padding:0;margin=
+:0>
+						<td align=3Dcenter class=3Dm_-3223136088298377689main_table style=3D"=
+max-width:580px;padding:0;margin:0;width:320px;border:1px solid #e0e0e0" wi=
+dth=3D580>
+							<table border=3D0 cellpadding=3D0 cellspacing=3D0 style=3Dborder-col=
+lapse:collapse;border-spacing:0;padding:0;margin:0;max-width:580px;min-widt=
+h:320px;width:580px width=3D580>
+								<tbody>
+									<tr style=3Dborder-collapse:collapse;border-spacing:0;padding:0;ma=
+rgin:0>
+										<td style=3Dborder-collapse:collapse;border-spacing:0;padding:0;m=
+argin:0>
+											<table bgcolor=3D#FFFFFF border=3D0 cellpadding=3D0 cellspacing=
+=3D0 style=3Dborder-collapse:collapse;border-spacing:0;padding:0;margin:0;b=
+ackground:#ffffff;width:100% width=3D100%>
+												<tbody>
+													<tr>
+														<td style=3Dfont-size:0px;line-height:0px width=3D32>=C2=A0</=
+td>
+														<td class=3Dm_-3223136088298377689masthead_wrapper style=3Dbo=
+rder-collapse:collapse>
+															<table bgcolor=3D#FFFFFF border=3D0 cellpadding=3D0 cellspac=
+ing=3D0 style=3Dborder-collapse:collapse;border-spacing:0;padding:0;margin:=
+0;background:#ffffff;width:100% width=3D100%>
+																<tbody>
+																	<tr>
+																		<td align=3Dcenter class=3Dm_-3223136088298377689logo_hea=
+der style=3Dtext-align:center;padding:0;padding-top:58px valign=3Dtop><img =
+alt=3D"Google Logo" height=3D57 src=3Dhttps://storage.googleapis.com/gtp_gl=
+obal_assets/Google_2015_logo.png style=3Dheight:57px;outline:0;border:0;dis=
+play:inline-block;vertical-align:top></td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<div class=3Dm_-3223136088298377689showdesktop>
+																				<table border=3D0 cellpadding=3D0 cellspacing=3D0 width=
+=3D100%>
+																					<tbody>
+																						<tr>
+																							<td class=3Dm_-3223136088298377689para_sep_new style=
+=3D"color:#25272b;font-family:Google Sans,Arial,arial,sans-serif;font-size:=
+16px;line-height:26px;text-align:left;padding-top:28px;width:100%;direction=
+:ltr;padding-left:20px;padding-right:20px">
+																							=09
+<p align=3Dleft>Dear Developer,</p>
+
+<p align=3Dleft>We recently announced a new policy on the <a href=3Dhttps:/=
+/www.google.com/appserve/mkt/p/AFnwnKUsxheEfeCjaKNivs6BlMJIIZBHMZifc6F3KHD2=
+gyPwlwAu71BrO_UxsBSvLI3gopWViFsLcXP0qGlh16KDnOEkm36UoHqB8sxvB2G9mzA9fvUcAuN=
+r06umsFRrC648_HEhzChWzpv4NseFQwJLaZ0>Chromium Blog</a> to target deceptive =
+installation tactics for extensions on the Chrome Web Store.  User transpar=
+ency is important, and developers must be accountable for how they market t=
+heir extensions. Unfortunately, we have seen instances of developers using =
+ads and landing pages to mislead users into installing an extension they ma=
+y not want or need.  Therefore, we are prohibiting extensions that benefit =
+from deceptive install tactics with the following policy:</p>
+
+<p align=3Dleft><strong>Extensions must be marketed responsibly. Extensions=
+ that use or benefit from deceptive installation tactics will be removed fr=
+om the Chrome Web Store.</strong></p>=20
+
+<p align=3Dleft>Deceptive installation tactics include:=20
+<ul>
+<li>Unclear or inconspicuous disclosures on marketing collateral preceding =
+the Chrome Web Store item listing.</li>=20
+<li>Misleading interactive elements as part of your distribution flow. This=
+ includes misleading call-to-action buttons or forms that imply an outcome =
+other than the installation of an extension.</li>
+<li>Adjusting the Chrome Web Store item listing window with the effect of w=
+ithholding or hiding extension metadata from the user.</li>=20
+</ul>
+</p>
+
+<p align=3Dleft>You can find the policy language above in our updated <u><a=
+ href=3Dhttps://www.google.com/appserve/mkt/p/AFnwnKWHJd0cZZxO-IYmwHhkXCWcO=
+YaxIuHetNVd8Gb4kH5olGeknstgS-bPyFzlf3N027IY8pMW6A1B8oGU-kYlG34f1dq-MRZV4sbw=
+S2L2iHj2b7S7qq7qzJU>Developer Program Policy</a></u> page. Your extensions =
+must be compliant by <strong>July 1st, 2019</strong>. You can learn more ab=
+out these changes and how they may apply to you in our <a href=3Dhttps://ww=
+w.google.com/appserve/mkt/p/AFnwnKV2ibXaB-tjvzykxtE4RIai3UigobaDL8eR7MAP2hs=
+CdnRPVy0cDgBnYTqDlBi1cow5wYvXqZJcu5pW58PGzaZxdGpN5mqhsMLocUV1MdSQX5wGtlOGJy=
+v3Pc04LuicIKmbBaO5BA>Developer FAQ</a>.=20
+
+<p align=3Dleft>If you have any questions (or would like to participate in =
+office hours), reply to this email.</p>
+
+<p align=3Dleft>Thank you for your cooperation.</p>
+
+<p align=3Dleft>- The Google Chrome Web Store team</p>
+
+</p>
+</td>
+</tr>
+</td>
+</tr>
+	</table>																					=09
+																</tbody>
+															</table>
+														</td>
+														<td style=3Dfont-size:0px;line-height:0px width=3D32>=C2=A0</=
+td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td align=3Dcenter style=3Dtext-align:center;background-color:#ff=
+ffff;padding-top:5px;padding-bottom:25px valign=3Dtop></td>
+									</tr>
+									<tr style=3Dborder-collapse:collapse;border-spacing:0;padding:0;ma=
+rgin:0>
+										<td style=3Dborder-collapse:collapse;border-spacing:0;padding:0;m=
+argin:0>
+											<table bgcolor=3D#F8F9FA class=3Dm_-3223136088298377689footer-wr=
+ap style=3D"border-spacing:0;width:100%;background-color:#f8f9fa;margin:0 a=
+uto" width=3D100%>
+												<tbody>
+													<tr>
+														<td align=3Dcenter class=3Dm_-3223136088298377689logoContaine=
+r style=3Dpadding-top:20px;padding-bottom:15px valign=3Dtop>
+															<table border=3D0 cellpadding=3D0 cellspacing=3D0 style=3D"f=
+ont-weight:normal;margin:0 auto" width=3D100%>
+																<tbody>
+																	<tr style=3Dborder-width:0>
+																		<td align=3Dcenter class=3D"m_-3223136088298377689showdes=
+ktop m_-3223136088298377689ftext" style=3D"border-width:0;font-family:Hermanot=
+o,Arial,sans-serif;font-size:14px;font-weight:normal;line-height:24px;paddi=
+ng:15px 0 20px 0;color:#202124;padding-left:32px;padding-right:32px">
+																			We sent this mandatory service announcement to update yo=
+u about important changes to your Chrome Web Store Developer account.
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td align=3Dcenter class=3Dm_-3223136088298377689border style=
+=3D"border-bottom:1px solid #dadada" valign=3Dtop></td>
+													</tr>
+													<tr style=3Dborder-width:0>
+														<td align=3Dcenter class=3Dm_-3223136088298377689google_logo =
+style=3D"border-width:0;color:#5f6368;font-family:Google Sans,Arial,sans-se=
+rif;font-size:11px;font-weight:normal;line-height:11px;padding:0;word-break=
+:break-word;padding-top:40px"><img alt=3DGoogle id=3Dm_-3223136088298377689=
+logo src=3Dhttps://services.google.com/fh/files/emails/g1logo-01.png style=
+=3Doutline:0;border:0 width=3D142></td>
+													</tr>
+													<tr style=3Dborder-width:0>
+														<td align=3Dcenter class=3Dm_-3223136088298377689fadress styl=
+e=3D"border-width:0;font-family:Hermanoto,Arial,sans-serif;font-size:12px;font=
+-weight:normal;line-height:16px;padding:16px 61px 40px 61px;word-break:brea=
+k-word;color:#25272b"><span class=3Dm_-3223136088298377689forApple><a style=
+=3Dcolor:#25272b;text-decoration:none><strong style=3Dcolor:#555;font-weigh=
+t:normal><font style=3Dcolor:#555>=C2=A9 2019 Google LLC, 1600 Amphitheatre=
+ Parkway,<br>
+														Mountain View, CA 94043</font></strong></a></span></td>
+													</tr>
+													<tr>
+														<td>
+															<div style=3Dwidth:auto;line-height:0px;font-size:0px;height=
+:0px;overflow:hidden><img height=3D1 src=3Dhttps://www.google.com/appserve/=
+mkt/proof/img/ABMBUQNxvcbubZ947JfSjTsyHGFEoQ4mEDyVUzFZJXyQSkBXdw.gif width=
+=3D3></div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</div>
+<img height=3D1 width=3D3 src=3Dhttps://www.google.com/appserve/mkt/img/AFn=
+wnKW9gNHzureU2JN5xdoJkqniExr5kj9VnDoMulhLQvrO.gif></body>
+</html>
+--000000000000304757058a9706a9--

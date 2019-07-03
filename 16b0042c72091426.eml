@@ -1,0 +1,287 @@
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Sizl5Eyq
+X-Received: by 2002:a2e:959a:: with SMTP id w26mr2899639ljh.150.1561646161059;
+        Thu, 27 Jun 2019 07:36:01 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Thu, 27 Jun 2019 07:36:01 -0700
+Delivered-To: admin-hermane@collab.its.umich.edu
+Received: by 2002:a9d:5549:0:0:0:0:0 with SMTP id h9csp8620521oti;
+        Tue, 28 May 2019 14:05:05 -0700 (PDT)
+X-Received: by 2002:a24:1a51:: with SMTP id 78mr4587882iti.42.1559077505625;
+        Tue, 28 May 2019 14:05:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559077505; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UvnMiFbOizKXtNEBpy2dg9SldfggERuVUK2vjXK3yhviTyqI04pIklowWh7kBF6Duh
+         SsN9Rsv4iaajSeLwQm5DVYdTYCHI4Lp1YA7G9WxZ4JrONyDIjCeh/3xHx+L/KvVff9cn
+         8x/vnxz7anc+saAjTU3W+98pnHjgLFL8dBpZ/DsDtMq1KG2J0zocdQenMwbcu+eSawht
+         P9PSCKrr4qknC+qJPt5n/Jp6EBH2uvYNchwDZhLw2ftkbjkxq7K8kJX33BFxwd/k8q18
+         4y3QdfESEnrArYZO+2jsn2lYtXzDE3Ca0HYLxjfXvp8s2djvrL2tece502Vsk7fFpgeo
+         3chA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=Ox2nCkp+yvE2XXYK9JXJtgcXK1AoxUVr5ZSsSTIAieY=;
+        b=Nbkw06fzeUVulRskmvZ8JQCir76OK/0nQ5WYI2gYgw5HIfHoMSOaFSP7fW0Di9ZSQq
+         09hs3OuAIq4A/Kejxfr72x3J09hzHLMK5gJnoMEW1YkQzmmK0nY7hhT2+xeC/IwSA6Bz
+         gvyB8ziNGl7JOD2vXdJm1GotcFsDyI+G1jvZiqxXRGcrPqhQTQdYACJ5cB6+hAadVfWf
+         y4O+/3biwnjzufwVVahv+EhuqQhHvw83q4pF+xVrsVnfwxlaz8owdWa95Vq5pPyt8V7R
+         xtYRtQGlmU3VZkTXtoAU2OTzx/DqxesgOufDZI5pJnp8dO0iafeTfRCsfxK8L+r6inFE
+         U0gQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Sizl5Eyq;
+       spf=pass (google.com: domain of 3galtxa4kagooacqbm-vwzmxtgowwotm.kwu@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3gaLtXA4KAGoOacQbM-VWZMXTgOWWOTM.KWU@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3gaLtXA4KAGoOacQbM-VWZMXTgOWWOTM.KWU@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id q142sor305631itb.6.2019.05.28.14.05.05
+        for <admin-hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Tue, 28 May 2019 14:05:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3galtxa4kagooacqbm-vwzmxtgowwotm.kwu@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Sizl5Eyq;
+       spf=pass (google.com: domain of 3galtxa4kagooacqbm-vwzmxtgowwotm.kwu@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3gaLtXA4KAGoOacQbM-VWZMXTgOWWOTM.KWU@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:reply-to:feedback-id:message-id:subject:from:to;
+        bh=Ox2nCkp+yvE2XXYK9JXJtgcXK1AoxUVr5ZSsSTIAieY=;
+        b=Sizl5EyqGd6WL/u25JgJO4eVg2LgXZht+mZuxInSH5Cz1s0O5VrIg4/OhoI0GX5AHP
+         5ftg8KIwkaD4dKpny/7Fs5yT/4EW1q5UYT6YBakkUJpCnC4Av4Y87GAa7/vzg8w7GGHR
+         zZcUTBwoU4veTEMSzoIvc8LwoqU3qssuRKgIvFic1X4TnJUTqDfMzupRIhoToR1j3ab8
+         3QBRyEHq4KrOocHncATuhYNT7Linf8Vah61vCZSIqhFvN7QBdLN6PRFQL+sEAD3cCmkz
+         yeJslo57B7BagV/4C/wd7vG2cNZzHwZuZhW5UztYrVR3vFuAzJr7t1cwN48Dwo1kiJ0J
+         2GTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:feedback-id
+         :message-id:subject:from:to;
+        bh=Ox2nCkp+yvE2XXYK9JXJtgcXK1AoxUVr5ZSsSTIAieY=;
+        b=bQUFg1BDurbv0s5B5rDJ1FI5uN+emynyVX80A0uqpYwi/Ojz30O9dkLfx15EdP3VFa
+         U7sOHrxqK4Wj0SZjiYyXQfgXC3ludYmVPFym0wuENz03J2SGg0jVtNQKgNqx2omscKYT
+         j4l0gRh1CJ7jiGenwDqPYC7e9lcOqvSlCJBwcSVPnM6GWWg+jWxWHR9bHQWJonhuSg0w
+         kL75H2liE8YLeBpQZJ0zDb+XaSc+BkrK5ZrO910Gcm8WRWL/td/asQncBnUkn3GVVeOn
+         f3neCJRmBuvAl7B/RrrWZ79/o3UBpCEZ8ivcskgwQvz4MwC5gU97LoL2ehQ/nVQPACo3
+         VdWg==
+X-Gm-Message-State: APjAAAUcL8E35n7C8ZpXaR9+RnxVZiempaXaP6V49ahLf4daUhrZ3/cJ
+	pff06yGriz7y+8I=
+X-Google-Smtp-Source: APXvYqwrQ4sYI9h6YSnQna/gXdHrPdA4sCRbkOxrRc0+qx29VbmO4rM+yscsIrbHS7YKnOEL8EXbF8o=
+MIME-Version: 1.0
+X-Received: by 2002:a24:eec1:: with SMTP id b184mr5081178iti.61.1559077505124;
+ Tue, 28 May 2019 14:05:05 -0700 (PDT)
+Date: Tue, 28 May 2019 14:05:05 -0700
+Reply-To: The G Suite Team <gsuite-noreply@google.com>
+X-Google-Id: 244026
+Feedback-ID: Len:P-11:C20090796:gamma
+X-Notifications: GAMMA:<a208e50057faf26bc9deb94a2eb918c91b8dcd3b-20090796-110551469@google.com>
+Message-ID: <a208e50057faf26bc9deb94a2eb918c91b8dcd3b-20090796-110551469@google.com>
+Subject: [Action Required] Gmail Confidential Mode launching default ON for
+ your domain
+From: The G Suite Team <gsuite-noreply@google.com>
+To: admin-hermane@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary="000000000000deca870589f90417"
+
+--000000000000deca870589f90417
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+RyBTdWl0ZSBsb2dvDQoNClJldmlldyB5b3VyIFVzZXIgU2V0dGluZ3MgZm9yIEdtYWlsIGJlZm9y
+ZSBKdW5lIDI1LCAyMDE5Lg0KDQoNCkhlbGxvIEFkbWluaXN0cmF0b3IsDQoNCk9uIE1hcmNoIDcs
+IDIwMTksIHdlIGFubm91bmNlZCB0aGUgbGF1bmNoIG9mIEdtYWlsIGNvbmZpZGVudGlhbCBtb2Rl
+IGluICANCmJldGEuIFdlJ3JlIHdyaXRpbmcgdG8gbGV0IHlvdSBrbm93IHRoYXQgb24gSnVuZSAy
+NSwgMjAxOSwgdGhpcyBmZWF0dXJlICANCndpbGwgYmVjb21lIGdlbmVyYWxseSBhdmFpbGFibGUg
+KEdBKSBhbmQgd2lsbCBiZSBzZXQgdG8gZGVmYXVsdCBPTiBmb3IgYWxsICANCmRvbWFpbnMgd2l0
+aCBHbWFpbCBlbmFibGVkLiBXZSdyZSBzaGFyaW5nIHRoaXMgaW5mb3JtYXRpb24gaW4gYWR2YW5j
+ZSBzbyAgDQp0aGF0IHlvdSBjYW4gcHJvcGVybHkgcHJlcGFyZSB5b3VyIEcgU3VpdGUgZG9tYWlu
+LCBjb2xsYWIuaXRzLnVtaWNoLmVkdSwgIA0KZm9yIHRoaXMgZmVhdHVyZS4NCg0KV2hhdCBkbyBJ
+IG5lZWQgdG8ga25vdz8NCg0KV2hlbiBHbWFpbCBtZXNzYWdlcyBhcmUgc2VudCBpbiBjb25maWRl
+bnRpYWwgbW9kZSwgaXQgaGVscHMgcHJvdGVjdCBmcm9tICANCnVuYXV0aG9yaXplZCBhY2Nlc3Mg
+YW5kIHJlY2lwaWVudHMgZG9uJ3QgaGF2ZSB0aGUgb3B0aW9uIHRvIGZvcndhcmQsIGNvcHksICAN
+CnByaW50LCBvciBkb3dubG9hZCB0aGVpciBjb250ZW50IG9yIGF0dGFjaG1lbnRzLiBTZW5kZXJz
+IGNhbiBhbHNvIHNldCBhbiAgDQpleHBpcmF0aW9uIGRhdGUgZm9yIG1lc3NhZ2VzIHNlbnQgd2l0
+aCBjb25maWRlbnRpYWwgbW9kZSBhbmQgcmV2b2tlIGFjY2VzcyAgDQp0byB0aGVtIGF0IGFueSB0
+aW1lLg0KDQpXaGF0IGRvZXMgdGhpcyBtZWFuIGZvciBteSBvcmdhbml6YXRpb24/DQoNCiBGcm9t
+IEp1bmUgMjUsIHlvdXIgdXNlcnMgd2lsbCBoYXZlIHRoZSBvcHRpb24gdG8gc2VuZCBlbWFpbHMg
+d2l0aCAgDQpjb25maWRlbnRpYWwgbW9kZSwgdW5sZXNzIHlvdSBkaXNhYmxlIHRoaXMgZmVhdHVy
+ZS4NCg0KQXMgYW4gYWRtaW5pc3RyYXRvciwgeW91IGNhbiBkZXRlcm1pbmUgd2hldGhlciB5b3Vy
+IHVzZXJzIGNhbiB1c2UgIA0KY29uZmlkZW50aWFsIG1vZGUgYnkgc2VsZWN0aW5nIGZyb20gdGhl
+IGZvbGxvd2luZyBzZXR0aW5nIG9wdGlvbnM6DQoNCg0KRGlzYWJsZTogVGhpcyBvcHRpb24gcHJl
+dmVudHMgdXNlcnMgaW4geW91ciBkb21haW4gZnJvbSBzZW5kaW5nIGVtYWlscyB3aXRoICANCmNv
+bmZpZGVudGlhbCBtb2RlLg0KRW5hYmxlIG5vdyAoYmV0YSk6IFRoaXMgb3B0aW9uIHdpbGwgZW5h
+YmxlIGNvbmZpZGVudGlhbCBtb2RlLCB3aGljaCBpcyAgDQpjdXJyZW50bHkgaW4gYmV0YS4gSG93
+ZXZlciwgdGhlIGZlYXR1cmUgd2lsbCByZW1haW4gZW5hYmxlZCB3aGVuIGl0IGVudGVycyAgDQpp
+bnRvIGdlbmVyYWwgYXZhaWxhYmlsaXR5IG9uIEp1bmUgMjUsIDIwMTkuDQpFbmFibGUgd2hlbiB0
+aGUgZmVhdHVyZSBpcyBpbiBnZW5lcmFsIGF2YWlsYWJpbGl0eTogVGhpcyBpcyB0aGUgZGVmYXVs
+dCAgDQpvcHRpb24gYW5kIHdpbGwgZW5hYmxlIGNvbmZpZGVudGlhbCBtb2RlIHdoZW4gdGhpcyBm
+ZWF0dXJlIGJlY29tZXMgIA0KZ2VuZXJhbGx5IGF2YWlsYWJsZSBvbiBKdW5lIDI1LCAyMDE5Lg0K
+DQpXaGF0IGRvIEkgbmVlZCB0byBkbz8NCg0KUGxlYXNlIGVuc3VyZSB0aGF0IHlvdSBzZWxlY3Qg
+dGhlIGFwcHJvcHJpYXRlIG9wdGlvbiBpbiB0aGUgQWRtaW4gY29uc29sZSAgDQpmb3IgeW91ciBv
+cmdhbml6YXRpb24gYmVmb3JlIEp1bmUgMjUsIDIwMTkuDQoNCllvdSBjYW4gZmluZCB0aGlzIHNl
+dHRpbmcgaW4gdGhlIEFkbWluIGNvbnNvbGUgYnkgbmF2aWdhdGluZyB0byBBcHBzID4gRyAgDQpT
+dWl0ZSA+IFNldHRpbmdzIGZvciBHbWFpbCA+IFVzZXIgc2V0dGluZ3MuDQoNCklmIHlvdSBkbyBu
+b3QgdGFrZSBhY3Rpb24gYmVmb3JlIEp1bmUgMjUsIHlvdXIgZG9tYWluIHdpbGwgYXV0b21hdGlj
+YWxseSAgDQpoYXZlIGNvbmZpZGVudGlhbCBtb2RlIHR1cm5lZCBvbiBmb3IgeW91ciB1c2Vycywg
+bWVhbmluZyB0aGF0IHVzZXJzIHdpbGwgIA0KaGF2ZSB0aGUgb3B0aW9uIHRvIHNlbmQgZW1haWxz
+IHdpdGggY29uZmlkZW50aWFsIG1vZGUuDQoNCkZBUXMNCg0KSG93IGRvZXMgR21haWwgY29uZmlk
+ZW50aWFsIG1vZGUgd29yayB3aXRoIFZhdWx0IGFuZCBlRGlzY292ZXJ5Pw0KDQpXaGVuIGEgdXNl
+ciBzZW5kcyBhIGNvbmZpZGVudGlhbCBtZXNzYWdlLCBHbWFpbCByZXBsYWNlcyB0aGUgbWVzc2Fn
+ZSBib2R5ICANCmFuZCBhdHRhY2htZW50cyB3aXRoIGEgbGluay4gT25seSB0aGUgc3ViamVjdCBh
+bmQgYm9keSBjb250YWluaW5nIHRoZSBsaW5rICANCmFyZSBzZW50IHZpYSBTTVRQLiBUaGlzIG1l
+YW5zIHRoYXQsIGlmIHlvdXIgdXNlcnMgc2VuZCBvciByZWNlaXZlIG1lc3NhZ2VzICANCmluIEdt
+YWlsIGNvbmZpZGVudGlhbCBtb2RlLCBWYXVsdCB3aWxsIHJldGFpbiwgcHJlc2VydmUsIHNlYXJj
+aCBhbmQgZXhwb3J0ICANCmNvbmZpZGVudGlhbCBtb2RlIG1lc3NhZ2VzLiBUaGUgbWVzc2FnZSBi
+b2R5IG9mIHJlY2VpdmVkIG1lc3NhZ2VzIHdpbGwgYmUgIA0KYWNjZXNzaWJsZSBpbiBWYXVsdCBv
+bmx5IGlmIHRoZSBzZW5kZXIgb2YgdGhlIG1lc3NhZ2UgaXMgZnJvbSB3aXRoaW4geW91ciAgDQpv
+cmdhbml6YXRpb24uIExlYXJuIG1vcmUgYWJvdXQgaG93IFZhdWx0IHdvcmtzIGZvciBjb25maWRl
+bnRpYWwgbW9kZSAgDQptZXNzYWdlcyBoZXJlLg0KDQpXZSdyZSBoZXJlIHRvIGhlbHANCg0KSWYg
+eW91IGhhdmUgYWRkaXRpb25hbCBxdWVzdGlvbnMgb3IgbmVlZCBhc3Npc3RhbmNlLCBwbGVhc2Ug
+Y29udGFjdCBHb29nbGUgIA0Kc3VwcG9ydC4gV2hlbiB5b3UgY2FsbCBvciBzdWJtaXQgeW91ciBz
+dXBwb3J0IGNhc2UsIHJlZmVyZW5jZSBpc3N1ZSBudW1iZXIgIA0KMTEzMTMwNTQ4Lg0KDQpTaW5j
+ZXJlbHksDQoNClRoZSBHIFN1aXRlIFRlYW0NCg0KDQpXYXMgdGhpcyBpbmZvcm1hdGlvbiBoZWxw
+ZnVsPw0KWUVTIE5PDQoNCg0KwqkgMjAxOSBHb29nbGUgTExDIDE2MDAgQW1waGl0aGVhdHJlIFBh
+cmt3YXksIE1vdW50YWluIFZpZXcsIENBIDk0MDQzDQoNCllvdSBoYXZlIHJlY2VpdmVkIHRoaXMg
+aW1wb3J0YW50IHVwZGF0ZSBhYm91dCB5b3VyIEcgU3VpdGUgYWNjb3VudCBiZWNhdXNlICANCnlv
+dSBkZXNpZ25hdGVkIHRoaXMgZW1haWwgYWRkcmVzcyBhcyBhIHByaW1hcnkgb3Igc2Vjb25kYXJ5
+IGNvbnRhY3QgZm9yICANCm1hbmRhdG9yeSBzZXJ2aWNlIGNvbW11bmljYXRpb25zIGluIHlvdXIg
+R29vZ2xlIEFkbWluIGNvbnNvbGUgcHJvZmlsZS4NCg0K
+--000000000000deca870589f90417
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!-- This contains CSS info, starts the body, and inserts the G Suite logo =
+header -->
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> </span>
+<div style=3D"padding-top: 22px; padding-bottom: 8px; border-bottom-style: =
+solid; border-bottom-color: #dcdcdc; border-bottom-width: 1px" width=3D100%=
+><span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; co=
+lor: #000000;"><img alt=3D"G Suite logo" border=3D0 src=3Dhttps://services.=
+google.com/fh/files/emails/gsuite_masthead.png style=3D"display: block;" ti=
+tle=3DGoogle width=3D120> </span></div>
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> <!-- This is the beginning of the subject --> </span>
+<!-- Include the Pre-header snippet, copy HTML from TEMPLATE SNIPPET ID 916=
+0213 and add the pre-header text-->
+<div style=3D"height:0px; font-size:0px; max-height:0px; min-height: 0px; l=
+ine-height:0px; width: 100%; color: #fff; display:none;">Review your User S=
+ettings for Gmail before June 25, 2019.</div>
+
+<!-- Adds translation notice, the English version is empty-->
+<p></p>
+<!-- Please INSERT the relevant Customer Comm BODY snippet -->
+<p>Hello Administrator,</p>
+
+<p>On March 7, 2019, <a href=3Dhttps://www.google.com/appserve/mkt/p/AFnwnK=
+UQWqGfpJzIbeVtUcaX19N3dKjB44iqvnj-ljUyThOLbYevGzPKiYsCnYobui5o_LS36Oyh8hCNi=
+-HQnaO4hUWCrd43b4FfdbSamaBiHuIwH9ezabx5InJqE3Howq_Ffwr77-gqq0DD3UvVPLz-Z9Cr=
+R0JhQTvQZMRc9xdHPyIR3Kh429E target=3D_blank>we announced</a> the launch of =
+<a href=3Dhttps://www.google.com/appserve/mkt/p/AFnwnKXawE7iin1f4t7YbUoGPPx=
+KfRr3hKXkUE9DxobLUQLNsWYvBJMHsVLMfQ88uXSmahwHnozcAElT1CciM8JnVi4XFX2sfG5hls=
+JA-Os target=3D_blank>Gmail confidential mode</a> in beta. We=E2=80=99re wr=
+iting to let you know that on June 25, 2019, this feature will become gener=
+ally available (GA) and will be set to default ON for all domains with Gmai=
+l enabled. We=E2=80=99re sharing this information in advance so that you ca=
+n properly prepare your G Suite domain, <a rel=3Dnofollow style=3Dtext-deco=
+ration:none>collab.its.umich.edu</a>, for this feature.</p>
+
+<h3>What do I need to know?</h3>
+
+<p>When Gmail messages are sent in confidential mode, it helps protect from=
+ unauthorized access and recipients don=E2=80=99t have the option to forwar=
+d, copy, print, or download their content or attachments. Senders can also =
+set an expiration date for messages sent with confidential mode and revoke =
+access to them at any time.</p>
+
+<h3>What does this mean for my organization?</h3>
+
+<p>From June 25, your users will have the option to send emails with confid=
+ential mode, unless you disable this feature.</p>
+
+<p>As an administrator, you can determine whether your users can use confid=
+ential mode by selecting from the following setting options:</p>
+
+<ul>
+  <li>Disable: This option prevents users in your domain from sending email=
+s with confidential mode.</li>
+  <li>Enable now (beta): This option will enable confidential mode, which i=
+s currently in beta. However, the feature will remain enabled when it enter=
+s into general availability on June 25, 2019.</li>
+  <li>Enable when the feature is in general availability: This is the defau=
+lt option and will enable confidential mode when this feature becomes gener=
+ally available on June 25, 2019.</li>
+</ul>
+
+<h3>What do I need to do?</h3>
+
+<p>Please ensure that you <strong>select the appropriate option in the Admi=
+n console for your organization before June 25, 2019.</strong></p>
+
+<p>You can find this setting in the Admin console by navigating to <em>Apps=
+ &gt; G Suite &gt; Settings for Gmail &gt; User settings</em>.</p>
+
+<p><strong>If you do not take action before June 25, your domain will autom=
+atically have confidential mode turned on for your users, meaning that user=
+s will have the option to send emails with confidential mode.</strong></p>
+
+<h3>FAQs</h3>
+
+<p><strong>How does Gmail confidential mode work with Vault and eDiscovery?=
+</strong></p>
+
+<p>When a user sends a confidential message, Gmail replaces the message bod=
+y and attachments with a link. Only the subject and body containing the lin=
+k are sent via SMTP. This means that, if your users send or receive message=
+s in Gmail confidential mode, Vault will retain, preserve, search and expor=
+t confidential mode messages. The message body of received messages will be=
+ accessible in Vault only if the sender of the message is from within your =
+organization. Learn more about <a href=3Dhttps://www.google.com/appserve/mk=
+t/p/AFnwnKVFZQ8G0CH-hweJ4JDjulbtm-EosJSC4Z5vRqmzopJxI1A4EKr7h9101qmXrpSnWBG=
+uUZAiiHG6FiuxBDbBXSaQvoQychoJeqsd_f_9apZ8 target=3D_blank>how Vault works f=
+or confidential mode messages here</a>.</p>
+
+<h3>We=E2=80=99re here to help</h3>
+
+<p>If you have additional questions or need assistance, please contact <a h=
+ref=3Dhttps://www.google.com/appserve/mkt/p/AFnwnKV8pL5YwG3sA3Cu5c8mhggpepq=
+TZDhU7lHhn_vkpicAMtRa5e0EavSkiH9xnp9AQqOE6YuPqENhDNyvy_DeWSoOZxWijukg_WM9vS=
+0 target=3D_blank>Google support</a>. When you call or submit your support =
+case, reference issue number 113130548.</p>
+
+<p>Sincerely,</p>
+
+<p>The G Suite Team</p>
+
+<!-- Include the Customer feedback form snippet, copy HTML from TEMPLATE SN=
+IPPET ID 7501725 and add relevant links -->
+<div style=3D"color: #666666; padding-top: 8px; border-top-style: solid; bo=
+rder-top-color: #dcdcdc; border-top-width: 1px">
+  <p>Was this information helpful?</p>
+  <a href=3Dhttps://www.google.com/appserve/mkt/p/AFnwnKWD52El1WFZPK6dR1wcT=
+mTrk0Ac3G9RyYj2M2jtTgoA_RQWH9UPVtV-4_rpMttoL5rnDMR0PCaKlJEbm_Vd02c8n_UZDwRh=
+u_6R94TxyVCMo30l_2iqalxoUQfYxRslArdl6fQYWbS4FuNz1nTx1wqaBLRvLy4L3xG2lsEjSAX=
+oEe1I0c83cx7X-to target=3D_blank>YES</a> =C2=A0 <a href=3Dhttps://www.googl=
+e.com/appserve/mkt/p/AFnwnKV-_kBDZeaVND0DCl4PKJ6D26RM7_LYj5c7T9MigRTy7OT1rT=
+H0HTpEXKQfW_URfLefnsWQp-58NBhy-wkxzCcsofD0fsh-i7DMYqng8EQ25I9ILMo29kdcY1Rft=
+XhtLALyHu9KsXyz193We2A7kdnMk2wdsXDMi6Dl15KQXTXWlOM0cRFz2pDrow target=3D_bla=
+nk>NO</a><br>
+  =C2=A0</div>
+
+<!-- Finally, include the standard footer. This also ends the body -->
+<div style=3D"font-size: 10px; color: #666666; padding-top: 8px; border-top=
+-style: solid; border-top-color: #dcdcdc; border-top-width: 1px">
+  <p>=C2=A9 2019=C2=A0 Google LLC=C2=A01600 Amphitheatre Parkway, Mountain =
+View, CA 94043</p>
+
+  <p><i>You have received this important update about your G Suite account =
+because you=C2=A0designated this email address as a primary or secondary co=
+ntact for mandatory service communications in your Google=C2=A0<a href=3Dht=
+tp://www.google.com/appserve/mkt/p/AFnwnKXcK-Dk5CAf4FPu0jZ5WMY341qyafvXyjPE=
+cGTFBdLyFIg8VwBFTwGcP_KnHw7Nbo-FYNjTEiOqfQ target=3D_blank>Admin console</a=
+>=C2=A0profile.</i></p>
+</div>
+<img height=3D1 width=3D3 src=3Dhttps://www.google.com/appserve/mkt/img/AFn=
+wnKU2kMHRki-oOdM5ni7ONwbemTm6OKnJXDnG0K88JT4.gif>
+--000000000000deca870589f90417--

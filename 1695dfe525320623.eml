@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp8843344lto;
+        Fri, 8 Mar 2019 07:49:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzkq6sCLCiW3QmqMgd15/4WJ3+B3gwvCN44Q1aVsTCPYUKUGh5ekspJAaZ2h4kC6iMB9Yak
+X-Received: by 2002:a25:b57:: with SMTP id 84mr2308949ybl.231.1552060142331;
+        Fri, 08 Mar 2019 07:49:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552060142; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZTNIJ89W0pDKblU4v7yFk1cocJTLW/R0ULHCpWO84GRa/qOegi8Xgguf74rB9Zh6uX
+         9wVJ5Lz39QclJv4KqbpqcKbqOuiKgDQ7U+Y2eiOYpbmi0mWblVcyAO4MR8oDW4Be1ntj
+         K0wII5OmyuK5MlTEvVMGoWIkTiY0BH8VTR9vxLleFxdqPe3HUmezYxxBCi7eS3Q9zCtO
+         A6HuXpgw3PPliV+kPI9fCtWkav8weILWCzEJVqGfXRgwcLNxc38D8hheNnVzUIPy+CE4
+         /QwqrQmQ4MgrJrXqCoGUr2dbLMpFEzGqw55mIdjCUOcDJNjhB8lRU8mT9PPG+waNeiuK
+         jTMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=S3Tfvn7CPAuTGCEggA/YpEkaCX4rKTnhCU6h0Jto934=;
+        b=nadsajfUX/3O+ZVAaFDIK4z8wsYsN0XPATJ0ARZOXGRpsOO3m/SUKkq2WkyzheSLP3
+         sFWP1jCX1vl8wCf63EUBY/LhQxjqGsm/5YZpOHiq+lUG+DTSNN0goapoifGtA11ZusVJ
+         kcQo4YDDl0WLG3FG6kauZp2ngd6UwEShbbvt/yMandnHZUX+9lB82Ky0yBDj6K7AksXf
+         C8uZ3KE77nr/8QBMDq4EVesA21wqc8lt6XK/1KC6jnZ6+rJk4tNrkpIzqILxjLmWp4gT
+         5qlHQfOh0tX725v+bvtKrs76ixNnUobC780oY+u2VGdNTw99SyDGrZ67U+ABjhLbpXis
+         ViVw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=OcnBSGU7;
+       spf=pass (google.com: best guess record for domain of jimcald@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=jimcald@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <jimcald@iia.collab.its.umich.edu>
+Received: from maleficent.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.125.12])
+        by mx.google.com with ESMTPS id v2si5057816ybj.483.2019.03.08.07.49.01
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 07:49:02 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of jimcald@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) client-ip=141.211.125.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=OcnBSGU7;
+       spf=pass (google.com: best guess record for domain of jimcald@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=jimcald@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552060141;
+	bh=S3Tfvn7CPAuTGCEggA/YpEkaCX4rKTnhCU6h0Jto934=;
+	h=Date:From:To:Subject;
+	b=OcnBSGU73SSSY93CA++85AWs9aeWEJ6yiVmpoeoQbA/RhhnaWhWc8DgG7FaHUtZ7w
+	 icALxH6iGC2yuu9ODNG2u24MiKRmwms0U3+ki59YfzXLgDs0AD9JyDcco/lZ843Wp9
+	 8X2qFt2G3QRK5QQ7+KV5l5+Jsdf04iQ7jb7/hcAFYSoQswJsJiWUsOCN5iIVcquzV9
+	 O86Q0tZ1k1lZ+Xcgvjq38WMo0aeHTR9X0tSUS7Gs+B7ne0gIoQD9eZpzu7Csdw3ZTR
+	 dupTp/loG7RIcFUSBT0oiXA5bM+wDuarAKb3aUiLp1qpGRaOaWSEABzMtcBeeQViaW
+	 Mkt2kNMd+5eqA==
+Authentication-Results: maleficent.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By maleficent.mr.itd.umich.edu ID 5C828EED.72671.27535;
+	Authuser hermane;
+	Fri, 08 Mar 2019 10:49:01 -0500
+Date: Fri, 8 Mar 2019 15:48:55 +0000
+From: Jim Caldwell <jimcald@iia.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: I am jimcald.
+Message-ID: <20190308154855.72nhuw7x2nxpwykj@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+I swear. This isn't an impersonation attempt or anything. For reals.

@@ -1,0 +1,306 @@
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=VvbOWv+e
+X-Received: by 2002:a19:230e:: with SMTP id j14mr2197491lfj.13.1561646151878;
+        Thu, 27 Jun 2019 07:35:51 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Thu, 27 Jun 2019 07:35:51 -0700
+Delivered-To: admin-hermane@collab.its.umich.edu
+Received: by 2002:a9d:5549:0:0:0:0:0 with SMTP id h9csp1616387oti;
+        Wed, 22 May 2019 20:42:42 -0700 (PDT)
+X-Received: by 2002:a24:520f:: with SMTP id d15mr12191465itb.78.1558582962174;
+        Wed, 22 May 2019 20:42:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558582962; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HwJ/6BatJzxcuYLtAS5kN0jQpWrXS43wC1F7dtQlWYnFfG3b4/ODqjrQMKWjyaM0ZN
+         4iUNJHYDevcjD6srVO8fDv5Kjrk/wPRFb8Zws/1gL5JnypHZnDfA9mXDygsKg+bpiunQ
+         8nFh9pUg0OLrjqfrPyMBSqNZqeM5YTL5as4CboSMdfzd2iLMmAIh8UDzj1GCDTI43uur
+         lV6M90LPqPrUttQ3rQ9yyHSy0C+p5r2H7r3lWHl/5Bv6UKYye7Xt+mHN1f45etPdMC2m
+         bDpkB11qfII9RT7ZXWqPnqlZL4a2VZxM07IOPBAn9Jmb/TX0/yXmsmI2O5MtXchzOIVf
+         VyQw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=7o4ZrKkwhhVeeixmVRM2tqOIG3i4pbKct6fLdmkPrUs=;
+        b=ek0oUR8WAakAmedPQWnFLC8g51u7Io+D8k6atEleGSX0MaTxg7D9vGOT0cFGIjelvA
+         dAu4cTW88RhQofL6ngz0GEYm4PCc8fYnJ3wfBuoDpsaxKRDixuku3IVU/vr1GpMp1IKN
+         JuwGbshaRHZTrOP4wResoiuyMYhn+WBMD0BkwmtFa8g2b2JcBbqoCq3O5JcBFYR4JyTC
+         2jkjYcLuHcnNAVorq0kMYrU4zGCDTlznWX8FkrealKg/0lZvzPwxGEpRk+K9mXongt7q
+         WAco28GtRh73IaT/Y6NnPmV/GD/H8yEmbK/WekNcYcvUgb+VBbqZ/WIQcYxy2ku3vjB/
+         V7KA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=VvbOWv+e;
+       spf=pass (google.com: domain of 3srbmxa4kagqiuwkvg-pqtgrnaiqqing.eqo@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3sRbmXA4KAGQIUWKVG-PQTGRNaIQQING.EQO@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3sRbmXA4KAGQIUWKVG-PQTGRNaIQQING.EQO@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id c131sor11715783itc.22.2019.05.22.20.42.41
+        for <admin-hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Wed, 22 May 2019 20:42:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3srbmxa4kagqiuwkvg-pqtgrnaiqqing.eqo@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=VvbOWv+e;
+       spf=pass (google.com: domain of 3srbmxa4kagqiuwkvg-pqtgrnaiqqing.eqo@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3sRbmXA4KAGQIUWKVG-PQTGRNaIQQING.EQO@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:reply-to:feedback-id:message-id:subject:from:to;
+        bh=7o4ZrKkwhhVeeixmVRM2tqOIG3i4pbKct6fLdmkPrUs=;
+        b=VvbOWv+eb4q9yOU9WLC9ck8vpO63GuAdjEXruSts/EPzPH9Y5VlPE3SNnVnf7igCrj
+         zCmo6IIe1UIb99xe2Z23qzke2M5hxceHMwxFMScX+up5j7JUoYSX16ukzDnpAgHTzONJ
+         FzDklmPRtr46DP0Yv5zIqH3XfXDPAadfV0ZVPdgGyDTekZltJ0/1GZRhh1g2oxWK2sko
+         UWPa/6/Grq6vFIZyzFEZlfLzNx+HVMcWoTYS0+ZS76dknugk4d8is9y5xZ+GdJtCUoHx
+         HthLiUHKl+x5Bfd8FOUohT/0fXaLOv0rBg7fptOOMb0wfq+dlGevdr1lcEAjbRNfzmJr
+         uZIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:feedback-id
+         :message-id:subject:from:to;
+        bh=7o4ZrKkwhhVeeixmVRM2tqOIG3i4pbKct6fLdmkPrUs=;
+        b=EmVosGV/Wj5PsAa1J7/15OoBGV4OtA5VbqOPkIlj5YwqYZdrXxYikflRUbGwJ/baR9
+         KvAKKXgYhVa+5CzBaIJOYWpwn4vsWENCDu9DhFilugRRSAM1JfnqVvdsJ5zrUjpUtKjN
+         toArRQmt2VkHIMQ9BUextxehceN1T2rUlLUXr1b2+FNSmozbrC+nWtQ1F5q3GXToap/B
+         qBoISqKGLgNMyvAextKnaqEuyRol8xHtH4YBreMJIam92yVUKfQXf0RUWrCo3Dwolytf
+         SPS332TkYoEwFeWUFSEY9b6UMoLiaAihUNVzvIHGlX09XkELlzuVraQlUXawhD+eF/hv
+         2WHA==
+X-Gm-Message-State: APjAAAXx9278SWcOJG58M/KAHPQia4b8tA14IiJPN6WYDBBz02T2aNSA
+	ELqvIh59zja1wPE=
+X-Google-Smtp-Source: APXvYqx55isrjdrykibWSQ68UuuHrNyT8+nyQ51S4y7SuyZXRwYErnbeW+41DtJpZE7v1NWzw+c8HyY=
+MIME-Version: 1.0
+X-Received: by 2002:a24:5c5:: with SMTP id 188mr11015933itl.10.1558582961691;
+ Wed, 22 May 2019 20:42:41 -0700 (PDT)
+Date: Wed, 22 May 2019 20:42:41 -0700
+Reply-To: The G Suite Team <gsuite-noreply@google.com>
+X-Google-Id: 244026
+Feedback-ID: Len:P-11:C20090953:gamma
+X-Notifications: GAMMA:<6e358a56f1311f265daa0c0604e305154d2e9840-20090953-110556172@google.com>
+Message-ID: <6e358a56f1311f265daa0c0604e305154d2e9840-20090953-110556172@google.com>
+Subject: [Action Required] Introducing two improvements to new Google Sites footers
+From: The G Suite Team <gsuite-noreply@google.com>
+To: admin-hermane@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary="000000000000c8e0dc058985df00"
+
+--000000000000c8e0dc058985df00
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+RyBTdWl0ZSBsb2dvDQoNClJldmlldyB5b3VyIHNldHRpbmdzIGZvciBuZXcgR29vZ2xlIFNpdGVz
+IGJlZm9yZSBKdW5lIDEwLCAyMDE5Lg0KDQpIZWxsbyBBZG1pbmlzdHJhdG9yLA0KDQpXZSdyZSB3
+cml0aW5nIHRvIGxldCB5b3Uga25vdyB0aGF0IHRvIGltcHJvdmUgc2l0ZSB2aWV3ZXJzJyBleHBl
+cmllbmNlIG9mICANCm5ldyBHb29nbGUgU2l0ZXMsIHdlIGFyZSBpbnRyb2R1Y2luZyBhIG5ldyBm
+ZWF0dXJlIHdoaWNoIGlzIGJlaW5nIHJvbGxlZCAgDQpvdXQgdG8gYWxsIEcgU3VpdGUgZG9tYWlu
+cyBiZWdpbm5pbmcgSnVuZSAxMCwgMjAxOS4NCg0KIEZyb20gSnVuZSAxMCwgMjAxOSwgc2l0ZSBl
+ZGl0b3JzIHdpbGwgaGF2ZSB0aGUgYWJpbGl0eSB0byBlbmFibGUgc2l0ZSAgDQp2aWV3ZXJzIHRv
+IHNlZSB0aGUgbGFzdCB0aW1lIGEgcGFnZSBoYXMgYmVlbiB1cGRhdGVkIGluIG5ldyBHb29nbGUg
+U2l0ZXMsICANCmFsbG93aW5nIHNpdGUgdmlld2VycyB0byBkZXRlcm1pbmUgaG93IHVwIHRvIGRh
+dGUgc2l0ZSBjb250ZW50IGlzLiBXZSdyZSAgDQpzaGFyaW5nIHRoaXMgaW5mb3JtYXRpb24gaW4g
+YWR2YW5jZSwgc28gdGhhdCB5b3UgY2FuIHByZXBhcmUgeW91ciBHIFN1aXRlICANCmRvbWFpbiwg
+Y29sbGFiLml0cy51bWljaC5lZHUsIGZvciB0aGlzIGZlYXR1cmUuDQoNCldoYXQgZG8gSSBuZWVk
+IHRvIGtub3c/DQoNCldlIGFyZSBtYWtpbmcgdHdvIGNoYW5nZXMgdG8gZm9vdGVycyBpbiBuZXcg
+R29vZ2xlIFNpdGVzOg0KDQoNCldlIGFyZSByZW1vdmluZyB0aGUgY3VycmVudCBmb290ZXIgYXBw
+ZW5kZWQgYXQgdGhlIGJvdHRvbSBvZiBhbGwgbmV3IFNpdGVzLCAgDQp3aGljaCBjb250YWlucyB0
+aGUg4oCcTWFkZSB3aXRoIG5ldyBHb29nbGUgU2l0ZXPigKbigJ0gYnJhbmRpbmcgYW5kIHRoZSDi
+gJxDcmVhdGUgYSAgDQpzaXRl4oCdIGJ1dHRvbi4NCldlIGFyZSBhZGRpbmcgdGhlIGFiaWxpdHkg
+Zm9yIHNpdGUgZWRpdG9ycyB0byBzaG93IHRoZSBsYXN0IHRpbWUgYSBwYWdlIHdhcyAgDQp1cGRh
+dGVkIHZpYSBhIG5ld2x5IGRlc2lnbmVkIHNpdGUgaW5mbyBpY29uLg0KDQpXaGF0IGRvZXMgdGhp
+cyBtZWFuIGZvciBteSBvcmdhbml6YXRpb24/DQoNClRoZSBjdXJyZW50IGFwcGVuZGVkIGZvb3Rl
+ciBjb250YWluaW5nIHRoZSDigJxNYWRlIHdpdGggbmV3IEdvb2dsZSBTaXRlc+KApuKAnSAgDQpi
+cmFuZGluZyBhbmQgdGhlIOKAnENyZWF0ZSBhIHNpdGXigJ0gYnV0dG9uIHdpbGwgYmUgYXV0b21h
+dGljYWxseSByZW1vdmVkIGZyb20gIA0KYWxsIG5ldyBTaXRlcy4NCg0KWW91IGNhbiBhbHNvIG9w
+dGlvbmFsbHkgZW5hYmxlIGxhc3QgdXBkYXRlZCB0aW1lIGZyb20gd2l0aGluIGEgbmV3IHNpdGUg
+IA0KaW5mbyBpY29uIChkZXBlbmRhbnQgb24gTGFzdCB1cGRhdGVkIHRpbWUgc2V0dGluZ3MpLg0K
+DQpBcyBhbiBhZG1pbmlzdHJhdG9yLCB5b3UgY2FuIGFkanVzdCB0aGUgTGFzdCB1cGRhdGVkIHRp
+bWUgc2V0dGluZ3MgdXNpbmcgIA0KYWRtaW4gcGFuZWwgY29udHJvbHMgYXMgZm9sbG93czoNCg0K
+DQpPRkY6IFRvIGRpc2FibGUgc2l0ZSBlZGl0b3JzIGZyb20gZXZlciBkaXNwbGF5aW5nIHRoZSBs
+YXN0IHVwZGF0ZWQgdGltZSBvbiAgDQphIHNpdGUuDQpPTjogVG8gZ2l2ZSBzaXRlIGVkaXRvcnMg
+dGhlIG9wdGlvbiB0byB0dXJuIGxhc3QgdXBkYXRlZCB0aW1lIG9uIG9yIG9mZiBvbiAgDQphIHBl
+ci1zaXRlIGJhc2lzLg0KRk9SQ0VEOiBUbyBhbHdheXMgc2hvdyBsYXN0IHVwZGF0ZWQgdGltZSBm
+b3IgYWxsIHNpdGVzIChlZGl0b3JzIGNhbm5vdCAgDQpkaXNhYmxlKS4NCg0KVG8gZGV0ZXJtaW5l
+IHdoZXRoZXIgeW91ciBzaXRlIGVkaXRvcnMgaGF2ZSB0aGUgb3B0aW9uIHRvIGRpc3BsYXkgTGFz
+dCAgDQp1cGRhdGVkIHRpbWUgZm9yIG5ldyBTaXRlcywgcGxlYXNlIGFkanVzdCB0aGUgYWRtaW4g
+c2V0dGluZyBpbiBhZHZhbmNlIG9mICANCnRoZSBmZWF0dXJlIHJvbGwgb3V0IGJlZ2lubmluZyBK
+dW5lIDEwLiBBZG1pbiBwYW5lbCBjb250cm9scyB3aWxsIGJlY29tZSAgDQphdmFpbGFibGUgZ3Jh
+ZHVhbGx5IGZyb20gTWF5IDEzLCAyMDE5LCBhbmQgd2lsbCBkZWZhdWx0IHRvIE9OLg0KDQpXaGVu
+IHRoZSBhZG1pbiBzZXR0aW5nIGlzIE9OLCBzaXRlIGVkaXRvcnMgaGF2ZSB0aGUgb3B0aW9uIHRv
+IHRvZ2dsZSBMYXN0ICANCnVwZGF0ZWQgdGltZSBvbiBvciBvZmYgb24gYSBwZXIgc2l0ZSBiYXNp
+cyBmcm9tIHRoZSBTaXRlIGluZm8gc2V0dGluZ3MgIA0Kd2l0aGluIHRoZSBuZXcgU2l0ZXMgZWRp
+dG9yLiBCeSBkZWZhdWx0LCB0aGUgc2l0ZS1sZXZlbCBzZXR0aW5nIGZvciBsYXN0ICANCnVwZGF0
+ZWQgdGltZSB3aWxsIGJlIHRvZ2dsZWQgb2ZmIGZvciBhbGwgZXhpc3Rpbmcgc2l0ZXMgKG1lYW5p
+bmcgbGFzdCAgDQp1cGRhdGVkIHRpbWUgd2lsbCBub3QgYmUgZGlzcGxheWVkKSwgYW5kIHRvZ2ds
+ZWQgb24gZm9yIGFsbCBuZXdseSBjcmVhdGVkICANCnNpdGVzIG1vdmluZyBmb3J3YXJkIChtZWFu
+aW5nIGxhc3QgdXBkYXRlZCB0aW1lIHdpbGwgYmUgZGlzcGxheWVkKS4NCg0KVG8gcHJldmVudCBz
+aXRlIGVkaXRvcnMgZnJvbSBoYXZpbmcgdGhpcyBvcHRpb24sIHlvdSBjYW4gZGlzYWJsZSB0aGlz
+ICANCmZlYXR1cmUgYnkgc2VsZWN0aW5nIHRoZSBPRkYgYWRtaW4gc2V0dGluZyBvciB5b3UgY2Fu
+IGZvcmNlIGVuYWJsZSB0aGlzICANCmZlYXR1cmUgYnkgc2VsZWN0aW5nIHRoZSBGT1JDRUQgYWRt
+aW4gc2V0dGluZy4NCg0KV2hhdCBkbyBJIG5lZWQgdG8gZG8/DQoNCldlIHJlY29tbWVuZCByZXZp
+ZXdpbmcgdGhlIG5ldyBhZG1pbmlzdHJhdG9yIHNldHRpbmcgZm9yIExhc3QgdXBkYXRlZCB0aW1l
+ICANCmFuZCBjaG9vc2luZyB0aGUgYXBwcm9wcmlhdGUgb3B0aW9uIGZvciB5b3VyIGRvbWFpbiBi
+ZWZvcmUgSnVuZSAxMCwgMjAxOS4NCg0KVGhlIHNldHRpbmcgY2FuIGJlIGZvdW5kIGluIHRoZSBB
+ZG1pbiBjb25zb2xlIGF0IEFwcHMgPiBHIFN1aXRlID4gU2V0dGluZ3MgIA0KZm9yIFNpdGVzID4g
+TmV3IFNpdGVzID4gTGFzdCB1cGRhdGVkIHRpbWUuDQoNCk5lZWQgbW9yZSBpbmZvcm1hdGlvbj8N
+Cg0KRm9yIGluZm9ybWF0aW9uIGFib3V0IHRoZSBhYm92ZSBjaGFuZ2VzIGFuZCBob3cgdG8gc2V0
+IHRoZSBsYXN0IHVwZGF0ZWQgIA0KZGF0ZSBzZXR0aW5nLCBwbGVhc2UgcmVmZXIgdG8gb3VyIGJs
+b2dwb3N0IGFuZCBIZWxwIENlbnRlciBhcnRpY2xlLg0KDQpXZSdyZSBoZXJlIHRvIGhlbHANCg0K
+SWYgeW91IGhhdmUgYWRkaXRpb25hbCBxdWVzdGlvbnMgb3IgbmVlZCBhc3Npc3RhbmNlLCBwbGVh
+c2UgY29udGFjdCBHIFN1aXRlICANCnN1cHBvcnQuIFdoZW4geW91IGNhbGwgb3Igc3VibWl0IHlv
+dXIgc3VwcG9ydCBjYXNlLCByZWZlcmVuY2UgaXNzdWUgbnVtYmVyICANCjEzMjczNTAwMi4NCg0K
+U2luY2VyZWx5LA0KDQpUaGUgRyBTdWl0ZSBUZWFtDQoNCg0KV2FzIHRoaXMgaW5mb3JtYXRpb24g
+aGVscGZ1bD8NCllFUyBOTw0KDQoNCsKpIDIwMTkgR29vZ2xlIExMQyAxNjAwIEFtcGhpdGhlYXRy
+ZSBQYXJrd2F5LCBNb3VudGFpbiBWaWV3LCBDQSA5NDA0Mw0KDQpZb3UgaGF2ZSByZWNlaXZlZCB0
+aGlzIGltcG9ydGFudCB1cGRhdGUgYWJvdXQgeW91ciBHIFN1aXRlIGFjY291bnQgYmVjYXVzZSAg
+DQp5b3UgZGVzaWduYXRlZCB0aGlzIGVtYWlsIGFkZHJlc3MgYXMgYSBwcmltYXJ5IG9yIHNlY29u
+ZGFyeSBjb250YWN0IGZvciAgDQptYW5kYXRvcnkgc2VydmljZSBjb21tdW5pY2F0aW9ucyBpbiB5
+b3VyIEdvb2dsZSBBZG1pbiBjb25zb2xlIHByb2ZpbGUuDQoNCg==
+--000000000000c8e0dc058985df00
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!-- This contains CSS info, starts the body, and inserts the G Suite logo =
+header -->
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> </span>
+<div style=3D"padding-top: 22px; padding-bottom: 8px; border-bottom-style: =
+solid; border-bottom-color: #dcdcdc; border-bottom-width: 1px" width=3D"100=
+%"><span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; =
+color: #000000;"><img alt=3D"G Suite logo" border=3D"0" src=3D"https://serv=
+ices.google.com/fh/files/emails/gsuite_masthead.png" style=3D"display: bloc=
+k;" title=3D"Google" width=3D"120"> </span></div>
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> <!-- This is the beginning of the subject --> </span>
+<!-- Include the Pre-header snippet, copy HTML from TEMPLATE SNIPPET ID 916=
+0213 and add the pre-header text-->
+<div style=3D"height:0px; font-size:0px; max-height:0px; min-height: 0px; l=
+ine-height:0px; width: 100%; color: #fff; display:none;">Review your settin=
+gs for new Google Sites before June 10, 2019.</div>
+<!-- Please INSERT the relevant Customer Comm BODY snippet -->
+<p>Hello Administrator,</p>
+
+<p>We=E2=80=99re writing to let you know that to improve site viewers=E2=80=
+=99 experience of new Google Sites, we are introducing a new feature which =
+is being rolled out to all G Suite domains beginning June 10, 2019.</p>
+
+<p>From June 10, 2019, site editors will have the ability to enable site vi=
+ewers to see the last time a page has been updated in new Google Sites, all=
+owing site viewers to determine how up to date site content is. We=E2=80=99=
+re sharing this information in advance, so that you can prepare your G Suit=
+e domain, collab.its.umich.edu, for this feature.</p>
+
+<h3>What do I need to know?</h3>
+
+<p>We are making two changes to footers in new Google Sites:</p>
+
+<ol>
+  <li>We are removing the current footer appended at the bottom of all new =
+Sites, which contains the =E2=80=9CMade with new Google Sites=E2=80=A6=E2=
+=80=9D branding and the =E2=80=9CCreate a site=E2=80=9D button.</li>
+  <li>We are adding the ability for site editors to show the last time a pa=
+ge was updated via a newly designed site info icon.</li>
+</ol>
+
+<h3>What does this mean for my organization?</h3>
+
+<p>The current appended footer containing the =E2=80=9CMade with new Google=
+ Sites=E2=80=A6=E2=80=9D branding and the =E2=80=9CCreate a site=E2=80=9D b=
+utton will be <strong>automatically removed</strong> from all new Sites.</p=
+>
+
+<p><strong>You can also optionally enable last updated time from within a n=
+ew site info icon (dependant on <em>Last updated time</em> settings).</stro=
+ng></p>
+
+<p>As an administrator, you can adjust the <em>Last updated time</em> setti=
+ngs using admin panel controls as follows:</p>
+
+<ul>
+  <li>OFF: To disable site editors from ever displaying the last updated ti=
+me on a site.</li>
+  <li>ON: To give site editors the option to turn last updated time on or o=
+ff on a per-site basis.</li>
+  <li>FORCED: To always show last updated time for all sites (editors canno=
+t disable).</li>
+</ul>
+
+<p>To determine whether your site editors have the option to display <em>La=
+st updated time</em> for new Sites, please adjust the admin setting in adva=
+nce of the feature roll out beginning June 10. Admin panel controls will be=
+come available gradually from May 13, 2019, and will default to ON.</p>
+
+<p>When the admin setting is ON, site editors have the option to toggle <em=
+>Last updated time</em> on or off on a per site basis from the <em>Site inf=
+o settings</em> within the new Sites editor. By default, the site-level set=
+ting for last updated time will be toggled off for all existing sites (mean=
+ing last updated time will not be displayed), and toggled on for all newly =
+created sites moving forward (meaning last updated time will be displayed).=
+</p>
+
+<p>To prevent site editors from having this option, you can disable this fe=
+ature by selecting the OFF admin setting or you can force enable this featu=
+re by selecting the FORCED admin setting.</p>
+
+<h3>What do I need to do?</h3>
+
+<p><strong>We recommend reviewing the new administrator setting for <em>Las=
+t updated time</em> and choosing the appropriate option for your domain bef=
+ore June 10, 2019.</strong></p>
+
+<p>The setting can be found in the Admin console at <em>Apps &gt; G Suite &=
+gt; Settings for Sites &gt; New Sites &gt; Last updated time</em>.</p>
+
+<h3>Need more information?</h3>
+
+<p>For information about the above changes and how to set the last updated =
+date setting, please refer to our <a href=3D"https://www.google.com/appserv=
+e/mkt/p/AFnwnKWd9ODEZJed4IzzEwljeqS1mGNcY8ShntPsKX9clt_YCpd5cfMBdxw5YyuwRhp=
+z1PIYS_CW9WwuCYCVJNfAxifglgxFLpUVfA950hWiJMyIRUUx8O9nzBhwHhcKHP5HykLDTvUvaq=
+On4gKP8Og" target=3D"_blank" data-chime-do-not-track> blogpost</a> and <a h=
+ref=3D"https://www.google.com/appserve/mkt/p/AFnwnKV9nuHuJTmO68RF_xRIEHXgH1=
+kJoD0d8kl2csQGWe3OhL0xyx1nXF5XGrsBEcrZOidkZDFFoARERAYY6K9o67mX5-FmbQ5-qCGhp=
+ObO" target=3D"_blank" data-chime-do-not-track> Help Center article</a>.</p=
+>
+
+<h3>We=E2=80=99re here to help</h3>
+
+<p>If you have additional questions or need assistance, please contact <a h=
+ref=3D"https://www.google.com/appserve/mkt/p/AFnwnKWwzEH3qQbibt-eBIHpY-I88y=
+W6Ca3CE4wJpH8tvWXuwY-x9EdLGIT9rkLaVFtSr1coBRTpkHpRRTD57PlhgCL2mw7UvblOIt0dA=
+hZU" target=3D"_blank" data-chime-do-not-track> G Suite support</a>. When y=
+ou call or submit your support case, reference issue number 132735002.</p>
+
+<p>Sincerely,</p>
+
+<p>The G Suite Team</p>
+
+<!-- Include the Customer feedback form snippet, copy HTML from TEMPLATE SN=
+IPPET ID 7501725 and add relevant links -->
+<div style=3D"color: #666666; padding-top: 8px; border-top-style: solid; bo=
+rder-top-color: #dcdcdc; border-top-width: 1px">
+  <p>Was this information helpful?</p>
+  <a href=3D"https://www.google.com/appserve/mkt/p/AFnwnKXJL2NrFXFEuq4vAVif=
+tJtk5ypJxdiSVDk_SPhGrKYYjbfRmKnwxwwkgDDVCoWiNMcrXiahtpk9CgvSmenUoaHW8870dzr=
+4o3IJwYjZc-J6Ow1Wv8oUoFDFYqc2M7CbazM2Dl1-TflvYLjNpfAM_Hwh4mAL9v6-eVR-o7QKgf=
+4h4Uc-Gvtj6ZG-XHcy" target=3D"_blank" data-chime-do-not-track>YES</a> =C2=
+=A0 <a href=3D"https://www.google.com/appserve/mkt/p/AFnwnKWxoVA5FOCpHz7g-6=
+fKC90Fz9JXxB3S1nPSCLTaHREvhLadFIWaKs5yITKVtsle6pD5DcZTbKs85GGTZskUK7_71IgMm=
+-I4JvMIg8ckZCUQbvocLr8sflVdQEQGGn7Ase_8At5e35EjQhgIysNVxW2FrzeinZcFUuB1Wiuy=
+9YXosptVh4Jn_rEi3z4" target=3D"_blank" data-chime-do-not-track>NO</a><br>
+  =C2=A0</div>
+
+<!-- Finally, include the standard footer. This also ends the body -->
+<div style=3D"font-size: 10px; color: #666666; padding-top: 8px; border-top=
+-style: solid; border-top-color: #dcdcdc; border-top-width: 1px">
+  <p>=C2=A9 2019=C2=A0 Google LLC=C2=A01600 Amphitheatre Parkway, Mountain =
+View, CA 94043</p>
+
+  <p><i>You have received this important update about your G Suite account =
+because you=C2=A0designated this email address as a primary or secondary co=
+ntact for mandatory service communications in your Google=C2=A0<a href=3D"h=
+ttp://www.google.com/appserve/mkt/p/AFnwnKVye4IfXhqO_6m9yUs-Ya46aIlKDb9USeg=
+JWbzSsfrVd9pWZpOYfm9A8JcQ7liVyscRAUOdeVfASIs" target=3D"_blank" data-chime-=
+do-not-track>Admin console</a>=C2=A0profile.</i></p>
+</div>
+<img height=3D"1" width=3D"3" src=3D"https://www.google.com/appserve/mkt/im=
+g/AFnwnKVx_xqVcNv4999I9iehikDxtIAQF3vXPbYtAT6JDodn.gif">
+--000000000000c8e0dc058985df00--

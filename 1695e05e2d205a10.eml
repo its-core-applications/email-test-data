@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp8851510lto;
+        Fri, 8 Mar 2019 07:57:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxfHZZ98+eS5DPXsrd2U1qxcIfXhrntw8rg4j+7WabLf0JvDHCQtH7gj8XUs8DhLzkBMuwn
+X-Received: by 2002:a0d:d595:: with SMTP id x143mr15271476ywd.406.1552060638121;
+        Fri, 08 Mar 2019 07:57:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552060638; cv=none;
+        d=google.com; s=arc-20160816;
+        b=DWOPUcOf9VGSySMeOzsARnC2I3z/BSuUP2NxzN+ezu2d+lU3k9GC2MK9nugMa5UFnd
+         kG1bF4m2Cx9SmZeKbftaSMpn+18hX1YgpYMIGhcakjxxJW3U0Z8ldvFvVZIaE5vt0PTk
+         on4ASff2v4Q4ZmoqluPtfmg6gHggS8RlU6Y8vEbwd6EZ/P60E7IiG8H+0XN9KTQ/y4JO
+         E+LplPMNW6/hyKhk5RlLDFfoJIrlHlJAILas0DAmVpXR5/U1tCYIPQTbQ8807BrSOyzi
+         OvEk3YVkOgO+wEjNbTM/NIFIZvdRA5pcdggo4FUApbJnpXRZpqN3LMSUDl52tMonuP13
+         96Mg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=mBR0TrtOx4+tmDpVg9JV0tgLojbr+kyOuv5VWNLaD2A=;
+        b=PV7K+hEEAbVinsIKYyW/vFb/ByGIN8IqOh83+ko4dmj4a5LrkxzQ55yM0XCQDC3sUy
+         jFZ5ZuIY1MwPK8pjWkVihtwel4gM/OxlCdsfo2TYi8X95cEIb0JC6I+vq7+jVIhnKgnc
+         sIjwKiZAbxq05TrpZGidjqEELwmQUah4sEKCIhV7tR5zp6RtkjpvwZA6LQvCN9pIAo9y
+         ZGfMQxr77qduny32y1BOwMpgHRhIBz1YPfG31JhQPUUJVwGAbmOp1lvApUprsR9ATEzB
+         q9ryBRQE9buvlsGTnou0OjqNhQCppJw614FOD2Hao7Vw40fmsOcVtRMfcotNRu0OfbeN
+         MOGQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=KBUL3jWZ;
+       spf=pass (google.com: best guess record for domain of jimcald@uselab.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=jimcald@uselab.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <jimcald@uselab.collab.its.umich.edu>
+Received: from tombraider.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.12.86])
+        by mx.google.com with ESMTPS id t207si4703642ywc.74.2019.03.08.07.57.17
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 07:57:18 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of jimcald@uselab.collab.its.umich.edu designates 141.211.12.86 as permitted sender) client-ip=141.211.12.86;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=KBUL3jWZ;
+       spf=pass (google.com: best guess record for domain of jimcald@uselab.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=jimcald@uselab.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552060637;
+	bh=mBR0TrtOx4+tmDpVg9JV0tgLojbr+kyOuv5VWNLaD2A=;
+	h=Date:From:To:Subject;
+	b=KBUL3jWZGrfik+p47WL6CNG4POshl25+eMlOUqYiZm21W72Nb0XEkGYLC5XCtSkeo
+	 xQIGx0ynh6RLZVEVHcOOOMCp65qWm0QmcFBM6/vhD7Tj0MWPeAlbQARvA+4bslQaFR
+	 ODB9fxtG04Sg7je2sJIiscsjoh2GSVodgPe/GgJD5Wlq8UfhTi/Ha2sn3oaljVnYts
+	 U5uS/xFCFwEZG1j8p2/UxDDvoxKNswBYvlFsiS7ksK7JGyXXWcg6cfGaDfUKa12l/B
+	 bcAYRHpCyRJnWVwFjCEbpkUX7pQYDwl6dryJJ7LEk2D6FkSccuKKht8+nm/z8SBBXW
+	 kIOXrrkHwSlaw==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By tombraider.mr.itd.umich.edu ID 5C8290DD.4B4A8.30369;
+	Authuser hermane;
+	Fri, 08 Mar 2019 10:57:17 -0500
+Date: Fri, 8 Mar 2019 15:57:11 +0000
+From: Jim Caldwell <jimcald@uselab.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Don't mind me.
+Message-ID: <20190308155711.cue7nte35enuog6a@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+Just sending more mail.

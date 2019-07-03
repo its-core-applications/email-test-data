@@ -1,0 +1,111 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:6455:0:0:0:0:0 with SMTP id n21csp3112874ltf;
+        Mon, 1 Jul 2019 12:12:18 -0700 (PDT)
+X-Received: by 2002:a5d:8451:: with SMTP id w17mr29959722ior.226.1562008337905;
+        Mon, 01 Jul 2019 12:12:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562008337; cv=none;
+        d=google.com; s=arc-20160816;
+        b=avXtddRAGru5ZMiSytrAeX/EeJ7YxS3SNxUkEGFYvF11RsWUNPUyPc6j9rrL6CUj/C
+         PJbaxlUrFnXurIjmpafJ6nu8mUPMqR/uKplpLHluqvffZgtTyRqPZFQUhd3FVwAPk98V
+         5cEMrHUIp/oEi7H/INqtMEqHV59l7gdc4JeBojSfqCwR/OGpxAQnQTjJQ4Hndp/mciRC
+         2O6QTbQ7hy2zTwWt8bsKMFc4HlolSV2q76/mHpLoOf+/cZ/FqLnOsXlfB9ed3c/Cszhy
+         d0FYj9sgu5BwxKHzVQNqqjlMofQetH7V/pJ586l+qot+AvOyn+TEIavMquYjsH7qU1T3
+         yjVA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=HtT0Csw6Vh+y3Zg6wqb55HmTZERxpVpqo2AzFujTmno=;
+        b=b6Hmij2d0W4sbg/Pjf68DCuBFEuuyWUqK1KHGN9erj35XQVcKQf4aqvPHyn43a1eoc
+         XMGitXn452OpOZx+ReKuvlLOeueBj5qkbXHzQ6UMiEnJP6NmFK3igpuu7f2B1MUADdhb
+         kgYsxBL+9roH4g4mE0WeF852qcm4aQOgcVOA09SnssYzvPvC4eAtC1YjvN8EwhVE54So
+         XGQZAR7qNb5FYbKLk6qnvX2vVaQSqKKMiPVHUXqLTFS4zV81BF5UXf/Qmp/kDVby1Ux4
+         CQpaZnOihAsVuhZIEJTkBWcJ9vXup5OnvVi6FLXT1esINZwz0mAmVUSlF+MviB8Zcep/
+         6E8A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=jrrrlFv1;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <hermane@umich.edu>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n142sor8198430iod.26.2019.07.01.12.12.17
+        for <hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Mon, 01 Jul 2019 12:12:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=google-2016-06-03 header.b=jrrrlFv1;
+       spf=pass (google.com: domain of hermane@umich.edu designates 209.85.220.41 as permitted sender) smtp.mailfrom=hermane@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=umich.edu; s=google-2016-06-03;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=HtT0Csw6Vh+y3Zg6wqb55HmTZERxpVpqo2AzFujTmno=;
+        b=jrrrlFv12aW9b7wExr26ID7j3MO5U/0MODr63t0Xy6v9GXCrnSbej/nBojO9zmF3jx
+         XuZcw+i13qXD9GBDpqgnAyYcGvVegcBOhuGWPlB3GhQJ6t6AmYwFAQeDJMwbsfphOZXZ
+         rgLwkm9NW2hxqNanNrHgpSaGaJ5Emo/t+RDkL2kF8M6WqGnOroPsIhGHZP0NkN3ANljI
+         /31pqrH219PkqCbKKJumxVfTdacPPyGKSgVVqhItk0O5EW96GdnBH+JvN/H+Y4etHUR6
+         Gi09QY5muweT+04vEBq3NddU8OnDKJTAp+Ce8OuWE/rbiLj/Hk8RLoPNlD8KFJHnPKa/
+         BneQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=HtT0Csw6Vh+y3Zg6wqb55HmTZERxpVpqo2AzFujTmno=;
+        b=Cx1aPc6Jqg2U/K7+uzG71U+ts1BpfvlNgyjWniDjgZIonIklCQWwMlqUfdo20I2HoV
+         aiRmaTQe0BUl47JM/x6EjbTN34GK197hFTRmXLxpJOvuura31wunH7sXE+VPCM3hckQQ
+         HWWWTbN4OnJVTp27rwsIfmiiOv6MXqaA4Zykm/Omo/QSULtFiULh1snvubG58PUWN2pd
+         2xfAEcq90CaLwfZnPMbZzSJuqLri/imX7diukBhcoQUL1eQsKbBoRbp4LZN7/Nk5q/Pd
+         vEKQI0bFyf54yncdvNq3NVZiuPwOfYTyBXSqyv/3oj3f/LWwvhNldZzlD3+n/OeHBtnC
+         e3kw==
+X-Gm-Message-State: APjAAAWMo5Ceb1FdSgkjzxyLH/tjEhBPufrxxXvnZ85g8mMxJ6hmXdIO
+	hAP+QdTCypO7KOl/0S5Ed/MbHkk5QlFf0DVaA/ByYvJ0Y7c=
+X-Google-Smtp-Source: APXvYqwm+lW9r7jBR1Pu/aADxwJl6AxJ+6zyIipRGM10YM+rDQw3BvV8ZvqKV6rLG+wKzu8vvZWBNZq/gkemgQJbNPE=
+X-Received: by 2002:a6b:b40b:: with SMTP id d11mr1334948iof.122.1562008337057;
+ Mon, 01 Jul 2019 12:12:17 -0700 (PDT)
+MIME-Version: 1.0
+From: Herman Elpdesk <hermane@umich.edu>
+Date: Mon, 1 Jul 2019 15:11:39 -0400
+Message-ID: <CAKvLTfag1U-2x9nr4sGv7tpyzTU0fPDTMdDWfQA9h8iG+a_etA@mail.gmail.com>
+Subject: TXT Test
+To: hermane@collab.its.umich.edu
+Content-Type: multipart/mixed; boundary="0000000000001148b0058ca36893"
+
+--0000000000001148b0058ca36893
+Content-Type: multipart/alternative; boundary="0000000000001148ae058ca36891"
+
+--0000000000001148ae058ca36891
+Content-Type: text/plain; charset="UTF-8"
+
+-- 
+*Herman Elpdesk*
+ITS Collaboration Services
+University of Michigan
+734.764.2777
+
+--0000000000001148ae058ca36891
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif;font-size:small;color:#444444"><br clear=3D"all"></div><div><=
+br></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=
+=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><font colo=
+r=3D"#444444" face=3D"times new roman, serif"><b>Herman Elpdesk</b><br>ITS Co=
+llaboration Services<br>University of Michigan<br>734.764.2777</font></div>=
+</div></div></div></div></div>
+
+--0000000000001148ae058ca36891--
+--0000000000001148b0058ca36893
+Content-Type: text/plain; charset="US-ASCII"; name="DirectoryScopes.txt"
+Content-Disposition: attachment; filename="DirectoryScopes.txt"
+Content-Transfer-Encoding: base64
+Content-ID: <f_jxkresjh0>
+X-Attachment-Id: f_jxkresjh0
+
+aHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9hZG1pbi5kaXJlY3RvcnkuZ3JvdXAubWVt
+YmVyLGh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvYWRtaW4uZGlyZWN0b3J5Lm9yZ3Vu
+aXQsaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9hZG1pbi5kaXJlY3RvcnkudXNlcixo
+dHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2FkbWluLmRpcmVjdG9yeS51c2VyLmFsaWFz
+LGh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvYWRtaW4uZGlyZWN0b3J5LnVzZXIuc2Vj
+dXJpdHksaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9hZG1pbi5kaXJlY3RvcnkudXNl
+cnNjaGVtYSxodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL3VzZXJpbmZvLmVtYWlsLGh0
+dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvdXNlcmluZm8ucHJvZmlsZQ==
+--0000000000001148b0058ca36893--

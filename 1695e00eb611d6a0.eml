@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp8846155lto;
+        Fri, 8 Mar 2019 07:51:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzbpckqSePzj1bUfSFR+o4YViTjnC1WWyX7O16E0iupNQq+9w5825c+pA7+cMNo6eUaI0sC
+X-Received: by 2002:a81:3083:: with SMTP id w125mr14911914yww.170.1552060312373;
+        Fri, 08 Mar 2019 07:51:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552060312; cv=none;
+        d=google.com; s=arc-20160816;
+        b=q1DgbGsC79KjG6jGJ2/U2dFqcEyFSd+6Ptqm6Fj1uOHqUB7sVFktSTnwZMXhi2LLV0
+         TWTpcRbaWE7enll7aixe5muqdpWsBUnWucFB8fzovUQreSMybLm3c8lPqa4s9wF2NPmC
+         V3l/pwaCyJgoFPywKM4eVZhLfhSxL15ZngtgoKSSsUAJrv6vKOaGuz4Wu7rZCDU+Jy+i
+         DbEreSrt/8ShaCk/zUC8bE7o28+CCtvs6shXQWOytw3MnCDf6IVuSz4Fv/+Ra2t9MTVj
+         NHym9/laHCdrQKMyojcF40ATMiguhP6XuSUIBwwaNAAPHcrQPmTgM+sn8ZaW5k8a9QUh
+         MEFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=vwz5m9PQzcHlvFemRQbfOn2JMC+drK9cX9SlaiEMAvo=;
+        b=pOCmyZIpb8cVjtyCEJ7fUbHJ5Eg4cjmLDmXu1NuiOS/Rh8kx4t4tDMQ3PGXY/zdQHs
+         K45VE8tWWslvPFzZjav5Bj70C4O3BI79SFsFhClI6Rf6MibvGydzzZNImH6OIv8AKw16
+         nqSe7pM12sb36BP3Ps1wyHXmlxMdrucyKq7dBHswymAJek0VUsH95n2aPVE8kGwL0ZfH
+         f2QmRmHz3JQ0R3hgrnC3P3zhUEfApdciBC7JjldUSukBi6tSL7fGD/BDuOYQdmh9YrRi
+         SeIzl9CtsChZOMswGoHdc3vy2Bilmw3UxDlorEMD+MC3TM+7pvoghUg+A9fTf+aGQr0i
+         Bymg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=ZC5AWA7Y;
+       spf=pass (google.com: domain of jimcald@umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=jimcald@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <jimcald@umich.edu>
+Received: from maleficent.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.125.12])
+        by mx.google.com with ESMTPS id 84si4825370ywm.387.2019.03.08.07.51.52
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 07:51:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of jimcald@umich.edu designates 141.211.125.12 as permitted sender) client-ip=141.211.125.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=ZC5AWA7Y;
+       spf=pass (google.com: domain of jimcald@umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=jimcald@umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552060311;
+	bh=vwz5m9PQzcHlvFemRQbfOn2JMC+drK9cX9SlaiEMAvo=;
+	h=Date:From:To:Subject;
+	b=ZC5AWA7YcdcIS5M2ufFW/v4RBoXOsCqzYYwGGuIT2XKY8oBpOClv2CF+TWQJE9xtI
+	 6ixo2Vd4hRawh021conLJZp6S2kScnNEVnUkYIbISsJcQnY1jg+otFBhKaVqLWQJEk
+	 YYr1nm/lxMKd3sCzHbv6q5bBuXe6huMxo3D0QppED4p+roSsCuMrXcmRbQ6oErpaFx
+	 aJ5RYIRvqx+3vPYSW+i8Pb/AQ4RIG27v5ub3dgsX1fPohrOiz5zawusb/K/bIyiEuu
+	 9NPNxkEydHk+COhdKJ9z9JLaIvPYl2q+39zkVwuKlPpBNqpRaKG9qIaA/OyDIitL+u
+	 MJStokNzkmN1Q==
+Authentication-Results: maleficent.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By maleficent.mr.itd.umich.edu ID 5C828F97.88C0D.28737;
+	Authuser hermane;
+	Fri, 08 Mar 2019 10:51:51 -0500
+Date: Fri, 8 Mar 2019 15:51:45 +0000
+From: Jim Caldwell <jimcald@umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: I'm still jimcald.
+Message-ID: <20190308155145.d57hvnl7zmq5nztc@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+jimcald jimcald jimcald

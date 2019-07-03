@@ -1,0 +1,75 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp8941519lto;
+        Fri, 8 Mar 2019 09:15:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxczeMuDz6PJuZKdlHXp2jGHUviS3jrEpzphZiVqhX7f0Xe7ENpXwuromx3SPIp9o6bQBeU
+X-Received: by 2002:a24:738e:: with SMTP id y136mr8260597itb.147.1552065303642;
+        Fri, 08 Mar 2019 09:15:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552065303; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rCsB8Q5LUSYF26gfsfOHzxyPnQAAyfBsgw0meIyfAsYYeHefIPZh86mxFCqtW20/A1
+         68yLTHixDLDILCyb+oXBype0qpRnkKpX85cDj9D0CxBosXsc/TzwNL2AySoYROWeI8js
+         NlBh4q7rx+mo48h1lJerL6pzCIW2N83FBoSeGBwM/6HursHR/QjfWfryBDYDamIzJ3ji
+         rsOFSoXPT5R7qmR0AmER8lXzof5iQJHUwntt591MFT4ajD6/lw1aOyEb6CrMftWJylGd
+         iGRiRfA46JOPHswt0I8LRbTsWiDzpSswSdYi+Xg2yW7HbS+bP4Ri30xEGOI/eDHok/k/
+         TJKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=z76G6ybL10f8RS2sdV90d0NkQnjLnyh0IQNdJ2wxAD4=;
+        b=xpOC1uBv5IuwcWRWRK0A1k+167lczA97WPVouVuSmo7GO3zmTUwa3Q+GvFxYvBEJz4
+         MXsfRbO9L44vK4Vxnkh2p/ZZPneSPC1GX+UKc2hlJoKAuh+IcWa8EhVMU9b2/+9UToBW
+         RAqBRelJdDtRH2LYUzlNpU3MKqsSbCJ6HcdHTotdCkKBdmTPCyt8y9l7bXxrLAc/m6DM
+         Eu/YVDxaNuOpPAPrMUoyV/SKywVsomSY7k9C3HVyv2WVYz+b0qNBEIRepL03n++9jKk9
+         BAtJl3afdmbcUcTG6mUVU1FqalHSi1ocTocOC61ODLMtbJvc7ZQucRND6C+iyIPNr24z
+         crHg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=JWFBSFb+;
+       spf=pass (google.com: best guess record for domain of jimcald@test-apps2.collab.its.umich.edu designates 18.217.159.240 as permitted sender) smtp.mailfrom=jimcald@test-apps2.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <jimcald@test-apps2.collab.its.umich.edu>
+Received: from drab-mabon.relay-egress.a.mail.umich.edu (relay-egress-host.us-east-2.a.mail.umich.edu. [18.217.159.240])
+        by mx.google.com with ESMTPS id p137si4285034itp.130.2019.03.08.09.15.03
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 09:15:03 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of jimcald@test-apps2.collab.its.umich.edu designates 18.217.159.240 as permitted sender) client-ip=18.217.159.240;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=JWFBSFb+;
+       spf=pass (google.com: best guess record for domain of jimcald@test-apps2.collab.its.umich.edu designates 18.217.159.240 as permitted sender) smtp.mailfrom=jimcald@test-apps2.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Received: from ordinary-myrddin.jail.a.mail.umich.edu (ip-10-0-74-85.us-east-2.compute.internal [10.0.74.85])
+	by drab-mabon.relay-egress.a.mail.umich.edu with ESMTPS
+	id 5C82A316.6D938.74BF6171.648738;
+	Fri, 08 Mar 2019 12:15:02 -0500
+Received: from tombraider.mr.itd.umich.edu (smtp.mail.umich.edu [141.211.12.86])
+	by ordinary-myrddin.jail.a.mail.umich.edu with ESMTPS
+	id 5C82A203.9C0C.1718649A.1922399;
+	Fri, 08 Mar 2019 12:10:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552064726;
+	bh=z76G6ybL10f8RS2sdV90d0NkQnjLnyh0IQNdJ2wxAD4=;
+	h=Date:From:To:Subject;
+	b=JWFBSFb+KOUlkekfZDvPDRwLI9lJeHHMgcdsSsL4sWSvBORg14MWc6JQ/DrOnaUu4
+	 JA6g7MeHIKgISiNzKKRCSxnSDdtZ+gy74NMxpX6rkekRFdQojdzudDr/ai6ki3psGa
+	 F0UcclzeJ03KHHOI8fLy2qq8XneNKlNzWL+nliD9Lqgg2vCBe2w2ILpxBI0HWEY0Ac
+	 P9iQL/PJ7w/Zd+8HZMqyA7hlqVnsPZdnPXAW7/1MoRyQGC3vTKjdpPRlCqe0j5HHFO
+	 yyNMYJghPA+BBfWt2h46x5aTOc5V25dMoOo/E018YsmwfrTvQJbRU1x0hQMqg2eJ4X
+	 BSXyFTt1MryBA==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By tombraider.mr.itd.umich.edu ID 5C82A0D5.D9D28.20968;
+	Authuser hermane;
+	Fri, 08 Mar 2019 12:05:25 -0500
+Date: Fri, 8 Mar 2019 17:05:19 +0000
+From: Jim Caldwell <jimcald@test-apps2.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Test from test-apps2
+Message-ID: <20190308170519.oaeaqs2wyrtfnstn@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+bacon bacon bacon bacon bacon bacon bacon

@@ -1,0 +1,228 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:4c67:0:0:0:0:0 with SMTP id r36csp1372552ltg;
+        Tue, 23 Apr 2019 06:15:10 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20161025 header.b=GJsljfrk
+X-Google-Smtp-Source: APXvYqxbqtl3jgFh37IssBfVE0bpmsKcDhyTEIBahU6HmKGkN41W6gQyYsjnVc0V3r3aB5Wv8Jhi/1E+fMiPkjtxNA==
+X-Received: by 2002:a2e:8156:: with SMTP id t22mr13277787ljg.77.1556025310807;
+        Tue, 23 Apr 2019 06:15:10 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Tue, 23 Apr 2019 06:15:10 -0700
+Delivered-To: admin-mgoogle@collab.its.umich.edu
+Received: by 2002:a17:90a:a08c:0:0:0:0 with SMTP id r12-v6csp3416433pjp;
+        Mon, 13 Aug 2018 11:29:26 -0700 (PDT)
+X-Received: by 2002:a1f:5442:: with SMTP id i63-v6mr11667462vkb.153.1534184966461;
+        Mon, 13 Aug 2018 11:29:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534184966; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wLnSCOa4bMdGHukq3refRs3V4Rbpr9yAlxcGRIoBKeRXsRnXsg0RVZkY0Lato+peJ7
+         dWL8M/gVRrhu/KT0yqkyg53GqyGQYPNhWa3O9YbSxGemaJGJTrb7GEUof1+VNzdH2Q80
+         ojIaCMSgzw8t16gd6mV90FjYLpC63hlPOlII60wawuQAJ2JdGQ5Zt7N7WsajMRLhvJV1
+         9DtbyyA1FfoDLpIaTW4wOwsxXwMCSbYe5P2z3Xx4uiXChxZnrM1flvY1zQgUe0AJGkp6
+         xonce/hGVzk/Lwn+hL12p9yWpjwE6h9uGA5M1DUQCScJK26GJD/o4VSUDHB5udrLfcL4
+         zC+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:date:mime-version
+         :dkim-signature:arc-authentication-results;
+        bh=RwCbOolE2BD82KTzv1twM3Oxeadzjy6cLbYJ2kz0pQs=;
+        b=Vz9e5mzkYkClJLdE+Q8Oa0+2sRYoceJ8xP3P+yxNTlX2grsC19ItWLdElPeCkyAvCO
+         v+h0p61U65B2LIN3SQbmqyGtj+xbweAifi6/VV/+SpYy7Uh6DsFxNDgCSrhBHDTzSGgi
+         1RuQexhe35VI2TEHdbUZGCH25Mgsnm2BJupTp2EGiugitfq1/gVcIZIAtICM7FlkCV+w
+         HwuMjw51OlGax101dJmB4V65jSYMGXaqJDxwimNw0c85UR9dIWzcfnCO0XlwAe+dqOfZ
+         aumhAEzVhJ6s0t0lyc+QFuTdQGVD0q/wATQfW49pdWYARMtla6/Rth7xW8ZOYTg6VzIb
+         In4g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20161025 header.b=GJsljfrk;
+       spf=pass (google.com: domain of 3bc5xwwgtaeoz0-3q1xamoo06z54.s00sxq.o0y@gaia.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3Bc5xWwgTAEoz0-3q1xAmoo06z54.s00sxq.o0y@gaia.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com
+Return-Path: <3Bc5xWwgTAEoz0-3q1xAmoo06z54.s00sxq.o0y@gaia.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id o32-v6sor6308768uad.74.2018.08.13.11.29.25
+        for <admin-mgoogle@collab.its.umich.edu>
+        (Google Transport Security);
+        Mon, 13 Aug 2018 11:29:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3bc5xwwgtaeoz0-3q1xamoo06z54.s00sxq.o0y@gaia.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20161025 header.b=GJsljfrk;
+       spf=pass (google.com: domain of 3bc5xwwgtaeoz0-3q1xamoo06z54.s00sxq.o0y@gaia.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3Bc5xWwgTAEoz0-3q1xAmoo06z54.s00sxq.o0y@gaia.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=accounts.google.com; s=20161025;
+        h=mime-version:date:feedback-id:message-id:subject:from:to;
+        bh=RwCbOolE2BD82KTzv1twM3Oxeadzjy6cLbYJ2kz0pQs=;
+        b=GJsljfrktta7XH60IKsrcFw59tuPMaESoqpqYhE795hN4CUC4DzAkYs/XONzfvxzNN
+         ku9iu1qQ1gUmrjijf78FL7vxjCAh3uPQYBKbVzDzQTYZJ+Hxkrq+PlqvT5RBcfqGnJCv
+         6yGgQz2PJ13Jy7HH9jNlxDSNg7Jv5bZ/i3VqUXbuRxE8yVLQngYNvfXi5pL7HZfvXoql
+         F1VOWBw3yj7J+BUU7bmME5x3jrE7QIWG0nY243hF3kmY6QE148YHk8ZOfmqCF0eAxGJZ
+         EeJGC7wrOc38yLKchi/p3jdOT1Eew0j1giEVnFc272BInjBG0g+nEeaHZNiFD//V5jiY
+         CWiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:feedback-id:message-id:subject
+         :from:to;
+        bh=RwCbOolE2BD82KTzv1twM3Oxeadzjy6cLbYJ2kz0pQs=;
+        b=CJmMEo6s39b+BK1Z5Vq/CwDm8eKia2sV9NP0C2IFRsP36N9TJ6GladhUcIa72vRSTk
+         gzQVOuDMnKwBQ6VhW7czyX4yt2D2gHpjsPgO0Y6DoatOrpSDjX9PnKZM7Z4t7J8IyfN3
+         9up8K0HEukn/H8SeesPz2dy9pC6EiG7yH71zjElpSqUUg2JP1JtXH3uNtgwj71suqOqJ
+         oDrNFjd3ctH7ava6kG3cbweWwxgtZJcroqj/wTSokYF+RBoO3xO41SFwk6NzL6X/rb+m
+         ywyuh94yTsbenbXTcK1lE/FCQyd/dl11yHtipdZz13AfZUR3mxFagX5M1ugbdl9iXxsN
+         E2KA==
+X-Gm-Message-State: AOUpUlGzOaJDo5pJ45n8PSj1kGnhd5H8l+pqZNVOykhWzp5QQy8J37Ee
+	Ev/5PWOnQ3hdBuLINscacxh4bgzBM87p
+MIME-Version: 1.0
+X-Received: by 2002:ab0:a8f:: with SMTP id d15-v6mr8476154uak.54.1534184965693;
+ Mon, 13 Aug 2018 11:29:25 -0700 (PDT)
+Date: Mon, 13 Aug 2018 18:29:24 +0000 (UTC)
+X-Account-Notification-Type: 31-anexp#hsc-control_a
+Feedback-ID: 31-anexp#hsc-control_a:account-notifier
+X-Notifications: 4957e6c9d6000000
+Message-ID: <pbmIlte6vavb-ssktqslIw.0@notifications.google.com>
+Subject: Security alert
+From: Google <no-reply@accounts.google.com>
+To: admin-mgoogle@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary="000000000000e663880573554510"
+
+--000000000000e663880573554510
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+YWRtaW4gbWdvb2dsZQ0KDQpOZXcgZGV2aWNlIHNpZ25lZCBpbiB0bw0KYWRtaW4tbWdvb2dsZUBj
+b2xsYWIuaXRzLnVtaWNoLmVkdQ0KWW91ciBHb29nbGUgQWNjb3VudCB3YXMganVzdCBzaWduZWQg
+aW4gdG8gZnJvbSBhIG5ldyBDaHJvbWUgT1MgZGV2aWNlLg0KWW91J3JlIGdldHRpbmcgdGhpcyBl
+bWFpbCB0byBtYWtlIHN1cmUgaXQgd2FzIHlvdS4NCg0KDQoNCkNoZWNrIGFjdGl2aXR5DQo8aHR0
+cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tL0FjY291bnRDaG9vc2VyP0VtYWlsPWFkbWluLW1nb29n
+bGVAY29sbGFiLml0cy51bWljaC5lZHUmY29udGludWU9aHR0cHM6Ly9teWFjY291bnQuZ29vZ2xl
+LmNvbS9hbGVydC9udC8xNTM0MTg0OTY0MDAwP3JmbiUzRDMxJTI2cmZuYyUzRDElMjZlaWQlM0Qx
+Mzg3OTMxMjE0MDYxMzk1MDEyJTI2ZXQlM0QwJTI2YXNhZSUzRDIlMjZhbmV4cCUzRGhzYy1jb250
+cm9sX2E+DQo8aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tL0FjY291bnRDaG9vc2VyP0VtYWls
+PWFkbWluLW1nb29nbGVAY29sbGFiLml0cy51bWljaC5lZHUmY29udGludWU9aHR0cHM6Ly9teWFj
+Y291bnQuZ29vZ2xlLmNvbS9hbGVydC9udC8xNTM0MTg0OTY0MDAwP3JmbiUzRDMxJTI2cmZuYyUz
+RDElMjZlaWQlM0QxMzg3OTMxMjE0MDYxMzk1MDEyJTI2ZXQlM0QwJTI2YXNhZSUzRDIlMjZhbmV4
+cCUzRGhzYy1jb250cm9sX2E+DQoNCg0KWW91IHJlY2VpdmVkIHRoaXMgZW1haWwgdG8gbGV0IHlv
+dSBrbm93IGFib3V0IGltcG9ydGFudCBjaGFuZ2VzIHRvIHlvdXINCkdvb2dsZSBBY2NvdW50IGFu
+ZCBzZXJ2aWNlcy4NCsKpIDIwMTggR29vZ2xlIExMQywxNjAwIEFtcGhpdGhlYXRyZSBQYXJrd2F5
+LCBNb3VudGFpbiBWaWV3LCBDQSA5NDA0MywgVVNBDQoxNTM0MTg0OTY0MDAwMDAwDQo=
+--000000000000e663880573554510
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html lang=3D"en"><head><meta name=3D"format-detection" content=3D"date=3Dn=
+o"/><meta name=3D"format-detection" content=3D"email=3Dno"/><style>.awl a {=
+color: #FFFFFF; text-decoration: none;}.abml a {color: #000000; font-family=
+: Hermanoto-Medium,Helvetica,Arial,sans-serif; font-weight: bold; text-decorat=
+ion: none;}.adgl a {color: rgba(0, 0, 0, 0.87); text-decoration: none;}.afa=
+l a {color: #b0b0b0; text-decoration: none;}@media screen and (min-width: 6=
+00px) {.v2sp {padding: 6px 30px 0px;} .v2rsp {padding: 0px 10px;}}</style><=
+/head><body style=3D"margin: 0; padding: 0;" bgcolor=3D"#FFFFFF"><table wid=
+th=3D"100%" height=3D"100%" style=3D"min-width: 348px;" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0"><tr height=3D"32px"></tr><tr align=3D"center"=
+><td><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"paddi=
+ng-bottom: 20px; max-width: 600px; min-width: 220px;"><tr><td><table cellpa=
+dding=3D"0" cellspacing=3D"0"><tr><td></td><td><table width=3D"100%" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"direction: ltr; padding=
+-bottom: 7px;"><tr><td align=3D"left"><img width=3D"92" height=3D"32" src=
+=3D"https://www.gstatic.com/accountalerts/email/googlelogo_color_188x64dp.p=
+ng" style=3D"width: 92px; height: 32px;"></td><td align=3D"right" style=3D"=
+font-family: Hermanoto-Light,Helvetica,Arial,sans-serif;">admin mgoogle</td><t=
+d align=3D"right" width=3D"35"><img width=3D"28" height=3D"28" style=3D"wid=
+th: 28px; height: 28px; border-radius: 50%;;" src=3D"https://www.gstatic.co=
+m/accountalerts/email/anonymous_profile_photo.png"></td></tr></table></td><=
+td></td></tr><tr><td style=3D"background:url('https://www.gstatic.com/accou=
+ntalerts/email/hodor/4-corner-nw.png') top left no-repeat;" width=3D"6" hei=
+ght=3D"5"><!--[if gte mso 9]><v:rect xmlns:v=3D"urn:schemas-microsoft-com:v=
+ml" fill=3D"true" stroke=3D"false" style=3D"width:6px; height: 5px;"><v:fil=
+l type=3D"tile" src=3D"https://www.gstatic.com/accountalerts/email/hodor/4-=
+corner-nw.png" color=3D"#ffffff" /><v:textbox style=3D"mso-fit-shape-to-tex=
+t:true" inset=3D"0,0,0,0"><![endif]--><div></div><!--[if gte mso 9]></v:tex=
+tbox></v:rect><![endif]--></td><td style=3D"background:url('https://www.gst=
+atic.com/accountalerts/email/hodor/4-pixel-n.png') top center repeat-x;" he=
+ight=3D"5"><!--[if gte mso 9]><v:rect xmlns:v=3D"urn:schemas-microsoft-com:=
+vml" fill=3D"true" stroke=3D"false" style=3D"height: 5px;"><v:fill type=3D"=
+tile" src=3D"https://www.gstatic.com/accountalerts/email/hodor/4-pixel-n.pn=
+g" color=3D"#ffffff" /><v:textbox style=3D"mso-fit-shape-to-text:true" inse=
+t=3D"0,0,0,0"><![endif]--><div></div><!--[if gte mso 9]></v:textbox></v:rec=
+t><![endif]--></td><td style=3D"background:url('https://www.gstatic.com/acc=
+ountalerts/email/hodor/4-corner-ne.png') top right no-repeat;" width=3D"6" =
+height=3D"5"><!--[if gte mso 9]><v:rect xmlns:v=3D"urn:schemas-microsoft-co=
+m:vml" fill=3D"true" stroke=3D"false" style=3D"width: 6px; height: 39px;"><=
+v:fill type=3D"tile" src=3D"https://www.gstatic.com/accountalerts/email/hod=
+or/4-corner-ne.png" color=3D"#ffffff" /><v:textbox style=3D"mso-fit-shape-t=
+o-text:true" inset=3D"0,0,0,0"><![endif]--><div></div><!--[if gte mso 9]></=
+v:textbox></v:rect><![endif]--></td></tr><tr><td style=3D"background:url('h=
+ttps://www.gstatic.com/accountalerts/email/hodor/4-pixel-w.png') center lef=
+t repeat-y;" width=3D"6"><!--[if gte mso 9]><v:rect xmlns:v=3D"urn:schemas-=
+microsoft-com:vml" fill=3D"true" stroke=3D"false" style=3D"width: 6px;"><v:=
+fill type=3D"tile" src=3D"https://www.gstatic.com/accountalerts/email/hodor=
+/4-pixel-w.png" color=3D"#ffffff" /><v:textbox style=3D"mso-fit-shape-to-te=
+xt:true" inset=3D"0,0,0,0"><![endif]--><div></div><!--[if gte mso 9]></v:te=
+xtbox></v:rect><![endif]--></td><td><div style=3D"font-family: Hermanoto-Regul=
+ar,Helvetica,Arial,sans-serif;padding-left: 20px; padding-right: 20px;borde=
+r-bottom: thin solid #f0f0f0; color: rgba(0,0,0,0.87); font-size: 24px;padd=
+ing-bottom: 38px;padding-top: 40px;text-align: center; word-break: break-wo=
+rd;"><div class=3D"v2sp">New device signed in&nbsp;to<br><a style=3D"font-f=
+amily: Hermanoto-Regular,Helvetica,Arial,sans-serif;color: rgba(0,0,0,0.87); f=
+ont-size: 16px; line-height: 1.8;">admin-mgoogle@collab.its.umich.edu</a></=
+div></div><div style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,sans-se=
+rif; font-size: 13px; color: rgba(0,0,0,0.87); line-height: 1.6;padding-lef=
+t: 20px; padding-right: 20px;padding-bottom: 32px; padding-top: 24px;"><div=
+ class=3D"v2sp">Your Google Account was just signed in to from a new Chrome=
+ OS device. You're getting this email to make sure it was you.<div style=3D=
+"padding-top: 24px; text-align: center;"><a href=3D"https://accounts.google=
+.com/AccountChooser?Email=3Dadmin-mgoogle@collab.its.umich.edu&amp;continue=
+=3Dhttps://myaccount.google.com/alert/nt/1534184964000?rfn%3D31%26rfnc%3D1%=
+26eid%3D1387931214061395012%26et%3D0%26asae%3D2%26anexp%3Dhsc-control_a" ta=
+rget=3D"_blank" style=3D"display:inline-block; text-decoration: none;"><tab=
+le border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"background-col=
+or: #4184F3; border-radius: 2px; min-width: 90px;"><tbody><tr style=3D"heig=
+ht: 6px;"></tr><tr><td style=3D"padding-left: 8px; padding-right: 8px; text=
+-align: center;"><a href=3D"https://accounts.google.com/AccountChooser?Emai=
+l=3Dadmin-mgoogle@collab.its.umich.edu&amp;continue=3Dhttps://myaccount.goo=
+gle.com/alert/nt/1534184964000?rfn%3D31%26rfnc%3D1%26eid%3D1387931214061395=
+012%26et%3D0%26asae%3D2%26anexp%3Dhsc-control_a" target=3D"_blank" style=3D=
+"font-family: Hermanoto-Regular,Helvetica,Arial,sans-serif; color: #ffffff; fo=
+nt-weight: 400; line-height: 20px; text-decoration: none;font-size: 13px;te=
+xt-transform: uppercase;">Check activity</a></td></tr><tr style=3D"height: =
+6px;"></tr></tbody></table></a></div></div></div></td><td style=3D"backgrou=
+nd:url('https://www.gstatic.com/accountalerts/email/hodor/4-pixel-e.png') c=
+enter left repeat-y;" width=3D"6"><!--[if gte mso 9]><v:rect xmlns:v=3D"urn=
+:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"false" style=3D"width: =
+6px;"><v:fill type=3D"tile" src=3D"https://www.gstatic.com/accountalerts/em=
+ail/hodor/4-pixel-e.png" color=3D"#ffffff" /><v:textbox style=3D"mso-fit-sh=
+ape-to-text:true" inset=3D"0,0,0,0"><![endif]--><div></div><!--[if gte mso =
+9]></v:textbox></v:rect><![endif]--></td></tr><tr><td style=3D"background:u=
+rl('https://www.gstatic.com/accountalerts/email/hodor/4-corner-sw.png') top=
+ left no-repeat;" width=3D"6" height=3D"5"><!--[if gte mso 9]><v:rect xmlns=
+:v=3D"urn:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"false" style=
+=3D"width: 6px;"><v:fill type=3D"tile" src=3D"https://www.gstatic.com/accou=
+ntalerts/email/hodor/4-corner-sw.png" color=3D"#ffffff" /><v:textbox style=
+=3D"mso-fit-shape-to-text:true" inset=3D"0,0,0,0"><![endif]--><div></div><!=
+--[if gte mso 9]></v:textbox></v:rect><![endif]--></td><td style=3D"backgro=
+und:url('https://www.gstatic.com/accountalerts/email/hodor/4-pixel-s.png') =
+top center repeat-x" height=3D"5"><!--[if gte mso 9]><v:rect xmlns:v=3D"urn=
+:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"false" style=3D"width: =
+6px;"><v:fill type=3D"tile" src=3D"https://www.gstatic.com/accountalerts/em=
+ail/hodor/4-pixel-s.png" color=3D"#ffffff" /><v:textbox style=3D"mso-fit-sh=
+ape-to-text:true" inset=3D"0,0,0,0"><![endif]--><div></div><!--[if gte mso =
+9]></v:textbox></v:rect><![endif]--></td><td style=3D"background:url('https=
+://www.gstatic.com/accountalerts/email/hodor/4-corner-se.png') top left no-=
+repeat;" width=3D"6" height=3D"5"><!--[if gte mso 9]><v:rect xmlns:v=3D"urn=
+:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"false" style=3D"width: =
+6px;"><v:fill type=3D"tile" src=3D"https://www.gstatic.com/accountalerts/em=
+ail/hodor/4-corner-se.png" color=3D"#ffffff" /><v:textbox style=3D"mso-fit-=
+shape-to-text:true" inset=3D"0,0,0,0"><![endif]--><div></div><!--[if gte ms=
+o 9]></v:textbox></v:rect><![endif]--></td></tr><tr><td></td><td><div style=
+=3D"text-align: left;"><div style=3D"font-family: Hermanoto-Regular,Helvetica,=
+Arial,sans-serif;color: rgba(0,0,0,0.54); font-size: 12px; line-height: 20p=
+x; padding-top: 10px;"><div>You received this email to let you know about i=
+mportant changes to your Google Account and services.</div><div style=3D"di=
+rection: ltr;">&copy; 2018 Google LLC,<a class=3D"afal" style=3D"font-famil=
+y: Hermanoto-Regular,Helvetica,Arial,sans-serif;color: rgba(0,0,0,0.54); font-=
+size: 12px; line-height: 20px; padding-top: 10px;">1600 Amphitheatre Parkwa=
+y, Mountain View, CA 94043, USA</a></div></div><div style=3D"display: none =
+!important; mso-hide:all; max-height:0px; max-width:0px;">1534184964000000<=
+/div></div></td><td></td></tr></table></td></tr></table></td></tr><tr heigh=
+t=3D"32px"></tr></table></body></html>
+--000000000000e663880573554510--

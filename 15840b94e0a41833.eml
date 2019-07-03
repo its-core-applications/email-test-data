@@ -1,0 +1,267 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:4c67:0:0:0:0:0 with SMTP id r36csp1372791ltg;
+        Tue, 23 Apr 2019 06:15:23 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=temperror (no key for signature) header.i=@google.com header.s=20120113 header.b=EoQYha9U
+X-Google-Smtp-Source: APXvYqy68iRfmps8qiBgHJ8L4SdRYALBtfOMYNr6y/P9obXrHPmPI5yCrrXdjlqDidvOd6a7Bun1bjiuf9uAYFekqQ==
+X-Received: by 2002:ac2:4246:: with SMTP id m6mr13858670lfl.131.1556025323695;
+        Tue, 23 Apr 2019 06:15:23 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Tue, 23 Apr 2019 06:15:23 -0700
+Delivered-To: admin-mgoogle@collab.its.umich.edu
+Received: by 10.176.4.130 with SMTP id 2csp1420020uaw;
+        Mon, 7 Nov 2016 13:37:27 -0800 (PST)
+X-Received: by 10.159.48.221 with SMTP id k29mr6196385uab.53.1478554647396;
+        Mon, 07 Nov 2016 13:37:27 -0800 (PST)
+Return-Path: <3DPQgWBIKAD8tjuft-fbq-op-sfqmzhpphmf.dpn@scoutcamp.bounces.google.com>
+Received: from mail-ua0-x246.google.com (mail-ua0-x246.google.com. [2607:f8b0:400c:c08::246])
+        by mx.google.com with ESMTPS id b138si3178209vka.185.2016.11.07.13.37.16
+        for <admin-mgoogle@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 07 Nov 2016 13:37:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3dpqgwbikad8tjuft-fbq-op-sfqmzhpphmf.dpn@scoutcamp.bounces.google.com designates 2607:f8b0:400c:c08::246 as permitted sender) client-ip=2607:f8b0:400c:c08::246;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com;
+       spf=pass (google.com: domain of 3dpqgwbikad8tjuft-fbq-op-sfqmzhpphmf.dpn@scoutcamp.bounces.google.com designates 2607:f8b0:400c:c08::246 as permitted sender) smtp.mailfrom=3DPQgWBIKAD8tjuft-fbq-op-sfqmzhpphmf.dpn@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT dis=NONE) header.from=google.com
+Received: by mail-ua0-x246.google.com with SMTP id 51so125828949uai.3
+        for <admin-mgoogle@collab.its.umich.edu>; Mon, 07 Nov 2016 13:37:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20120113;
+        h=mime-version:reply-to:feedback-id:message-id:date:subject:from:to;
+        bh=hhYykWZyxi3qmSKBxd+NTzPKrnJu0LSjU6Q7+deoI9w=;
+        b=EoQYha9UezMsqGL+IuK/6/wJ8orCp5bkenzSOxnlFpuJtyqjyTHfUeUi5bhqMfYLT5
+         enTMXA9GoNWLuoJVt1V4u5UC+99f17Xi7PyuJ4eQzfmFJ7Wks9Clt1Ri9ShW0o6tpOPt
+         wnkQb6cZL+DBGMvlokGLYvPEohdPAgcy1oFCD6tk2QvOHT9FzbS6rlhtD6bGIdZqe5UU
+         zCNLymSKGE545UTXhc889kmLNx7vScNmrv1/Xd4nMT+9C/2HQPSDhn1AutOyOieC+74K
+         TiVEUQbtUbNqWYekYgtE1IgInN8QLyQm6mpX6eIFczYEyMcCRVB50qyfYOIJMhJCiJia
+         WtiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:reply-to:feedback-id:message-id
+         :date:subject:from:to;
+        bh=hhYykWZyxi3qmSKBxd+NTzPKrnJu0LSjU6Q7+deoI9w=;
+        b=XjwjK/5lP3yfL8Wb+3PS8enHgF1uOZVb0oVTFAEaEEwCVjd9aSvEYVai8DQbTroyVt
+         fiuiVCktWb16X4tI6SS3NbNDwECwIq2FzJNnPdzaHCpHPXDjf7vAGPxbaePtLww1Wg4U
+         8PIwM8mwdgpeh0CxFCtmyticRM/irdhm5maYyLcRzgFr0o78JxZb11LNkm05PygKfs3q
+         Ha376XpZnDBheGubK4tDhumYIT51Nfs7kyfHHtk10yg+nV53Rs0zV/0apF7LfF2JO1eg
+         WcUNRBEKDXx0/Ax9MrORl/mHBm17v9eziJVz2goQ0AHQTy7iIVMj6CDMsUXnV9w5ennu
+         XtWg==
+X-Gm-Message-State: ABUngvc2sOgJPO8pT9+SyUsNi0WOsWFfQUjnWvXqRMjXapBU9YemlD2JtP4ONpR7iATAUHQ=
+MIME-Version: 1.0
+X-Received: by 10.176.0.168 with SMTP id 37mr6215129uaj.16.1478554636385; Mon,
+ 07 Nov 2016 13:37:16 -0800 (PST)
+Reply-To: New Google Sites EAP <sites-eap-no-reply@google.com>
+X-Google-Id: 173883
+Feedback-ID: Len-US:D3122016:C10023195:gamma
+Message-ID: <1efec32976b5236.1478554635474.100120870.10023195.en-US.e0c83f1fe0c4749@google.com>
+Date: Mon, 07 Nov 2016 21:37:16 +0000
+Subject: [Action may be required] New Google Sites launching to GA on November
+ 9th, 2016
+From: New Google Sites EAP <sites-eap-no-reply@google.com>
+To: admin-mgoogle@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary=001a113cf89ae1fe4e0540bcd398
+
+--001a113cf89ae1fe4e0540bcd398
+Content-Type: text/plain; charset=UTF-8; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+RGVhciBFYXJseSBBZG9wdGVyLA0KDQpUaGFuayB5b3UgZm9yIHBhcnRpY2lwYXRpbmcgaW4gdGhl
+IG5ldyBHb29nbGUgU2l0ZXMgRWFybHkgQWRvcHRlciBQcm9ncmFtICANCihFQVApISBUaGUgU2l0
+ZXMgdGVhbSBncmVhdGx5IGFwcHJlY2lhdGVzIHlvdXIgcGFydGljaXBhdGlvbiBhbmQgZmVlZGJh
+Y2suDQoNCk5ldyBTaXRlcyBpcyBzY2hlZHVsZWQgdG8gbGF1bmNoIHRvIGFsbCBHIFN1aXRlIGN1
+c3RvbWVycyBvbiB0aGUgUmFwaWQgIA0KUmVsZWFzZSB0cmFjayBvbiBOb3ZlbWJlciA5dGgsIDIw
+MTYsIHdpdGggU2NoZWR1bGVkIFJlbGVhc2UgY29taW5nIG9uICANCk5vdmVtYmVyIDIxc3QsIDIw
+MTYuIFVwb24gdGhlIEdBIGxhdW5jaCBvZiBuZXcgU2l0ZXMsIHRoaXMgRUFQIHdpbGwgYmUgIA0K
+Y29tcGxldGUuIEZvciBFQVAgcGFydGljaXBhbnRzLCBleGNlcHQgaW4gdGhlIGNhc2UgZGVzY3Jp
+YmVkIGluIHRoZSAgDQppbXBvcnRhbnQgbm90ZSBiZWxvdywgdGhlcmUgd2lsbCBiZSBubyBkaXNy
+dXB0aW9uIG9mIHNlcnZpY2UgYXMgd2UgIA0KdHJhbnNpdGlvbiBmcm9tIEVBUCB0byBHQS4NCg0K
+SU1QT1JUQU5UOiBJZiB5b3UgZG8gTk9UIGhhdmUgdGhlIGNsYXNzaWMgdmVyc2lvbiBvZiBTaXRl
+cyBlbmFibGVkIGZvciB5b3VyICANCm9yZ2FuaXphdGlvbiwgeW91IHdpbGwgbmVlZCB0byB0dXJu
+IGl0IG9uIGluIG9yZGVyIHRvIGNvbnRpbnVlIHVzaW5nIG5ldyAgDQpTaXRlcyBhZnRlciB0aGlz
+IHJlbGVhc2UuIFRoaXMgd2lsbCBlbnN1cmUgdGhhdCBhbnkgc2l0ZXMgeW91IGNyZWF0ZWQgd2l0
+aCAgDQpuZXcgU2l0ZXMgZHVyaW5nIHRoZSBFQVAgcmVtYWluIHVuYWZmZWN0ZWQuIEZvciBpbnN0
+cnVjdGlvbnMsIGNoZWNrIG91dCAgDQp0aGlzIEhlbHAgQ2VudGVyIGFydGljbGU6IGh0dHBzOi8v
+c3VwcG9ydC5nb29nbGUuY29tL2EvYW5zd2VyLzkwOTE2DQoNCkZvciBtb3JlIGluZm9ybWF0aW9u
+IG9uIHRoZSBHQSBsYXVuY2ggb2YgbmV3IFNpdGVzLCBwbGVhc2UgcmVhZCB0aHJvdWdoIHRoZSAg
+DQpGQVFzIGF0IHRoZSBlbmQgb2YgdGhpcyBlbWFpbCBhbmQgY2hlY2sgb3V0IHRoZSBHIFN1aXRl
+IFVwZGF0ZXMgQmxvZyAgDQooaHR0cHM6Ly9nc3VpdGV1cGRhdGVzLmdvb2dsZWJsb2cuY29tLykg
+b24gTm92ZW1iZXIgOXRoLiBJZiB5b3UgaGF2ZSBhbnkgIA0KcXVlc3Rpb25zLCBwbGVhc2UgY29u
+dGFjdCBTdXBwb3J0ICANCihodHRwczovL3N1cHBvcnQuZ29vZ2xlLmNvbS9hL2Fuc3dlci8xMDQ3
+MjEzKSBvciB2aXNpdCB0aGUgSGVscCBDZW50ZXIgIA0KKGh0dHBzOi8vc3VwcG9ydC5nb29nbGUu
+Y29tL3NpdGVzI3RvcGljPTYzNzI4NTApLg0KDQpUaGFua3MhDQpUaGUgR29vZ2xlIFNpdGVzIFRl
+YW0NCg0KKioqKipGQVFzKioqKioNCg0KMS4gV2hhdCB3aWxsIGhhcHBlbiB0byB0aGUgcHJldmlv
+dXNseSBleGlzdGluZywgY2xhc3NpYyB2ZXJzaW9uIG9mIFNpdGVzPw0KDQpDbGFzc2ljIFNpdGVz
+IHdpbGwgY29udGludWUgdG8gZXhpc3QgaW4gcGFyYWxsZWwgdG8gbmV3IFNpdGVzIGFzIHdlIGFk
+ZCAgDQpjYXBhYmlsaXRpZXMgdG8gbmV3IFNpdGVzIHRoYXQgYXJlIHNpbWlsYXIgdG8gdGhvc2Ug
+Zm91bmQgaW4gY2xhc3NpYyBTaXRlcy4gIA0KQ2xhc3NpYyBTaXRlcyBhbmQgdGhlIHNpdGVzIGNy
+ZWF0ZWQgd2l0aCBpdCB3aWxsIGNvbnRpbnVlIHRvIHJlc3BlY3QgdGhlICANClNpdGVzLXNwZWNp
+ZmljIHNldHRpbmdzIGxvY2F0ZWQgaW4gdGhlIEFkbWluIGNvbnNvbGUgYXQgQXBwcyA+IEcgU3Vp
+dGUgPiAgDQpTaXRlcy4gQSBmZXcgaW1wb3J0YW50IHRoaW5ncyB0byBub3RlOg0KKyBJbiAgMjAx
+Nywgd2Ugd2lsbCBwcm92aWRlIGFuZCByZWNvbW1lbmQgb3B0aW9ucyB0byBtaWdyYXRlIHlvdXIg
+c2l0ZXMgIA0KZnJvbSBjbGFzc2ljIFNpdGVzIHRvIG5ldyBTaXRlcy4NCisgQmVnaW5uaW5nIGlu
+IDIwMTgsIHdlIHdpbGwgc2VuZCB0aW1lbGluZXMgYW5kIGluc3RydWN0aW9ucyByZWdhcmRpbmcg
+dGhlICANCmdyYWR1YWwgcHJvY2VzcyB0byBzaHV0IGRvd24gY2xhc3NpYyBTaXRlcy4gVGhlIHNw
+ZWNpZmljIGRhdGUgZm9yIHRoZSAgDQpzaHV0ZG93biBvZiBjbGFzc2ljIFNpdGVzIGhhcyB5ZXQg
+dG8gYmUgc2V0LCBidXQgd2Ugd2lsbCBpbmZvcm0geW91IGF0ICANCmxlYXN0IG9uZSB5ZWFyIGlu
+IGFkdmFuY2Ugb2YgdGhhdCBzaHV0ZG93bi4NCg0KMi4gSG93IGNhbiBJIHR1cm4gT0ZGIG5ldyBT
+aXRlcyBhZnRlciBpcyBpdCByZWxlYXNlZCB0byBHQT8NCg0KVG8gdHVybiBPRkYgbmV3IFNpdGVz
+IGluIHlvdXIgb3JnYW5pemF0aW9uLCB5b3UgY2FuIGRvIGFueSBvbmUgb2YgdGhlICANCmZvbGxv
+d2luZzoNCisgVHVybiBvZmYgbmV3IFNpdGVzIG9ubHkgYnkgdmlzaXRpbmcgQXBwcyA+IEcgU3Vp
+dGUgPiBTaXRlcyA+IE5ldyBTaXRlcyBpbiAgDQp0aGUgQWRtaW4gY29uc29sZSBhbmQgc2VsZWN0
+aW5nIOKAnFVzZXJzIGF0IFhZWiBkb21haW4gY2Fubm90IGNyZWF0ZSBhbmQgZWRpdCAgDQpzaXRl
+cy7igJ0NCisgVHVybiBvZmYgU2l0ZXMgZW50aXJlbHkgKGh0dHBzOi8vc3VwcG9ydC5nb29nbGUu
+Y29tL2EvYW5zd2VyLzkwOTE2KS4NCisgVHVybiBvZmYgRHJpdmUgZW50aXJlbHkgKGh0dHBzOi8v
+c3VwcG9ydC5nb29nbGUuY29tL2EvYW5zd2VyLzYxMTUxMTcpLg0KDQozLiBIb3cgY2FuIEkgY2hh
+bmdlIHRoZSBwcml2YWN5IGFuZCBzaGFyaW5nIHNldHRpbmdzIGZvciBuZXcgU2l0ZXMgYWZ0ZXIg
+aXQgIA0KaXMgcmVsZWFzZWQgdG8gR0E/DQoNCk5ldyBTaXRlcyB3aWxsIHJlc3BlY3QgdGhlIERy
+aXZlIHNoYXJpbmcgc2V0dGluZ3MgaW4gdGhlIEFkbWluIGNvbnNvbGUgIA0KKGxvY2F0ZWQgYXQg
+QXBwcyA+IEcgU3VpdGUgPiBEcml2ZSkgYW5kIE5PVCB0aGUgY2xhc3NpYyBTaXRlcyBzaGFyaW5n
+ICANCnNldHRpbmdzIChsb2NhdGVkIGF0IEFwcHMgPiBHIFN1aXRlID4gU2l0ZXMpLiBJbiBwYXJ0
+aWN1bGFyLCBpZiB5b3UgYWxsb3cgIA0KdXNlcnMgdG8gcHVibGlzaCBEb2NzLCBTaGVldHMsIGFu
+ZCBTbGlkZXMgZmlsZXMgb24gdGhlIHdlYiwgdGhleSB3aWxsIGFsc28gIA0KYmUgYWJsZSB0byBw
+dWJsaXNoIHNpdGVzIGNyZWF0ZWQgaW4gbmV3IFNpdGVzIG9uIHRoZSB3ZWIuIElmIG5lY2Vzc2Fy
+eSwgIA0KcGxlYXNlIG1ha2UgYW55IGNoYW5nZXMgdG8geW91ciBEcml2ZSBzaGFyaW5nIHNldHRp
+bmdzIHByaW9yIHRvIHRoZSBuZXcgIA0KU2l0ZXMgcmVsZWFzZSBvbiBOb3ZlbWJlciA5dGguIFNl
+ZSB0aGlzIEhlbHAgQ2VudGVyIGFydGljbGUgZm9yIG1vcmUgIA0KaW5mb3JtYXRpb246IGh0dHBz
+Oi8vc3VwcG9ydC5nb29nbGUuY29tL2EvYW5zd2VyLzYwNzgxDQoNCi0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0NCg0KKGMpIDIwMTYgR29vZ2xlIEluYy4gMTYwMCBBbXBoaXRo
+ZWF0cmUgUGFya3dheSwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDMNCg0KWW91IGhhdmUgcmVjZWl2
+ZWQgdGhpcyBtYW5kYXRvcnkgZW1haWwgc2VydmljZSBhbm5vdW5jZW1lbnQgdG8gdXBkYXRlIHlv
+dSAgDQphYm91dCBpbXBvcnRhbnQgY2hhbmdlcyB0byB5b3VyIEcgU3VpdGUgcHJvZHVjdCBvciBh
+Y2NvdW50Lg0K
+--001a113cf89ae1fe4e0540bcd398
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<p>
+Dear Early Adopter,
+</p>
+<p>
+Thank you for participating in the new Google Sites Early Adopter Program (=
+EAP)!
+The Sites team greatly appreciates your participation and feedback.
+</p>
+<p>
+New Sites is scheduled to launch to all G Suite customers on the <a href=3D=
+"https://www.google.com/appserve/mkt/p/mzy-8jFk4Jpe09o3dgPXTz3n53_Ke7JIIn3c=
+v_VfzZIdezWb_pIqs92mmHQSGL7lonDWbjh3Dfqhj6Y=3D">Rapid Release track</a> on
+November 9th, 2016, with <a href=3D"https://www.google.com/appserve/mkt/p/m=
+zy-8jFk4Jpe09o3dgPXTz3n53_Ke7JIIn3cv_VfzZIdezWb_pIqs92mmHQSGL7lonDWbjh3Dfqh=
+j6Y=3D">Scheduled Release</a> coming
+on November 21st, 2016. Upon the GA launch of new Sites, this EAP will be c=
+omplete. For
+EAP participants, except in the case described in the important note below,
+there will be no disruption of service as we transition from EAP to GA.
+</p>
+<p>
+<font color=3D"red"><strong>IMPORTANT: </strong></font>If you do NOT have t=
+he classic version of Sites
+enabled for your organization, you will need to <a href=3D"https://www.goog=
+le.com/appserve/mkt/p/vYWM8dWqbc4N6NY6bsWM6vRFSht3YviQj4p9dJspt32UlSqr-YU6G=
+WCzMpNsBnmJ7MM5lRir5nvjRg=3D=3D">turn it on</a> in order to
+continue using new Sites after this release. This will ensure that any site=
+s you
+created with new Sites during the EAP remain unaffected.
+</p>
+<p>
+For more information on the GA launch of new Sites, please read through the=
+ FAQs
+at the end of this email and check out the <a href=3D"https://www.google.co=
+m/appserve/mkt/p/wBYUZruO_jeNjf5dPX9SNXroGgWkILAqKgpyPe1JasGRGUCuNmjNl133AV=
+xmU_MmjDzvvo8f">G Suite Updates Blog</a> on
+November 9th. If you have any questions, please contact <a href=3D"https://=
+www.google.com/appserve/mkt/p/liWmoa2SyRRa21T8JVf-L46xJUL9bdsY14ql6IFQv73bH=
+YDH7olEgvr2ABpjPAHU9kT41TbVc0FsUY08">Support</a> or visit the <a href=3D"ht=
+tps://www.google.com/appserve/mkt/p/bYHSJKXt1JXaz4DQEdIMaWpOAH2Ot7aP45Pvy52=
+nzJ9-_Fv4HZd5_4OusxueKfQkPKgkSQ0rgpJHUqUR6JwH">Help Center</a>.
+</p>
+<p>
+Thanks!
+</p>
+<p>
+The Google Sites Team
+</p>
+<p>
+<strong><span style=3D"text-decoration:underline;">FAQs</span></strong>
+</p>
+<p>
+<strong>What will happen to the previously existing, classic version of
+Sites?</strong>
+</p>
+<p>
+Classic Sites will continue to exist in parallel to new Sites as we add
+capabilities to new Sites that are similar to those found in classic Sites.
+Classic Sites and the sites created with it will continue to respect the
+Sites-specific settings located in the Admin console at <strong>Apps &gt; G=
+ Suite &gt;
+Sites</strong>. A few important things to note:
+</p><ul>
+<li>In  2017, we will provide and recommend options to migrate your sites f=
+rom
+classic Sites to new Sites.
+<li>Beginning in 2018, we will send timelines and instructions regarding th=
+e
+gradual process to shut down classic Sites. The specific date for the shutd=
+own
+of classic Sites has yet to be set, but we will inform you at least one yea=
+r in
+advance of that shutdown.</li></ul>
+<p>
+<strong>How can I turn OFF new Sites after is it released to GA?</strong>
+</p>
+<p>
+To turn OFF new Sites in your organization, you can do <strong>any one</str=
+ong>
+of the following:
+</p><ol>
+<li>Turn off new Sites only by visiting <strong>Apps &gt; G Suite &gt; Site=
+s &gt; New
+Sites</strong> in the Admin console and selecting &quot;Users at XYZ domain=
+ cannot
+create and edit sites.&quot;
+<li><a href=3D"https://www.google.com/appserve/mkt/p/vYWM8dWqbc4N6NY6bsWM6v=
+RFSht3YviQj4p9dJspt32UlSqr-YU6GWCzMpNsBnmJ7MM5lRir5nvjRg=3D=3D">Turn off Si=
+tes
+entirely.</a>
+<li><a href=3D"https://www.google.com/appserve/mkt/p/j-BnDKa9TKQdVO2iZzxcSS=
+1X-yPzhqsqlFb9Ph9U4PmZMp4fdzWBsK75GRB3DkQvbHfDL5EU0Ne1HW5_">Turn off Drive
+entirely.</a></li></ol>
+<p>
+<strong>How can I change the privacy and sharing settings for new Sites aft=
+er it
+is released to GA?</strong>
+</p>
+<p>
+New Sites will respect the <strong>Drive</strong> sharing settings in the A=
+dmin
+console (located at <strong>Apps &gt; G Suite &gt; Drive</strong>) and NOT =
+the classic
+Sites sharing settings (located at <strong>Apps &gt; G Suite &gt; Sites</st=
+rong>). In
+particular, if you allow users to publish Docs, Sheets, and Slides files on=
+ the
+web, they will also be able to publish sites created in new Sites on the we=
+b. If
+necessary, please make any changes to your <a href=3D"https://www.google.co=
+m/appserve/mkt/p/zeT_ycmONhQTtKrtvLPj1_wQfznMybFSrksYjNbgYnHoQTbNi5WOe9O0V3=
+WCMgJ9A4ug6mMBWXt1Eg=3D=3D">Drive sharing settings</a>
+prior to the new Sites release on November 9th.
+</p>
+<p>
+<hr>
+</p>
+<p>
+=C2=A9 2016 Google Inc. 1600 Amphitheatre Parkway, Mountain View, CA 94043
+</p>
+<p>
+You have received this mandatory email service announcement to update you a=
+bout
+important changes to your G Suite product or account.
+</p><img height=3D"1" width=3D"3" src=3D"https://www.google.com/appserve/mk=
+t/img/fdbOm51DV15YJl-47DB4fyikm8BM.gif">
+--001a113cf89ae1fe4e0540bcd398--

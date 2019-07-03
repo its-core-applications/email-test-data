@@ -1,0 +1,170 @@
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=wJSJYmdl
+X-Received: by 2002:a2e:995a:: with SMTP id r26mr2863482ljj.107.1561646147136;
+        Thu, 27 Jun 2019 07:35:47 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Thu, 27 Jun 2019 07:35:47 -0700
+Delivered-To: admin-hermane@collab.its.umich.edu
+Received: by 2002:a9d:5549:0:0:0:0:0 with SMTP id h9csp1687079oti;
+        Sat, 1 Jun 2019 01:23:11 -0700 (PDT)
+X-Received: by 2002:a67:f105:: with SMTP id n5mr7867413vsk.23.1559377391226;
+        Sat, 01 Jun 2019 01:23:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559377391; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PGRk4lzwbMxEvLMRg2LOkf4q5ajWyKneyub08GxjJFxx8T9zymcJuBO5TxQJX5fPLP
+         80oIoLBYSLZcwo5yJT7FjPUrHfSbfmpdl3Z8H7RU/eXXfOoRwHWCMzBIFtxrVyciRlkA
+         LbpZp9tdyFVIAZKktwNRxjum2s9Q6tFYmelhD2mXsRUQvY37+X2t52eEbrtHU8m8zIQs
+         F7s/sL0I/HLx94fz6V1gCVBs3mmAvjHnsIb34ZDMwg8NbqJ2/4p2yFuMRASQmdCzVPe1
+         1SOJjApwWxWArjDiRyG9dembwBYMQHDr3J4Ww7V+JLX/S7dwAPjRHzK8reB+zUbrc7PF
+         SjTQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:list-unsubscribe:date:mime-version
+         :dkim-signature;
+        bh=aaxxUh9esU6etL5pjx3uAlINljSExuoiONwl7ALACJA=;
+        b=u+GrGpN4snGsRvB0SqEmy5l8kolDRyT3xdSWfaCAHMxBogLEcIafNxphUpb9L4BRjB
+         d6E8QG9TIPrTL9H5ODTR37M1jJvFmPHhEDznZY/EEF5JN9UKmj7umtn9nYnIvNiThv3s
+         DiaO/NlRA2GwN7y6khn0FdFcLG7RlfpQ7vSnLZITJ/NjDEmvMGabfPHK5NGBasK9zuET
+         1cRdTDH1Mydn9kdkjH8cx5TkUG1IYkCl97e3ik6aaGR95CYAFnvFrOnJf4hH43WXfFRO
+         1TafIVk+rsJeATGHkVsTxRyjv8RlYJgVx+/zsOdiM16wSnczjYbMtRU0QPEpCZ1rYiaV
+         WCAA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=wJSJYmdl;
+       spf=pass (google.com: domain of 37jxyxcykabex55x2v-r669-uvcztv-3r4rxv3v4a-45-8v62fx55x2v.t53@chime-notifications.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=37jXyXCYKABEx55x2v-r669-uvCztv-3r4rxv3v4A-45-8v62Fx55x2v.t53@chime-notifications.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <37jXyXCYKABEx55x2v-r669-uvCztv-3r4rxv3v4A-45-8v62Fx55x2v.t53@chime-notifications.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id y12sor4167677vsl.81.2019.06.01.01.23.10
+        for <admin-hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Sat, 01 Jun 2019 01:23:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 37jxyxcykabex55x2v-r669-uvcztv-3r4rxv3v4a-45-8v62fx55x2v.t53@chime-notifications.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=wJSJYmdl;
+       spf=pass (google.com: domain of 37jxyxcykabex55x2v-r669-uvcztv-3r4rxv3v4a-45-8v62fx55x2v.t53@chime-notifications.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=37jXyXCYKABEx55x2v-r669-uvCztv-3r4rxv3v4A-45-8v62Fx55x2v.t53@chime-notifications.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:list-unsubscribe:message-id:subject:from:to;
+        bh=aaxxUh9esU6etL5pjx3uAlINljSExuoiONwl7ALACJA=;
+        b=wJSJYmdlik4MhuG+zywgHZ7j2lb27IlXvE6cnWnxKMibdl6BdnfVkQfCzaIQ4FESXk
+         biKO/bSgi/h9y/avCBvE18poM9p3eZRy+yUKPvtzS1RL35pei/Oewqy2qqd1JvFAiUag
+         10WegDEVM6QmetG9YY7CtcFYo5rDJjYvBI7yAz8dsnhCMSG+u31Qk3RsnOxyn9VJFP1O
+         J/kpwfMp2dKqTMILdp2qy8z2U3uyLBDhXnKr4beBVEXMzEbb3bTRRTBtsGRIt+L4aI3S
+         ZGUnvKWo4CBfx4elfiN5lj78CZrD/C3zUbVt2KPzn7is0ePHgj5VtzpMt8jSBuowZzKd
+         +g9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:list-unsubscribe:message-id
+         :subject:from:to;
+        bh=aaxxUh9esU6etL5pjx3uAlINljSExuoiONwl7ALACJA=;
+        b=rwwCbfklEnII1+KG+Wvrm34dD1SHddBSY2zhSyEOuL62NjjCchClSVa1v4oSvzh89A
+         BicrQKjveAIUXChfrxreIwv9Wvo6zEKGZy/6ikUnsuW+KiKelb7n8j19G6MdV+iN3T6W
+         ZZOqk+qIgt9Rh3Vl8j5N+/bFs07otsffQbjjkk/ZbB6YkSWE/yY2tirTo4WW3Hx2QfVc
+         z32507hnJHtkS/zR+pMl1pD32NELigJjL/XQtsJstsDL3ZMOl+yRfoeZVrfVYyyqKph0
+         GKfSyhXq/ji0ht6i33mw0ele2a1E9BCecahALt+00nizKfE7mMe/hiAxj23c5DQRuVfL
+         nacQ==
+X-Gm-Message-State: APjAAAW/5wBaaqUwCtsuFA7VUsWGY4Poj1wlZ6BuwP4m5Zb9LeLtDis/
+	kjLE3R9TKRydRG2hMwZiKMSRBAEd
+X-Google-Smtp-Source: APXvYqziVwTBdxv46lzvDRzGU2AAwP1C09bYQpEXJ/qt//NrlMOFSFiLo13p9ozFGtPY5qSfp8o4Pbmg3ijjr+rWqqFV
+MIME-Version: 1.0
+X-Received: by 2002:a67:fe83:: with SMTP id b3mr6950614vsr.26.1559377390731;
+ Sat, 01 Jun 2019 01:23:10 -0700 (PDT)
+Date: Sat, 01 Jun 2019 01:23:10 -0700
+List-Unsubscribe: https://notifications.google.com/emailpreferences/unsubscribe/AIbu_Fs_ypyQ4WmtOVrSMv7k8xnLj6hs4kzA8sHEZOXoNsX1DZkVFYnHPgI-r9Bpk16B4FepE312NDnhUzr7h5PoeYE95DlbGyrvfT0GFlxVcwa6a6n0VdkCiNLcWvEsSFvKP4u2vVgeMWPznQ
+X-Notifications: 1436e30a3f000000
+Message-ID: <HE0CU9RbJ2nYjeV3b9gFkA.0@notifications.google.com>
+Subject: Company Owned Device Usage: Admin Report
+From: google-apps-device-management-no-reply@google.com
+To: admin-hermane@collab.its.umich.edu
+Content-Type: multipart/mixed; boundary="000000000000720514058a3ed764"
+
+--000000000000720514058a3ed764
+Content-Type: multipart/alternative; boundary="000000000000720511058a3ed762"
+
+--000000000000720511058a3ed762
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+
+Google Apps for Business
+
+
+
+
+
+Inactivity Report
+
+
+
+Hi Admin,
+This is a monthly report that allows you to track all unused company owned  
+devices in your domain.
+
+
+
+Manage subscription for this report
+Visit our help centre for more information
+
+
+With Regards,
+The G Suite team
+
+
+
+
+--000000000000720511058a3ed762
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgco=
+lor=3D"#f5f5f5" style=3D"font-family: Arial, Helvetica, sans-serif; font-we=
+ight: normal; font-size: 14px; line-height: 19px; color: #444444; border-co=
+llapse: collapse; border: 1px solid #dddddd;"><tr><td width=3D"4%"></td><td=
+ width=3D"92%"><table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" style=3D"font-family: Arial, Helvetica, sans-serif; font-weight:=
+ normal; font-size: 14px; line-height: 19px; color: #444444; border-collaps=
+e: collapse;"><tr><td width=3D"100%" height=3D"30"></td></tr><tr><td width=
+=3D"100%" height=3D"40"><img src=3D"//www.google.com/appsstatus/img/google_=
+apps_for_business_medium.png" alt=3D"Google Apps for Business" width=3D"300=
+" height=3D"34" style=3D"outline: none; text-decoration: none; -ms-interpol=
+ation-mode: bicubic; display: block;"/></td></tr><tr><td width=3D"100%" hei=
+ght=3D"20"></td></tr></table></td><td width=3D"4%"></td></tr></table><table=
+ width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D=
+"#ffffff" style=3D"font-family: Arial, Helvetica, sans-serif; font-weight: =
+normal; font-size: 14px; line-height: 19px; color: #444444; border-collapse=
+: collapse; border-left: 1px solid #dddddd; border-right: 1px solid #dddddd=
+;"><tr><td width=3D"4%"></td><td width=3D"92%"><table width=3D"100%" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"font-family: Arial, Hel=
+vetica, sans-serif; font-weight: normal; font-size: 13px; line-height: 18px=
+; color: #444444; border-collapse: collapse;"><tr><td width=3D"100%" height=
+=3D"20"></td></tr><tr><td valign=3D"top" width=3D"100%" height=3D"10" style=
+=3D"font-family: Arial, Helvetica, sans-serif; font-size: 28px; line-height=
+: 32px; color: #1a1a1a; font-weight: normal;"><p>Inactivity Report</p></td>=
+</tr><tr><td width=3D"100%" style=3D"padding-top: 30px"><p>Hi Admin,<br/>Th=
+is is a monthly report that allows you to track all unused company owned de=
+vices in your domain.</p></td></tr><tr><td width=3D"100%" style=3D"padding-=
+top: 20px"><p><a href=3D"https://admin.google.com/AdminHome?fral=3D1#Mobile=
+Settings:section=3Dsetup&flyout=3Dcorpowneddevices">Manage subscription for=
+ this report</a><br/><a href=3D"https://support.google.com/a/answer/7129612=
+">Visit our help centre for more information</a></p></td></tr><tr><td valig=
+n=3D"top" width=3D"100%" style=3D"padding-left: 0; padding-bottom: 40px; pa=
+dding-right: 0; padding-top: 20px; font-family: Arial, Helvetica, sans-seri=
+f; font-weight: normal; font-size: 13px; line-height: 18px; color: #333333;=
+ border-collapse: collapse; border-bottom-style: solid; border-bottom-color=
+: #dcdcdc; border-bottom-width: 1px;">With Regards,<br/><strong>The G Suite=
+ team</strong></td></tr></table><td width=3D"4%"></td></tr></table><table w=
+idth=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgcolor=3D"#=
+ffffff" style=3D"font-family: Arial, Helvetica, sans-serif; font-weight: no=
+rmal; font-size: 14px; line-height: 19px; color: #444444; border-collapse: =
+collapse; border-top: 1px solid #dddddd;"><tr><td height=3D"20" colspan=3D"=
+3"></td></tr></table>
+--000000000000720511058a3ed762--
+--000000000000720514058a3ed764
+Content-Type: text/csv; charset="UTF-8"; name="DeviceInactivityReport.csv"
+Content-Disposition: attachment; filename="DeviceInactivityReport.csv"
+Content-Transfer-Encoding: base64
+
+U2VyaWFsIE51bWJlcixBc3NldCBUYWcsTGFzdCB1c2VyIGFjY291bnQsTGFzdCBzeW5jIGRhdGUs
+SW1wb3J0IGRhdGUKSEZFSjkzQ0I3MDE5ODJILDEsLSwtLDExIEphbnVhcnkgMjAxOQo=
+--000000000000720514058a3ed764--

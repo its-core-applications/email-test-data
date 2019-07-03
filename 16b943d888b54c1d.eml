@@ -1,0 +1,351 @@
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=GLwx7dsc
+X-Received: by 2002:a19:4017:: with SMTP id n23mr2414748lfa.112.1561646172233;
+        Thu, 27 Jun 2019 07:36:12 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Thu, 27 Jun 2019 07:36:12 -0700
+Delivered-To: admin-hermane@collab.its.umich.edu
+Received: by 2002:a9d:5549:0:0:0:0:0 with SMTP id h9csp830849oti;
+        Wed, 26 Jun 2019 07:43:09 -0700 (PDT)
+X-Received: by 2002:a6b:6b14:: with SMTP id g20mr5484645ioc.28.1561560189601;
+        Wed, 26 Jun 2019 07:43:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561560189; cv=none;
+        d=google.com; s=arc-20160816;
+        b=uzy8g98UZBcSPJfD9QMWXnfMWjKe0rYJYGvk6dC+zBQYDzJKqeVvABM4JrdHOWbbMM
+         JBYEinh0i/Ej6MqKeim5ZSD6+JzaFSdQa0bpoSsCRf3aAyXbQFH7cjhiccbTPh+eo6X4
+         /i5szf5C+5bPlPPkSvCuKie7kPGk8Dp8PGtXbRmPF2r/OCnsWlAvMH6fpr+X+0rUwX+r
+         ndEFbN34O+hONgKsiAdfuYU77j+oWSQsZsr1+849y+PTgZR/etDBiy49nCopzRp4bmwk
+         J3LRakracMRgrHrrt9SiyuXilHwo824C/fatt1qqh3qPj2GP1LPiO0cWAT21MjNdICJU
+         wpqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=/nZDHwlMWKBUa2xqkygvGjpX6l6u4LQ67pPGpcfYpAA=;
+        b=Nu/HfJVSvqw9BKL1tEygQevzARDvFgEnCZoMzXPbd4Y5qVifQrnr8kTr5jgQTHAWPn
+         8Iq4EgxaVU/DjWkQG+CYO0yTFsmlJRoKg1b5/oNIuaS5e0ZO9t9SdlY8IxKJWgr5cUXb
+         Rj2RXJmv7dGiOVAvAclZ8CDaiJd2+DUrk+5tNTBt9vpBhZANFfES/GkY/rLNNdxYTN1s
+         VU/Kc3tUw0N3ZkVY048rGGICMGJ7JVmPgkV64NBURO3FN908/iiCc8Fd9XNANeUUlDfN
+         S0X9PMqn+85+txteMg5NgzWgAqa/pheoEGYWV4Fzt2oylDISRj852aNsrzCgWgOEy+Yk
+         IfPg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=GLwx7dsc;
+       spf=pass (google.com: domain of 3fyqtxq4kamio02q1m-vwzmxt6owwotm.kwu@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3fYQTXQ4KAMIo02q1m-vwzmxt6owwotm.kwu@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3fYQTXQ4KAMIo02q1m-vwzmxt6owwotm.kwu@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id p10sor13007718ioj.69.2019.06.26.07.43.09
+        for <admin-hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Wed, 26 Jun 2019 07:43:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3fyqtxq4kamio02q1m-vwzmxt6owwotm.kwu@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=GLwx7dsc;
+       spf=pass (google.com: domain of 3fyqtxq4kamio02q1m-vwzmxt6owwotm.kwu@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3fYQTXQ4KAMIo02q1m-vwzmxt6owwotm.kwu@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:reply-to:feedback-id:message-id:subject:from:to;
+        bh=/nZDHwlMWKBUa2xqkygvGjpX6l6u4LQ67pPGpcfYpAA=;
+        b=GLwx7dsc7CdBrrEeoU5xuzEm19N0f4PPcZ8i1nOdxoevGdraB/ABnBSYeE8FsH8LBC
+         49yZ2Pduog9DjmQYKLVQg0Usq2BVTmnSdl3euC5fMzFqsOedmtAJCelgE8QOua6/ZbtZ
+         Y6B+YKRAnXiiWZt3v4gCUyu2JLmaqqdJ0AEji4V1Z3Pu8muR9uu3+5m6kcbMrXO8DTM+
+         qA0NB7l3sAjdIQFPaMGSZtd8qqCzzPddG0KXpOSy4z2IE2uuaRnyVOforCqfcSuIkFzr
+         Z+pVQz8hdYiGwwwCYhFLitYGeEqWVAX2KwiB7c3lFYIydr/B0F0uB3WcjoyLILmlsisI
+         eE4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:feedback-id
+         :message-id:subject:from:to;
+        bh=/nZDHwlMWKBUa2xqkygvGjpX6l6u4LQ67pPGpcfYpAA=;
+        b=S8ZL8/ZBYm5dbjbgUnGNg9KTQRHvx/iVm9cpqsAKKKBwIlKUjTmutHeWlq7HJwCBAZ
+         KJo4MKcOdhnRS1Sm2toGtjDAX9g6kScWYOmLG3w3OPbhcONQKhwlz29c5U6rskSROBzw
+         G5vuaRKMfp1qJ66Grp3rNl/10LWkKhqh6YeMcL+l/eIeMsHdKmdbgJi/VVf9s7Fax813
+         whETD1P0nBb8On9ecQnn9mLor40MIPpdZFtnkOBkpSM4CF+0W9rNOFw1BYJ5I8PMhb2i
+         w7uCZ443ErFN1T/7bYql88IkVasit4Wx+H7nkALxspYstSV9hCx02ynoCf9QkuHuNb/n
+         3qwg==
+X-Gm-Message-State: APjAAAXqPouiSQxlNhEdzyTtnk16dfKOtkmQ/VWGzgFCA68Cpaj2A6b7
+	SyMKZLQA07qYjzc=
+X-Google-Smtp-Source: APXvYqwbs8zufHheWqzRMdILF4qZzMXnjRiiLTMXpeLyDVBUOoaf76f1FP9CYMJuveFV5UZI2MWNT80=
+MIME-Version: 1.0
+X-Received: by 2002:a5d:9e11:: with SMTP id h17mr5495413ioh.261.1561560189236;
+ Wed, 26 Jun 2019 07:43:09 -0700 (PDT)
+Date: Wed, 26 Jun 2019 07:43:09 -0700
+Reply-To: The G Suite Team <gsuite-noreply@google.com>
+X-Google-Id: 263642
+Feedback-ID: Len:P-10:C20072323:gamma
+X-Notifications: GAMMA:<e1cdd2db483bdc63aa47cda13ad67f40539056e7-20072323-110404840@google.com>
+Message-ID: <e1cdd2db483bdc63aa47cda13ad67f40539056e7-20072323-110404840@google.com>
+Subject: Data migration service: Domain report
+From: The G Suite Team <gsuite-noreply@google.com>
+To: admin-hermane@collab.its.umich.edu
+Content-Type: multipart/mixed; boundary="0000000000005ff8fd058c3b105a"
+
+--0000000000005ff8fd058c3b105a
+Content-Type: multipart/alternative; boundary="0000000000005ff8fc058c3b1058"
+
+--0000000000005ff8fc058c3b1058
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+RyBTdWl0ZQ0KDQoNCg0KRGF0YSBtaWdyYXRpb24gc2VydmljZTogRG9tYWluIHJlcG9ydA0KDQpI
+ZWxsbyBhZG1pbi1jYXJsZXNraUBjb2xsYWIuaXRzLnVtaWNoLmVkdSwNCg0KVGhlIGF0dGFjaGVk
+IENTViBmaWxlcyBjb250YWluIHRoZSByZXBvcnQgZm9yIHRoZSBtb3N0IHJlY2VudCBtaWdyYXRp
+b24gIA0KcGVyZm9ybWVkIGJ5IGFkbWluLW1nb29nbGVAY29sbGFiLml0cy51bWljaC5lZHUgdXNp
+bmcgdGhlIEdvb2dsZSBBZG1pbiAgDQpjb25zb2xlJ3MgZGF0YSBtaWdyYXRpb24gc2VydmljZS4g
+QSBicmllZiBvdmVydmlldyBpcyBsaXN0ZWQgYmVsb3c6DQoNCg0KMCB1c2VycyBzZWxlY3RlZCBm
+b3IgbWlncmF0aW9uDQoNCjAgYXJlIHJ1bm5pbmcgc3VjY2Vzc2Z1bGx5ICoNCjAgaGF2ZSBjb21w
+bGV0ZWQgKg0KMCBhcmUgc3RvcHBlZA0KMCBhcmUgZmFpbGluZyAqKg0KMCBoYXZlIGZhaWxlZCAq
+Kg0KDQpOdW1iZXIgb2YgbWFpbHMgbWlncmF0ZWQ6IDANCk51bWJlciBvZiBtYWlscyB0aGF0IGZh
+aWxlZCB0byBtaWdyYXRlOiAwDQoNCiogU29tZSBtYWlscyBtYXkgbm90IGhhdmUgbWlncmF0ZWQg
+Zm9yIHRoZXNlIHVzZXJzLiBQbGVhc2Ugc2VlIHRoZSBhdHRhY2hlZCAgDQpDU1YgZmlsZXMgZm9y
+IGRldGFpbHMuIFRoZSBlcnJvciByZXBvcnQgbWF5IG5vdCBpbmNsdWRlIGFsbCB0aGUgZXJyb3Jz
+IGR1ZSAgDQp0byBlbWFpbCBzaXplIGxpbWl0YXRpb25zLg0KDQoqKiBXaGVuIG1pZ3JhdGlvbiBz
+dGFydHMgZmFpbGluZyBmb3IgYSB1c2VyLCBhIGZldyByZXRyaWVzIGFyZSBtYWRlIGJlZm9yZSAg
+DQppdCBpcyBtYXJrZWQgYXMgZmFpbGVkLg0KDQpUbyBsZWFybiBtb3JlLCBzZWUgTW9uaXRvciBh
+IG1pZ3JhdGlvbi4NCg0KU2luY2VyZWx5LA0KDQpUaGUgRGF0YSBNaWdyYXRpb24gU2VydmljZSBU
+ZWFtDQoNCg0KDQoNCkdvb2dsZSBDbG91ZA0KwqkgMjAxOSBHb29nbGUgTExDIDE2MDAgQW1waGl0
+aGVhdHJlIFBhcmt3YXksIE1vdW50YWluIFZpZXcsIENBIDk0MDQzDQoNCllvdSdyZSByZWNlaXZp
+bmcgdGhpcyBtYW5kYXRvcnkgZW1haWwgc2VydmljZSBhbm5vdW5jZW1lbnQgdG8gdXBkYXRlIHlv
+dSAgDQphYm91dCBpbXBvcnRhbnQgY2hhbmdlcyB0byB5b3VyIEdvb2dsZSBDbG91ZCBwcm9kdWN0
+IG9yIGFjY291bnQuDQoNCg0KDQoNCg0K
+--0000000000005ff8fc058c3b1058
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div>
+    <meta http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8">
+    <meta name=3Dviewport content=3Dwidth=3Ddevice-width>
+    <style>@media only screen{html{min-height:100%;background:#fafafa}}@med=
+ia only screen and (max-width:640px){.small-float-center{margin:0 auto!impo=
+rtant;float:none!important;text-align:center!important}}@media only screen =
+and (max-width:640px){table.body img{width:auto;height:auto}table.body cent=
+er{min-width:0!important}table.body .container{width:344px!important}table.=
+body .columns{height:auto!important;-moz-box-sizing:border-box;-webkit-box-=
+sizing:border-box;box-sizing:border-box;padding-left:40px!important;padding=
+-right:40px!important}table.body .columns .columns{padding-left:0!important=
+;padding-right:0!important}table.body .collapse .columns{padding-left:0!imp=
+ortant;padding-right:0!important}th.small-1{display:inline-block!important;=
+width:8.33333%!important}th.small-3{display:inline-block!important;width:25=
+%!important}th.small-4{display:inline-block!important;width:33.33333%!impor=
+tant}th.small-6{display:inline-block!important;width:50%!important}th.small=
+-8{display:inline-block!important;width:66.66667%!important}th.small-9{disp=
+lay:inline-block!important;width:75%!important}th.small-12{display:inline-b=
+lock!important;width:100%!important}.columns th.small-12{display:block!impo=
+rtant;width:100%!important}table.menu{width:100%!important}table.menu td,ta=
+ble.menu th{width:auto!important;display:inline-block!important}table.menu.=
+vertical td,table.menu.vertical th{display:block!important}table.menu[align=
+=3Dcenter]{width:auto!important}}</style>
+    <span class=3Dpreheader style=3Dcolor:#fafafa;display:none!important;fo=
+nt-size:1px;line-height:1px;max-height:0;max-width:0;mso-hide:all!important=
+;opacity:0;overflow:hidden;visibility:hidden></span>
+    <table class=3Dbody style=3DMargin:0;background:#F8F9FA!important;borde=
+r-collapse:collapse;border-spacing:0;color:#3C4043;font-family:Hermanoto,Helve=
+tica,Arial,sans-serif;font-size:14px;font-weight:400;height:100%;line-heigh=
+t:inherit;margin:0;padding:0;vertical-align:top;width:100%;text-align:left>
+      <tr style=3Dpadding:0;vertical-align:top>
+        <td class=3Dcenter align=3Dcenter valign=3Dtop style=3D-moz-hyphens=
+:none;-webkit-hyphens:none;Margin:0;border-collapse:collapse!important;colo=
+r:#3C4043;font-family:Hermanoto,Helvetica,Arial,sans-serif;font-size:14px;font=
+-weight:400;hyphens:none;line-height:inherit;margin:0;padding:0;vertical-al=
+ign:top;word-wrap:keep-all>
+          <center data-parsed=3D"" style=3Dmin-width:600px;width:100%>
+
+            <table align=3Dcenter class=3D"container float-center" style=3D=
+"Margin:0 auto;background:#fafafa;border-collapse:collapse;border-spacing:0=
+;float:none;margin:0 auto;padding:0;text-align:left;vertical-align:top;widt=
+h:600px"><tbody><tr style=3Dpadding:0;vertical-align:top><td style=3D-moz-h=
+yphens:none;-webkit-hyphens:none;Margin:0;border-collapse:collapse!importan=
+t;color:#3C4043;font-family:Hermanoto,Helvetica,Arial,sans-serif;font-size:14p=
+x;font-weight:400;hyphens:none;line-height:inherit;margin:0;padding:0;verti=
+cal-align:top;word-wrap:keep-all>
+              <table class=3D"row header" style=3Dbackground:#F8F9FA;border=
+-collapse:collapse;border-spacing:0;display:table;font-size:12px;padding:0;=
+position:relative;vertical-align:top;width:100%><tbody><tr style=3Dpadding:=
+0;vertical-align:top>
+                <th class=3D"small-12 large-12 columns first last" style=3D=
+"Margin:0 auto;color:#3C4043;font-family:Hermanoto,Helvetica,Arial,sans-serif;=
+font-size:14px;font-weight:400;line-height:inherit;margin:0 auto;padding:0;=
+padding-bottom:24px;padding-left:40px;padding-right:40px;padding-top:12px;w=
+idth:560px"><table style=3Dborder-collapse:collapse;border-spacing:0;margin=
+-bottom:0;padding:0;vertical-align:top;width:100%><tr style=3Dpadding:0;ver=
+tical-align:top><th style=3DMargin:0;color:#3C4043;font-family:Hermanoto,Helve=
+tica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:inherit;ma=
+rgin:0;padding:0;text-align:left>
+
+                  <img src=3Dhttps://storage.googleapis.com/support-kms-pro=
+d/BfxWlTCe6OCizPoUdUCwDz979TQRdnVdSMCG alt=3D"G Suite" height=3D30 style=3D=
+-ms-interpolation-mode:bicubic;clear:both;display:block;margin-top:24px;max=
+-height:30px;max-width:100%;outline:0;text-decoration:none;width:auto>
+
+                </th>
+<th class=3Dexpander style=3DMargin:0;color:#3C4043;font-family:Hermanoto,Helv=
+etica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:inherit;m=
+argin:0;padding:0!important;visibility:hidden;width:0></th></tr></table></t=
+h>
+              </tr></tbody></table>
+
+              <table class=3D"row info" style=3Dalign-items:center;backgrou=
+nd:#fff;border-collapse:collapse;border-color:#E8EAED;border-spacing:0;bord=
+er-style:solid;border-width:1px;display:table;padding:0;position:relative;v=
+ertical-align:top;width:100%><tbody><tr style=3Dpadding:0;vertical-align:to=
+p>
+                <th class=3D"small-12 large-12 columns first last" style=3D=
+"Margin:0 auto;color:#3C4043;font-family:Hermanoto,Helvetica,Arial,sans-serif;=
+font-size:14px;font-weight:400;line-height:inherit;margin:0 auto;padding:0;=
+padding-bottom:0;padding-left:40px;padding-right:40px;width:560px"><table s=
+tyle=3Dborder-collapse:collapse;border-spacing:0;padding:0;vertical-align:t=
+op;width:100%><tr style=3Dpadding:0;vertical-align:top><th style=3D"Margin:=
+0;color:#3C4043;font-family:Hermanoto,Helvetica,Arial,sans-serif;font-size:14p=
+x;font-weight:400;line-height:inherit;margin:0;padding:0 0 24px;text-align:=
+left">
+ <h2 style=3D"Margin:0;Margin-bottom:8px;color:#3C4043;font-family:Google S=
+ans,Helvetica,Arial,sans-serif;font-size:24px;font-weight:700;line-height:3=
+0px!important;margin:0;margin-bottom:24px;margin-top:24px;padding:0;word-wr=
+ap:normal">Data migration service: Domain report</h2>
+
+<p style=3DMargin:0;Margin-bottom:16px;color:#3C4043;font-family:Hermanoto,Hel=
+vetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:24px;mar=
+gin:0;margin-bottom:16px;padding:0>Hello admin-hermane@collab.its.umich.ed=
+u,</p>
+
+<p style=3DMargin:0;Margin-bottom:16px;color:#3C4043;font-family:Hermanoto,Hel=
+vetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:24px;mar=
+gin:0;margin-bottom:16px;padding:0>The attached CSV files contain the repor=
+t for the most recent migration performed by <a class=3Dnoclick style=3DMar=
+gin:0;color:inherit;font-family:inherit;font-weight:inherit;line-height:inh=
+erit;margin:0;margin-bottom:inherit;margin-top:inherit;padding:0;text-decor=
+ation:none>admin-mgoogle@collab.its.umich.edu</a> using the Google Admin co=
+nsole's data migration service. A brief overview is listed below:</p>
+
+<ul style=3Dcolor:#3C4043;font-size:14px;line-height:24px>
+  <li style=3Dcolor:#3C4043;font-size:14px;line-height:24px>0 users selecte=
+d for migration
+    <ul style=3Dcolor:#3C4043;font-size:14px;line-height:24px>
+      <li style=3Dcolor:#3C4043;font-size:14px;line-height:24px>0 are runni=
+ng successfully<sup>*</sup></li>
+      <li style=3Dcolor:#3C4043;font-size:14px;line-height:24px>0 have comp=
+leted<sup>*</sup></li>
+      <li style=3Dcolor:#3C4043;font-size:14px;line-height:24px>0 are stopp=
+ed</li>
+      <li style=3Dcolor:#3C4043;font-size:14px;line-height:24px>0 are faili=
+ng<sup>**</sup></li>
+      <li style=3Dcolor:#3C4043;font-size:14px;line-height:24px>0 have fail=
+ed<sup>**</sup></li>
+    </ul>
+  </li>
+  <li style=3Dcolor:#3C4043;font-size:14px;line-height:24px>Number of mails=
+ migrated: 0</li>
+  <li style=3Dcolor:#3C4043;font-size:14px;line-height:24px>Number of mails=
+ that failed to migrate: 0</li>
+</ul>
+
+<p style=3DMargin:0;Margin-bottom:16px;color:#3C4043;font-family:Hermanoto,Hel=
+vetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:24px;mar=
+gin:0;margin-bottom:16px;padding:0><sup>*</sup> Some mails may not have mig=
+rated for these users. Please see the attached CSV files for details. The e=
+rror report may not include all the errors due to email size limitations.</=
+p>
+
+<p style=3DMargin:0;Margin-bottom:16px;color:#3C4043;font-family:Hermanoto,Hel=
+vetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:24px;mar=
+gin:0;margin-bottom:16px;padding:0><sup>**</sup> When migration starts fail=
+ing for a user, a few retries are made before it is marked as failed.</p>
+
+<p style=3DMargin:0;Margin-bottom:16px;color:#3C4043;font-family:Hermanoto,Hel=
+vetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:24px;mar=
+gin:0;margin-bottom:16px;padding:0>To learn more, see <a href=3Dhttps://sup=
+port.google.com/a/answer/6244382?utm_source=3D9144094&amp;utm_medium=3Demai=
+l style=3DMargin:0;color:#1A73E8;font-family:Hermanoto,Helvetica,Arial,sans-se=
+rif;font-weight:400;line-height:24px;margin:0;padding:0;text-decoration:non=
+e>Monitor a migration</a>.</p>
+
+<p class=3Dsignoff style=3D"Margin:0;Margin-bottom:16px;color:#3C4043;font-=
+family:Google Sans,Helvetica,Arial,sans-serif;font-size:14px;font-weight:70=
+0;line-height:24px;margin:0;margin-bottom:0!important;margin-top:8px;paddin=
+g:0">Sincerely,</p>
+
+<p class=3Dsignoff style=3D"Margin:0;Margin-bottom:16px;color:#3C4043;font-=
+family:Google Sans,Helvetica,Arial,sans-serif;font-size:14px;font-weight:70=
+0;line-height:24px;margin:0;margin-bottom:0!important;margin-top:0;padding:=
+0">The Data Migration Service Team</p>
+             </th></tr></table></th>
+            </tr></tbody></table>
+
+            <table class=3D"row footer" style=3Dbackground:#F8F9FA;border-c=
+ollapse:collapse;border-spacing:0;display:table;margin-top:0;padding:0;posi=
+tion:relative;vertical-align:top;width:100%><tbody><tr style=3Dpadding:0;ve=
+rtical-align:top>
+              <th class=3D"small-12 large-12 columns first last" style=3D"M=
+argin:0 auto;color:#3C4043;font-family:Hermanoto,Helvetica,Arial,sans-serif;fo=
+nt-size:14px;font-weight:400;line-height:inherit;margin:0 auto;padding:0;pa=
+dding-bottom:0;padding-left:40px;padding-right:40px;width:560px"><table sty=
+le=3Dborder-collapse:collapse;border-spacing:0;padding:0;vertical-align:top=
+;width:100%><tr style=3Dpadding:0;vertical-align:top><th style=3DMargin:0;c=
+olor:#3C4043;font-family:Hermanoto,Helvetica,Arial,sans-serif;font-size:14px;f=
+ont-weight:400;line-height:inherit;margin:0;padding:24px;text-align:left>
+
+                <img src=3Dhttps://storage.googleapis.com/support-kms-prod/=
+Yd1rPlunjtOKzNDXcw3eFmVCjI828xhBZqQy alt=3D"Google Cloud" height=3D30 style=
+=3D-ms-interpolation-mode:bicubic;clear:both;display:block;margin-bottom:14=
+px;max-width:100%;max-height:30px;outline:0;text-decoration:none;width:auto=
+>
+                <p style=3DMargin:0;Margin-bottom:16px;color:#6C737F;font-f=
+amily:Hermanoto,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line=
+-height:16px;margin:0;margin-bottom:14px;padding:0>
+            =C2=A9 2019  Google LLC&nbsp;1600 Amphitheatre Parkway, Mountai=
+n View, CA 94043
+                </p>
+                <p style=3DMargin:0;Margin-bottom:16px;color:#6C737F;font-f=
+amily:Hermanoto,Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line=
+-height:16px;margin:0;margin-bottom:14px;padding:0>
+            <em>You=E2=80=99re receiving this mandatory email service annou=
+ncement to update you about important changes to your Google Cloud product =
+or account.</em>
+            </p>
+            </th>
+<th class=3Dexpander style=3DMargin:0;color:#3C4043;font-family:Hermanoto,Helv=
+etica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:inherit;m=
+argin:0;padding:0!important;visibility:hidden;width:0></th></tr></table></t=
+h>
+            </tr></tbody></table>
+            </td></tr></tbody></table>
+
+          </center>
+        </td>
+      </tr>
+    </table>
+    <!-- prevent Gmail on iOS font size manipulation -->
+   <div style=3D"display:none;white-space:nowrap;font:15px courier;line-hei=
+ght:0"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+ =20
+</div>
+
+--0000000000005ff8fc058c3b1058--
+--0000000000005ff8fd058c3b105a
+Content-Type: text/csv; charset="US-ASCII"; 
+	name="MigrationReport-collab.its.umich.edu-Wednesday_June_26_2019_at_14-43-07_GMT.csv"
+Content-Disposition: attachment; 
+	filename="MigrationReport-collab.its.umich.edu-Wednesday_June_26_2019_at_14-43-07_GMT.csv"
+Content-Transfer-Encoding: base64
+
+IkcgU3VpdGUgVXNlcm5hbWUiLCJTdGF0dXMiLCJTdGF0dXMgZGV0YWlsIiwiTnVtYmVyIG9mIGVt
+YWlscyBtaWdyYXRlZCIsIk51bWJlciBvZiBlbWFpbHMgZmFpbGVkIiwiVG90YWwgZXN0aW1hdGVk
+IG51bWJlciBvZiBlbWFpbHMgdG8gYmUgbWlncmF0ZWQiLCJQZXJjZW50IGNvbXBsZXRlIiwiTnVt
+YmVyIG9mIGRheXMgd29ydGggb2YgZW1haWxzIG1pZ3JhdGVkIiwiTnVtYmVyIG9mIGRheXMgd29y
+dGggb2YgZW1haWxzIHBlbmRpbmciLCJOdW1iZXIgb2YgZW1haWxzIHRvbyBiaWciLCJOdW1iZXIg
+b2YgZW1haWxzIHVuLW9wZW5hYmxlIiwiTnVtYmVyIG9mIHVua25vd24gZXJyb3JzIgo=
+--0000000000005ff8fd058c3b105a
+Content-Type: text/csv; charset="US-ASCII"; 
+	name="ErrorReport-collab.its.umich.edu-Wednesday_June_26_2019_at_14-43-07_GMT.csv"
+Content-Disposition: attachment; 
+	filename="ErrorReport-collab.its.umich.edu-Wednesday_June_26_2019_at_14-43-07_GMT.csv"
+Content-Transfer-Encoding: base64
+
+IkcgU3VpdGUgVXNlcm5hbWUiLCJJdGVtIHR5cGUiLCJJdGVtIElkIiwiUGFyZW50IGZvbGRlciIs
+IlNlbnQgdGltZSIsIkVycm9yIENvZGUiLCJFcnJvciBEZXRhaWxzIgo=
+--0000000000005ff8fd058c3b105a--

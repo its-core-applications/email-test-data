@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp9163003lto;
+        Fri, 8 Mar 2019 12:59:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzHqGQnsEoZbniBGwtTldPd1dbMDjq1TijkxVfIVUn7I/tFmwZvueDn7wbr0jkyG0++uiQc
+X-Received: by 2002:a25:c64f:: with SMTP id k76mr17133244ybf.245.1552078774990;
+        Fri, 08 Mar 2019 12:59:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552078774; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lbTl0jLhPOGkkYdrdjDbs4W1sYVdAmBkJJQQCWmTXDifJZXYaEGtrydzMF3dN4cQsb
+         jJDV4iQNyHfycwZbb/YQaPrBHE55CqVkWGqPGL2w74icPQXNMlObv46cO/nPMD+kQ9Ie
+         Fcg57wH1aGxdxKvIxbMlQcPitp8ST3ybXmPfMOnBVxXJZ1vALVFHSGBY3v8X7UURA3oG
+         bnit+stuGDMvpyGHXRWvLt5L1ZuRU92Eg8GR4s9ZxwTGvZ4w3N1YS/86LVPGvlEIAMPh
+         3TyvSBpC3gO9+m6YGextnBtbJjdeIDUyaL8OaocF1EHEXDlOLbv99FmR07jIAtXCdDCu
+         HQSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=jc5vwR38UBfvhZDRj3vlTS+zDsdnWBIPuQ/WFItP55s=;
+        b=Wk328TI59j85qJ3l3SMaWM7f5Lh9jlxKeDJ4ZuynOcuY6y27RbvlVg20j5tYsWeGDL
+         CW9rvITT/OgRj9gknmeHyO1Rth5AFnklW/3Zm2OQsVN3qZYO7s6Wxm/DMl9F4T+Rskya
+         w2H1HQMy9ir4G0xUrYX5RIiAymccbRmBK7z+sjVepui9kitSU5rEaFpPbp1AZGK1emyI
+         jkEDitatke4z6Zo/GcTjnTKSmPFXJK6o5b/IDUnmT2rAjPUDhVuj5U9XN/uLbuLl3P0g
+         S4zH/m28oWT/Gwi0PQMXdFKRy6GURr8I9mPUrzmcsdPSWpCLvMs+TDDJUbxzfrQLGek+
+         0hOA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=IIy+Lol0;
+       spf=pass (google.com: best guess record for domain of ezekielh@uselab.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=ezekielh@uselab.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <ezekielh@uselab.collab.its.umich.edu>
+Received: from maleficent.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.125.12])
+        by mx.google.com with ESMTPS id r16si5200567ybg.437.2019.03.08.12.59.34
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 12:59:34 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of ezekielh@uselab.collab.its.umich.edu designates 141.211.125.12 as permitted sender) client-ip=141.211.125.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=IIy+Lol0;
+       spf=pass (google.com: best guess record for domain of ezekielh@uselab.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=ezekielh@uselab.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552078774;
+	bh=jc5vwR38UBfvhZDRj3vlTS+zDsdnWBIPuQ/WFItP55s=;
+	h=Date:From:To:Subject;
+	b=IIy+Lol0WBzcGwMdW3/aJs73v0tdFRfFWWeeMpFEItni8Fb7TMSBCvfeLf3e8ofcb
+	 JMJAcmNOsldPNj1icE0aFFV8vQeafhLur0wB10vJbPmxW/DyPzAkryrevl7DWOPYOe
+	 kX1GixzcGLdHWz9xHCFJzgfE11tF4vdI2t+u5ejwiE27W4vMHyet7jyTdGX7wm9ken
+	 lj3Fa8S8Vo34zqBwLAWoX7P6pUA2kV/8L/LQzC+0678yhJfTU4qICJ2stYTTE/VsP3
+	 BMg4EKAehX34iw1dphC94gt4TxGQZESBD2flwNwhv1CoSlNo5VSriZ9Dg3BlPNflvH
+	 29va9Zhw7cHmw==
+Authentication-Results: maleficent.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By maleficent.mr.itd.umich.edu ID 5C82D7B6.F778.25708;
+	Authuser hermane;
+	Fri, 08 Mar 2019 15:59:34 -0500
+Date: Fri, 8 Mar 2019 20:59:23 +0000
+From: Zeke Hendrickson <ezekielh@uselab.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: I am Zeke
+Message-ID: <20190308205922.h6ies3avsmblm7co@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+Zeke zeke zeke zeke

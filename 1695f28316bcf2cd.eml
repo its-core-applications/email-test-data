@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp9177560lto;
+        Fri, 8 Mar 2019 13:14:23 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwiFFHFu8ZPOrLwz4bTjtZWS9Z+waw5lXwc6hpuVWrs+GXRZsokP/GQpTgpdy+JmZzcFnGr
+X-Received: by 2002:a25:3b8f:: with SMTP id i137mr17327975yba.386.1552079663404;
+        Fri, 08 Mar 2019 13:14:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552079663; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RbXb4uBoPVn0e8vTfmgxK8ub0zJbMShLkI+nf/0ozh1y38WwDbFniWD4FHOVcvhNRf
+         pNDMIiC762vf5ukv9kU097Exq3eRwEOOR+zs9Bv7T4hI4oYY7dpUcr/HLHrbWwBG0uMS
+         Q9XdpluNuwOT6u0BRpjXG0YS2nb0ixiPzGvoMgqE6A3hPEdoJ8U0YMwRF4ZHHpMOmgoX
+         9AFQQwlWUqfFZ126J9AENp2DMHWhlsbIpUEWE5eUdxfM1zOYNdDvrWi6zW4ROMv7BJg1
+         yShB6CoVtkNpT1c/hHXxBatyk0tItFOBYxqXY1CRv9YPsXe0Ck28+pYCAVLelAb+upyM
+         88xA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=yf8X8CvBkgagD6Y+YGuUhqlmlkgqAJ2zlu9DvthVVJU=;
+        b=xh5yw5MSq+rV2RfspXdw2UBiYiQTJYA4NxXK4dngaxGbABd7WCFt83L36m1ky7HY3g
+         Udresqs8hbo5VFpraP7g3DZM6VupdmzWjMDBdzei0psHjRvj7L5bvE/oh8uom8eH9tJs
+         wTlxSJvebitTbPMgDDQpwrlW70QMzNey0WUsbBLpFdekvir2VK4/uw195swl1gEOEyyL
+         yMezXrzeGqRnymvPj/VqRPUlzVTXyOkj096eeffJO+4Cp7z3nSKEni5nDDGXr1DzLRvr
+         o8aKvrC+EH0X1G/mULfeoKckwkoAMdzfSafYHn2ngu0glrOR2Hk89v4JKJr4T2AK8pJF
+         7tNQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=TC8EVowq;
+       spf=pass (google.com: best guess record for domain of hermane@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=hermane@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <hermane@iia.collab.its.umich.edu>
+Received: from maleficent.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.125.12])
+        by mx.google.com with ESMTPS id p189si5522799ywe.106.2019.03.08.13.14.23
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 13:14:23 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of hermane@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) client-ip=141.211.125.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=TC8EVowq;
+       spf=pass (google.com: best guess record for domain of hermane@iia.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=hermane@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552079662;
+	bh=yf8X8CvBkgagD6Y+YGuUhqlmlkgqAJ2zlu9DvthVVJU=;
+	h=Date:From:To:Subject;
+	b=TC8EVowqKngj5kXODRCIhqIan5a8+caCV72KK3osBoYAbwC/tO7l4QsS8hffJXo19
+	 Pkfpl3m4OUBLhnFMCMvNOJG/ypClF0LEZzwv+KIlAOaB/y4LAPvZzd2ufECnUGRwZT
+	 4RLA62g+yWd1Mi11SSAj7LL4cbmGo/zPcLQKDdeiXzAM8gkLsdDzfhR+Qi5wuwDIbx
+	 ZMcgrds2CyBcKquGmlcRVryrzg2QWQ0YJuB3EfCIJWEL7MUNJBH353BB0+pupTaPKp
+	 S37QLeV5dqeuoDmloAHgNYeLvC6d+z3KWobFN8a287hZw5qeASNO4ORhXC+OyuxAIU
+	 5w2FlFdffgEAw==
+Authentication-Results: maleficent.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By maleficent.mr.itd.umich.edu ID 5C82DB2E.5B947.32379;
+	Authuser hermane;
+	Fri, 08 Mar 2019 16:14:22 -0500
+Date: Fri, 8 Mar 2019 21:14:16 +0000
+From: Herman Elpdesk <hermane@iia.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Testing as meeeee
+Message-ID: <20190308211416.k4qacutlds4uutp7@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+wheeeeeeeee

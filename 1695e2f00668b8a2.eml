@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp8904134lto;
+        Fri, 8 Mar 2019 08:42:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzTtDJLgIpHEOOAEaFi0pIV7WJqhof0k7o36EheoYMEdmGVvX738zN0x5YUHyhtt7Va/bZ7
+X-Received: by 2002:a25:d715:: with SMTP id o21mr11631602ybg.121.1552063332616;
+        Fri, 08 Mar 2019 08:42:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552063332; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rgjJ0NyOHHmtgqXc+Bl0rq/R1CHRLfv58jwJusGpU0rX86QQlekYUQOY/Lc1WXpQj0
+         txdj70NHLM16C/OpQMg2LDaczdmDlzrhDpI6OVavRyrOvahcLdg0RajcuCLaBGiuIk7T
+         BGc437lLo7nR+TtKHeZ5ArY4CTcnssCUE5p5XmrABcEz17qsniiqTKMIE2M6I6H6ytD9
+         XFmsAw350GSLRQyrPKwAp/CyQJOzOEcgLR/EnMdrEcpD9PlE8osiNUBnhANIKJXp6AcK
+         viWqpPYj/9tW+DVBT1Oxeqw+hQnPnp228d01oCyQ10o7jdYvTVxYtbN7YMxH/+L0/qxB
+         Owvg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=KdqLPixMMx3tWyMEtfIk0l24DgB19mq32TR1TJVSO5g=;
+        b=O7s6t1/Aqdez5wFchboLDkJ8wwvPrgfXcI9k6vbeFdTWIvR3xcA/zGJMDBEBtQ9I0e
+         Uwtg5fceTgCocas7WPGYln/gz7TYNbZ84wGaLh0Wtbv86LMKMY55hAVd5L8QcjGy/Th6
+         hLdAK+RlkhViM5lPYTw0OY1+Kv/dvXvG0aDjRcekbuCdocYkNNBeohBIIspZraQjUXD8
+         lZKsrKhPJkTiIjGL9rm6NLiV138o96uUDQd+/a2h+GzR/45uCY6qveo1l1AFIYpyVryJ
+         75CNjdhz1aedWb4R0yBpCz0QsKIw7qnBWGWKCAUby7nb4aTz8+XFNaVFUlDhu2UVVCwT
+         6x1w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b="I0/krIpM";
+       spf=pass (google.com: best guess record for domain of jimcald@courses.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=jimcald@courses.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <jimcald@courses.collab.its.umich.edu>
+Received: from maleficent.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.125.12])
+        by mx.google.com with ESMTPS id i14si4859094ywa.225.2019.03.08.08.42.12
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 08:42:12 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of jimcald@courses.collab.its.umich.edu designates 141.211.125.12 as permitted sender) client-ip=141.211.125.12;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b="I0/krIpM";
+       spf=pass (google.com: best guess record for domain of jimcald@courses.collab.its.umich.edu designates 141.211.125.12 as permitted sender) smtp.mailfrom=jimcald@courses.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552063331;
+	bh=KdqLPixMMx3tWyMEtfIk0l24DgB19mq32TR1TJVSO5g=;
+	h=Date:From:To:Subject;
+	b=I0/krIpMADOmvLYArJrxtVAnFtTefQVd7Qu/Z5BinhKWKoeH+XadVei1Vjf2kaFWz
+	 FAv2ccWNce0CaIjnppGsvGdeUAMUfiAyEBctZIPs4gCkGlHsA6/msZWBoxidZPnjFG
+	 8TVoO1zimisQ13bAbpMXkxRqhmLZuHwlf8r544sdlC4WMGCrUkcd/WQmspiNBZgKeW
+	 K//3d+ssp1NuTSU9jjFFx3OKPDT0A4hdwudfOjqlu8OBBI4vpMtKwJEMYVYqL+t418
+	 bbDWCKrryAvEFYw/UloV2zUtflW6NLwUXCBkdy47tPBZBVKoutexUfA62BHvEY0wFt
+	 57nPmu3sQlX5g==
+Authentication-Results: maleficent.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By maleficent.mr.itd.umich.edu ID 5C829B63.7ED94.25592;
+	Authuser hermane;
+	Fri, 08 Mar 2019 11:42:11 -0500
+Date: Fri, 8 Mar 2019 16:42:05 +0000
+From: Jim Caldwell <jimcald@courses.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: message from courses.
+Message-ID: <20190308164205.mioqvm35u3mtlrpd@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+blah blah blah blah

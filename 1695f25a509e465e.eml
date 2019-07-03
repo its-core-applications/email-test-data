@@ -1,0 +1,67 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:a05:6504:589:0:0:0:0 with SMTP id i9csp9174994lto;
+        Fri, 8 Mar 2019 13:11:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy6/L4MQ1E0Z9v8CjLlyI9dyLRTZb9Q71hRdGJEIclkTrd5EaR7OiMUCJspVNMD2lzc2uEr
+X-Received: by 2002:a81:e4e:: with SMTP id 75mr16644475ywo.149.1552079496627;
+        Fri, 08 Mar 2019 13:11:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552079496; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CPp2ybsMQJIZjM13R/HP96HM1akh/P6RDL6HxDEsj0jTwnIoSEjHHu/rBuJg36lRaQ
+         rsPZPV3/UaEpxLR8FmOEXi5WBgFxqyZUuvaxOHZ3dBVQcQkW+Lu8DuirBhLSJ8H/hKF8
+         p6J8L2wDYC/UBLpOQrLuJzT8DhMIAaE7NcTnyPyTsz5BTGZbO2HrJwu87x9SDAyIShq3
+         iqGgtKkHDeJkbQEQrx8v0exodkm6R5W3lbkLzc4kfksaSo0mkR+/n154XngPyKLJJ+ZG
+         RjfIP+f7z8uZnon7nzLVEGPHNHDiOMmRjSqqLbVErtet888K52Uk20JHAnod7d4kkQIL
+         7qiw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=ol1FgP5IsKS2sBKsEgdIfTG9hlvXKZP3EDMCrB8r8B8=;
+        b=vHsZF5u91jERa8kyJBubjzWGi1JffjPZIGGEnHg3yx10Sn7Rs9LpAgVX68ZftTO6T0
+         pvqOtCuBGUUXAP7qmKSm9aA4bwAxRHo5CZftHeUYlk/l2e9IwOyqcq/QGszEVZB9pg3m
+         eDrPRd5tQvw3lkdrtO/65Aa1hBLANyXVtOX4osONvCzIQd2W6sqlzRwMm6zU1YRqoQ+S
+         /uDdyuwOKqQxW2kJCnqRa/j12NLnW1P2zgNqhumLCixPrGz3MJ7fY9V1munU8RIMLl2z
+         BaN+RdwFCveJtmLOOo6tvGWlI+SJsEhhH1HzZtP3OXXcKQKj2BqDB8wIKWujEHLRhrME
+         DAvg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=Iqhc+8wm;
+       spf=pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=ezekielh@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <ezekielh@iia.collab.its.umich.edu>
+Received: from tombraider.mr.itd.umich.edu (smtp.mail.umich.edu. [141.211.12.86])
+        by mx.google.com with ESMTPS id n205si5259752ywb.42.2019.03.08.13.11.36
+        for <hermane@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Mar 2019 13:11:36 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.12.86 as permitted sender) client-ip=141.211.12.86;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@umich.edu header.s=relay-2016-05-12 header.b=Iqhc+8wm;
+       spf=pass (google.com: best guess record for domain of ezekielh@iia.collab.its.umich.edu designates 141.211.12.86 as permitted sender) smtp.mailfrom=ezekielh@iia.collab.its.umich.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1552079496;
+	bh=ol1FgP5IsKS2sBKsEgdIfTG9hlvXKZP3EDMCrB8r8B8=;
+	h=Date:From:To:Subject;
+	b=Iqhc+8wmvc3n7TbsXjvFF91OwK8XAyXl3E+Wc8g+NszV94O+RorydlmdPPWoabE9O
+	 lWFsel5a5Dv9jgrdPNWKboelXf4qBFf9BLvYWv803ZWQKQ+Djye74UdXsWeMUax+2G
+	 i4Z97uU/C6n0wiNkPZ+T7hnkNaeluWx31sd4Ci0UP2ohM6I29W8slyHz9+ELQs67y3
+	 DRCJu5yzKJqbzzkWyFxRKknpxAifEs49HG2r2GIFKiWrD+4FELTw8e2fL/HfBduqaH
+	 bQIoE5QvJJAK7F95KKyPQ+gz2xDzMN6aT7ERn4MLkQf5wu3eRY4e1ATi7ycSqWeBAx
+	 b3X3n9drkfKPA==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=permerror policy.iprev=35.1.192.111 (unknown);
+	auth=pass smtp.auth=hermane
+Received: FROM defiant (unknown [35.1.192.111])
+	By tombraider.mr.itd.umich.edu ID 5C82DA87.D298C.25767;
+	Authuser hermane;
+	Fri, 08 Mar 2019 16:11:35 -0500
+Date: Fri, 8 Mar 2019 21:11:33 +0000
+From: Zeke Hendrickson <ezekielh@iia.collab.its.umich.edu>
+To: hermane@collab.its.umich.edu
+Subject: Still Herman
+Message-ID: <20190308211133.yc35nsbhbpryiysj@defiant>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20170113 (1.7.2)
+
+rob rob rob rob

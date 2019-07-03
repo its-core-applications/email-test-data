@@ -1,0 +1,196 @@
+Delivered-To: hermane@collab.its.umich.edu
+Received: by 2002:ab3:4c67:0:0:0:0:0 with SMTP id r36csp1372709ltg;
+        Tue, 23 Apr 2019 06:15:19 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=temperror (no key for signature) header.i=@accounts.google.com header.s=20120806 header.b="b/HhkYSf"
+X-Google-Smtp-Source: APXvYqykN4J0AnN39qS47jd2LWYrVrZReBIroJFw6Ao9gu2DlERaBpQy42f2DePrxTnp4WeecBfgVCqSGPb/Xt47Gw==
+X-Received: by 2002:a2e:7805:: with SMTP id t5mr13293365ljc.106.1556025319042;
+        Tue, 23 Apr 2019 06:15:19 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Tue, 23 Apr 2019 06:15:19 -0700
+Delivered-To: admin-mgoogle@collab.its.umich.edu
+Received: by 10.176.82.24 with SMTP id i24csp2558312uaa;
+        Tue, 13 Dec 2016 09:36:23 -0800 (PST)
+X-Received: by 10.36.1.65 with SMTP id 62mr3540282itk.39.1481650582489;
+        Tue, 13 Dec 2016 09:36:22 -0800 (PST)
+Return-Path: <3ljFQWAgTAAMqr-uhso1dffrxqwv.jrrjoh.frp@gaia.bounces.google.com>
+Received: from mail-io0-x245.google.com (mail-io0-x245.google.com. [2607:f8b0:4001:c06::245])
+        by mx.google.com with ESMTPS id v197si2361488itc.9.2016.12.13.09.36.22
+        for <admin-mgoogle@collab.its.umich.edu>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Dec 2016 09:36:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3ljfqwagtaamqr-uhso1dffrxqwv.jrrjoh.frp@gaia.bounces.google.com designates 2607:f8b0:4001:c06::245 as permitted sender) client-ip=2607:f8b0:4001:c06::245;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@accounts.google.com;
+       spf=pass (google.com: domain of 3ljfqwagtaamqr-uhso1dffrxqwv.jrrjoh.frp@gaia.bounces.google.com designates 2607:f8b0:4001:c06::245 as permitted sender) smtp.mailfrom=3ljFQWAgTAAMqr-uhso1dffrxqwv.jrrjoh.frp@gaia.bounces.google.com;
+       dmarc=pass (p=REJECT dis=NONE) header.from=accounts.google.com
+Received: by mail-io0-x245.google.com with SMTP id z187so255613104iod.3
+        for <admin-mgoogle@collab.its.umich.edu>; Tue, 13 Dec 2016 09:36:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=accounts.google.com; s=20120806;
+        h=mime-version:date:feedback-id:message-id:subject:from:to;
+        bh=mIxr57Ubi14uSDY6z/eb6WmXVL7NR1HcoHBew+ZWQ0U=;
+        b=b/HhkYSfC+/VdMQ4WQ7haVhH0fJMnnjpw3wTUzzqiTRGVhBkerZXnk7YRHiOdUACkx
+         cx3m78QJhnTTui0axfO0pqe3uXz9fZ9+1SNmdCp13NhkWJdeP1eQ0y/0xIcZ7mS4/2xo
+         rVmXEHA0PtVcVXV//62wgbq84Kg9qB2VQnrUKM9YSxRueiLI2JtLN6x3m4Cptk/HCNXn
+         GBqv7BDSTBfEVMfyPeY8RW3OK/wI75Nfynfvb56bsaNf1K3bKZho45rcPRitubnfj1e/
+         Pt/P/YgJlFieMhtSAQdspYWxZuvBv17CjKzqbSwewtSJOiUA87IcdMw+U0+/LQzwyBuo
+         fmjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:date:feedback-id:message-id:subject
+         :from:to;
+        bh=mIxr57Ubi14uSDY6z/eb6WmXVL7NR1HcoHBew+ZWQ0U=;
+        b=bJzau7Vq8ZpCjlrRurQ2pkp4lEFiw8SX2lxclbSJrIuvAYTE+rTFsEdl1fzuLT9KKy
+         1UCQSSWQclnrz9iU9kE6FbvQ4cHb6ugX0JI14prLpRncemN8qJ/dYk8751Fj+RaZw+y2
+         mjnnBfoVNd3xIg14TuuUsWIXYpJvNHEjpC2jPXHSBKLPiozVnLwBepm4YF7Tx2JF5pSU
+         MEnydeJ+kULpOt3api3amkgKoujm3Y9j1AXe4NfKK4H+ywZJdWE7gHUcepLbzKK8oMUf
+         hX74/8LOylcMtjILRdQDVEglT402vbkHieREEDgyrndJ/VlfZOrcBBWBXnoBtZ2GJZq7
+         fPYg==
+X-Gm-Message-State: AKaTC01sBLPyrG1+5FvM5Thkpzih7fOudNVmunEJ96SqQU/9sOex0kjzpm5JtIGsyTodqH2JjGYjscZDygkbXx36
+MIME-Version: 1.0
+X-Received: by 10.36.185.77 with SMTP id k13mr763723iti.38.1481650582082; Tue,
+ 13 Dec 2016 09:36:22 -0800 (PST)
+Date: Tue, 13 Dec 2016 17:36:14 +0000 (GMT)
+X-Notifications: XEAAAAH_oCMFyNx6nXKIivMgL3TM
+X-Account-Notification-Type: 31-anexp#ire-control
+Feedback-ID: 31-anexp#ire-control:account-notifier
+Message-ID: <3skAvEfY9l6ythcMoQQI4Q@notifications.google.com>
+Subject: New sign-in from Chrome on Mac
+From: Google <no-reply@accounts.google.com>
+To: admin-mgoogle@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary=f403045d943ea0556b05438da86c
+
+--f403045d943ea0556b05438da86c
+Content-Type: text/plain; charset=UTF-8; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+TmV3IHNpZ24taW4gZnJvbSBDaHJvbWUgb24gTWFjDQoNCg0KDQpIaSBhZG1pbiwNCllvdXIgR29v
+Z2xlIEFjY291bnQgYWRtaW4tbWdvb2dsZUBjb2xsYWIuaXRzLnVtaWNoLmVkdSB3YXMganVzdCB1
+c2VkIHRvDQpzaWduIGluIGZyb20gQ2hyb21lIG9uIE1hYy4NCg0KYWRtaW4gbWdvb2dsZQ0KYWRt
+aW4tbWdvb2dsZUBjb2xsYWIuaXRzLnVtaWNoLmVkdQ0KDQpNYWMNClR1ZXNkYXksIERlY2VtYmVy
+IDEzLCAyMDE2IDEyOjM2IFBNIChFYXN0ZXJuIFN0YW5kYXJkIFRpbWUpDQpBbm4gQXJib3IsIE1J
+LCBVU0EqDQpDaHJvbWUqRG9uJ3QgcmVjb2duaXplIHRoaXMgYWN0aXZpdHk/Kg0KUmV2aWV3IHlv
+dXIgcmVjZW50bHkgdXNlZCBkZXZpY2VzDQo8aHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tL0Fj
+Y291bnRDaG9vc2VyP0VtYWlsPWFkbWluLW1nb29nbGVAY29sbGFiLml0cy51bWljaC5lZHUmY29u
+dGludWU9aHR0cHM6Ly9zZWN1cml0eS5nb29nbGUuY29tL3NldHRpbmdzL3NlY3VyaXR5L2FjdGl2
+aXR5L250LzE0ODE2NTA1NzQwMDA/cmZuJTNEMzElMjZyZm5jJTNEMSUyNmV0JTNEMCUyNmFzYWUl
+M0QyJTI2YW5leHAlM0RpcmUtY29udHJvbD4NCm5vdy4NCg0KV2h5IGFyZSB3ZSBzZW5kaW5nIHRo
+aXM/IFdlIHRha2Ugc2VjdXJpdHkgdmVyeSBzZXJpb3VzbHkgYW5kIHdlIHdhbnQgdG8NCmtlZXAg
+eW91IGluIHRoZSBsb29wIG9uIGltcG9ydGFudCBhY3Rpb25zIGluIHlvdXIgYWNjb3VudC4NCldl
+IHdlcmUgdW5hYmxlIHRvIGRldGVybWluZSB3aGV0aGVyIHlvdSBoYXZlIHVzZWQgdGhpcyBicm93
+c2VyIG9yIGRldmljZQ0Kd2l0aCB5b3VyIGFjY291bnQgYmVmb3JlLiBUaGlzIGNhbiBoYXBwZW4g
+d2hlbiB5b3Ugc2lnbiBpbiBmb3IgdGhlIGZpcnN0DQp0aW1lIG9uIGEgbmV3IGNvbXB1dGVyLCBw
+aG9uZSBvciBicm93c2VyLCB3aGVuIHlvdSB1c2UgeW91ciBicm93c2VyJ3MNCmluY29nbml0byBv
+ciBwcml2YXRlIGJyb3dzaW5nIG1vZGUgb3IgY2xlYXIgeW91ciBjb29raWVzLCBvciB3aGVuIHNv
+bWVib2R5DQplbHNlIGlzIGFjY2Vzc2luZyB5b3VyIGFjY291bnQuDQoNCkJlc3QsDQpUaGUgR29v
+Z2xlIEFjY291bnRzIHRlYW0NCg0KDQoNCipUaGUgbG9jYXRpb24gaXMgYXBwcm94aW1hdGUgYW5k
+IGRldGVybWluZWQgYnkgdGhlIElQIGFkZHJlc3MgaXQgd2FzIGNvbWluZw0KZnJvbS4NCg0KVGhp
+cyBlbWFpbCBjYW4ndCByZWNlaXZlIHJlcGxpZXMuIFRvIGdpdmUgdXMgZmVlZGJhY2sgb24gdGhp
+cyBhbGVydCwgY2xpY2sNCmhlcmUNCjxodHRwczovL3N1cHBvcnQuZ29vZ2xlLmNvbS9hY2NvdW50
+cy9jb250YWN0L2RldmljZV9hbGVydF9mZWVkYmFjaz9obD1lbj4uDQpGb3IgbW9yZSBpbmZvcm1h
+dGlvbiwgdmlzaXQgdGhlIEdvb2dsZSBBY2NvdW50cyBIZWxwIENlbnRlcg0KPGh0dHBzOi8vc3Vw
+cG9ydC5nb29nbGUuY29tL2FjY291bnRzL2Fuc3dlci8yNzMzMjAzPi4NCg0KDQoNCllvdSByZWNl
+aXZlZCB0aGlzIG1hbmRhdG9yeSBlbWFpbCBzZXJ2aWNlIGFubm91bmNlbWVudCB0byB1cGRhdGUg
+eW91IGFib3V0DQppbXBvcnRhbnQgY2hhbmdlcyB0byB5b3VyIEdvb2dsZSBwcm9kdWN0IG9yIGFj
+Y291bnQuDQrCqSAyMDE2IEdvb2dsZSBJbmMuLCAxNjAwIEFtcGhpdGhlYXRyZSBQYXJrd2F5LCBN
+b3VudGFpbiBWaWV3LCBDQSA5NDA0MywgVVNBDQo=
+--f403045d943ea0556b05438da86c
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<html lang=3D"en"><head><meta name=3D"format-detection" content=3D"date=3Dn=
+o"><meta name=3D"format-detection" content=3D"email=3Dno"></head><body styl=
+e=3D"margin: 0; padding: 0;" bgcolor=3D"#FFFFFF"><table width=3D"100%" heig=
+ht=3D"100%" style=3D"min-width: 348px;" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0"><tr height=3D"32px"></tr><tr align=3D"center"><td width=3D"32=
+px"></td><td><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=
+=3D"max-width: 600px;"><tr><td><table width=3D"100%" border=3D"0" cellspaci=
+ng=3D"0" cellpadding=3D"0"><tr><td align=3D"left"><img width=3D"92" height=
+=3D"32" src=3D"https://www.gstatic.com/accountalerts/email/googlelogo_color=
+_188x64dp.png" style=3D"display: block; width: 92px; height: 32px;"></td><t=
+d align=3D"right"><img width=3D"32" height=3D"32" style=3D"display: block; =
+width: 32px; height: 32px;" src=3D"https://www.gstatic.com/accountalerts/em=
+ail/keyhole.png"></td></tr></table></td></tr><tr height=3D"16"></tr><tr><td=
+><table bgcolor=3D"#4184F3" width=3D"100%" border=3D"0" cellspacing=3D"0" c=
+ellpadding=3D"0" style=3D"min-width: 332px; max-width: 600px; border: 1px s=
+olid #E0E0E0; border-bottom: 0; border-top-left-radius: 3px; border-top-rig=
+ht-radius: 3px;"><tr><td height=3D"72px" colspan=3D"3"></td></tr><tr><td wi=
+dth=3D"32px"></td><td style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,=
+sans-serif; font-size: 24px; color: #FFFFFF; line-height: 1.25;">New sign-i=
+n from Chrome on Mac</td><td width=3D"32px"></td></tr><tr><td height=3D"18p=
+x" colspan=3D"3"></td></tr></table></td></tr><tr><td><table bgcolor=3D"#FAF=
+AFA" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=
+=3D"min-width: 332px; max-width: 600px; border: 1px solid #F0F0F0; border-b=
+ottom: 1px solid #C0C0C0; border-top: 0; border-bottom-left-radius: 3px; bo=
+rder-bottom-right-radius: 3px;"><tr height=3D"16px"><td width=3D"32px" rows=
+pan=3D"3"></td><td></td><td width=3D"32px" rowspan=3D"3"></td></tr><tr><td>=
+<table style=3D"min-width: 300px;" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0"><tr><td style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,sans-=
+serif; font-size: 13px; color: #202020; line-height: 1.5;">Hi admin,</td></=
+tr><tr><td style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,sans-serif;=
+ font-size: 13px; color: #202020; line-height: 1.5;">Your Google Account <a=
+>admin-mgoogle@collab.its.umich.edu</a> was just used to sign in from <span=
+ style=3D"white-space:nowrap;">Chrome</span> on <span style=3D"white-space:=
+nowrap;">Mac</span>.<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+ style=3D"margin-top: 48px; margin-bottom: 48px;"><tr valign=3D"middle"><td=
+ width=3D"32px" ></td><td align=3D"center" ><img src=3D"https://www.gstatic=
+.com/accountalerts/email/anonymous_profile_photo.png" width=3D"48px" height=
+=3D"48px" style=3D"width: 48px; height: 48px; display: block; border-radius=
+: 50%;"></td><td width=3D"16px" ></td><td style=3D"line-height: 1.2;"><span=
+ style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,sans-serif;font-size:=
+ 20px; color: #202020;">admin mgoogle</span><br><span style=3D"font-family:=
+ Hermanoto-Regular,Helvetica,Arial,sans-serif;font-size: 13px; color: #727272;=
+"><a>admin-mgoogle@collab.its.umich.edu</a></span></td></tr><tr valign=3D"m=
+iddle"><td width=3D"32px" height=3D"24px"></td><td align=3D"center" height=
+=3D"24px"><img src=3D"https://www.gstatic.com/accountalerts/email/down_arro=
+w.png" width=3D"4px" height=3D"10px" style=3D"width: 4px; height: 10px; dis=
+play: block; "></td></tr><tr valign=3D"top"><td width=3D"32px" ></td><td al=
+ign=3D"center" ><img src=3D"https://www.gstatic.com/accountalerts/devices/m=
+ac_laptop_wallpaper_big.png" width=3D"48px" height=3D"48px" style=3D"width:=
+ 48px; height: 48px; display: block; "></td><td width=3D"16px" ></td><td st=
+yle=3D"line-height: 1.2;"><span style=3D"font-family: Hermanoto-Regular,Helvet=
+ica,Arial,sans-serif; font-size: 16px; color: #202020;">Mac</span><br><span=
+ style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,sans-serif; font-size=
+: 13px; color: #727272;">Tuesday, December 13, 2016 12:36 PM (Eastern Stand=
+ard Time)<br>Ann Arbor, MI, USA*<br>Chrome</span></td></tr></table><b>Don&#=
+39;t recognize this activity?</b><br>Review your <a href=3D"https://account=
+s.google.com/AccountChooser?Email=3Dadmin-mgoogle@collab.its.umich.edu&amp;=
+continue=3Dhttps://security.google.com/settings/security/activity/nt/148165=
+0574000?rfn%3D31%26rfnc%3D1%26et%3D0%26asae%3D2%26anexp%3Dire-control" data=
+-meta-key=3D"review-devices" style=3D"text-decoration: none; color: #4285F4=
+;" target=3D"_blank">recently used devices</a> now.<br><br>Why are we sendi=
+ng this? We take security very seriously and we want to keep you in the loo=
+p on important actions in your account.<br>We were unable to determine whet=
+her you have used this browser or device with your account before. This can=
+ happen when you sign in for the first time on a new computer, phone or bro=
+wser, when you use your browser's incognito or private browsing mode or cle=
+ar your cookies, or when somebody else is accessing your account.</td></tr>=
+<tr height=3D"32px"></tr><tr><td style=3D"font-family: Hermanoto-Regular,Helve=
+tica,Arial,sans-serif; font-size: 13px; color: #202020; line-height: 1.5;">=
+Best,<br>The Google Accounts team</td></tr><tr height=3D"16px"></tr><tr><td=
+><table style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,sans-serif; fo=
+nt-size: 12px; color: #B9B9B9; line-height: 1.5;"><tr><td>*The location is =
+approximate and determined by the IP address it was coming from.<br></td></=
+tr><tr><td>This email can't receive replies. To give us feedback on this al=
+ert, <a href=3D"https://support.google.com/accounts/contact/device_alert_fe=
+edback?hl=3Den" data-meta-key=3D"feedback" style=3D"text-decoration: none; =
+color: #4285F4;" target=3D"_blank">click here</a>.<br>For more information,=
+ visit the <a href=3D"https://support.google.com/accounts/answer/2733203" d=
+ata-meta-key=3D"help" style=3D"text-decoration: none; color: #4285F4;" targ=
+et=3D"_blank">Google Accounts Help Center</a>.</td></tr></table></td></tr><=
+/table></td></tr><tr height=3D"32px"></tr></table></td></tr><tr height=3D"1=
+6"></tr><tr><td style=3D"max-width: 600px; font-family: Hermanoto-Regular,Helv=
+etica,Arial,sans-serif; font-size: 10px; color: #BCBCBC; line-height: 1.5;"=
+><tr><td><table style=3D"font-family: Hermanoto-Regular,Helvetica,Arial,sans-s=
+erif; font-size: 10px; color: #666666; line-height: 18px; padding-bottom: 1=
+0px"><tr><td>You received this mandatory email service announcement to upda=
+te you about important changes to your Google product or account.</td></tr>=
+<tr><td><div style=3D"direction: ltr; text-align: left">&copy; 2016 Google =
+Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA</div></td></t=
+r></table></td></tr></td></tr></table></td><td width=3D"32px"></td></tr><tr=
+ height=3D"32px"></tr></table></body></html>
+--f403045d943ea0556b05438da86c--

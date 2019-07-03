@@ -1,0 +1,292 @@
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=vX7ArT9P
+X-Received: by 2002:a19:41cc:: with SMTP id o195mr2065708lfa.166.1561646156392;
+        Thu, 27 Jun 2019 07:35:56 -0700 (PDT)
+Received: from 575093315633
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Thu, 27 Jun 2019 07:35:56 -0700
+Delivered-To: admin-hermane@collab.its.umich.edu
+Received: by 2002:a9d:5549:0:0:0:0:0 with SMTP id h9csp864030oti;
+        Wed, 19 Jun 2019 09:53:51 -0700 (PDT)
+X-Received: by 2002:a17:90a:9bc5:: with SMTP id b5mr2604583pjw.109.1560963231574;
+        Wed, 19 Jun 2019 09:53:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560963231; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Aj+E4a31CRa9sqnfDu055D3siD+9eo97N8/OkTqXD2kvqYGbJez/PJKBh3rQ4AONn1
+         FYAHaYw7xWhezGyq9fNmWaQzKKAAMamfnD2Y/MaSdkDfqhZWEtsIAqsvCoJVv0Hp6t+y
+         cYnutiMPEk2YE8dvmbPAIusBoJse+423wyGjER7x/cwxRkY4tuHXdIBJWCJXnX06Yo8D
+         JUZ50lDwckeVZLWCw71L3muFmd4Zk2wREXKdmMau2G1LABn1S8in4QBmePr4stFZA9S4
+         bpugZKSCqf1yiWOMYykchgfy1oGytoL3LHoQFiw5wJWZ/axYLeaxsin/qSUcpaL8AzHd
+         gNWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=6ySXV9XeQhfbVphPLFx6K+S8Zc48uuwqAl8lqxdI5C0=;
+        b=JzaOXqjQggF0QN9Ho3g6QRVYYFT3tC4QeewD8umFrRXNZnLmP1m8ETl1eo875cbZ53
+         eNqenaf8CTUrIGo/1iJ0Fqq58Mm9qc1hWIIxQpuxLfAZyRV8y8goQK/iMgRgC/GWwSLY
+         IJLumiJ80lWRTvB3SfEbe9/MBIw/rP+QjTI9scyxhiR+/BsUoRihmrE6eJiuBFy67ccC
+         RLf6dgkZ0FA67jEMxxzSloflLt/lrpSU42P5IPjefAQ5aV1j2ESAKfUnxFbHesxCeS3O
+         xWQz4GNRYckvMHhQuxaEQgFzqIvGQI1nRYPpRoZ0HjzqddAxF7ZblCnYw7efpH/WsPL2
+         NpmQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=vX7ArT9P;
+       spf=pass (google.com: domain of 3nmgkxrmkaicrzzrwp-l003-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3nmgKXRMKAIcrzzrwp-l003-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3nmgKXRMKAIcrzzrwp-l003-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id y7sor14730177plp.58.2019.06.19.09.53.51
+        for <admin-hermane@collab.its.umich.edu>
+        (Google Transport Security);
+        Wed, 19 Jun 2019 09:53:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3nmgkxrmkaicrzzrwp-l003-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=vX7ArT9P;
+       spf=pass (google.com: domain of 3nmgkxrmkaicrzzrwp-l003-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3nmgKXRMKAIcrzzrwp-l003-yz2p0w9rzzrwp.nzx@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:date:reply-to:feedback-id:message-id:subject:from:to;
+        bh=6ySXV9XeQhfbVphPLFx6K+S8Zc48uuwqAl8lqxdI5C0=;
+        b=vX7ArT9P7d+tbxOP5AW2EZCeEhNSZJWHFHM3aFCn2AD4KctIbdcRxLPiKdk/tDnCnY
+         CRD0iKKq7TW3HlnZpKNgAlMVJ2yW3td5DmCYU8BNWXYNxL+RV584RlN+XWP+oWvOjcph
+         1iCUGRGWPKB2S5KHy0Jx5e2+EW4CR4fdy54J0mq5j861IQ+Worwaog8GzpSXxuudY/0Z
+         2iR8HzIz0qiCny+JSsInKDI4eqdJ2jh5E7dp5/4H9o8fUQuAKzV+Rk5XMvw7hXX38nr7
+         0ltdXCJuqUDEtQt+xVTwI4+ZQOU5QxtMexYSe7Cks8RC6SuKHc8Jlz30G6Rff67WEfD5
+         bo4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:date:reply-to:feedback-id
+         :message-id:subject:from:to;
+        bh=6ySXV9XeQhfbVphPLFx6K+S8Zc48uuwqAl8lqxdI5C0=;
+        b=k3WWexbXmP2OGmHKkeFkkw0fnCDLCuzrLrarZL4+nZtl6pogY4UveI0IXsetQ0m0pU
+         dj+y3mkjHyI3Lieb1MGdQhNnuGBt7phSbQj1tZKfctETZNb6kkC2QJNZEu/vErO4PPWd
+         oroc1qIUcLCwbXOzEgFl/oraE7uKOtTUuWQ1Wel8GvizfqJGYd6VHhZEghR3SqUetHtF
+         612NpoEh9G1qmUf8yjZsTopnA51d7Vk6SbqOrs5aUZl+cpthzCrY3sA4Q/uGkOn/c5Is
+         TxAZ3b9n405m8mceUF7Ri4Qgy5EyvwF6a2TW5dBebeS7HWdzIdoqPe1JiFL/AYNvAgIA
+         w8EA==
+X-Gm-Message-State: APjAAAVmixjEBkTIN0fOU02b6PtTNrqxtkzVWeCOtQJ2cWJR2OoY3fBu
+	MmZ/IehXErdKeyc=
+X-Google-Smtp-Source: APXvYqwGYkW3wOia39kr0cv3/d/fs4mlHCQkUjcMVcoXTGFqbD0tHS2efW9/4+FGS3tXA5yLDEQhAlA=
+MIME-Version: 1.0
+X-Received: by 2002:a17:902:4683:: with SMTP id p3mr8568986pld.31.1560963230942;
+ Wed, 19 Jun 2019 09:53:50 -0700 (PDT)
+Date: Wed, 19 Jun 2019 09:53:50 -0700
+Reply-To: The Google Cloud Team <google-apps-noreply@google.com>
+X-Google-Id: 244026
+Feedback-ID: Len:P-11:C20092920:gamma
+X-Notifications: GAMMA:<378284f7617f236ab45b76cbfd560da5ae89ab12-20092920-110563289@google.com>
+Message-ID: <378284f7617f236ab45b76cbfd560da5ae89ab12-20092920-110563289@google.com>
+Subject: Changes to our end-user facing Terms of Service for YouTube
+From: The Google Cloud Team <google-apps-noreply@google.com>
+To: admin-hermane@collab.its.umich.edu
+Content-Type: multipart/alternative; boundary="000000000000e348d5058bb012e7"
+
+--000000000000e348d5058bb012e7
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlIGxvZ28NCg0KQ2hhbmdlcyB0byBvdXIgZW5kLXVzZXIgZmFjaW5nIFRlcm1zIG9mIFNl
+cnZpY2UgZm9yIFlvdVR1YmUgZWZmZWN0aXZlIEp1bHkgIA0KMjIsIDIwMTkuDQoNCkhlbGxvIEFk
+bWluaXN0cmF0b3IsDQoNCldlJ3JlIHdyaXRpbmcgdG8gbGV0IHlvdSBrbm93IGFib3V0IGNoYW5n
+ZXMgaW4gb3VyIGVuZC11c2VyIGZhY2luZyBZb3VUdWJlICANClRlcm1zIG9mIFNlcnZpY2UgKOKA
+nFRlcm1z4oCdKSBmb3IgeW91ciBlbmQtdXNlcnMgaW4gdGhlIEV1cm9wZWFuIEVjb25vbWljIEFy
+ZWEgIA0KKEVFQSkgb3IgU3dpdHplcmxhbmQgdGhhdCBtYXkgYWZmZWN0IHVzZXJzIGluIHlvdXIg
+ZG9tYWluICANCmNvbGxhYi5pdHMudW1pY2guZWR1LiBUaGVzZSBjaGFuZ2VzIGRvIG5vdCBpbXBh
+Y3QgdGhlIHRlcm1zIHRoYXQgZ292ZXJuIHRoZSAgDQphZ3JlZW1lbnQgYmV0d2VlbiBHb29nbGUg
+YW5kIHlvdXIgb3JnYW5pemF0aW9uLiBJZiB5b3UgaGF2ZSBkaXNhYmxlZCBHb29nbGUgIA0KQWRk
+aXRpb25hbCBTZXJ2aWNlcyBmb3IgdXNlcnMgaW4geW91ciBkb21haW4sIHRoZXNlIGNoYW5nZXMg
+d2lsbCBub3QgaW1wYWN0ICANCnRoZW0uDQoNCldoYXQncyBDaGFuZ2luZz8NCg0KVGhlIHVwZGF0
+ZWQgVGVybXMgYWZmZWN0IHVzZXJzIGluIHlvdXIgZG9tYWluIHRoYXQgYXJlIGJhc2VkIGluIHRo
+ZSAgDQpFdXJvcGVhbiBFY29ub21pYyBBcmVhIChFVSBjb3VudHJpZXMsIEljZWxhbmQsIExpZWNo
+dGVuc3RlaW4sIGFuZCBOb3J3YXkpICANCm9yIFN3aXR6ZXJsYW5kIGFuZCB3aWxsIGFwcGx5IGZy
+b20gSnVseSAyMiwgMjAxOS4gV2UndmUgbWFkZSB0aGVzZSB1cGRhdGVzICANCmFzIHBhcnQgb2Yg
+b3VyIG9uZ29pbmcgZWZmb3J0cyB0byBpbXByb3ZlIHRyYW5zcGFyZW5jeSBhbmQgY29tbXVuaWNh
+dGlvbi4gIA0KV2UndmUgcHJvdmlkZWQgYSBzdW1tYXJ5IG9mIGtleSBjaGFuZ2VzIHRvIGhpZ2hs
+aWdodCB0byB5b3VyIHVzZXJzIHdoYXQgaGFzICANCmNoYW5nZWQgYnV0IGhlcmUncyBhIHNuYXBz
+aG90IG9mIHdoYXQgd2UndmUgZG9uZToNCg0KDQpJbXByb3ZlZCByZWFkYWJpbGl0eS4gV2hpbGUg
+c3RpbGwgYSBsZWdhbCBkb2N1bWVudCwgd2UndmUgZG9uZSBvdXIgYmVzdCB0byAgDQptYWtlIHRo
+ZSBUZXJtcyBjbGVhcmVyIGFuZCBlYXNpZXIgdG8gdW5kZXJzdGFuZC4NCg0KSW1wcm92ZWQgdHJh
+bnNwYXJlbmN5IGFuZCBjb21tdW5pY2F0aW9uLiBXZSd2ZSBhZGRlZCBsaW5rcyB0byBvdXIgWW91
+VHViZSAgDQpwb2xpY2llcyBhbmQgYXBwZWFscyBwcm9jZXNzLiBXZSd2ZSBhbHNvIGV4cGFuZGVk
+IG91ciBjb21taXRtZW50cyB0byBub3RpZnkgIA0KdXNlcnMgYWJvdXQgYW55IGNoYW5nZXMgdGhh
+dCBtYXkgYWZmZWN0IHRoZW0sIHN1Y2ggYXMgZnV0dXJlIGNoYW5nZXMgdG8gdGhlICANClRlcm1z
+Lg0KDQpVc2VyJ3MgQ29udGVudC4gV2UndmUgY2xhcmlmaWVkIHRoZSBsaWNlbnNlIHVzZXJzIGdy
+YW50IHVzIHRvIG1ha2UgaXQgIA0KZWFzaWVyIHRvIHVuZGVyc3RhbmQuIFdlJ3JlIG5vdCBhc2tp
+bmcgZm9yIGFkZGl0aW9uYWwgcGVybWlzc2lvbnMgYW5kICANCnRoZXJlJ3Mgbm8gZGlmZmVyZW5j
+ZSBpbiBob3cgd2UncmUgdXNpbmcgdGhlaXIgY29udGVudC4NCg0KT3VyIHByb2R1Y3QgdG9kYXku
+IFdlJ3ZlIG1hZGUgc29tZSB1cGRhdGVzIHRvIGJldHRlciByZWZsZWN0IHRoZSB3YXkgIA0KWW91
+VHViZSBvcGVyYXRlcy4gRm9yIGV4YW1wbGUsIHdlJ3ZlIHJlbW92ZWQgb3V0ZGF0ZWQgZGVzY3Jp
+cHRpb25zIGFuZCAgDQpwcm92aWRlZCBoZWxwZnVsIGRldGFpbHMgYWJvdXQgb3VyIHNlcnZpY2Ug
+d2l0aCBsaW5rcyB0byB0aGUgSGVscCBDZW50ZXIuDQoNCk5vIGNoYW5nZXMgdG8gb3VyIFByaXZh
+Y3kgUG9saWN5LiBXZSdyZSBub3QgbWFraW5nIGFueSBjaGFuZ2VzIHRvIHRoZSAgDQpHb29nbGUg
+UHJpdmFjeSBQb2xpY3ksIGFzIHRoZSB3YXkgd2UgY29sbGVjdCBhbmQgcHJvY2VzcyB1c2Vycycg
+ZGF0YSBpcyBub3QgIA0KY2hhbmdpbmcgYmVjYXVzZSBvZiB0aGlzIHVwZGF0ZS4gQXMgYSByZW1p
+bmRlciwgdXNlcnMgY2FuIGFsd2F5cyByZXZpZXcgIA0KdGhlaXIgcHJpdmFjeSBzZXR0aW5ncyBh
+bmQgbWFuYWdlIGhvdyB0aGVpciBkYXRhIGlzIHVzZWQgYnkgdmlzaXRpbmcgeW91ciAgDQpHb29n
+bGUgQWNjb3VudC4NCg0KV2hhdCBkb2VzIHRoaXMgbWVhbiBmb3IgbXkgb3JnYW5pemF0aW9uPw0K
+DQpZb3VyIGVuZC11c2VycyB3aWxsIGhhdmUgdGhlIGNoYW5jZSB0byBhY2NlcHQgdGhlIG5ldyBU
+ZXJtcyB0aGUgbmV4dCB0aW1lICANCnRoZXkgdmlzaXQgWW91VHViZS4gSWYgdGhleSB3b3VsZCBs
+aWtlIG1vcmUgaW5mb3JtYXRpb24gYmVmb3JlIHRoZXkgYWNjZXB0LCAgDQpvciBpZiBmb3IgYW55
+IHJlYXNvbiB0aGV5IGRvbid0IGFncmVlIHRvIHRoZSBuZXcgVGVybXMgYW5kIHdvdWxkIHJhdGhl
+ciAgDQpzdG9wIHVzaW5nIFlvdVR1YmUsIHRoZXkgY2FuIGZpbmQgYWRkaXRpb25hbCBpbmZvcm1h
+dGlvbiBpbiBvdXIgSGVscCAgDQpDZW50ZXIuIE5vdGhpbmcgYWJvdXQgeW91ciB1c2VycycgZXhw
+ZXJpZW5jZSBpbiB1c2luZyB0aGUgQWRkaXRpb25hbCAgDQpTZXJ2aWNlcyB3aWxsIGNoYW5nZS4N
+Cg0KV2hhdCBkbyBJIG5lZWQgdG8gZG8/DQoNCk5vIGFjdGlvbiBpcyByZXF1aXJlZCBvbiB5b3Vy
+IHBhcnQuIEFzIHlvdSBrbm93LCB0aGUgdXNlIG9mIEFkZGl0aW9uYWwgIA0KU2VydmljZXMgY2Fu
+IGJlIHR1cm5lZCBvbiBvciBvZmYgZm9yIHVzZXJzIGluIHlvdXIgZG9tYWluLg0KDQpXZSdyZSBo
+ZXJlIHRvIGhlbHANCg0KSWYgeW91IGhhdmUgYWRkaXRpb25hbCBxdWVzdGlvbnMgb3IgbmVlZCBh
+c3Npc3RhbmNlLCBwbGVhc2UgY29udGFjdCBHIFN1aXRlICANCnN1cHBvcnQgb3IgQ2hyb21lIEVu
+dGVycHJpc2Ugc3VwcG9ydC4NCg0KU2luY2VyZWx5LA0KDQpUaGUgR29vZ2xlIENsb3VkIFRlYW0N
+Cg0KDQpXYXMgdGhpcyBpbmZvcm1hdGlvbiBoZWxwZnVsPw0KWUVTIE5PDQoNCg0KwqkgMjAxOSBH
+b29nbGUgTExDIDE2MDAgQW1waGl0aGVhdHJlIFBhcmt3YXksIE1vdW50YWluIFZpZXcsIENBIDk0
+MDQzDQoNCllvdSBoYXZlIHJlY2VpdmVkIHRoaXMgaW1wb3J0YW50IHVwZGF0ZSBhYm91dCB5b3Vy
+IEdvb2dsZSBhY2NvdW50IGJlY2F1c2UgIA0KeW91IGRlc2lnbmF0ZWQgdGhpcyBlbWFpbCBhZGRy
+ZXNzIGFzIGEgcHJpbWFyeSBvciBzZWNvbmRhcnkgY29udGFjdCBmb3IgIA0KbWFuZGF0b3J5IHNl
+cnZpY2UgY29tbXVuaWNhdGlvbnMgaW4geW91ciBHb29nbGUgQWRtaW4gY29uc29sZSBwcm9maWxl
+Lg0KDQo=
+--000000000000e348d5058bb012e7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!-- This contains CSS info, starts the body, and inserts the G Suite logo =
+header -->
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> </span>
+<div style=3D"padding-top: 22px; padding-bottom: 8px; border-bottom-style: =
+solid; border-bottom-color: #dcdcdc; border-bottom-width: 1px" width=3D100%=
+><span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; co=
+lor: #000000;"><img alt=3D"Google logo" border=3D0 src=3Dhttp://www.gstatic=
+.com/images/branding/googlelogo/1x/googlelogo_color_120x48dp.png style=3D"d=
+isplay: block;" title=3DGoogle width=3D120> </span></div>
+<span style=3D"font-family: Hermanoto, Arial, sans-serif; font-size: 14px; col=
+or: #000000;"> <!-- This is the beginning of the subject --> </span>
+<!-- Include the Pre-header snippet, copy HTML from TEMPLATE SNIPPET ID 916=
+0213 and add the pre-header text-->
+<div style=3D"height:0px; font-size:0px; max-height:0px; min-height: 0px; l=
+ine-height:0px; width: 100%; color: #fff; display:none;">Changes to our end=
+-user facing Terms of Service for YouTube effective July 22, 2019.</div>
+<!-- Adds translation notice, the English version is empty-->
+=C2=A0
+<!-- Please INSERT the relevant Customer Comm BODY snippet -->
+<p>Hello Administrator,</p>
+
+<p>We=E2=80=99re writing to let you know about changes in our end-user faci=
+ng YouTube Terms of Service (=E2=80=9CTerms=E2=80=9D) for your end-users in=
+ the European Economic Area (EEA) or Switzerland that may affect users in y=
+our domain <a rel=3Dnofollow style=3Dtext-decoration:none>collab.its.umich.=
+edu</a>. These changes do not impact the terms that govern the agreement be=
+tween Google and your organization. If you have disabled Google <a target=
+=3D_blank href=3Dhttps://www.google.com/appserve/mkt/p/AFnwnKXYNYBhNYp-QFaK=
+jYR6IvLV3YgpyBKcNFJ1Pv3b6e2WvEvszerLkCRKeuTPen3KRjeq7IOTy2EyxobhrF9VVs6KoJJ=
+MBrt9fgxV5U1E>Additional Services</a> for users in your domain, these chang=
+es will not impact them.</p>
+
+<h3>What=E2=80=99s Changing?</h3>
+
+<p>The updated Terms affect users in your domain that are based in the Euro=
+pean Economic Area (EU countries, Iceland, Liechtenstein, and Norway) or Sw=
+itzerland and will apply from July 22, 2019. We=E2=80=99ve made these updat=
+es as part of our ongoing efforts to improve transparency and communication=
+. We=E2=80=99ve provided a <a href=3Dhttps://www.google.com/appserve/mkt/p/=
+AFnwnKVwCE_BjK9z8DAicKt_Sx8qYYHrs-4HWZl95VSirMMuhg4VcwpX_XcqMP19Zk7noLjdSa9=
+Z462mrMHc0XCDASqBlAZO7xh9Dy34p1B3rGsDeLI2ugMy3EDQXyI target=3D_blank>summar=
+y of key changes</a> to highlight to your users what has changed but here=
+=E2=80=99s a snapshot of what we=E2=80=99ve done:</p>
+
+<ul>
+  <li><strong>Improved readability.</strong> While still a legal document, =
+we=E2=80=99ve done our best to make the Terms clearer and easier to underst=
+and.</li>
+  <br>
+  <li><strong>Improved transparency and communication.</strong> We=E2=80=99=
+ve added links to our YouTube policies and appeals process. We=E2=80=99ve a=
+lso expanded our commitments to notify users about any changes that may aff=
+ect them, such as future changes to the Terms.</li>
+  <br>
+  <li><strong>User=E2=80=99s Content.</strong> We=E2=80=99ve clarified the =
+license users grant us to make it easier to understand. We=E2=80=99re not a=
+sking for additional permissions and there=E2=80=99s no difference in how w=
+e=E2=80=99re using their content.</li>
+  <br>
+  <li><strong>Our product today.</strong> We=E2=80=99ve made some updates t=
+o better reflect the way YouTube operates. For example, we=E2=80=99ve remov=
+ed outdated descriptions and provided helpful details about our service wit=
+h links to the Help Center.</li>
+  <br>
+  <li><strong>No changes to our Privacy Policy.</strong> We=E2=80=99re not =
+making any changes to the <a href=3Dhttps://www.google.com/appserve/mkt/p/A=
+FnwnKUOjyWsvMNPqvtyviZ1LLaSHktTIiIU_xFX6F4YqTxe7cQaZnv-dG6TwvV1JBR3qwScVChF=
+e5J4HOmt8rQEDv-54MrtU5M target=3D_blank>Google Privacy Policy</a>, as the w=
+ay we collect and process users=E2=80=99 data is not changing because of th=
+is update. As a reminder, users can always review their privacy settings an=
+d manage how their data is used by visiting your <a href=3Dhttps://www.goog=
+le.com/appserve/mkt/p/AFnwnKXn-AzIIbtD3mFvHMNdKHzD2SMYsrckVh60FQp5IGgUjiVxY=
+btn-_l1cRv-ONFR5jKnHy4y7bWJstm2aiPbGA target=3D_blank>Google Account</a>.</=
+li>
+</ul>
+
+<h3>What does this mean for my organization?</h3>
+
+<p>Your end-users will have the chance to accept the new Terms the next tim=
+e they visit YouTube. If they would like more information before they accep=
+t, or if for any reason they don=E2=80=99t agree to the new Terms and would=
+ rather stop using YouTube, they can find additional information in our <a =
+href=3Dhttps://www.google.com/appserve/mkt/p/AFnwnKULK4YLhdC1g5uSRmDMixMOUk=
+PPLZSV-IPbqK6gbCC-vh2aMe8Xoa8h77YXdY5samNY2PwYaifmbEhJXsCoO-AXgp_gj4DNC72xx=
+BqbVebImOjRPA target=3D_blank>Help Center</a>. Nothing about your users=E2=
+=80=99 experience in using the Additional Services will change.</p>
+
+<h3>What do I need to do?</h3>
+
+<p><strong>No action is required on your part.</strong> As you know, the us=
+e of Additional Services <a href=3Dhttps://www.google.com/appserve/mkt/p/AF=
+nwnKUYTUe0HPqxvuO-p2nOIDQrTRlpKComBTwgg_l3aPN1B3hQ-D_MoHdIp9Q6btFBARDuEJ_49=
+oGMn5tqzpU__QqGisMOCp2lDmZi-zSNww target=3D_blank>can be turned on or off</=
+a> for users in your domain.</p>
+
+<h3>We=E2=80=99re here to help</h3>
+
+<p>If you have additional questions or need assistance, please <a href=3Dht=
+tps://www.google.com/appserve/mkt/p/AFnwnKUYq3a_spPmSIXG6RmmNh0uL-u9QnB9Cxq=
+k6LP4Qj0VwjcIwsDu-yR9OZ-tedv-Btz5rki4_ANejeJB5CeklnkPzNUh1iz6UepEfwDQYA tar=
+get=3D_blank>contact G Suite support</a> or <a href=3Dhttps://www.google.co=
+m/appserve/mkt/p/AFnwnKUZBAXxWSzgIxhabL7PZEzbb3lhJOUjv5a_WPHdYoO5qntsjFK9Pb=
+6lnEdkHxBcG1oPB8QIo5hLQjcpVqte2M1SUaSivGfEDtoe7aMhKzoGm8VJ2-Q target=3D_bla=
+nk>Chrome Enterprise support</a>.</p>
+
+<p>Sincerely,</p>
+
+<p>The Google Cloud Team</p>
+
+<!-- Include the Customer feedback form snippet, copy HTML from TEMPLATE SN=
+IPPET ID 7501725 and add relevant links -->
+<div style=3D"color: #666666; padding-top: 8px; border-top-style: solid; bo=
+rder-top-color: #dcdcdc; border-top-width: 1px">
+=C2=A0 <p>Was this information helpful?</p>
+=C2=A0 <a href=3Dhttps://www.google.com/appserve/mkt/p/AFnwnKW86ukOIEXJyGCo=
+5J-aK3sevVoIPbt8a18nXeYfR0EXRjZfzwKq7BILXE0b3QDGAlPWGWBtdaMMUfjkBHhAHTnaFl4=
+DbnOoan6hEEwn16XIp2Ll6YPbjIeMSlt9QUWJw7-0_pKXVZWWthPZrijWeWmc4_XnFpqpoEj8YM=
+wNHhF_62e_8pdwyYVZSzp04Q target=3D_blank>YES</a> =C2=A0 <a href=3Dhttps://w=
+ww.google.com/appserve/mkt/p/AFnwnKWOYe0ZwqzeSG6nYvdcinwciSd0HlVTK_OkF9uThC=
+ijHL5MwnueG8VxfWnZwUQBvU_GAEjjRT9vZ8SjeMu5omnstFEOnzXbTvKjerOVdJ5RBHu55hMOK=
+bKaHVcVr1dj3OuiYNBqWievIhsMtFaMc6KRtEVPfHCAkQiBkFEKZpp_NLCB46UN0pSp5NIo tar=
+get=3D_blank>NO</a><br>
+=C2=A0 =C2=A0</div>
+<!-- Finally, include the standard footer. This also ends the body -->
+<div style=3D"font-size: 10px; color: #666666; padding-top: 8px; border-top=
+-style: solid; border-top-color: #dcdcdc; border-top-width: 1px">
+  <p>=C2=A9 2019=C2=A0 Google LLC=C2=A01600 Amphitheatre Parkway, Mountain =
+View, CA 94043</p>
+
+  <p><i>You have received this important update about your Google account b=
+ecause you designated this email address as a primary or secondary contact =
+for mandatory service communications in your Google=C2=A0<a href=3Dhttp://w=
+ww.google.com/appserve/mkt/p/AFnwnKUzxanrxuc5r4cuEUFBmGun9iNx58EJf00oqcD6Sg=
+tBqNwyyPkQWbVoYMQogK5LnMpgFMvYJJzWvfpJ target=3D_blank>Admin console</a>=C2=
+=A0profile.</i></p>
+</div>
+<img height=3D1 width=3D3 src=3Dhttps://www.google.com/appserve/mkt/img/AFn=
+wnKV7_Xhb49BwhHik8G2tx9m8H3vzIE5jo6N1adgPMmw2Aw.gif>
+--000000000000e348d5058bb012e7--
